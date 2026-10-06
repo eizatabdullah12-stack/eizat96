@@ -6,6 +6,8 @@ import sys
 
 target = Path(__file__).resolve().parent / 'licenses'
 target.mkdir(exist_ok=True)
+shutil.copyfile(Path(__file__).resolve().parent / 'LICENSE', target / 'Application-LICENSE.txt')
+(target / 'Application-SOURCE.txt').write_text('Application source and build: https://github.com/eizatabdullah12-stack/eizat96\n', encoding='utf-8')
 for distribution in importlib.metadata.distributions():
     name = distribution.metadata.get('Name', 'unknown')
     for entry in distribution.files or ():

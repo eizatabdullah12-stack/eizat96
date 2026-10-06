@@ -1,24 +1,21 @@
 # Engineering PDF Translator
 
-Native Windows desktop PDF translator: French/Dutch to English. After a
+Native Windows desktop PDF translator: French/Dutch/German to English. After a
 successful build, open EngineeringPDFTranslator.exe; no installation, browser,
 API key or translation internet connection is required. Models are embedded.
 
 Choose a PDF, select the source language and output mode, then save a new PDF.
 The original is retained. A translation text list is saved alongside the PDF.
 
-[Download the verified Windows build](https://github.com/eizatabdullah12-stack/eizat96/actions/runs/37424347892/artifacts/11394029382).
-Extract the download and open `dist/EngineeringPDFTranslator.exe`.
-The build download expires on 2026-10-20; the workflow can produce a fresh copy.
+Version 1.1 adds German and an engineering terminology layer.
+Download the completed build from GitHub Actions after its checks pass.
 
 ## Status
 
-Windows x64 build and compiled-app tests passed on 2026-10-06.
-The compiled executable opened the actual GUI and translated French and Dutch
-samples with both bundled models. PDF checks covered replacement and notes,
-protected dimensions/codes, and preservation of the original file.
-GitHub Actions builds and runs the compiled executable's self-test before
-making the executable and portable ZIP available as workflow artifacts.
+Version 1.0 passed the Windows compiled-app checks on 2026-10-06.
+Version 1.1 passes 10 local regression tests; its Windows rebuild is pending.
+The workflow runs the actual GUI, all three models, engineering terminology,
+PDF output and review-report checks before uploading a new executable.
 
 ## Building
 
@@ -27,7 +24,7 @@ tests or build configuration triggers the Windows workflow. It can also be
 started manually. The build requires internet access to PyPI, the official
 Argos model index, and the published language-model download URLs.
 
-The build fetches the French and Dutch models, runs real inference checks,
+The build fetches the French, Dutch and German models, runs real inference checks,
 runs PDF tests, bundles a single executable with PyInstaller, then runs a
 compiled-app self-test for GUI startup, both language models and PDF output.
 Failed checks prevent the finished artifact from being uploaded. Account
@@ -43,6 +40,14 @@ Selectable-text PDFs; original images/vector lines retained during text
 replacement; protected numeric dimensions, common units and simple codes;
 translation notes for labels that do not fit or are rotated; notes-only mode;
 page progress and cancellation between translation operations.
+
+## Engineering glossary
+
+Structural and masonry terminology takes priority over general translation.
+Longer phrases, accent variants and German transliterations are supported.
+Ambiguous terms are retained or flagged in the companion translation list.
+See TERMINOLOGY.md and the exported EngineeringGlossary.tsv. This layer does
+not interpret drawing geometry or guarantee project-specific terminology.
 
 ## Limitations
 

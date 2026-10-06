@@ -21,8 +21,12 @@ if (-not $checkProcess.WaitForExit(180000)) { $checkProcess.Kill(); throw 'Compi
 if ($checkProcess.ExitCode -ne 0 -or -not (Test-Path $resultPath)) { throw 'Compiled executable self-test failed.' }
 $testResult = Get-Content -Raw $resultPath | ConvertFrom-Json
 if (-not $testResult.passed) { throw 'Compiled executable checks did not pass.' }
-Copy-Item README.md dist\README.txt
+Copy-Item PORTABLE_README.txt dist\README.txt
 Copy-Item THIRD_PARTY.md dist\THIRD_PARTY.txt
+Copy-Item LICENSE dist\LICENSE.txt
+Copy-Item TERMINOLOGY.md dist\TERMINOLOGY.txt
+& $buildPython export_glossary.py
+if ($LASTEXITCODE -ne 0) { throw 'Engineering glossary export failed.' }
 Copy-Item licenses dist\licenses -Recurse
-Compress-Archive -Path dist\EngineeringPDFTranslator.exe,dist\README.txt,dist\THIRD_PARTY.txt,dist\windows-selftest.json,dist\licenses -DestinationPath EngineeringPDFTranslator_Portable_Windows.zip -Force
+Compress-Archive -Path dist\* -DestinationPath EngineeringPDFTranslator_Portable_Windows.zip -Force
 Write-Host 'Executable built and compiled-app checks passed.'

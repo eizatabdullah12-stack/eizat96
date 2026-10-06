@@ -1,13 +1,18 @@
-Engineering PDF Translator - portable Windows x64 application
+Engineering PDF Translator 1.1 - portable Windows x64 application
 
 Double-click EngineeringPDFTranslator.exe. No Python installation, browser,
 API key or internet connection is required. The first launch can take a while
 because the bundled translation models unpack into Windows temporary storage.
 
 1. Choose a PDF with selectable text.
-2. Select French or Dutch as the source language. The output is English.
+2. Select French, Dutch or German as the source language. The output is English.
 3. Select text replacement or translation notes.
 4. Click Translate and save, and choose a new filename.
+
+Engineering terminology is enabled automatically. Common structural and masonry
+terms use a bundled glossary before the offline translation models. Ambiguous
+labels are marked REVIEW CONTEXT in the .translations.txt list. Review these
+against the detail and project legend. See TERMINOLOGY.txt and EngineeringGlossary.tsv.
 
 Your original PDF is retained. The app saves the translated PDF and a companion
 .translations.txt list. Open the PDF in a reader that supports annotations to

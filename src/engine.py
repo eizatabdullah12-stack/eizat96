@@ -39,6 +39,7 @@ def translate_pdf(source, destination, translate, mode="replace", progress=lambd
         raise ValueError("Unknown output mode")
     report = []
     count = fallback = extracted = 0
+    glossary_hits = review_labels = 0
     scanned_pages = []
     destination.parent.mkdir(parents=True, exist_ok=True)
     with fitz.open(source) as doc:
@@ -64,6 +65,17 @@ def translate_pdf(source, destination, translate, mode="replace", progress=lambd
                         raise InterruptedError("Translation cancelled; no output PDF was saved.")
                     translated = protected_translate(original, translate).strip()
                     extracted += 1
+                    terms = getattr(translate, 'glossary_matches', lambda text: [])(original)
+                    reviews = getattr(translate, 'review_notes', lambda text: [])(original)
+                    glossary_hits += len(terms)
+                    review_labels += bool(reviews)
+                    if translated != original or reviews:
+                        entry = f"PAGE {number + 1}\nOriginal: {original}\nEnglish: {translated}\n"
+                        if terms:
+                            entry += 'Glossary: ' + '; '.join(t['source'] + ' -> ' + t['english'] for t in terms) + '\n'
+                        if reviews:
+                            entry += 'REVIEW CONTEXT: ' + ' | '.join(reviews) + '\n'
+                        report.append(entry)
                     if translated == original:
                         continue
                     rect = fitz.Rect(line["bbox"])
@@ -73,7 +85,6 @@ def translate_pdf(source, destination, translate, mode="replace", progress=lambd
                     # when a translation cannot be represented reliably.
                     encodable = all(ord(c) < 256 for c in translated)
                     fs = fit_text(rect, translated, size) if horizontal and encodable and mode == "replace" else None
-                    report.append(f"PAGE {number + 1}\nOriginal: {original}\nEnglish: {translated}\n")
                     if fs is None:
                         note_position = fitz.Point(max(1, rect.x0 - 23), max(1, rect.y0))
                         note = page.add_text_annot(note_position, translated)
@@ -109,5 +120,5 @@ def translate_pdf(source, destination, translate, mode="replace", progress=lambd
                 os.unlink(temp)
     warnings = f"\nPages without extractable text (not translated): {scanned_pages}\n" if scanned_pages else ""
     report_path = destination.with_suffix(".translations.txt")
-    report_path.write_text("Engineering PDF Translator - English translation list\nMachine translation: review engineering terminology.\n" + warnings + "\n".join(report), encoding="utf-8")
-    return {"translated": count, "notes": fallback, "scanned_pages": scanned_pages, "report": str(report_path)}
+    report_path.write_text("Engineering PDF Translator - English translation list\nTechnical glossary takes priority; other text uses machine translation.\nREVIEW CONTEXT marks ambiguous labels. Check the drawing detail/legend.\n" + f"Glossary matches: {glossary_hits}; labels needing context review: {review_labels}\n" + warnings + "\n".join(report), encoding="utf-8")
+    return {"translated": count, "notes": fallback, "scanned_pages": scanned_pages, "report": str(report_path), "glossary_terms": glossary_hits, "review_labels": review_labels}

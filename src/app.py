@@ -20,9 +20,9 @@ class App:
         self.events = queue.Queue()
         self.stop = threading.Event()
         self.busy = False
-        root.title("Engineering PDF Translator")
-        root.geometry("760x600")
-        root.minsize(680, 580)
+        root.title("Engineering PDF Translator 1.1")
+        root.geometry("780x640")
+        root.minsize(720, 620)
         root.configure(bg="#f0f4f7")
         style = ttk.Style()
         style.theme_use("clam")
@@ -32,7 +32,7 @@ class App:
         frame = ttk.Frame(root, padding=28)
         frame.pack(fill="both", expand=True)
         ttk.Label(frame, text="Engineering PDF Translator", font=("Segoe UI", 22, "bold")).pack(anchor="w")
-        ttk.Label(frame, text="French / Dutch → English · Offline", foreground="#356576").pack(anchor="w", pady=(4,24))
+        ttk.Label(frame, text="French / Dutch / German → English · Offline", foreground="#356576").pack(anchor="w", pady=(4,24))
         self.file = tk.StringVar()
         ttk.Label(frame, text="PDF document").pack(anchor="w")
         row = ttk.Frame(frame)
@@ -42,12 +42,12 @@ class App:
         self.browse.pack(side="right", padx=(10,0))
         ttk.Label(frame, text="Source language").pack(anchor="w")
         self.language = tk.StringVar(value="French")
-        self.lang_box = ttk.Combobox(frame, values=["French", "Dutch"], textvariable=self.language, state="readonly")
+        self.lang_box = ttk.Combobox(frame, values=["French", "Dutch", "German"], textvariable=self.language, state="readonly")
         self.lang_box.pack(anchor="w", pady=(5,18), ipady=5)
         self.mode = tk.StringVar(value="replace")
         ttk.Radiobutton(frame, text="Replace text where it fits; add notes for other labels", variable=self.mode, value="replace").pack(anchor="w", pady=4)
         ttk.Radiobutton(frame, text="Keep the original drawing and add translation notes", variable=self.mode, value="notes").pack(anchor="w", pady=4)
-        ttk.Label(frame, text="Original PDF is retained. A translation list is also saved.\nScanned PDFs require OCR and are not supported in this build.", foreground="#536675").pack(anchor="w", pady=16)
+        ttk.Label(frame, text="Engineering glossary enabled. Ambiguous terms are marked in the translation list.\nOriginal PDF is retained. Scanned PDFs require OCR and are not supported.", foreground="#536675", wraplength=700).pack(anchor="w", pady=16)
         self.bar = ttk.Progressbar(frame, mode="determinate")
         self.bar.pack(fill="x")
         self.status = tk.StringVar(value="Choose a PDF to begin.")
@@ -77,7 +77,7 @@ class App:
         if Path(target).resolve() == source.resolve():
             messagebox.showerror("Keep the original", "Choose a different filename for the translated PDF.")
             return
-        code = {"French": "fr", "Dutch": "nl"}[self.language.get()]
+        code = {"French": "fr", "Dutch": "nl", "German": "de"}[self.language.get()]
         mode = self.mode.get()
         self.busy = True
         self.stop.clear()
@@ -117,7 +117,7 @@ class App:
                         target, result = data
                         self.status.set(f"Saved: {Path(target).name}")
                         warning = f"\nPages {result['scanned_pages']} contain no selectable text and were not translated." if result['scanned_pages'] else ""
-                        messagebox.showinfo("Saved", f"Translated {result['translated']} labels; {result['notes']} saved as notes.\n\n{target}\n\nA .translations.txt list was saved alongside the PDF." + warning)
+                        messagebox.showinfo("Saved", f"Translated {result['translated']} labels; {result['notes']} saved as notes.\nEngineering glossary matches: {result['glossary_terms']}.\nLabels needing context review: {result['review_labels']}.\n\n{target}\n\nA .translations.txt list was saved alongside the PDF." + warning)
         except queue.Empty:
             pass
         self.root.after(100, self.poll)

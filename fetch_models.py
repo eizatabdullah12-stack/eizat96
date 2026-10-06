@@ -12,7 +12,7 @@ models = root / 'src' / 'models'
 models.mkdir(exist_ok=True)
 index = json.load(urllib.request.urlopen('https://raw.githubusercontent.com/argosopentech/argospm-index/main/index.json', timeout=90))
 manifest = []
-for language in ('fr','nl'):
+for language in ('fr','nl','de'):
     package = next(x for x in index if x['from_code'] == language and x['to_code'] == 'en')
     archive = models / (language + '.argosmodel')
     last = None
@@ -49,7 +49,7 @@ for language in ('fr','nl'):
 (models/'build-manifest.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8')
 sys.path.insert(0,str(root/'src'))
 from offline import OfflineTranslator
-for language, sample in (('fr','Bonjour le monde'),('nl','Goedemorgen')):
+for language, sample in (('fr','Bonjour le monde'),('nl','Goedemorgen'),('de','Guten Morgen')):
     output = OfflineTranslator(language)(sample)
     expected = 'hello' if language == 'fr' else 'morning'
     if expected not in output.lower() or '\u2581' in output:
