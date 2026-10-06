@@ -1,0 +1,5 @@
+2026-10-06 preparation
+PASS: Python syntax compilation.
+PASS: local deterministic PDF engine tests (4 tests).
+PREPARED, NOT RUN: Windows workflow and compiled-executable self-test.
+NOT RUN HERE: actual model downloads/inference, native GUI and Windows EXE.

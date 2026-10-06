@@ -1,0 +1,5 @@
+PyMuPDF==1.26.6
+ctranslate2==4.6.0
+sentencepiece==0.2.1
+numpy==2.2.6
+pyinstaller==6.16.0

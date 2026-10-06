@@ -1,0 +1,8 @@
+.build-env/
+src/models/
+__pycache__/
+*.pyc
+build/
+dist/
+*.spec
+EngineeringPDFTranslator_Portable_Windows.zip

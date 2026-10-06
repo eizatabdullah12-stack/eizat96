@@ -1,0 +1,24 @@
+# Builder script, not the end-user launcher. Requires Windows x64 and Python 3.11.
+$ErrorActionPreference = 'Stop'
+Set-Location $PSScriptRoot
+py -3.11 -m venv .build-env
+if ($LASTEXITCODE -ne 0) { throw 'Windows Python 3.11 is required on the build machine.' }
+$buildPython = Join-Path $PSScriptRoot '.build-env\Scripts\python.exe'
+& $buildPython -m pip install -r requirements.txt
+if ($LASTEXITCODE -ne 0) { throw 'Dependency download failed.' }
+& $buildPython fetch_models.py
+if ($LASTEXITCODE -ne 0) { throw 'Language-model download failed.' }
+& $buildPython -m unittest discover -s tests -v
+if ($LASTEXITCODE -ne 0) { throw 'PDF checks failed.' }
+& $buildPython -m PyInstaller --noconfirm --clean --onefile --windowed --name EngineeringPDFTranslator --add-data 'src/models;models' --collect-all ctranslate2 --collect-all sentencepiece src/app.py
+if ($LASTEXITCODE -ne 0) { throw 'Windows executable build failed.' }
+$resultPath = Join-Path $PSScriptRoot 'dist\windows-selftest.json'
+$checkProcess = Start-Process -FilePath (Join-Path $PSScriptRoot 'dist\EngineeringPDFTranslator.exe') -ArgumentList @('--self-test', ('"' + $resultPath + '"')) -PassThru
+if (-not $checkProcess.WaitForExit(180000)) { $checkProcess.Kill(); throw 'Compiled executable self-test timed out.' }
+if ($checkProcess.ExitCode -ne 0 -or -not (Test-Path $resultPath)) { throw 'Compiled executable self-test failed.' }
+$testResult = Get-Content -Raw $resultPath | ConvertFrom-Json
+if (-not $testResult.passed) { throw 'Compiled executable checks did not pass.' }
+Copy-Item README.md dist\README.txt
+Copy-Item THIRD_PARTY.md dist\THIRD_PARTY.txt
+Compress-Archive -Path dist\EngineeringPDFTranslator.exe,dist\README.txt,dist\THIRD_PARTY.txt,dist\windows-selftest.json -DestinationPath EngineeringPDFTranslator_Portable_Windows.zip -Force
+Write-Host 'Executable built and compiled-app checks passed.'
