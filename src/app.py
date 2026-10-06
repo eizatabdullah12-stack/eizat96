@@ -4,6 +4,8 @@ import sys
 from pathlib import Path
 import queue
 import threading
+import hashlib
+from datetime import datetime
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 
@@ -22,6 +24,8 @@ class App:
         self.events = queue.Queue()
         self.stop = threading.Event()
         self.busy = False
+        self.saved_output = None
+        self.saved_sha = None
         root.title(f"Engineering PDF Translator {VERSION}")
         root.geometry("780x640")
         root.minsize(720, 620)
@@ -61,6 +65,8 @@ class App:
         self.cancel = ttk.Button(controls, text="Cancel", command=self.stop.set, state="disabled")
         self.cancel.pack(side="left", padx=10)
         ttk.Button(controls,text="Browse terminology…",command=self.show_glossary).pack(side="right")
+        self.open_output = ttk.Button(frame, text="Open verified PDF", command=self.open_saved, state="disabled")
+        self.open_output.pack(anchor="w", pady=(10,0))
         root.protocol("WM_DELETE_WINDOW", self.close)
         root.after(100, self.poll)
 
@@ -123,7 +129,8 @@ class App:
         if not source.is_file() or source.suffix.lower() != ".pdf":
             messagebox.showerror("Choose a PDF", "Please select an existing PDF document.")
             return
-        target = filedialog.asksaveasfilename(initialdir=source.parent, initialfile=source.stem + "_English.pdf", defaultextension=".pdf", filetypes=[("PDF", "*.pdf")])
+        stamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        target = filedialog.asksaveasfilename(initialdir=source.parent, initialfile=source.stem + f"_English_{stamp}.pdf", defaultextension=".pdf", filetypes=[("PDF", "*.pdf")])
         if not target:
             return
         if Path(target).resolve() == source.resolve():
@@ -132,6 +139,8 @@ class App:
         code = {"French": "fr", "Dutch": "nl", "German": "de"}[self.language.get()]
         mode = self.mode.get()
         self.busy = True
+        self.saved_output = None
+        self.open_output.configure(state="disabled")
         self.stop.clear()
         self.start.configure(state="disabled")
         self.browse.configure(state="disabled")
@@ -167,9 +176,12 @@ class App:
                         messagebox.showerror("Translation stopped", data)
                     else:
                         target, result = data
-                        self.status.set(f"Saved: {Path(target).name}")
+                        self.saved_output = str(Path(target).resolve())
+                        self.saved_sha = result['pdf_sha256']
+                        self.open_output.configure(state="normal")
+                        self.status.set(f"Verified saved PDF: {Path(target).name}")
                         warning = f"\nPages {result['scanned_pages']} contain no selectable text and were not translated." if result['scanned_pages'] else ""
-                        message = f"Replaced {result['replaced']} labels on the drawing; {result['notes']} saved as notes.\nUnchanged labels to check: {result['unchanged']}.\nRetained drawing references/units: {result['retained']}.\nEngineering glossary matches: {result['glossary_terms']}.\nLabels needing context review: {result['review_labels']}.\n\n{target}\n\nA .translations.txt list records each label's result and any note fallback reason." + warning
+                        message = f"Saved PDF reopened and checked:\n{result['verified_replaced']} replacement labels; {result['verified_notes']} translation notes.\nUnchanged labels to check: {result['unchanged']}.\nRetained drawing references/units: {result['retained']}.\nEngineering glossary matches: {result['glossary_terms']}.\nLabels needing context review: {result['review_labels']}.\n\n{target}\n\nUse Open verified PDF to open this exact file. A .translations.txt list records each label's result." + warning
                         if not result["translated"]:
                             messagebox.showwarning("No labels translated", "No labels changed. Check the selected source language and the .translations.txt report.\n\n" + message)
                         else:
@@ -177,6 +189,16 @@ class App:
         except queue.Empty:
             pass
         self.root.after(100, self.poll)
+
+    def open_saved(self):
+        if self.saved_output:
+            try:
+                if hashlib.sha256(Path(self.saved_output).read_bytes()).hexdigest() != self.saved_sha:
+                    messagebox.showerror('PDF changed', 'This PDF has changed since translation. Translate again to verify a new copy.')
+                    return
+                os.startfile(self.saved_output)
+            except OSError as exc:
+                messagebox.showerror('Cannot open PDF', str(exc))
 
     def close(self):
         if self.busy and not messagebox.askyesno("Translation in progress", "Cancel translation and close?"):

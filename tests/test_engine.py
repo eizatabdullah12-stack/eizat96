@@ -6,8 +6,39 @@ import fitz
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from engine import protected_translate, translate_pdf, fit_text
 from glossary import EngineeringTranslator
+from version import VERSION
+from unittest.mock import patch
 
 class PDFChecks(unittest.TestCase):
+    def test_silent_insertion_failure_does_not_report_success(self):
+        with tempfile.TemporaryDirectory() as folder:
+            src,dst=Path(folder)/'source.pdf',Path(folder)/'English.pdf'
+            self.fixture(src)
+            dst.write_bytes(src.read_bytes())
+            previous=dst.read_bytes()
+            # Simulate a PDF writer claiming insertion succeeded without text.
+            with patch.object(fitz.Page,'insert_textbox',return_value=0):
+                with self.assertRaisesRegex(RuntimeError,'replacement text is missing'):
+                    translate_pdf(src,dst,lambda s:s.replace('Beton','Concrete'))
+            self.assertEqual(dst.read_bytes(),previous)
+            self.assertFalse(dst.with_suffix('.translations.txt').exists())
+
+    def test_verified_file_identity_and_notes(self):
+        import hashlib
+        from engine import verify_pdf_output
+        with tempfile.TemporaryDirectory() as folder:
+            src,dst=Path(folder)/'source.pdf',Path(folder)/'English.pdf'
+            self.fixture(src)
+            result=translate_pdf(src,dst,lambda s:s.replace('Beton','Concrete'),mode='notes')
+            digest=hashlib.sha256(dst.read_bytes()).hexdigest()
+            self.assertEqual(result['pdf_sha256'],digest)
+            self.assertEqual(result['verified_notes'],1)
+            report=Path(result['report']).read_text()
+            self.assertIn('PDF SHA256: '+digest,report)
+            with fitz.open(dst) as pdf:creator=pdf.metadata['creator']
+            with self.assertRaisesRegex(RuntimeError,'notes are missing'):
+                verify_pdf_output(dst,[([],['English: missing note'])],creator)
+
     def test_whole_product_codes_and_acronyms(self):
         translator=EngineeringTranslator('de',lambda s:s.replace('Ansicht','View'))
         for code in ('ABC-VX42-3D_FV','ABC42/FV','3D','QZX'):
@@ -29,7 +60,7 @@ class PDFChecks(unittest.TestCase):
             self.assertIn('Source language: German',report)
             self.assertIn('REVIEW CONTEXT',report)
             with fitz.open(dst) as doc:
-                self.assertIn('Translator 1.4; German to English',doc.metadata['creator'])
+                self.assertIn(f'Translator {VERSION}; German to English',doc.metadata['creator'])
                 text=doc[0].get_text()
                 for term in ('Parts list','Item','Assembly','Check','ABC-VX42-3D_FV'):
                     self.assertIn(term,text)

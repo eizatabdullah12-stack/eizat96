@@ -3,6 +3,8 @@ from pathlib import Path
 import os
 import re
 import tempfile
+import hashlib
+from collections import Counter
 import fitz
 from version import VERSION
 
@@ -90,6 +92,28 @@ def fit_text(rect, text, size, rotation=0):
     return None
 
 
+def verify_pdf_output(path, expected, creator):
+    """Read saved bytes back; do not infer success from insertion return codes."""
+    normalize = lambda text: re.sub(r'\s+', '', text)
+    replaced = notes = 0
+    with fitz.open(path) as saved:
+        if len(saved) != len(expected) or saved.metadata.get('creator') != creator:
+            raise RuntimeError('Saved PDF verification failed: unexpected document. No success report was written.')
+        for number, (labels, comments) in enumerate(expected):
+            page = saved[number]
+            text = normalize(page.get_text())
+            for label, quantity in Counter(normalize(s) for s in labels).items():
+                if text.count(label) < quantity:
+                    raise RuntimeError(f'Saved PDF verification failed on page {number+1}: replacement text is missing. No success report was written.')
+            actual = Counter(normalize(a.info.get('content', '')) for a in (page.annots() or []))
+            for comment, quantity in Counter(normalize(s) for s in comments).items():
+                if actual[comment] < quantity:
+                    raise RuntimeError(f'Saved PDF verification failed on page {number+1}: translation notes are missing. No success report was written.')
+            replaced += len(labels)
+            notes += len(comments)
+    return {'verified_replaced': replaced, 'verified_notes': notes}
+
+
 def translate_pdf(source, destination, translate, mode="replace", progress=lambda *args: None, cancel=lambda: False):
     source, destination = Path(source), Path(destination)
     if source.resolve() == destination.resolve():
@@ -100,6 +124,7 @@ def translate_pdf(source, destination, translate, mode="replace", progress=lambd
     count = fallback = extracted = unchanged = retained = 0
     glossary_hits = review_labels = 0
     scanned_pages = []
+    expected = []
     destination.parent.mkdir(parents=True, exist_ok=True)
     with fitz.open(source) as doc:
         if doc.needs_pass:
@@ -108,6 +133,7 @@ def translate_pdf(source, destination, translate, mode="replace", progress=lambd
             if cancel():
                 raise InterruptedError("Translation cancelled; no output PDF was saved.")
             items = []
+            page_labels, page_notes = [], []
             page_text = 0
             for block in page.get_text("dict")["blocks"]:
                 if "lines" not in block:
@@ -154,6 +180,7 @@ def translate_pdf(source, destination, translate, mode="replace", progress=lambd
                         note_position = fitz.Point(max(1, rect.x0 - 23), max(1, rect.y0))
                         note = page.add_text_annot(note_position, translated)
                         note.set_info(title="English translation", content=f"Original: {original}\nEnglish: {translated}")
+                        page_notes.append(f"Original: {original}\nEnglish: {translated}")
                         fallback += 1
                         reason = 'notes-only mode' if mode == 'notes' else 'oblique text' if rotation is None else 'font character support' if not encodable else 'translation exceeds label space'
                         report.append(entry + f'Status: NOTE - {reason}.\n')
@@ -163,6 +190,7 @@ def translate_pdf(source, destination, translate, mode="replace", progress=lambd
                         # Transparent fill: retain the underlying vector drawing.
                         page.add_redact_annot(rect, fill=False, cross_out=False)
                         items.append((rect, translated, fs, rgb, rotation))
+                        page_labels.append(translated)
                         report.append(entry + 'Status: REPLACED on drawing.\n')
                     count += 1
             if not page_text:
@@ -174,6 +202,7 @@ def translate_pdf(source, destination, translate, mode="replace", progress=lambd
                 for rect, translated, fs, rgb, rotation in items:
                     if page.insert_textbox(rect, translated, fontname=LABEL_FONT_NAME, fontsize=fs, color=rgb, rotate=rotation) < 0:
                         raise RuntimeError("Text layout changed unexpectedly. Output was not saved.")
+            expected.append((page_labels, page_notes))
             progress(number + 1, len(doc))
         if not extracted:
             raise ValueError("No translatable text was found. Scanned/image-only PDFs need OCR, which this build does not include.")
@@ -187,11 +216,14 @@ def translate_pdf(source, destination, translate, mode="replace", progress=lambd
             metadata['creator']=f'Engineering PDF Translator {VERSION}; {language} to English'
             doc.set_metadata(metadata)
             doc.save(temp, garbage=4, deflate=True)
+            verify_pdf_output(temp, expected, metadata['creator'])
             os.replace(temp, destination)
         finally:
             if os.path.exists(temp):
                 os.unlink(temp)
+    verified = verify_pdf_output(destination, expected, metadata['creator'])
+    output_sha = hashlib.sha256(destination.read_bytes()).hexdigest()
     warnings = f"\nPages without extractable text (not translated): {scanned_pages}\n" if scanned_pages else ""
     report_path = destination.with_suffix(".translations.txt")
-    report_path.write_text(f"Engineering PDF Translator {VERSION} - English translation list\nSource language: {language}; target: English; mode: {mode}\nTechnical glossary takes priority; other text uses machine translation.\nREVIEW CONTEXT marks ambiguous labels. Check the drawing detail/legend.\nUNCHANGED may include proper names, already-English text or untranslated words.\n" + f"Replaced on drawing: {count-fallback}; notes: {fallback}; unchanged labels to check: {unchanged}; retained references/units: {retained}\nGlossary matches: {glossary_hits}; labels needing context review: {review_labels}\n" + warnings + "\n".join(report), encoding="utf-8")
-    return {"translated": count, "replaced": count-fallback, "notes": fallback, "unchanged": unchanged, "retained": retained, "scanned_pages": scanned_pages, "report": str(report_path), "glossary_terms": glossary_hits, "review_labels": review_labels}
+    report_path.write_text(f"Engineering PDF Translator {VERSION} - English translation list\nSource language: {language}; target: English; mode: {mode}\nOutput PDF: {destination.name}\nPDF SHA256: {output_sha}\nSaved PDF reopened and checked: {verified['verified_replaced']} replacement labels; {verified['verified_notes']} translation notes.\nTechnical glossary takes priority; other text uses machine translation.\nREVIEW CONTEXT marks ambiguous labels. Check the drawing detail/legend.\nUNCHANGED may include proper names, already-English text or untranslated words.\n" + f"Replaced on drawing: {count-fallback}; notes: {fallback}; unchanged labels to check: {unchanged}; retained references/units: {retained}\nGlossary matches: {glossary_hits}; labels needing context review: {review_labels}\n" + warnings + "\n".join(report), encoding="utf-8")
+    return {"translated": count, "replaced": count-fallback, "notes": fallback, "unchanged": unchanged, "retained": retained, "scanned_pages": scanned_pages, "report": str(report_path), "glossary_terms": glossary_hits, "review_labels": review_labels, "pdf_sha256": output_sha, **verified}

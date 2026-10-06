@@ -73,6 +73,8 @@ def run(report_path, app_factory):
                     pdf.save(source)
                 before = source.read_bytes()
                 result = translate_pdf(source,destination,translate,mode='notes')
+                if result['verified_notes'] != result['notes'] or result['verified_replaced'] != result['replaced']:
+                    raise RuntimeError('Saved-file readback verification failed')
                 if 'Source language:' not in Path(result['report']).read_text(encoding='utf-8'):
                     raise RuntimeError('Source-language report missing')
                 if result['translated'] < 1 or source.read_bytes() != before:
@@ -86,6 +88,8 @@ def run(report_path, app_factory):
                 # Exercise the default replacement path with real inference.
                 replace_destination = Path(folder)/'English-replaced.pdf'
                 replaced = translate_pdf(source,replace_destination,translate,mode='replace')
+                if replaced['verified_replaced'] != replaced['replaced'] or 'PDF SHA256:' not in Path(replaced['report']).read_text(encoding='utf-8'):
+                    raise RuntimeError('Verified replacement PDF identity missing')
                 with fitz.open(replace_destination) as pdf:
                     text = pdf[0].get_text()
                     notes = '\n'.join(a.info.get('content','') for a in (pdf[0].annots() or []))

@@ -1,4 +1,4 @@
-Engineering PDF Translator 1.4 - portable Windows x64 application
+Engineering PDF Translator 1.5 - portable Windows x64 application
 
 Double-click EngineeringPDFTranslator.exe. No Python installation, browser,
 API key or internet connection is required. The first launch can take a while
@@ -45,3 +45,9 @@ Version 1.4 requires an explicit source-language choice and records the version
 and language in the PDF metadata and translation report. It warns if no labels
 change. Complete alphanumeric product identifiers and short reference acronyms
 are retained; additional parts-list and pipe-support terms are included.
+
+Version 1.5 reopens the saved PDF and checks the replacement labels and notes
+before reporting success. The report identifies its matching PDF by filename
+and SHA256. Default output names include a timestamp to avoid reusing a cached
+filename. Click Open verified PDF after translation to open the exact output;
+the button checks that the PDF has not changed since it was verified.
