@@ -51,6 +51,7 @@ sys.path.insert(0,str(root/'src'))
 from offline import OfflineTranslator
 for language, sample in (('fr','Bonjour le monde'),('nl','Goedemorgen')):
     output = OfflineTranslator(language)(sample)
-    if not output.strip() or output.strip() == sample:
+    expected = 'hello' if language == 'fr' else 'morning'
+    if expected not in output.lower() or '\u2581' in output:
         raise RuntimeError(f'{language} translation smoke check failed')
     print(f'{language} inference smoke check: {output}',flush=True)

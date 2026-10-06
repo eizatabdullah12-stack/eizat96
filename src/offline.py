@@ -27,6 +27,8 @@ class OfflineTranslator:
         # within the model's training length; sentence context may be reduced.
         batches = [pieces[i:i+120] for i in range(0,len(pieces),120)]
         results = self.engine.translate_batch(batches, beam_size=4, max_decoding_length=300)
-        rendered = ' '.join(self.sp.decode(r.hypotheses[0]) for r in results)
+        # Argos models can return a literal SentencePiece space marker after
+        # decode_pieces; normalize it as the publisher's tokenizer does.
+        rendered = ' '.join(self.sp.decode_pieces(r.hypotheses[0]).replace('\u2581', ' ').replace('_', ' ').strip() for r in results)
         self.cache[text] = left + rendered + right
         return self.cache[text]

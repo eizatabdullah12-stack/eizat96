@@ -21,8 +21,8 @@ class App:
         self.stop = threading.Event()
         self.busy = False
         root.title("Engineering PDF Translator")
-        root.geometry("760x540")
-        root.minsize(680, 500)
+        root.geometry("760x600")
+        root.minsize(680, 580)
         root.configure(bg="#f0f4f7")
         style = ttk.Style()
         style.theme_use("clam")
@@ -132,6 +132,6 @@ class App:
 if __name__ == "__main__":
     if "--self-test" in sys.argv:
         from selftest import run
-        run(Path(sys.argv[sys.argv.index("--self-test") + 1]))
+        run(Path(sys.argv[sys.argv.index("--self-test") + 1]), App)
     else:
         App(tk.Tk()).root.mainloop()

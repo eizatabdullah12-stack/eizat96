@@ -1,5 +1,6 @@
 # Builder script, not the end-user launcher. Requires Windows x64 and Python 3.11.
 $ErrorActionPreference = 'Stop'
+$env:PYTHONUTF8 = '1'
 Set-Location $PSScriptRoot
 py -3.11 -m venv .build-env
 if ($LASTEXITCODE -ne 0) { throw 'Windows Python 3.11 is required on the build machine.' }
