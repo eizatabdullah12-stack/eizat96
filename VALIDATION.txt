@@ -1,8 +1,7 @@
-2026-10-06 version 1.4
-PASS: 21 local and Windows regression tests.
-PASS: Compiled Windows executable GUI and terminology browser, French/Dutch/German offline inference, embedded vocabulary, complete synthetic product-code protection and PDF notes/replacement output.
-Vocabulary: French 611, Dutch 501, German 489 explicit source entries.
-Verified code commit: facd12d2ce0656debc776504fba0f6cd0a91a865
-Build: https://github.com/eizatabdullah12-stack/eizat96/actions/runs/37460050904
-Artifact SHA256: 16c48d765198f078174248c97966b27009769a4c14392708c23a04a54b410200
-LIMITATIONS: Machine-translated prose and project abbreviations require review. No scanned-PDF OCR or physical clean-PC launch test. PDF text redaction can alter optional-content metadata.
+2026-10-06 version 1.5
+PASS: 24 local and Windows regression tests, including compressed object/xref-stream input, false insertion success, saved-PDF replacement/note verification and output-report identity.
+PASS: Compiled Windows GUI, embedded vocabulary, real French/Dutch/German inference, compressed-input PDF notes/replacement and saved-file readback checks.
+Verified code commit: e377097be871cbb45d8f025d7ead5a4386b48aea
+Build: https://github.com/eizatabdullah12-stack/eizat96/actions/runs/37481545001
+Artifact SHA256: 9dffae89ac8c44532bae1a94d1675b60936aee5e856b6d5c245cc8224a0eddb9
+LIMITATIONS: Saved-text checks do not establish translation semantics or guarantee rendering in every reader. OCR and physical clean-PC verification not performed.

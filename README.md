@@ -7,7 +7,7 @@ API key or translation internet connection is required. Models are embedded.
 Choose a PDF, select the source language and output mode, then save a new PDF.
 The original is retained. A translation text list is saved alongside the PDF.
 
-[Download version 1.3 for Windows](https://github.com/eizatabdullah12-stack/eizat96/actions/runs/37454037623/artifacts/11409370021).
+[Download version 1.5 for Windows](https://github.com/eizatabdullah12-stack/eizat96/actions/runs/37481545001/artifacts/11421227359)..
 Extract the ZIP and double-click EngineeringPDFTranslator.exe.
 Download size is about 334 MiB. Available until 2026-10-20.
 
@@ -21,12 +21,12 @@ The report records the matching output filename and SHA256. Output filenames
 include a timestamp by default, and Open verified PDF checks the file identity
 before opening that exact copy in the default reader.
 
-All 24 local regression tests pass, including a writer that reports success
+All 24 regression tests passed locally and on Windows, including a writer that reports success
 without inserting text: the app rejects that output and preserves the previous
 file. Missing notes, report identity, German terms, rotated labels and protected
 values are also tested. These checks verify saved PDF content, not translation
-semantics or every reader's visual rendering. The Windows build runs real model
-inference and saved-PDF verification for French, Dutch and German.
+semantics or every reader's visual rendering. The compiled Windows executable passed real model inference and saved-PDF
+verification for French, Dutch and German, including compressed input PDFs.
 
 ## Building
 
