@@ -11,7 +11,7 @@ class OfflineTranslator:
         sp_files = list(base.rglob('sentencepiece.model'))
         model_files = list(base.rglob('model.bin'))
         if len(sp_files) != 1 or len(model_files) != 1:
-            raise RuntimeError('Model archive layout is unsupported or incomplete. Run Set up again.')
+            raise RuntimeError('Bundled translation model is incomplete or unsupported. Download a fresh copy of the application.')
         self.sp = sentencepiece.SentencePieceProcessor(model_file=str(sp_files[0]))
         self.engine = ctranslate2.Translator(str(model_files[0].parent), device='cpu', compute_type='int8')
         self.cache = {}

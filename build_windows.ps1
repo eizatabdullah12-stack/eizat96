@@ -10,7 +10,9 @@ if ($LASTEXITCODE -ne 0) { throw 'Dependency download failed.' }
 if ($LASTEXITCODE -ne 0) { throw 'Language-model download failed.' }
 & $buildPython -m unittest discover -s tests -v
 if ($LASTEXITCODE -ne 0) { throw 'PDF checks failed.' }
-& $buildPython -m PyInstaller --noconfirm --clean --onefile --windowed --name EngineeringPDFTranslator --add-data 'src/models;models' --collect-all ctranslate2 --collect-all sentencepiece src/app.py
+& $buildPython collect_notices.py
+if ($LASTEXITCODE -ne 0) { throw 'Dependency notices could not be retained.' }
+& $buildPython -m PyInstaller --noconfirm --clean --onefile --windowed --name EngineeringPDFTranslator --add-data 'src/models;models' --add-data 'licenses;licenses' --collect-all ctranslate2 --collect-all sentencepiece src/app.py
 if ($LASTEXITCODE -ne 0) { throw 'Windows executable build failed.' }
 $resultPath = Join-Path $PSScriptRoot 'dist\windows-selftest.json'
 $checkProcess = Start-Process -FilePath (Join-Path $PSScriptRoot 'dist\EngineeringPDFTranslator.exe') -ArgumentList @('--self-test', ('"' + $resultPath + '"')) -PassThru
@@ -20,5 +22,6 @@ $testResult = Get-Content -Raw $resultPath | ConvertFrom-Json
 if (-not $testResult.passed) { throw 'Compiled executable checks did not pass.' }
 Copy-Item README.md dist\README.txt
 Copy-Item THIRD_PARTY.md dist\THIRD_PARTY.txt
-Compress-Archive -Path dist\EngineeringPDFTranslator.exe,dist\README.txt,dist\THIRD_PARTY.txt,dist\windows-selftest.json -DestinationPath EngineeringPDFTranslator_Portable_Windows.zip -Force
+Copy-Item licenses dist\licenses -Recurse
+Compress-Archive -Path dist\EngineeringPDFTranslator.exe,dist\README.txt,dist\THIRD_PARTY.txt,dist\windows-selftest.json,dist\licenses -DestinationPath EngineeringPDFTranslator_Portable_Windows.zip -Force
 Write-Host 'Executable built and compiled-app checks passed.'
