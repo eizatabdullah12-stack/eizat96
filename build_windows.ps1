@@ -13,7 +13,7 @@ if ($LASTEXITCODE -ne 0) { throw 'Language-model download failed.' }
 if ($LASTEXITCODE -ne 0) { throw 'PDF checks failed.' }
 & $buildPython collect_notices.py
 if ($LASTEXITCODE -ne 0) { throw 'Dependency notices could not be retained.' }
-& $buildPython -m PyInstaller --noconfirm --clean --onefile --windowed --name EngineeringPDFTranslator --add-data 'src/models;models' --add-data 'licenses;licenses' --collect-all ctranslate2 --collect-all sentencepiece src/app.py
+& $buildPython -m PyInstaller --noconfirm --clean --onefile --windowed --name EngineeringPDFTranslator --add-data 'src/models;models' --add-data 'src/engineering_terms.psv;.' --add-data 'licenses;licenses' --collect-all ctranslate2 --collect-all sentencepiece src/app.py
 if ($LASTEXITCODE -ne 0) { throw 'Windows executable build failed.' }
 $resultPath = Join-Path $PSScriptRoot 'dist\windows-selftest.json'
 $checkProcess = Start-Process -FilePath (Join-Path $PSScriptRoot 'dist\EngineeringPDFTranslator.exe') -ArgumentList @('--self-test', ('"' + $resultPath + '"')) -PassThru

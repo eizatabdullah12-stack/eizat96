@@ -1,8 +1,9 @@
-# Engineering terminology in version 1.2
+# Engineering terminology in version 1.3
 
 French, Dutch and German terminology overrides general machine translation.
 The bundled EngineeringGlossary.tsv lists the source labels, English terms
-and context notes. This export is a reference, not an editable settings file.
+categories and context notes. This export is a reference, not an editable settings file.
+Browse terminology inside the app provides a searchable view of the same entries.
 
 | French | Dutch | German | English |
 | --- | --- | --- | --- |
@@ -79,3 +80,52 @@ Additional representative sources:
   https://www.otep-sa.com/catalogues/poutrelles.pdf
 - Wallonia CCTB, concrete-filled foundation shafts:
   https://batiments.wallonie.be/files/unzip/html_CCTB_01.12/Content/13-22-Faux-puits-en-beton-arme.html
+
+
+## Expanded catalogue in version 1.3
+
+There are 1,524 explicit source entries (French 586, Dutch 477, German 461),
+excluding automatically recognized German transliterations and product names.
+The additional catalogue groups terminology into 13 subjects:
+
+- Drawing conventions and construction instructions
+- Structural design, actions, stresses and limit states
+- Concrete, reinforcement, formwork and precast floor systems
+- Steel members, welds, bolts, anchors and connections
+- Foundations, ground and drainage around foundations
+- Masonry, wall ties, cavity walls, facade supports and cladding
+- Architecture, openings, frames, stairs, balconies and levels
+- Roofs, timber structures and rainwater components
+- Envelope, waterproofing, airtightness and insulation
+- Finishes, screeds, plaster, stone and glazing
+- Fire protection and acoustics
+- Drainage and building services
+- Execution, specifications and technical assessments
+
+The source catalogue is src/engineering_terms.psv (UTF-8, pipe-delimited).
+It is bundled inside the EXE. Existing core meanings take precedence over
+more general catalogue entries. Longer qualified phrases take precedence
+over shorter ambiguous words. Every explicit added alias is tested in all
+three languages without machine-model fallback. The Windows executable also
+checks that its embedded catalogue and built-in terminology browser load.
+
+Examples of protected distinctions: window sill / door threshold; screed /
+structural slab; vapour barrier / vapour retarder; fire resistance / reaction
+to fire; beam web / beam flange; sill back upstand / underside drip groove.
+An unknown project abbreviation must still be checked against its legend.
+No finite vocabulary can establish every engineering or architectural meaning,
+and terminology coverage does not add scanned-PDF OCR.
+
+Additional references checked for representative distinctions:
+- Leviat wall ties, English:
+  https://www.plaka-solutions.com/en/02-05-08-wall-tie-for-glued-brickwork
+- Halfen cavity wall ties, German:
+  https://www.halfen.com/de-DE/produkte/fassadenbefestigungen-verstaerkungen/verblendmauerwerk/luftschichtanker
+- Buildwise timber guide, air/vapour control terminology:
+  https://www.buildwise.be/media/4axn13yf/bw-gids-hout-fr.pdf
+- European Commission JRC glossary:
+  https://eurocodes.jrc.ec.europa.eu/glossary
+
+These sources were consulted for representative terminology only; they do not
+certify the whole catalogue or endorse the software. The wider vocabulary is
+an independently authored practical glossary.

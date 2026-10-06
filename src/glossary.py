@@ -7,6 +7,8 @@ structural function that the label does not actually specify.
 """
 import re
 import unicodedata
+import csv
+from pathlib import Path
 
 
 TERMS = {
@@ -510,6 +512,44 @@ def fold(text):
                    if not unicodedata.combining(c)).replace('’', "'").replace('–', '-').replace('‑', '-')
 
 
+TERM_CATEGORIES = {language: {} for language in TERMS}
+EXTENDED_ROWS = []
+
+
+def load_extended_terms():
+    """Load the bundled, categorized glossary; preserve existing interpretations."""
+    path = Path(__file__).with_name('engineering_terms.psv')
+    with path.open(encoding='utf-8', newline='') as source:
+        reader = csv.DictReader(source, delimiter='|')
+        if reader.fieldnames != ['category','fr','nl','de','en','review']:
+            raise ValueError('Bundled terminology file has an invalid header')
+        rows = list(reader)
+    known = {lang: {fold(row.split('|',1)[0]) for row in data.strip().splitlines()}
+             for lang, data in TERMS.items()}
+    for row in rows:
+        if None in row or any(not row.get(key) for key in ('category','fr','nl','de','en')):
+            raise ValueError('Bundled terminology contains an incomplete entry')
+        EXTENDED_ROWS.append(row)
+        for language in TERMS:
+            for term in row[language].split(';'):
+                term = term.strip()
+                if not term:
+                    raise ValueError('Bundled terminology contains an empty alias')
+                key = fold(term)
+                TERM_CATEGORIES[language].setdefault(key, row['category'])
+                if key in known[language]:
+                    # A general addition must not erase a qualified existing
+                    # meaning or replace a retained ambiguous source label.
+                    continue
+                known[language].add(key)
+                TERMS[language] = TERMS[language].rstrip() + '\n' + term + '|' + row['en'] + '\n'
+                if row['review']:
+                    AMBIGUOUS[language][term] = row['review']
+
+
+load_extended_terms()
+
+
 class EngineeringTranslator:
     """Protect terminology from the general translator without placeholders."""
     def __init__(self, language, general_translate):
@@ -563,7 +603,7 @@ class EngineeringTranslator:
         for start, end, key in self._matches(text):
             parts.append(self._general(text[cursor:start]))
             original, english = text[start:end], self.terms[key]
-            if fold(original) == fold(english):
+            if original.casefold() == english.casefold():
                 english = original
             elif original.isupper():
                 english = english.upper()

@@ -1,0 +1,362 @@
+category|fr|nl|de|en|review
+Drawing conventions|plan de situation|situatieplan|Lageplan|site location plan|
+Drawing conventions|plan d'implantation|inplantingsplan|Absteckplan|setting-out plan|
+Drawing conventions|plan de fondations|funderingsplan|Fundamentplan|foundation plan|
+Drawing conventions|plan de coffrage|bekistingsplan|Schalplan|formwork drawing|
+Drawing conventions|plan de ferraillage|wapeningsplan|Bewehrungsplan|reinforcement drawing|
+Drawing conventions|plan d'exécution|uitvoeringsplan|Ausführungsplan|construction drawing|
+Drawing conventions|plan de récolement|revisietekening|Bestandsplan|as-built drawing|
+Drawing conventions|coupe transversale|dwarsdoorsnede|Querschnitt|cross-section|
+Drawing conventions|coupe longitudinale|langsdoorsnede|Längsschnitt|longitudinal section|
+Drawing conventions|coupe verticale|verticale doorsnede|Vertikalschnitt|vertical section|
+Drawing conventions|coupe horizontale|horizontale doorsnede|Horizontalschnitt|horizontal section|
+Drawing conventions|vue de dessus|bovenaanzicht|Draufsicht|top view|
+Drawing conventions|vue de face|vooraanzicht|Vorderansicht|front view|
+Drawing conventions|vue de côté|zijaanzicht|Seitenansicht|side view|
+Drawing conventions|détail de raccordement|aansluitdetail|Anschlussdetail|connection detail|
+Drawing conventions|détail de principe|principedetail|Prinzipdetail|typical detail|
+Drawing conventions|axe de référence|referentieas|Bezugsachse|reference axis|
+Drawing conventions|axe de symétrie|symmetrieas|Symmetrieachse|axis of symmetry|
+Drawing conventions|ligne de coupe|snijlijn|Schnittlinie|section line|
+Drawing conventions|cote altimétrique|hoogtemaat|Höhenkote|level dimension|
+Drawing conventions|niveau de référence|referentieniveau|Bezugshöhe|reference level|
+Drawing conventions|niveau du terrain naturel|natuurlijk maaiveld|natürliche Geländehöhe|natural ground level|
+Drawing conventions|niveau du terrain fini|afgewerkt maaiveld|fertige Geländehöhe|finished ground level|
+Drawing conventions|niveau du sol fini|afgewerkt vloerpeil|Fertigfußbodenhöhe|finished floor level|
+Drawing conventions|niveau de la dalle brute|ruw vloerpeil|Rohdeckenhöhe|structural slab level|
+Drawing conventions|hors tout|buitenwerks|Außenmaß|overall dimension|
+Drawing conventions|à vérifier sur chantier|te controleren op de werf|auf der Baustelle prüfen|verify on site|
+Drawing conventions|ne pas mesurer sur le plan|niet op tekening opmeten|nicht aus der Zeichnung abmessen|do not scale from drawing|
+Drawing conventions|sauf indication contraire|tenzij anders vermeld|sofern nicht anders angegeben|unless otherwise stated|
+Drawing conventions|toutes les dimensions en millimètres|alle maten in millimeters|alle Maße in Millimetern|all dimensions in millimetres|
+Drawing conventions|existant|bestaand|bestehend|existing|
+Drawing conventions|à démolir|te slopen|abzubrechen|to be demolished|
+Drawing conventions|nouvelle construction|nieuwbouw|Neubau|new construction|
+Drawing conventions|réservation dans la dalle|vloersparing|Deckenaussparung|slab opening|
+Drawing conventions|réservation dans le mur|wandsparing|Wandaussparung|wall opening|
+Drawing conventions|réservation|sparing|Aussparung|opening|Opening/recess is the default; confirm the geometry and purpose in the detail.
+Structural design|structure porteuse|draagconstructie|Tragwerk|load-bearing structure|
+Structural design|élément porteur|dragend element|tragendes Bauteil|load-bearing member|
+Structural design|contreventement|windverband|Aussteifung|bracing|
+Structural design|portique|portaal|Rahmentragwerk|structural frame|
+Structural design|diaphragme|constructieve schijf|Tragscheibe|structural diaphragm|
+Structural design|descente de charges|lastafdracht|Lastabtragung|load transfer|
+Structural design|combinaison de charges|belastingcombinatie|Lastkombination|load combination|
+Structural design|combinaison d'actions|combinatie van belastingen|Einwirkungskombination|combination of actions|
+Structural design|état limite ultime|uiterste grenstoestand|Grenzzustand der Tragfähigkeit|ultimate limit state|
+Structural design|état limite de service|bruikbaarheidsgrenstoestand|Grenzzustand der Gebrauchstauglichkeit|serviceability limit state|
+Structural design|coefficient partiel de sécurité|partiële veiligheidsfactor|Teilsicherheitsbeiwert|partial safety factor|
+Structural design|valeur caractéristique|karakteristieke waarde|charakteristischer Wert|characteristic value|
+Structural design|valeur de calcul|rekenwaarde|Bemessungswert|design value|
+Structural design|résistance de calcul|rekenweerstand|Bemessungswiderstand|design resistance|
+Structural design|capacité portante|draagvermogen|Tragfähigkeit|load-bearing capacity|
+Structural design|charge ponctuelle|puntlast|Einzellast|point load|
+Structural design|charge uniformément répartie|gelijkmatig verdeelde belasting|gleichmäßig verteilte Last|uniformly distributed load|
+Structural design|charge linéaire|lijnlast|Linienlast|line load|
+Structural design|charge surfacique|oppervlaktelast|Flächenlast|area load|
+Structural design|charge de neige|sneeuwbelasting|Schneelast|snow load|
+Structural design|pression du vent|winddruk|Winddruck|wind pressure|
+Structural design|succion du vent|windzuiging|Windsog|wind suction|
+Structural design|action sismique|seismische belasting|Erdbebeneinwirkung|seismic action|
+Structural design|charge accidentelle|buitengewone belasting|außergewöhnliche Einwirkung|accidental action|
+Structural design|réaction d'appui|oplegreactie|Auflagerreaktion|support reaction|
+Structural design|moment de torsion|torsiemoment|Torsionsmoment|torsional moment|
+Structural design|contrainte normale|normaalspanning|Normalspannung|normal stress|
+Structural design|contrainte de cisaillement|schuifspanning|Schubspannung|shear stress|
+Structural design|contrainte de compression|drukspanning|Druckspannung|compressive stress|
+Structural design|contrainte de traction|trekspanning|Zugspannung|tensile stress|
+Structural design|module d'élasticité|elasticiteitsmodulus|Elastizitätsmodul|modulus of elasticity|
+Structural design|moment d'inertie|oppervlaktetraagheidsmoment|Flächenträgheitsmoment|second moment of area|
+Structural design|module de résistance|weerstandsmoment|Widerstandsmoment|section modulus|
+Structural design|flambement|knik|Knicken|buckling|
+Structural design|déversement|kip|Biegedrillknicken|lateral torsional buckling|
+Structural design|élancement|slankheid|Schlankheit|slenderness|
+Structural design|longueur de flambement|kniklengte|Knicklänge|effective buckling length|
+Structural design|largeur de fissure|scheurwijdte|Rissbreite|crack width|
+Structural design|retrait du béton|betonkrimp|Betonschwinden|concrete shrinkage|
+Structural design|fluage du béton|betonkruip|Betonkriechen|concrete creep|
+Structural design|appui articulé|scharnierende oplegging|gelenkiges Auflager|pinned support|
+Structural design|appui glissant|glijdende oplegging|Gleitlager|sliding support|
+Structural design|encastrement|inklemming|Einspannung|fixed restraint|
+Structural design|articulation|scharnier|Gelenk|hinge|
+Concrete and reinforcement|béton coulé sur place|ter plaatse gestort beton|Ortbeton|cast-in-place concrete|
+Concrete and reinforcement|béton autoplaçant|zelfverdichtend beton|selbstverdichtender Beton|self-compacting concrete|
+Concrete and reinforcement|béton léger|lichtbeton|Leichtbeton|lightweight concrete|
+Concrete and reinforcement|béton cellulaire|cellenbeton;gasbeton|Porenbeton|aerated concrete|
+Concrete and reinforcement|béton apparent|zichtbeton|Sichtbeton|fair-faced concrete|
+Concrete and reinforcement|classe de résistance du béton|betonsterkteklasse|Betonfestigkeitsklasse|concrete strength class|
+Concrete and reinforcement|classe d'exposition|milieuklasse|Expositionsklasse|exposure class|
+Concrete and reinforcement|enrobage nominal|nominale betondekking|nominale Betondeckung|nominal concrete cover|
+Concrete and reinforcement|enrobage minimal|minimale betondekking|Mindestbetondeckung|minimum concrete cover|
+Concrete and reinforcement|nappe supérieure|bovenwapening|obere Bewehrungslage|top reinforcement layer|
+Concrete and reinforcement|nappe inférieure|onderwapening|untere Bewehrungslage|bottom reinforcement layer|
+Concrete and reinforcement|armature supérieure|bovenste wapening|obere Bewehrung|top reinforcement|
+Concrete and reinforcement|armature inférieure|onderste wapening|untere Bewehrung|bottom reinforcement|
+Concrete and reinforcement|armatures d'attente|wachtwapening|Anschlussbewehrung|starter reinforcement|
+Concrete and reinforcement|barre d'armature|wapeningsstaaf|Bewehrungsstab|reinforcing bar|
+Concrete and reinforcement|barre à haute adhérence|geribde wapeningsstaaf|gerippter Bewehrungsstab|deformed reinforcing bar|
+Concrete and reinforcement|longueur de recouvrement|overlappingslengte|Übergreifungslänge|lap length|
+Concrete and reinforcement|recouvrement d'armatures|wapeningsoverlap|Bewehrungsübergreifung|reinforcement lap splice|
+Concrete and reinforcement|recouvrement|overlap|Übergreifung|overlap|Confirm lap splice, sheet overlap or cover; the material and detail determine the meaning.
+Concrete and reinforcement|crochet d'ancrage|verankeringshaak|Verankerungshaken|anchorage hook|
+Concrete and reinforcement|coupleur d'armature|wapeningskoppeling|Bewehrungskupplung|reinforcement coupler|
+Concrete and reinforcement|cale d'enrobage|betonafstandhouder|Bewehrungsabstandhalter|reinforcement spacer|
+Concrete and reinforcement|armature de poinçonnement|ponswapening|Durchstanzbewehrung|punching shear reinforcement|
+Concrete and reinforcement|poinçonnement|pons|Durchstanzen|punching shear|
+Concrete and reinforcement|joint de reprise|stortnaad|Arbeitsfuge|construction joint|
+Concrete and reinforcement|joint de retrait|krimpvoeg|Scheinfuge|contraction joint|
+Concrete and reinforcement|cure du béton|nabehandeling van beton|Betonnachbehandlung|concrete curing|
+Concrete and reinforcement|coffrage|bekisting|Schalung|formwork|
+Concrete and reinforcement|coffrage perdu|verloren bekisting|verlorene Schalung|permanent formwork|
+Concrete and reinforcement|étaiement|stempeling|Abstützung|propping|
+Concrete and reinforcement|dalle pleine|massieve betonplaat|Vollplatte|solid slab|
+Concrete and reinforcement|dalle alvéolée|kanaalplaat|Hohlplatte|hollow-core slab|
+Concrete and reinforcement|plancher à prédalles|breedplaatvloer|Elementdecke|precast floor plate system|
+Concrete and reinforcement|dalle nervurée|ribbenvloer|Rippendecke|ribbed slab|
+Concrete and reinforcement|dalle de transfert|overdrachtsvloer|Abfangdecke|transfer slab|
+Concrete and reinforcement|voile de contreventement|stabiliteitswand|aussteifende Wand|stability wall|
+Concrete and reinforcement|corbeau en béton|betonconsole|Betonkonsole|concrete corbel|
+Steel and fixings|profilé métallique|staalprofiel|Stahlprofil|steel section|
+Steel and fixings|profilé en I|I-profiel|I-Profil|I-section|
+Steel and fixings|profilé en U|U-profiel|U-Profil|channel section|
+Steel and fixings|tube carré|vierkante koker|Quadratrohr|square hollow section|
+Steel and fixings|tube rectangulaire|rechthoekige koker|Rechteckrohr|rectangular hollow section|
+Steel and fixings|âme de poutre|balklijf|Trägersteg|beam web|
+Steel and fixings|semelle supérieure de poutre|bovenflens|oberer Trägerflansch|top beam flange|
+Steel and fixings|semelle inférieure de poutre|onderflens|unterer Trägerflansch|bottom beam flange|
+Steel and fixings|platine de pied|voetplaat|Fußplatte|base plate|
+Steel and fixings|platine d'about|kopplaat|Stirnplatte|end plate|
+Steel and fixings|gousset|knoopplaat|Knotenblech|gusset plate|
+Steel and fixings|raidisseur|verstijver|Steife|stiffener|
+Steel and fixings|boulon d'ancrage|ankerbout|Ankerbolzen|anchor bolt|
+Steel and fixings|écrou|moer|Mutter|nut|
+Steel and fixings|rondelle|sluitring|Unterlegscheibe|washer|
+Steel and fixings|trou oblong|sleufgat|Langloch|slotted hole|
+Steel and fixings|trou de perçage|boorgat|Bohrloch|drilled hole|
+Steel and fixings|diamètre de perçage|boordiameter|Bohrdurchmesser|drill diameter|
+Steel and fixings|profondeur d'ancrage|verankeringsdiepte|Verankerungstiefe|anchorage depth|
+Steel and fixings|distance au bord|randafstand|Randabstand|edge distance|
+Steel and fixings|espacement des ancrages|ankerafstand|Achsabstand der Anker|anchor spacing|
+Steel and fixings|couple de serrage|aandraaimoment|Anziehdrehmoment|tightening torque|
+Steel and fixings|ancrage mécanique|mechanisch anker|mechanischer Anker|mechanical anchor|
+Steel and fixings|scellement chimique|chemisch anker|Verbundanker|bonded anchor|
+Steel and fixings|rupture du cône de béton|betonkegelbreuk|Betonausbruch|concrete cone failure|
+Steel and fixings|soudure d'angle|hoeklas|Kehlnaht|fillet weld|
+Steel and fixings|soudure bout à bout|stompe las|Stumpfnaht|butt weld|
+Steel and fixings|cordon de soudure|lasnaad|Schweißnaht|weld seam|
+Steel and fixings|assemblage boulonné|boutverbinding|Schraubenverbindung|bolted connection|
+Steel and fixings|assemblage soudé|lasverbinding|Schweißverbindung|welded connection|
+Steel and fixings|protection anticorrosion|corrosiebescherming|Korrosionsschutz|corrosion protection|
+Foundations and ground|fondation superficielle|ondiepe fundering|Flachgründung|shallow foundation|
+Foundations and ground|fondation profonde|diepe fundering|Tiefgründung|deep foundation|
+Foundations and ground|semelle de fondation|funderingsvoet|Fundamentfuß|foundation footing|
+Foundations and ground|semelle sur pieux|paalpoer|Pfahlkopfplatte|pile cap|
+Foundations and ground|longrine de fondation|funderingsbalk|Fundamentbalken|ground beam|
+Foundations and ground|radier de fondation|plaatfundering|Plattenfundament|raft foundation|
+Foundations and ground|pieu foré|boorpaal|Bohrpfahl|bored pile|
+Foundations and ground|pieu battu|heipaal|Rammpfahl|driven pile|
+Foundations and ground|tête de pieu|paalkop|Pfahlkopf|pile head|
+Foundations and ground|tassement|zetting|Setzung|settlement|
+Foundations and ground|tassement différentiel|differentiële zetting|Differenzsetzung|differential settlement|
+Foundations and ground|pression admissible du sol|toelaatbare gronddruk|zulässige Bodenpressung|allowable ground bearing pressure|
+Foundations and ground|nappe phréatique|grondwaterpeil|Grundwasserspiegel|groundwater level|
+Foundations and ground|fouille|bouwput|Baugrube|excavation|
+Foundations and ground|fond de fouille|bouwputbodem|Baugrubensohle|excavation base|
+Foundations and ground|remblai compacté|verdichte aanvulling|verdichtete Auffüllung|compacted fill|
+Foundations and ground|remblai|aanvulling|Auffüllung|fill|
+Foundations and ground|compactage|verdichting|Verdichtung|compaction|
+Foundations and ground|mur de soutènement|keerwand|Stützwand|retaining wall|
+Foundations and ground|poussée des terres|gronddruk|Erddruck|earth pressure|
+Foundations and ground|drain périphérique|perimeterdrainage|Ringdrainage|perimeter drain|
+Foundations and ground|géotextile|geotextiel|Geotextil|geotextile|
+Masonry and facades|brique de parement|gevelsteen|Verblendziegel|facing brick|
+Masonry and facades|maçonnerie de brique|baksteenmetselwerk|Ziegelmauerwerk|brick masonry|
+Masonry and facades|bloc de béton|betonblok|Betonstein|concrete block|
+Masonry and facades|bloc silico-calcaire|kalkzandsteenblok|Kalksandstein|calcium silicate block|
+Masonry and facades|bloc de béton cellulaire|cellenbetonblok|Porenbetonstein|aerated concrete block|
+Masonry and facades|mur à coulisse|spouwmuur|zweischaliges Mauerwerk|cavity wall|
+Masonry and facades|parement extérieur|buitenspouwblad|Vormauerschale|outer facing leaf|
+Masonry and facades|feuille intérieure du mur|binnenspouwblad|Hintermauerschale|inner wall leaf|
+Masonry and facades|crochet de maçonnerie|spouwanker;spouwhaak|Mauerwerksanker;Luftschichtanker|wall tie|
+Masonry and facades|armature de joint horizontal|lintvoegwapening|Lagerfugenbewehrung|bed joint reinforcement|
+Masonry and facades|joint horizontal de maçonnerie|lintvoeg|Lagerfuge|masonry bed joint|
+Masonry and facades|joint vertical de maçonnerie|stootvoeg|Stoßfuge|masonry head joint|
+Masonry and facades|joint vertical ouvert|open stootvoeg|offene Stoßfuge|open head joint|
+Masonry and facades|joint de mortier|mortelvoeg|Mörtelfuge|mortar joint|
+Masonry and facades|mortier de jointoiement|voegmortel|Fugenmörtel|pointing mortar|
+Masonry and facades|mortier-colle|lijmmortel|Dünnbettmörtel|thin-bed mortar|
+Masonry and facades|assise de maçonnerie|metselwerklaag|Mauerwerksschicht|masonry course|
+Masonry and facades|hauteur d'assise|lagenmaat|Schichthöhe|masonry course height|
+Masonry and facades|appareillage de maçonnerie|metselverband|Mauerwerksverband|masonry bond|
+Masonry and facades|joint de fractionnement|bewegingsvoeg|Bewegungsfuge|movement joint|
+Masonry and facades|joint de dilatation vertical|verticale dilatatievoeg|vertikale Dehnungsfuge|vertical expansion joint|
+Masonry and facades|joint de dilatation horizontal|horizontale dilatatievoeg|horizontale Dehnungsfuge|horizontal expansion joint|
+Masonry and facades|support de parement|geveldrager|Verblendmauerwerkskonsole|masonry support bracket|
+Masonry and facades|cornière de support de maçonnerie|metselwerkondersteuningshoek|Abfangwinkel|masonry support angle|
+Masonry and facades|console de maçonnerie|metselwerkconsole|Konsolanker|masonry support bracket|
+Masonry and facades|distance de la façade au support|afstand van gevel tot draagconstructie|Abstand zur Tragkonstruktion|facade-to-support distance|
+Masonry and facades|largeur de la coulisse|spouwbreedte|Schalenabstand|cavity width|Check whether the dimension denotes the full wall cavity or only its unfilled air gap.
+Masonry and facades|coupure capillaire|horizontale waterkering|Horizontalsperre|damp-proof course|
+Masonry and facades|bavette d'étanchéité|spouwlood|Abdichtungsschürze|flashing|
+Masonry and facades|larmier|druiprand|Tropfkante|drip edge|
+Masonry and facades|rejingot|opstaande achterrand van de vensterbank|hintere Fensterbankaufkantung|sill back upstand|
+Masonry and facades|goutte d'eau sous appui|waterhol|Tropfnut|sill drip groove|
+Masonry and facades|mur-rideau;mur rideau|vliesgevel|Vorhangfassade|curtain wall|
+Masonry and facades|façade ventilée|geventileerde gevel|hinterlüftete Fassade|ventilated facade|
+Masonry and facades|bardage|gevelbekleding|Fassadenbekleidung|cladding|
+Masonry and facades|panneau de façade|gevelpaneel|Fassadenplatte|facade panel|
+Masonry and facades|ancrage de façade|gevelanker|Fassadenanker|facade anchor|
+Masonry and facades|ossature secondaire|secundaire draagstructuur|Unterkonstruktion|secondary support structure|
+Architecture and openings|porte|deur|Tür|door|
+Architecture and openings|fenêtre|raam|Fenster|window|
+Architecture and openings|porte-fenêtre|buitendeur met beglazing|Fenstertür|glazed external door|
+Architecture and openings|baie vitrée|glaspartij|Glasfront|glazed opening|
+Architecture and openings|châssis de fenêtre|raamkader|Fensterrahmen|window frame|
+Architecture and openings|tableau de baie|dagkant|Laibung|opening reveal|
+Architecture and openings|jambage|dagstijl|Gewände|jamb|
+Architecture and openings|appui de fenêtre|vensterbank|Fensterbank|window sill|
+Architecture and openings|seuil de porte|deurdorpel|Türschwelle|door threshold|
+Architecture and openings|seuil|dorpel|Schwelle|threshold|Confirm door threshold, window sill or structural timber sill; use the qualified phrase where available.
+Architecture and openings|hauteur libre|vrije hoogte|lichte Höhe|clear height|
+Architecture and openings|largeur libre|vrije breedte|lichte Breite|clear width|
+Architecture and openings|passage libre|vrije doorgang|lichte Durchgangsbreite|clear opening width|
+Architecture and openings|cloison non porteuse|niet-dragende scheidingswand|nichttragende Trennwand|non-load-bearing partition|
+Architecture and openings|mur intérieur|binnenwand|Innenwand|internal wall|
+Architecture and openings|mur extérieur|buitenwand|Außenwand|external wall|
+Architecture and openings|cloison légère|lichte scheidingswand|Leichtbauwand|lightweight partition|
+Architecture and openings|doublage de mur|voorzetwand|Vorsatzschale|wall lining|
+Architecture and openings|faux plafond|verlaagd plafond|abgehängte Decke|suspended ceiling|
+Architecture and openings|plafond|plafond|Deckenuntersicht|ceiling|
+Architecture and openings|garde-corps|balustrade|Geländer|guardrail|
+Architecture and openings|main courante|leuning|Handlauf|handrail|
+Architecture and openings|balcon|balkon|Balkon|balcony|
+Architecture and openings|terrasse|terras|Terrasse|terrace|
+Architecture and openings|auvent|luifel|Vordach|canopy|
+Architecture and openings|loggia|loggia|Loggia|loggia|
+Architecture and openings|escalier|trap|Treppe|staircase|
+Architecture and openings|volée d'escalier|trapvlucht|Treppenlauf|stair flight|
+Architecture and openings|palier d'escalier|bordes|Treppenpodest|stair landing|
+Architecture and openings|marche|traptrede|Trittstufe|stair tread|French marche can also refer to a step/action; check that the label refers to stairs.
+Architecture and openings|contremarche|stootbord|Setzstufe|stair riser|
+Architecture and openings|limon d'escalier|trapboom|Treppenwange|stair stringer|
+Architecture and openings|cage d'escalier|trappenhuis|Treppenhaus|stairwell|
+Architecture and openings|gaine d'ascenseur|liftschacht|Aufzugsschacht|lift shaft|
+Architecture and openings|gaine technique|technische schacht|Installationsschacht|service shaft|
+Architecture and openings|trappe de visite|inspectieluik|Revisionsklappe|access hatch|
+Architecture and openings|rez-de-jardin|tuinniveau|Gartengeschoss|garden level|
+Architecture and openings|premier étage|eerste verdieping|erstes Obergeschoss|first floor above ground|
+Architecture and openings|deuxième étage|tweede verdieping|zweites Obergeschoss|second floor above ground|
+Architecture and openings|combles|zolder|Dachraum|roof space|
+Architecture and openings|sous-sol|kelder|Untergeschoss|basement|
+Roofs and timber|toiture plate|plat dak|Flachdach|flat roof|
+Roofs and timber|toiture inclinée|hellend dak|Steildach|pitched roof|
+Roofs and timber|toiture végétalisée|groendak|Gründach|green roof|
+Roofs and timber|toiture-terrasse|plat dak|Flachdach|flat roof|A flat roof is not necessarily accessible; confirm whether the detail specifies a usable roof terrace.
+Roofs and timber|terrasse en toiture|dakterras|Dachterrasse|roof terrace|
+Roofs and timber|charpente en bois|houten dakconstructie|Holzdachkonstruktion|timber roof structure|
+Roofs and timber|ferme de toiture|dakspant|Dachbinder|roof truss|
+Roofs and timber|chevron|keper|Sparren|rafter|
+Roofs and timber|panne de toiture|dakgording|Dachpfette|roof purlin|
+Roofs and timber|panne faîtière|nokgording|Firstpfette|ridge purlin|
+Roofs and timber|panne sablière|muurplaat|Fußpfette|wall plate|
+Roofs and timber|solive|vloerbalk|Deckenbalken|floor joist|
+Roofs and timber|solivage|balklaag|Balkenlage|joist system|
+Roofs and timber|bois lamellé-croisé|kruislaaghout|Brettsperrholz|cross-laminated timber|
+Roofs and timber|ossature bois|houtskelet|Holzrahmenbau|timber frame|
+Roofs and timber|couverture de toiture|dakbedekking|Dacheindeckung|roof covering|
+Roofs and timber|sous-toiture|onderdak|Unterdach|roof underlay|
+Roofs and timber|faîtage|nok|First|roof ridge|
+Roofs and timber|rive de toiture|dakrand|Dachrand|roof edge|
+Roofs and timber|débord de toiture|dakoverstek|Dachüberstand|roof overhang|
+Roofs and timber|gouttière|dakgoot|Dachrinne|gutter|
+Roofs and timber|chéneau|bakgoot|Kastenrinne|box gutter|
+Roofs and timber|descente d'eau pluviale|regenwaterafvoer|Regenfallrohr|rainwater downpipe|
+Roofs and timber|noue de toiture|dakvallei|Dachkehle|roof valley|
+Roofs and timber|solin|loodslab|Anschlussblech|flashing|
+Roofs and timber|couvertine|muurafdekking|Mauerabdeckung|wall coping|
+Envelope and insulation|isolation acoustique|geluidsisolatie|Schalldämmung|sound insulation|
+Envelope and insulation|laine minérale|minerale wol|Mineralwolle|mineral wool|
+Envelope and insulation|laine de roche|rotswol;steenwol|Steinwolle|stone wool|
+Envelope and insulation|laine de verre|glaswol|Glaswolle|glass wool|
+Envelope and insulation|polystyrène expansé|geëxpandeerd polystyreen|expandiertes Polystyrol|expanded polystyrene|
+Envelope and insulation|polystyrène extrudé|geëxtrudeerd polystyreen|extrudiertes Polystyrol|extruded polystyrene|
+Envelope and insulation|panneau isolant|isolatieplaat|Dämmplatte|insulation board|
+Envelope and insulation|pare-vapeur;pare vapeur|dampscherm|Dampfsperre|vapour barrier|
+Envelope and insulation|frein-vapeur;frein vapeur|damprem|Dampfbremse|vapour retarder|
+Envelope and insulation|pare-air|luchtdichtingsfolie|Luftdichtungsbahn|air barrier|
+Envelope and insulation|pare-pluie|regenscherm|Regenschutzbahn|weather barrier|
+Envelope and insulation|étanchéité à l'air|luchtdichtheid|Luftdichtheit|airtightness|
+Envelope and insulation|étanchéité à l'eau|waterdichtheid|Wasserdichtheit|watertightness|
+Envelope and insulation|étanchéité|dichting|Abdichtung|sealing|Confirm waterproofing, airtightness or a specific sealing material from the qualified phrase and detail.
+Envelope and insulation|membrane d'étanchéité|waterdichtingsmembraan|Abdichtungsbahn|waterproofing membrane|
+Envelope and insulation|relevé d'étanchéité|opstand van de dakdichting|Abdichtungsaufkantung|waterproofing upstand|
+Envelope and insulation|pont thermique linéaire|lineaire koudebrug|linienförmige Wärmebrücke|linear thermal bridge|
+Envelope and insulation|pont thermique ponctuel|puntvormige koudebrug|punktförmige Wärmebrücke|point thermal bridge|
+Envelope and insulation|résistance thermique|warmteweerstand|Wärmedurchlasswiderstand|thermal resistance|
+Envelope and insulation|conductivité thermique|warmtegeleidingscoëfficiënt|Wärmeleitfähigkeit|thermal conductivity|
+Envelope and insulation|coefficient de transmission thermique|warmtedoorgangscoëfficiënt|Wärmedurchgangskoeffizient|thermal transmittance|
+Envelope and insulation|rupture de pont thermique|thermische onderbreking|thermische Trennung|thermal break|
+Envelope and insulation|joint d'étanchéité|afdichtingsvoeg|Dichtfuge|sealing joint|
+Envelope and insulation|mastic d'étanchéité|afdichtingskit|Dichtstoff|sealant|
+Envelope and insulation|fond de joint|rugvulling|Hinterfüllschnur|backer rod|
+Envelope and insulation|condensation|condensatie|Kondensation|condensation|
+Finishes and materials|chape d'égalisation|egalisatiedekvloer|Ausgleichsestrich|levelling screed|
+Finishes and materials|chape flottante|zwevende dekvloer|schwimmender Estrich|floating screed|
+Finishes and materials|chape|dekvloer|Estrich|screed|
+Finishes and materials|revêtement de sol|vloerafwerking|Bodenbelag|floor finish|
+Finishes and materials|carrelage|tegelwerk|Fliesenbelag|tiling|
+Finishes and materials|plinthe|plint|Sockelleiste|skirting board|
+Finishes and materials|enduit intérieur|binnenpleister|Innenputz|internal plaster|
+Finishes and materials|enduit extérieur|buitenpleister|Außenputz|external render|
+Finishes and materials|plaque de plâtre|gipsplaat|Gipskartonplatte|plasterboard|
+Finishes and materials|pierre naturelle|natuursteen|Naturstein|natural stone|
+Finishes and materials|pierre bleue|blauwe hardsteen|belgischer Blaustein|Belgian blue limestone|
+Finishes and materials|granit|graniet|Granit|granite|
+Finishes and materials|calcaire|kalksteen|Kalkstein|limestone|
+Finishes and materials|aluminium|aluminium|Aluminium|aluminium|
+Finishes and materials|verre feuilleté|gelaagd glas|Verbundglas|laminated glass|
+Finishes and materials|verre trempé|gehard glas|Einscheibensicherheitsglas|toughened safety glass|
+Finishes and materials|double vitrage|dubbele beglazing|Doppelverglasung|double glazing|
+Finishes and materials|triple vitrage|driedubbele beglazing|Dreifachverglasung|triple glazing|
+Fire and acoustics|résistance au feu|brandwerendheid|Feuerwiderstand|fire resistance|
+Fire and acoustics|réaction au feu|brandreactie|Brandverhalten|reaction to fire|
+Fire and acoustics|compartiment coupe-feu|brandcompartiment|Brandabschnitt|fire compartment|
+Fire and acoustics|porte coupe-feu|brandwerende deur|Feuerschutztür|fire door|
+Fire and acoustics|calfeutrement coupe-feu|brandwerende afdichting|Brandschutzabschottung|fire stopping|
+Fire and acoustics|mur coupe-feu|brandwerende wand|Brandwand|fire wall|
+Fire and acoustics|voie d'évacuation|vluchtweg|Fluchtweg|escape route|
+Fire and acoustics|issue de secours|nooduitgang|Notausgang|emergency exit|
+Fire and acoustics|bruit aérien|luchtgeluid|Luftschall|airborne sound|
+Fire and acoustics|bruit de choc|contactgeluid|Trittschall|impact sound|
+Fire and acoustics|joint acoustique|akoestische voeg|Schallschutzfuge|acoustic joint|
+Drainage and services|évacuation des eaux usées|afvoer van afvalwater|Abwasserableitung|wastewater drainage|
+Drainage and services|égout|riolering|Kanalisation|sewer|
+Drainage and services|regard de visite|inspectieput|Kontrollschacht|inspection chamber|
+Drainage and services|siphon de sol|vloerafvoer|Bodenablauf|floor drain|
+Drainage and services|caniveau|lijngoot|Entwässerungsrinne|drainage channel|
+Drainage and services|pente d'écoulement|afschot|Entwässerungsgefälle|drainage fall|
+Drainage and services|pénétration de canalisation|leidingdoorvoer|Rohrdurchführung|pipe penetration|
+Drainage and services|fourreau|mantelbuis|Schutzrohr|sleeve|
+Drainage and services|ventilation|ventilatie|Lüftung|ventilation|
+Drainage and services|conduit de ventilation|ventilatiekanaal|Lüftungskanal|ventilation duct|
+Drainage and services|chemin de câbles|kabelgoot|Kabeltrasse|cable tray|
+Drainage and services|chauffage au sol|vloerverwarming|Fußbodenheizung|underfloor heating|
+Execution and specifications|cahier des charges|bestek|Leistungsverzeichnis|specification|
+Execution and specifications|métré|meetstaat|Mengenermittlung|quantity take-off|
+Execution and specifications|bordereau des quantités|hoeveelhedenstaat|Mengenverzeichnis|bill of quantities|
+Execution and specifications|tolérance de construction|bouwtolerantie|Bautoleranz|construction tolerance|
+Execution and specifications|tolérance de pose|montagetolerantie|Montagetoleranz|installation tolerance|
+Execution and specifications|mise en œuvre|uitvoering|Ausführung|execution|
+Execution and specifications|ordre de montage|montagevolgorde|Montagereihenfolge|assembly sequence|
+Execution and specifications|travaux provisoires|tijdelijke werken|temporäre Bauzustände|temporary works|
+Execution and specifications|échafaudage|steiger|Gerüst|scaffolding|
+Execution and specifications|étai provisoire|tijdelijke stempel|temporäre Stütze|temporary prop|
+Execution and specifications|levage|hijsen|Heben|lifting|
+Execution and specifications|point de levage|hijspunt|Hebepunkt|lifting point|
+Execution and specifications|contrôle qualité|kwaliteitscontrole|Qualitätskontrolle|quality control|
+Execution and specifications|approbation|goedkeuring|Freigabe|approval|
+Execution and specifications|annexe nationale|nationale bijlage|Nationaler Anhang|national annex|
+Execution and specifications|évaluation technique européenne|Europese technische beoordeling|Europäische Technische Bewertung|European Technical Assessment|
+Execution and specifications|déclaration des performances|prestatieverklaring|Leistungserklärung|declaration of performance|
+Execution and specifications|conforme aux plans|volgens de tekeningen|gemäß den Zeichnungen|in accordance with drawings|
+Execution and specifications|à confirmer|te bevestigen|zu bestätigen|to be confirmed|

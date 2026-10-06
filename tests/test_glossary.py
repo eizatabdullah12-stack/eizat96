@@ -6,7 +6,7 @@ import unittest
 import fitz
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
-from glossary import EngineeringTranslator
+from glossary import EngineeringTranslator, EXTENDED_ROWS, TERMS, TERM_CATEGORIES, fold
 from engine import protected_translate, translate_pdf
 
 
@@ -15,6 +15,54 @@ def no_model(text):
 
 
 class EngineeringChecks(unittest.TestCase):
+    def test_expanded_catalogue_without_model_fallback(self):
+        # Exercise every new alias in all languages, using the established
+        # core interpretation where an entry intentionally overlaps it.
+        for language in TERMS:
+            expected = {fold(a):b for a,b in (line.split('|',1) for line in TERMS[language].strip().splitlines())}
+            translator=EngineeringTranslator(language,no_model)
+            for row in EXTENDED_ROWS:
+                for source in row[language].split(';'):
+                    with self.subTest(language=language,source=source):
+                        self.assertEqual(translator(source).casefold(),expected[fold(source)].casefold())
+                        self.assertIn(fold(source),TERM_CATEGORIES[language])
+
+    def test_architecture_and_material_distinctions(self):
+        samples={
+            'fr':[('pare-vapeur','vapour barrier'),('frein-vapeur','vapour retarder'),('appui de fenêtre','window sill'),('seuil de porte','door threshold'),('chape','screed'),('dalle pleine','solid slab'),('pierre bleue','Belgian blue limestone'),('géotextile','geotextile')],
+            'nl':[('dampscherm','vapour barrier'),('damprem','vapour retarder'),('vensterbank','window sill'),('deurdorpel','door threshold'),('dekvloer','screed'),('massieve betonplaat','solid slab'),('rotswol','stone wool'),('glaswol','glass wool')],
+            'de':[('Dampfsperre','vapour barrier'),('Dampfbremse','vapour retarder'),('Fensterbank','window sill'),('Türschwelle','door threshold'),('Estrich','screed'),('Vollplatte','solid slab'),('Steinwolle','stone wool'),('Glaswolle','glass wool')],
+        }
+        for language,terms in samples.items():
+            translator=EngineeringTranslator(language,no_model)
+            for source,expected in terms:
+                self.assertEqual(translator(source).casefold(),expected.casefold())
+
+    def test_expanded_qualified_phrases_and_context(self):
+        for language,standalone,qualified in [('fr','seuil','seuil de porte'),('nl','dorpel','deurdorpel'),('de','Schwelle','Türschwelle')]:
+            translator=EngineeringTranslator(language,no_model)
+            self.assertTrue(translator.review_notes(standalone))
+            self.assertEqual(translator.review_notes(qualified),[])
+            self.assertEqual(translator(qualified).casefold(),'door threshold')
+        for language,label in [('fr','MUR-RIDEAU'),('nl','VLIESGEVEL'),('de','VORHANGFASSADE')]:
+            self.assertEqual(EngineeringTranslator(language,no_model)(label),'CURTAIN WALL')
+
+    def test_architecture_pdf_rotated_with_protected_values(self):
+        from engine import LABEL_FONT, LABEL_FONT_NAME
+        for language,label in [('fr','Seuil de porte'),('nl','Deurdorpel'),('de','Türschwelle')]:
+            with tempfile.TemporaryDirectory() as folder:
+                source,destination=Path(folder)/'source.pdf',Path(folder)/'English.pdf'
+                with fitz.open() as doc:
+                    page=doc.new_page(width=420,height=595);page.set_rotation(270)
+                    page.insert_font(fontname=LABEL_FONT_NAME,fontbuffer=LABEL_FONT.buffer)
+                    page.insert_text((100,80),label+' 200 mm - Ø16',fontsize=9,rotate=270,fontname=LABEL_FONT_NAME)
+                    doc.save(source)
+                result=translate_pdf(source,destination,EngineeringTranslator(language,no_model))
+                self.assertEqual(result['replaced'],1)
+                with fitz.open(destination) as doc:
+                    self.assertIn('Door threshold 200 mm - Ø16',doc[0].get_text())
+                    self.assertEqual(doc[0].rotation,270)
+
     def test_phrases_and_materials(self):
         examples = {
             'fr': [('poutre en béton armé','reinforced concrete beam'),('poutre','beam'),('béton','concrete'),('acier','steel')],

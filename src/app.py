@@ -12,6 +12,7 @@ os.environ["ARGOS_PACKAGES_DIR"] = str(ROOT / "models")
 os.environ["ARGOS_TRANSLATE_PACKAGE_DIR"] = str(ROOT / "models")
 os.environ["ARGOS_DEVICE_TYPE"] = "cpu"
 from engine import translate_pdf
+from glossary import TERMS, AMBIGUOUS, TERM_CATEGORIES, fold
 
 
 class App:
@@ -20,7 +21,7 @@ class App:
         self.events = queue.Queue()
         self.stop = threading.Event()
         self.busy = False
-        root.title("Engineering PDF Translator 1.2")
+        root.title("Engineering PDF Translator 1.3")
         root.geometry("780x640")
         root.minsize(720, 620)
         root.configure(bg="#f0f4f7")
@@ -58,8 +59,55 @@ class App:
         self.start.pack(side="left")
         self.cancel = ttk.Button(controls, text="Cancel", command=self.stop.set, state="disabled")
         self.cancel.pack(side="left", padx=10)
+        ttk.Button(controls,text="Browse terminology…",command=self.show_glossary).pack(side="right")
         root.protocol("WM_DELETE_WINDOW", self.close)
         root.after(100, self.poll)
+
+    def show_glossary(self):
+        window=tk.Toplevel(self.root)
+        window.title('Engineering and architectural terminology')
+        window.geometry('980x600')
+        window.transient(self.root)
+        panel=ttk.Frame(window,padding=16);panel.pack(fill='both',expand=True)
+        language=tk.StringVar(value=self.language.get())
+        search=tk.StringVar()
+        count=tk.StringVar()
+        row=ttk.Frame(panel);row.pack(fill='x',pady=(0,12))
+        ttk.Combobox(row,values=['French','Dutch','German'],textvariable=language,state='readonly',width=12).pack(side='left')
+        ttk.Label(row,text='Search term or category:').pack(side='left',padx=10)
+        ttk.Entry(row,textvariable=search).pack(side='left',fill='x',expand=True)
+        ttk.Label(panel,textvariable=count).pack(anchor='w',pady=(0,8))
+        table_frame=ttk.Frame(panel);table_frame.pack(fill='both',expand=True)
+        table=ttk.Treeview(table_frame,columns=('source','english','category'),show='headings',selectmode='browse')
+        for key,label,width in [('source','Source term',300),('english','English meaning',330),('category','Category',240)]:
+            table.heading(key,text=label);table.column(key,width=width)
+        scroll=ttk.Scrollbar(table_frame,orient='vertical',command=table.yview)
+        table.configure(yscrollcommand=scroll.set)
+        scroll.pack(side='right',fill='y');table.pack(fill='both',expand=True)
+        context=tk.StringVar(value='Select a term to view its context note.')
+        ttk.Label(panel,textvariable=context,wraplength=920).pack(anchor='w',pady=12)
+        notes={}
+        def refresh(*args):
+            code={'French':'fr','Dutch':'nl','German':'de'}[language.get()]
+            query=fold(search.get().strip())
+            table.delete(*table.get_children());notes.clear()
+            reviews={fold(k):v for k,v in AMBIGUOUS[code].items()}
+            entries=sorted(line.split('|',1) for line in TERMS[code].strip().splitlines())
+            for source,english in entries:
+                category=TERM_CATEGORIES[code].get(fold(source),'Core engineering')
+                if query and query not in fold(' '.join((source,english,category))):
+                    continue
+                item=table.insert('', 'end',values=(source,english,category))
+                notes[item]=reviews.get(fold(source),'No special context flag. Check project-specific usage against the drawing legend.')
+            count.set(f'{len(table.get_children())} shown / {len(entries)} {language.get()} entries. English is the target language.')
+            context.set('Select a term to view its context note.')
+        def select(*args):
+            selected=table.selection()
+            if selected:context.set(notes[selected[0]])
+        search.trace_add('write',refresh);language.trace_add('write',refresh)
+        table.bind('<<TreeviewSelect>>',select)
+        refresh()
+        return window,table
 
     def choose(self):
         name = filedialog.askopenfilename(filetypes=[("PDF documents", "*.pdf")])

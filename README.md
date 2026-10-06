@@ -11,17 +11,18 @@ The original is retained. A translation text list is saved alongside the PDF.
 Extract the ZIP and double-click EngineeringPDFTranslator.exe.
 Download size is about 334 MiB. Available until 2026-10-20.
 
-## Version 1.2
+## Version 1.3 update
 
-Fixes rotated CAD labels and tiny legend text. The report distinguishes
-replacements, notes and unchanged labels. The glossary contains 455 French,
-Dutch and German entries. ALL CAPS input is normalized for the offline model.
-An embedded font preserves engineering symbols, including Greek unit symbols.
+Expanded to 1,524 terminology entries: French 586, Dutch 477 and German 461.
+Architecture, structural design, foundations, reinforcement, steel connections,
+masonry/facades, roofs, insulation, finishes, fire/acoustics, services and
+specifications are covered. Browse terminology inside the desktop app to search
+source terms, English meanings, categories and context notes. The glossary is
+embedded, so users do not need to install or download a separate dictionary.
 
-All 15 regression tests and the Windows compiled-app checks passed on
-2026-10-06. Compiled checks exercised the GUI, all three offline models,
-engineering terminology, replacement/notes, right-angle small CAD labels,
-context reports and protected values. The download includes the test report.
+All 19 local regression tests passed, including every explicit added alias,
+qualified/context distinctions and rotated architectural PDF labels. The
+current version 1.3 Windows build supplies the compiled-app verification.
 
 ## Building
 

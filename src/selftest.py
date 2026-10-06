@@ -6,16 +6,24 @@ import tkinter as tk
 import fitz
 from offline import OfflineTranslator
 from engine import translate_pdf
+from glossary import TERMS
 
 def run(report_path, app_factory):
     report = {'passed':False,'checks':[]}
     try:
         window = tk.Tk()
         window.withdraw()
-        app_factory(window)
+        app=app_factory(window)
+        glossary_window,glossary_table=app.show_glossary()
+        window.update()
+        if len(glossary_table.get_children()) < 500:
+            raise RuntimeError('Expanded terminology browser is incomplete')
+        glossary_window.destroy()
+        report['checks'].append('Searchable built-in terminology browser loads')
         window.update()
         window.destroy()
         report['checks'].append('Bundled desktop GUI loads')
+        report['glossary_counts'] = {lang:len(data.strip().splitlines()) for lang,data in TERMS.items()}
         for language, sample in (('fr','Bonjour le monde'),('nl','Goedemorgen'),('de','Guten Morgen')):
             translate = OfflineTranslator(language)
             output = translate(sample)
@@ -32,6 +40,17 @@ def run(report_path, app_factory):
             if engineering_output.lower() != engineering_expected:
                 raise RuntimeError(f'{language} engineering glossary check failed')
             report['checks'].append({'language':language,'engineering_source':engineering_sample,'translation':engineering_output})
+            # These terms exist only in the separately bundled vocabulary file.
+            # Passing inside the EXE verifies that the expanded catalogue ships.
+            expanded = {
+                'fr': [('pare-vapeur','vapour barrier'),('seuil de porte','door threshold'),('soudure d\'angle','fillet weld'),('état limite ultime','ultimate limit state')],
+                'nl': [('dampscherm','vapour barrier'),('deurdorpel','door threshold'),('hoeklas','fillet weld'),('uiterste grenstoestand','ultimate limit state')],
+                'de': [('Dampfsperre','vapour barrier'),('Türschwelle','door threshold'),('Kehlnaht','fillet weld'),('Grenzzustand der Tragfähigkeit','ultimate limit state')],
+            }[language]
+            for term, expected_term in expanded:
+                if translate(term).casefold() != expected_term:
+                    raise RuntimeError(f'{language} expanded terminology missing: {term}')
+            report['checks'].append(f'{language} bundled architecture/design/fixing vocabulary passed')
             with tempfile.TemporaryDirectory() as folder:
                 source, destination = Path(folder)/'source.pdf', Path(folder)/'English.pdf'
                 with fitz.open() as pdf:
