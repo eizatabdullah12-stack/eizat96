@@ -7,7 +7,7 @@ API key or translation internet connection is required. Models are embedded.
 Choose a PDF, select the source language and output mode, then save a new PDF.
 The original is retained. A translation text list is saved alongside the PDF.
 
-[Download version 1.2 for Windows](https://github.com/eizatabdullah12-stack/eizat96/actions/runs/37438067148/artifacts/11399219632).
+[Download version 1.3 for Windows](https://github.com/eizatabdullah12-stack/eizat96/actions/runs/37454037623/artifacts/11409370021).
 Extract the ZIP and double-click EngineeringPDFTranslator.exe.
 Download size is about 334 MiB. Available until 2026-10-20.
 
@@ -20,9 +20,11 @@ specifications are covered. Browse terminology inside the desktop app to search
 source terms, English meanings, categories and context notes. The glossary is
 embedded, so users do not need to install or download a separate dictionary.
 
-All 19 local regression tests passed, including every explicit added alias,
-qualified/context distinctions and rotated architectural PDF labels. The
-current version 1.3 Windows build supplies the compiled-app verification.
+All 19 regression tests passed locally and on Windows, including every explicit
+added alias, qualified/context distinctions and rotated architectural PDF labels.
+The version 1.3 compiled EXE passed GUI startup, the built-in terminology browser,
+embedded expanded vocabulary in all three languages, real model inference and
+PDF output checks. The ZIP includes windows-selftest.json.
 
 ## Building
 
