@@ -11,20 +11,18 @@ The original is retained. A translation text list is saved alongside the PDF.
 Extract the ZIP and double-click EngineeringPDFTranslator.exe.
 Download size is about 334 MiB. Available until 2026-10-20.
 
-## Version 1.3 update
+## Version 1.4 update
 
-Expanded to 1,524 terminology entries: French 586, Dutch 477 and German 461.
-Architecture, structural design, foundations, reinforcement, steel connections,
-masonry/facades, roofs, insulation, finishes, fire/acoustics, services and
-specifications are covered. Browse terminology inside the desktop app to search
-source terms, English meanings, categories and context notes. The glossary is
-embedded, so users do not need to install or download a separate dictionary.
+The source language must be selected explicitly. The PDF metadata and companion
+report record the selected language and app version, and the app warns if no
+labels change. Complete alphanumeric product codes, suffixes, underscores and
+short reference acronyms are protected before inference. Parts-list, title-block
+and pipe-support terms were added to the practical engineering vocabulary.
 
-All 19 regression tests passed locally and on Windows, including every explicit
-added alias, qualified/context distinctions and rotated architectural PDF labels.
-The version 1.3 compiled EXE passed GUI startup, the built-in terminology browser,
-embedded expanded vocabulary in all three languages, real model inference and
-PDF output checks. The ZIP includes windows-selftest.json.
+There are 1,601 explicit source entries: French 611, Dutch 501 and German 489.
+All 21 local regression tests pass, including complete synthetic product codes,
+German table terminology, language reporting, rotated labels and source retention.
+The Windows workflow verifies the compiled executable before uploading its ZIP.
 
 ## Building
 

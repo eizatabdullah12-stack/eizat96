@@ -5,7 +5,7 @@ import tempfile
 import tkinter as tk
 import fitz
 from offline import OfflineTranslator
-from engine import translate_pdf
+from engine import translate_pdf, protected_translate
 from glossary import TERMS
 
 def run(report_path, app_factory):
@@ -51,6 +51,14 @@ def run(report_path, app_factory):
                 if translate(term).casefold() != expected_term:
                     raise RuntimeError(f'{language} expanded terminology missing: {term}')
             report['checks'].append(f'{language} bundled architecture/design/fixing vocabulary passed')
+            label = {'fr':'Poutre','nl':'Balk','de':'Träger'}[language]
+            protected = protected_translate(label+' ABC-VX42-3D_FV',translate)
+            if 'ABC-VX42-3D_FV' not in protected or 'beam' not in protected.lower():
+                raise RuntimeError('Complete product code protection failed')
+            if language == 'de':
+                for term, meaning in [('Teileliste','parts list'),('Pos.','item'),('Baugr.','assembly')]:
+                    if translate(term).casefold() != meaning:
+                        raise RuntimeError('German drawing table terminology failed')
             with tempfile.TemporaryDirectory() as folder:
                 source, destination = Path(folder)/'source.pdf', Path(folder)/'English.pdf'
                 with fitz.open() as pdf:
@@ -65,6 +73,8 @@ def run(report_path, app_factory):
                     pdf.save(source)
                 before = source.read_bytes()
                 result = translate_pdf(source,destination,translate,mode='notes')
+                if 'Source language:' not in Path(result['report']).read_text(encoding='utf-8'):
+                    raise RuntimeError('Source-language report missing')
                 if result['translated'] < 1 or source.read_bytes() != before:
                     raise RuntimeError('PDF translation or source-preservation check failed')
                 with fitz.open(destination) as pdf:

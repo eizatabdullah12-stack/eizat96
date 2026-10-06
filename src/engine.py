@@ -4,9 +4,11 @@ import os
 import re
 import tempfile
 import fitz
+from version import VERSION
 
 PROTECTED = re.compile(
     r"\b[\w.+-]+@[\w.-]+\.[A-Z]{2,}\b|\b(?:https?://|www\.)[^\s]+"
+    r"|\b(?=[A-Za-z0-9_.:/=+×-]*[A-Za-z])(?=[A-Za-z0-9_.:/=+×-]*\d)[A-Za-z0-9]+(?:[_.:/=+×-][A-Za-z0-9]+)*°?"
     r"|\b(?:HEA|HEB|HEM|IPE|IPN|UPN|UPE|RHS|SHS|CHS)\s*\d+(?:[.,]\d+)?(?:\s*[x×]\s*\d+(?:[.,]\d+)?)*\b"
     r"|\b(?:RDC|REZ|R)\s*\+\s*\d+\b"
     r"|\b[A-Z]+[-.]?\d+[A-Z0-9]*(?:[./-]\d+[A-Z0-9]*)*\b"
@@ -18,15 +20,37 @@ DRAWING_CODES = re.compile(r"\b(?:NI|NS|BA|HBA|HBP|PE|DCSP|PD|BAP|BNA|BF|BP|TS|P
 PROTECTED = re.compile(PROTECTED.pattern + r"|\b(?:N/mm[²2]|kN/m[²2]?|μm|mm|cm|MPa|kPa)\b|(?-i:" + DRAWING_CODES.pattern + r")", re.I)
 LABEL_FONT = fitz.Font('helv')
 LABEL_FONT_NAME = 'engineeringlabel'
+SOURCE_FUNCTION_WORDS = set('LE LA LES DES DE DU AU AUX UN UNE ET EN SUR PAR POUR SANS AVEC DER DIE DAS DEN DEM DES EIN EINE UND MIT BIS VON ZU ZUM ZUR AUF AUS IM IN AM AN IST NUR BEI NACH DE HET EEN EN VAN TOT OP UIT MET TE VOOR'.lower().split())
 
 
-def reference_label(text):
+def protected_spans(text, translate):
+    spans = [(m.start(),m.end()) for m in PROTECTED.finditer(text)]
+    known = getattr(translate,'terms',{})
+    # Preserve acronym/identifier tokens in mixed-case labels. All-caps prose
+    # still goes to the model, while short stand-alone reference labels stay.
+    if not text.isupper() or len(text) <= 4:
+        for match in re.finditer(r'\b[A-Z]{2,8}\b',text):
+            key=match.group().lower()
+            if key not in known and key not in SOURCE_FUNCTION_WORDS:
+                spans.append((match.start(),match.end()))
+    for match in re.finditer(r'\b[AN]{4,}\b',text):
+        spans.append((match.start(),match.end()))
+    merged=[]
+    for start,end in sorted(spans):
+        if merged and start<=merged[-1][1]:merged[-1]=(merged[-1][0],max(end,merged[-1][1]))
+        else:merged.append((start,end))
+    return merged
+
+
+def reference_label(text,translate=lambda s:s):
     """Retain drawing references, units and contact identifiers, not prose."""
     if re.fullmatch(r"[A-Z]\.[A-Z]{2,}|[A-Z]{1,4}\s+\d+[a-z]", text):
         return True
     if re.match(r"^(?:Rue|Avenue|Chaussée|Boulevard|Straat|Straße)\b", text) or re.match(r"^\d{4,6}\s+[^\W\d_]", text):
         return True
-    remaining = PROTECTED.sub("", text)
+    remaining=text
+    for start,end in reversed(protected_spans(text,translate)):
+        remaining=remaining[:start]+remaining[end:]
     remaining = DRAWING_CODES.sub("", remaining)
     remaining = re.sub(r"\b(?:mm|cm|m|MPa|kN|kg|N|kPa|μm|Fb|Fm)\b|[x×Øø⌀□]", "", remaining)
     remaining = re.sub(r"\b[A-Z](?:\.[A-Z])?\b", "", remaining)
@@ -43,10 +67,10 @@ def text_rotation(direction):
 def protected_translate(text, translate):
     # Translate only words between dimensions/codes: no fragile placeholder tokens.
     parts, cursor = [], 0
-    for match in PROTECTED.finditer(text):
-        parts.append(translate(text[cursor:match.start()]) if re.search(r"[^\W\d_]", text[cursor:match.start()]) else text[cursor:match.start()])
-        parts.append(match.group())
-        cursor = match.end()
+    for start,end in protected_spans(text,translate):
+        parts.append(translate(text[cursor:start]) if re.search(r"[^\W\d_]", text[cursor:start]) else text[cursor:start])
+        parts.append(text[start:end])
+        cursor = end
     tail = text[cursor:]
     parts.append(translate(tail) if re.search(r"[^\W\d_]", tail) else tail)
     return "".join(parts)
@@ -96,7 +120,7 @@ def translate_pdf(source, destination, translate, mode="replace", progress=lambd
                     page_text += len(original)
                     if not re.search(r"[^\W\d_]", original):
                         continue
-                    if reference_label(original):
+                    if reference_label(original,translate):
                         retained += 1
                         continue
                     if cancel():
@@ -158,6 +182,10 @@ def translate_pdf(source, destination, translate, mode="replace", progress=lambd
         fd, temp = tempfile.mkstemp(suffix=".pdf", dir=destination.parent)
         os.close(fd)
         try:
+            language={'fr':'French','nl':'Dutch','de':'German'}.get(getattr(translate,'language',None),'Unspecified')
+            metadata=doc.metadata.copy()
+            metadata['creator']=f'Engineering PDF Translator {VERSION}; {language} to English'
+            doc.set_metadata(metadata)
             doc.save(temp, garbage=4, deflate=True)
             os.replace(temp, destination)
         finally:
@@ -165,5 +193,5 @@ def translate_pdf(source, destination, translate, mode="replace", progress=lambd
                 os.unlink(temp)
     warnings = f"\nPages without extractable text (not translated): {scanned_pages}\n" if scanned_pages else ""
     report_path = destination.with_suffix(".translations.txt")
-    report_path.write_text("Engineering PDF Translator - English translation list\nTechnical glossary takes priority; other text uses machine translation.\nREVIEW CONTEXT marks ambiguous labels. Check the drawing detail/legend.\nUNCHANGED may include proper names, already-English text or untranslated words.\n" + f"Replaced on drawing: {count-fallback}; notes: {fallback}; unchanged labels to check: {unchanged}; retained references/units: {retained}\nGlossary matches: {glossary_hits}; labels needing context review: {review_labels}\n" + warnings + "\n".join(report), encoding="utf-8")
+    report_path.write_text(f"Engineering PDF Translator {VERSION} - English translation list\nSource language: {language}; target: English; mode: {mode}\nTechnical glossary takes priority; other text uses machine translation.\nREVIEW CONTEXT marks ambiguous labels. Check the drawing detail/legend.\nUNCHANGED may include proper names, already-English text or untranslated words.\n" + f"Replaced on drawing: {count-fallback}; notes: {fallback}; unchanged labels to check: {unchanged}; retained references/units: {retained}\nGlossary matches: {glossary_hits}; labels needing context review: {review_labels}\n" + warnings + "\n".join(report), encoding="utf-8")
     return {"translated": count, "replaced": count-fallback, "notes": fallback, "unchanged": unchanged, "retained": retained, "scanned_pages": scanned_pages, "report": str(report_path), "glossary_terms": glossary_hits, "review_labels": review_labels}

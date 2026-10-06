@@ -1,4 +1,4 @@
-# Engineering terminology in version 1.3
+# Engineering terminology in version 1.4
 
 French, Dutch and German terminology overrides general machine translation.
 The bundled EngineeringGlossary.tsv lists the source labels, English terms
@@ -129,3 +129,13 @@ Additional references checked for representative distinctions:
 These sources were consulted for representative terminology only; they do not
 certify the whole catalogue or endorse the software. The wider vocabulary is
 an independently authored practical glossary.
+
+## German drawing labels in version 1.4
+
+Additional parts-list, title-block and pipe-support vocabulary includes Teileliste,
+Stückliste, Pos., Baugr., Werkstoff, Festpunkt, Gleitpunkt and Fallrohrstütze.
+Prüfung is translated as check and flagged for context: inspection or testing
+may be intended. Complete alphanumeric identifiers, including suffixes and
+underscores, are protected before inference. Short unknown acronym references
+are retained conservatively; all-caps prose and recognized glossary terms still
+translate. The report records the app version and selected source language.

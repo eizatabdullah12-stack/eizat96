@@ -360,3 +360,28 @@ Execution and specifications|évaluation technique européenne|Europese technisc
 Execution and specifications|déclaration des performances|prestatieverklaring|Leistungserklärung|declaration of performance|
 Execution and specifications|conforme aux plans|volgens de tekeningen|gemäß den Zeichnungen|in accordance with drawings|
 Execution and specifications|à confirmer|te bevestigen|zu bestätigen|to be confirmed|
+Drawing conventions|liste de pièces;nomenclature|onderdelenlijst;stuklijst|Teileliste;Stückliste|parts list|
+Drawing conventions|position;repère|positie|Position;Pos.;Pos|item|
+Drawing conventions|sous-ensemble|deelassemblage|Baugruppe;Baugr.;Baugr|assembly|
+Drawing conventions|vérification|controle|Prüfung|check|May denote inspection, checking or testing; confirm the title-block role.
+Drawing conventions|vérifié par|gecontroleerd door|Geprüft von|checked by|
+Drawing conventions|dessiné par|getekend door|Gezeichnet von|drawn by|
+Drawing conventions|désignation|benaming|Benennung|description|
+Drawing conventions|numéro de dessin|tekeningnummer|Zeichnungsnummer|drawing number|
+Drawing conventions|numéro de pièce|onderdeelnummer|Teilenummer|part number|
+Drawing conventions|quantité|aantal|Stückzahl|quantity|
+Drawing conventions|matière|materiaal|Werkstoff|material|
+Drawing conventions|masse unitaire|eenheidsmassa|Einzelgewicht|unit mass|
+Drawing conventions|masse totale|totale massa|Gesamtgewicht|total mass|
+Drainage and services|point fixe|vast punt|Festpunkt|fixed point|
+Drainage and services|point coulissant|glijpunt|Gleitpunkt|sliding point|
+Drainage and services|support de tuyauterie|leidingsteun|Rohrhalterung;Rohrstütze|pipe support|
+Drainage and services|collier de tuyauterie|buisklem|Rohrschelle|pipe clamp|
+Drainage and services|support de descente|standleidingsteun|Fallrohrstütze|downpipe support|
+Drainage and services|descente d'eau pluviale|hemelwaterstandleiding|Regenfallrohr|rainwater downpipe|
+Drainage and services|conduite verticale|verticale leiding|Steigleitung|riser pipe|
+Drainage and services|raccord de tuyauterie|leidingverbinding|Rohrverbindung|pipe connection|
+Drainage and services|coude de tuyauterie|leidingbocht|Rohrbogen|pipe elbow|
+Drainage and services|compensateur de dilatation|expansiecompensator|Dehnungskompensator|expansion compensator|
+Steel and connections|platine de base|voetplaat|Fußplatte;Fussplatte|base plate|
+Steel and connections|tige filetée|draadstang|Gewindestange|threaded rod|

@@ -1,4 +1,4 @@
-Engineering PDF Translator 1.3 - portable Windows x64 application
+Engineering PDF Translator 1.4 - portable Windows x64 application
 
 Double-click EngineeringPDFTranslator.exe. No Python installation, browser,
 API key or internet connection is required. The first launch can take a while
@@ -9,8 +9,8 @@ because the bundled translation models unpack into Windows temporary storage.
 3. Select text replacement or translation notes.
 4. Click Translate and save, and choose a new filename.
 
-Engineering and architectural terminology is enabled automatically. The 1,524
-entries cover 13 subject areas: French 586, Dutch 477 and German 461.
+Engineering and architectural terminology is enabled automatically. The 1,601
+entries cover 13 subject areas: French 611, Dutch 501 and German 489.
 Click Browse terminology to search source terms, English meanings and categories.
 The bundled glossary takes priority over the offline translation models. Ambiguous
 labels are marked REVIEW CONTEXT in the .translations.txt list. Review these
@@ -40,3 +40,8 @@ foundations, masonry/facades, roofs, insulation, finishes, fire/acoustics, drain
 services and specifications. Unknown terms still use the offline models.
 This is broad practical coverage, not an exhaustive dictionary or engineering
 interpretation of geometry. Project abbreviations and ambiguous terms need context.
+
+Version 1.4 requires an explicit source-language choice and records the version
+and language in the PDF metadata and translation report. It warns if no labels
+change. Complete alphanumeric product identifiers and short reference acronyms
+are retained; additional parts-list and pipe-support terms are included.

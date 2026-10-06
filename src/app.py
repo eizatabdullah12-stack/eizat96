@@ -13,6 +13,7 @@ os.environ["ARGOS_TRANSLATE_PACKAGE_DIR"] = str(ROOT / "models")
 os.environ["ARGOS_DEVICE_TYPE"] = "cpu"
 from engine import translate_pdf
 from glossary import TERMS, AMBIGUOUS, TERM_CATEGORIES, fold
+from version import VERSION
 
 
 class App:
@@ -21,7 +22,7 @@ class App:
         self.events = queue.Queue()
         self.stop = threading.Event()
         self.busy = False
-        root.title("Engineering PDF Translator 1.3")
+        root.title(f"Engineering PDF Translator {VERSION}")
         root.geometry("780x640")
         root.minsize(720, 620)
         root.configure(bg="#f0f4f7")
@@ -42,7 +43,7 @@ class App:
         self.browse = ttk.Button(row, text="Choose PDF…", command=self.choose)
         self.browse.pack(side="right", padx=(10,0))
         ttk.Label(frame, text="Source language").pack(anchor="w")
-        self.language = tk.StringVar(value="French")
+        self.language = tk.StringVar(value="Choose language…")
         self.lang_box = ttk.Combobox(frame, values=["French", "Dutch", "German"], textvariable=self.language, state="readonly")
         self.lang_box.pack(anchor="w", pady=(5,18), ipady=5)
         self.mode = tk.StringVar(value="replace")
@@ -69,7 +70,7 @@ class App:
         window.geometry('980x600')
         window.transient(self.root)
         panel=ttk.Frame(window,padding=16);panel.pack(fill='both',expand=True)
-        language=tk.StringVar(value=self.language.get())
+        language=tk.StringVar(value=self.language.get() if self.language.get() in ('French','Dutch','German') else 'French')
         search=tk.StringVar()
         count=tk.StringVar()
         row=ttk.Frame(panel);row.pack(fill='x',pady=(0,12))
@@ -115,6 +116,9 @@ class App:
             self.file.set(name)
 
     def run(self):
+        if self.language.get() not in ('French','Dutch','German'):
+            messagebox.showerror('Choose source language','Select French, Dutch or German before translating.')
+            return
         source = Path(self.file.get())
         if not source.is_file() or source.suffix.lower() != ".pdf":
             messagebox.showerror("Choose a PDF", "Please select an existing PDF document.")
@@ -133,7 +137,7 @@ class App:
         self.browse.configure(state="disabled")
         self.lang_box.configure(state="disabled")
         self.cancel.configure(state="normal")
-        self.status.set("Loading bundled translation model…")
+        self.status.set(f"Loading {self.language.get()} → English translation model…")
         def worker():
             try:
                 from offline import OfflineTranslator
@@ -165,7 +169,11 @@ class App:
                         target, result = data
                         self.status.set(f"Saved: {Path(target).name}")
                         warning = f"\nPages {result['scanned_pages']} contain no selectable text and were not translated." if result['scanned_pages'] else ""
-                        messagebox.showinfo("Saved", f"Replaced {result['replaced']} labels on the drawing; {result['notes']} saved as notes.\nUnchanged labels to check: {result['unchanged']}.\nRetained drawing references/units: {result['retained']}.\nEngineering glossary matches: {result['glossary_terms']}.\nLabels needing context review: {result['review_labels']}.\n\n{target}\n\nA .translations.txt list records each label's result and any note fallback reason." + warning)
+                        message = f"Replaced {result['replaced']} labels on the drawing; {result['notes']} saved as notes.\nUnchanged labels to check: {result['unchanged']}.\nRetained drawing references/units: {result['retained']}.\nEngineering glossary matches: {result['glossary_terms']}.\nLabels needing context review: {result['review_labels']}.\n\n{target}\n\nA .translations.txt list records each label's result and any note fallback reason." + warning
+                        if not result["translated"]:
+                            messagebox.showwarning("No labels translated", "No labels changed. Check the selected source language and the .translations.txt report.\n\n" + message)
+                        else:
+                            messagebox.showinfo(f"Saved — {self.language.get()} to English", message)
         except queue.Empty:
             pass
         self.root.after(100, self.poll)

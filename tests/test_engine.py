@@ -8,6 +8,32 @@ from engine import protected_translate, translate_pdf, fit_text
 from glossary import EngineeringTranslator
 
 class PDFChecks(unittest.TestCase):
+    def test_whole_product_codes_and_acronyms(self):
+        translator=EngineeringTranslator('de',lambda s:s.replace('Ansicht','View'))
+        for code in ('ABC-VX42-3D_FV','ABC42/FV','3D','QZX'):
+            self.assertEqual(protected_translate('Ansicht '+code,translator),'View '+code)
+        self.assertEqual(protected_translate('BETON',translator),'CONCRETE')
+        self.assertEqual(protected_translate('DIE ANSICHT',translator),'DIE VIEW')
+
+    def test_language_version_and_german_table_report(self):
+        with tempfile.TemporaryDirectory() as folder:
+            src,dst=Path(folder)/'source.pdf',Path(folder)/'English.pdf'
+            with fitz.open() as doc:
+                page=doc.new_page()
+                for i,text in enumerate(('Teileliste','Pos.','Baugr.','Prüfung','Ansicht ABC-VX42-3D_FV')):
+                    page.insert_text((40,60+i*40),text,fontsize=12)
+                doc.save(src)
+            translator=EngineeringTranslator('de',lambda s:s.replace('Ansicht','View'))
+            result=translate_pdf(src,dst,translator)
+            report=Path(result['report']).read_text()
+            self.assertIn('Source language: German',report)
+            self.assertIn('REVIEW CONTEXT',report)
+            with fitz.open(dst) as doc:
+                self.assertIn('Translator 1.4; German to English',doc.metadata['creator'])
+                text=doc[0].get_text()
+                for term in ('Parts list','Item','Assembly','Check','ABC-VX42-3D_FV'):
+                    self.assertIn(term,text)
+
     def test_rotated_page_and_all_label_directions(self):
         with tempfile.TemporaryDirectory() as folder:
             src, dst = Path(folder)/'source.pdf', Path(folder)/'English.pdf'
