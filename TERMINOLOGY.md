@@ -1,4 +1,4 @@
-# Engineering terminology in version 1.1
+# Engineering terminology in version 1.2
 
 French, Dutch and German terminology overrides general machine translation.
 The bundled EngineeringGlossary.tsv lists the source labels, English terms
@@ -57,3 +57,25 @@ endorse all glossary entries.
   https://www.anconbp.de/produkte/mauerwerksbewehrungen
 - European Commission JRC, Aide-mémoire béton armé:
   https://eurocodes.jrc.ec.europa.eu/publications/aide-memoire-beton-arme
+
+
+## CAD labels in version 1.2
+
+Right-angle text is inserted in the original unrotated PDF coordinates, so
+pages displayed at 270 degrees no longer send most labels to notes. Small CAD
+fonts scale proportionally, and an embedded font preserves Greek unit symbols.
+The report lists REPLACED, NOTE (with reason) and UNCHANGED labels separately.
+ALL CAPS prose is normalized before inference and restored afterwards.
+
+French additions cover padstones, beam-and-block floors, piles, precast floor
+plates, blinding concrete, raft foundations and drawing titles. COUVRANT RDC
+means floor over ground floor (RDC), rather than a plan of the ground-floor slab.
+Semelles remains flagged: footings and beam flanges require drawing context.
+
+Additional representative sources:
+- Prefer, asselets under concentrated beam/lintel loads:
+  https://www.prefer.be/0191/fr/51/Asselets-en-beton-apparent
+- OTEP, bilingual floor beams and infill blocks:
+  https://www.otep-sa.com/catalogues/poutrelles.pdf
+- Wallonia CCTB, concrete-filled foundation shafts:
+  https://batiments.wallonie.be/files/unzip/html_CCTB_01.12/Content/13-22-Faux-puits-en-beton-arme.html

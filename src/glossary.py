@@ -11,6 +11,96 @@ import unicodedata
 
 TERMS = {
     'fr': '''
+le bureau d'études|the engineering office
+du bureau d'études|of the engineering office
+l'entrepreneur|the contractor
+l'assise des fondations|the foundation bearing stratum
+le plan de pose|the installation layout
+la pose du ferraillage|the placement of reinforcement
+du fabricant|of the manufacturer
+sous réserve du dimensionnement|subject to design by
+pour tout élément préfabriqué|for any precast component
+recouvrement des bandes|sheet overlaps
+hydrofuge|water-resistant
+asselets|padstones
+asselet|padstone
+listing asselets|padstone schedule
+poutrain entrevous|beam-and-block floor
+poutrains-entrevous|beam-and-block floors
+pieux|piles
+micropieux|micropiles
+faux-puits|concrete-filled foundation shafts
+socles|plinths
+semelles|semelles
+grugeage|notching
+assemblage|connection
+cotation|dimensions
+mailles complètes|complete mesh openings
+aciers pour béton armé|reinforcing steel
+aciers profilés|structural steel sections
+chape de compression|structural topping
+plan de pose|installation layout
+bureau d'études|engineering office
+maître de l'ouvrage|client
+terrassement|earthworks
+bétons de fondations|foundation concrete
+seront coulés|will be cast
+assise des fondations|foundation bearing stratum
+recouvrement des armatures|reinforcement lap splices
+décoffrage|formwork removal
+délavage du béton|washout of concrete
+radiers|raft foundations
+béton hydrofuge|water-resistant concrete
+entrepreneur|contractor
+note de calcul|design calculation
+chargé d'affaires|project manager
+auteur de projet|designer
+objet du plan|drawing title
+indice|revision
+révision|revision
+éch|scale
+première diffusion|first issue
+poutres béton armé|reinforced concrete beams
+colonnes béton armé|reinforced concrete columns
+colonne béton armé|reinforced concrete column
+colonnes|columns
+colonne|column
+cloisons|partitions
+béton de propreté|blinding concrete
+béton non-armé|plain concrete
+béton non armé|plain concrete
+béton fibré|fibre-reinforced concrete
+maçonneries non-portantes|non-load-bearing masonry
+maçonneries portantes|load-bearing masonry
+maçonneries silico-calcaire|calcium silicate masonry
+maçonneries béton|concrete masonry
+silico-calcaire|calcium silicate
+linteaux préfabriqués|precast lintels
+linteau préfabriqué|precast lintel
+poutres de fondation|foundation beams
+poutre de fondation|foundation beam
+voiles béton armé|reinforced concrete walls
+voiles|structural walls
+radier|raft foundation
+prédalle|precast floor plate
+dalle coulée sur place|cast-in-place slab
+armatures dépassantes|projecting reinforcement
+coupure thermique|thermal break
+treillis soudés|welded reinforcement meshes
+recouvrement des barres|bar lap splice
+recouvrement des treillis|reinforcement mesh overlap
+recouvrement des TS|reinforcement mesh overlap
+alvéoles ouvertes|open cores
+bois massif|solid timber
+lamellé-collé|glued laminated timber
+hourdis béton précontraint|prestressed concrete floor units
+hourdis béton armé|reinforced concrete floor units
+balcon architectonique préfabriqué|precast architectural concrete balcony
+couvrant RDC|floor over ground floor (RDC)
+légende|legend
+abréviations|abbreviations
+vue en plan|plan view
+nuage de révision d'indice|revision cloud
 poutre en béton armé|reinforced concrete beam
 poutre béton armé|reinforced concrete beam
 poutre en béton|concrete beam
@@ -389,6 +479,8 @@ AMBIGUOUS = {
         'consoles': 'Brackets is the default; confirm the structural detail.',
         'appui': 'Support is the default; check whether this label refers to a bearing, bearing length or window sill.',
         'semelle': 'Source retained: semelle may mean a footing or a beam flange; check the detail.',
+        'semelles': 'Source retained: semelles may mean footings or beam flanges; check the legend/detail.',
+        'grugeage': 'Notching is the default; confirm the steel connection detail.',
         'allège': 'Wall below window is the default; check the actual element and window detail.',
         'hourdis': 'Source retained: Belgian hourdis may refer to floor units; other contexts use infill blocks.',
         'BA': 'Abbreviation retained; expand only using the project legend (often reinforced concrete).',
@@ -410,7 +502,7 @@ AMBIGUOUS = {
     },
 }
 
-BRANDS = ('Korbo', 'Sumo', 'Halfen', 'Ancon', 'Leviat', 'Ankrochim', 'KorboFlex', 'Thermoshim')
+BRANDS = ('Korbo', 'Sumo', 'Halfen', 'Ancon', 'Leviat', 'Ankrochim', 'KorboFlex', 'Thermoshim', 'Stepoc', 'ISOTEC')
 
 
 def fold(text):

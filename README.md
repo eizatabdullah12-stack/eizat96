@@ -12,7 +12,14 @@ Extract the ZIP and double-click EngineeringPDFTranslator.exe.
 Download size is about 334 MiB. Available until 2026-10-20.
 Version 1.1 adds German and 365 engineering glossary entries.
 
-## Status
+## Version 1.2 update
+
+Fixes rotated CAD labels and tiny legend text. The report now distinguishes
+replacements, notes and unchanged labels. French structural terminology has
+been expanded, and ALL CAPS input is normalized for the offline model.
+Version 1.2 Windows verification is pending the current build.
+
+## Previous verified build
 
 Version 1.1 passed all 10 regression tests and the Windows compiled-app tests
 on 2026-10-06. Checks exercised the actual GUI, all three offline models,
@@ -28,7 +35,7 @@ Argos model index, and the published language-model download URLs.
 
 The build fetches the French, Dutch and German models, runs real inference checks,
 runs PDF tests, bundles a single executable with PyInstaller, then runs a
-compiled-app self-test for GUI startup, both language models and PDF output.
+compiled-app self-test for GUI startup, all three language models and PDF output.
 Failed checks prevent the finished artifact from being uploaded. Account
 Actions quotas and repository permissions govern availability.
 
@@ -40,7 +47,7 @@ Windows temporary folder on launch; the executable will be fairly large.
 
 Selectable-text PDFs; original images/vector lines retained during text
 replacement; protected numeric dimensions, common units and simple codes;
-translation notes for labels that do not fit or are rotated; notes-only mode;
+right-angle text replacement on rotated pages; translation notes for labels that do not fit; notes-only mode;
 page progress and cancellation between translation operations.
 
 ## Engineering glossary

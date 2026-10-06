@@ -1,4 +1,4 @@
-Engineering PDF Translator 1.1 - portable Windows x64 application
+Engineering PDF Translator 1.2 - portable Windows x64 application
 
 Double-click EngineeringPDFTranslator.exe. No Python installation, browser,
 API key or internet connection is required. The first launch can take a while
@@ -17,6 +17,11 @@ against the detail and project legend. See TERMINOLOGY.txt and EngineeringGlossa
 Your original PDF is retained. The app saves the translated PDF and a companion
 .translations.txt list. Open the PDF in a reader that supports annotations to
 view translation notes. Notes-only mode keeps original labels visible.
+
+Version 1.2 supports right-angle labels and rotated CAD pages, including small
+legend text. The list distinguishes replacements, notes and unchanged labels.
+Drawing references, dimensions and units remain unchanged. A note explains when
+a translated label cannot fit its original space or uses unsupported characters.
 
 This version does not recognize scanned image-only PDFs (OCR), translate
 Office files, or support other target languages. Review machine translations

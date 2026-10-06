@@ -20,7 +20,7 @@ class App:
         self.events = queue.Queue()
         self.stop = threading.Event()
         self.busy = False
-        root.title("Engineering PDF Translator 1.1")
+        root.title("Engineering PDF Translator 1.2")
         root.geometry("780x640")
         root.minsize(720, 620)
         root.configure(bg="#f0f4f7")
@@ -117,7 +117,7 @@ class App:
                         target, result = data
                         self.status.set(f"Saved: {Path(target).name}")
                         warning = f"\nPages {result['scanned_pages']} contain no selectable text and were not translated." if result['scanned_pages'] else ""
-                        messagebox.showinfo("Saved", f"Translated {result['translated']} labels; {result['notes']} saved as notes.\nEngineering glossary matches: {result['glossary_terms']}.\nLabels needing context review: {result['review_labels']}.\n\n{target}\n\nA .translations.txt list was saved alongside the PDF." + warning)
+                        messagebox.showinfo("Saved", f"Replaced {result['replaced']} labels on the drawing; {result['notes']} saved as notes.\nUnchanged labels to check: {result['unchanged']}.\nRetained drawing references/units: {result['retained']}.\nEngineering glossary matches: {result['glossary_terms']}.\nLabels needing context review: {result['review_labels']}.\n\n{target}\n\nA .translations.txt list records each label's result and any note fallback reason." + warning)
         except queue.Empty:
             pass
         self.root.after(100, self.poll)

@@ -63,6 +63,18 @@ def run(report_path, app_factory):
                     if expected not in (text + notes).lower() or engineering_expected not in (text + notes).lower() or '200 mm' not in text or 'P1.42' not in text or 'HEA200' not in text or 'B500B' not in text:
                         raise RuntimeError('Translated PDF labels or protected values are missing')
                 report['checks'].append(f'{language} default PDF replacement mode passed')
+                # Reproduce a rotated CAD sheet with small legend text.
+                rotated_source, rotated_target = Path(folder)/'rotated.pdf', Path(folder)/'rotated-English.pdf'
+                with fitz.open() as pdf:
+                    page = pdf.new_page(width=420,height=595)
+                    page.set_rotation(270)
+                    page.insert_text((100,80),label,fontsize=5.9,rotate=270)
+                    pdf.save(rotated_source)
+                result = translate_pdf(rotated_source,rotated_target,translate)
+                with fitz.open(rotated_target) as pdf:
+                    if result['replaced'] != 1 or pdf[0].rotation != 270 or engineering_expected not in pdf[0].get_text().lower():
+                        raise RuntimeError('Rotated small CAD label was not replaced on drawing')
+                report['checks'].append(f'{language} rotated small CAD label replacement passed')
         report['passed'] = True
     except Exception as exc:
         report['error'] = str(exc)

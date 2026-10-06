@@ -1,5 +1,6 @@
 from pathlib import Path
 import sys
+import re
 from glossary import EngineeringTranslator
 
 ROOT = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parent))
@@ -18,8 +19,15 @@ class OfflineTranslator(EngineeringTranslator):
         super().__init__(language, self._model_translate)
 
     def _model_translate(self, text):
-        left, right = text[:len(text)-len(text.lstrip())], text[len(text.rstrip()):]
-        pieces = self.sp.encode(text.strip(), out_type=str)
+        # Keep separators around protected codes/dimensions. Translate ALL CAPS
+        # CAD prose in lowercase: the model otherwise confuses common words.
+        letters = list(re.finditer(r'[^\W\d_]', text))
+        if not letters:
+            return text
+        start, end = letters[0].start(), letters[-1].end()
+        left, core, right = text[:start], text[start:end], text[end:]
+        capitals = core.isupper()
+        pieces = self.sp.encode(core.lower() if capitals else core, out_type=str)
         if not pieces:
             return text
         # Engineering labels are usually short. Chunk longer runs to keep input
@@ -29,4 +37,6 @@ class OfflineTranslator(EngineeringTranslator):
         # Argos models can return a literal SentencePiece space marker after
         # decode_pieces; normalize it as the publisher's tokenizer does.
         rendered = ' '.join(self.sp.decode_pieces(r.hypotheses[0]).replace('\u2581', ' ').replace('_', ' ').strip() for r in results)
+        if capitals:
+            rendered = rendered.upper()
         return left + rendered + right
