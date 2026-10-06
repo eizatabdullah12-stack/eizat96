@@ -1,5 +1,6 @@
-2026-10-06 preparation
-PASS: Python syntax compilation.
-PASS: local deterministic PDF engine tests (4 tests).
-PREPARED, NOT RUN: Windows workflow and compiled-executable self-test.
-NOT RUN HERE: actual model downloads/inference, native GUI and Windows EXE.
+2026-10-06
+PASS: Python syntax compilation and four deterministic PDF engine tests.
+PASS: Windows x64 build on GitHub Actions.
+PASS: Actual compiled-app GUI startup, French and Dutch inference, PDF notes and default text replacement, dimensions/codes, source-file preservation.
+Verified build: https://github.com/eizatabdullah12-stack/eizat96/actions/runs/37424347892
+NOT PERFORMED: physical clean Windows-PC test; representative user-document testing.

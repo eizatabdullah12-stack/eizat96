@@ -7,10 +7,16 @@ API key or translation internet connection is required. Models are embedded.
 Choose a PDF, select the source language and output mode, then save a new PDF.
 The original is retained. A translation text list is saved alongside the PDF.
 
+[Download the verified Windows build](https://github.com/eizatabdullah12-stack/eizat96/actions/runs/37424347892/artifacts/11394029382).
+Extract the download and open `dist/EngineeringPDFTranslator.exe`.
+The build download expires on 2026-10-20; the workflow can produce a fresh copy.
+
 ## Status
 
-Source and local PDF-engine checks are prepared. The Windows build has NOT
-run yet. Do not describe this source package as a ready-to-run application.
+Windows x64 build and compiled-app tests passed on 2026-10-06.
+The compiled executable opened the actual GUI and translated French and Dutch
+samples with both bundled models. PDF checks covered replacement and notes,
+protected dimensions/codes, and preservation of the original file.
 GitHub Actions builds and runs the compiled executable's self-test before
 making the executable and portable ZIP available as workflow artifacts.
 
@@ -55,6 +61,11 @@ values, notes fallback, no-text errors and cancellation. These checks do not
 establish real model quality or Windows portability. The workflow's compiled
 self-test supplies Windows evidence after it actually runs successfully.
 A clean Windows computer should still be used for final launch verification.
+
+## License
+
+This application is distributed under GNU AGPL version 3. See LICENSE.
+Third-party dependencies and models retain their respective license terms.
 
 ## Third-party notices
 
