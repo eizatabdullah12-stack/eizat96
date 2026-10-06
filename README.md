@@ -7,15 +7,17 @@ API key or translation internet connection is required. Models are embedded.
 Choose a PDF, select the source language and output mode, then save a new PDF.
 The original is retained. A translation text list is saved alongside the PDF.
 
-Version 1.1 adds German and an engineering terminology layer.
-Download the completed build from GitHub Actions after its checks pass.
+[Download version 1.1 for Windows](https://github.com/eizatabdullah12-stack/eizat96/actions/runs/37428590026/artifacts/11395588344).
+Extract the ZIP and double-click EngineeringPDFTranslator.exe.
+Download size is about 334 MiB. Available until 2026-10-20.
+Version 1.1 adds German and 365 engineering glossary entries.
 
 ## Status
 
-Version 1.0 passed the Windows compiled-app checks on 2026-10-06.
-Version 1.1 passes 10 local regression tests; its Windows rebuild is pending.
-The workflow runs the actual GUI, all three models, engineering terminology,
-PDF output and review-report checks before uploading a new executable.
+Version 1.1 passed all 10 regression tests and the Windows compiled-app tests
+on 2026-10-06. Checks exercised the actual GUI, all three offline models,
+engineering terminology, PDF replacement/notes, ambiguous-label reports and
+protected dimensions/codes/grades. The complete test report is in the download.
 
 ## Building
 

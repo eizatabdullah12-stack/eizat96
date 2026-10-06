@@ -1,5 +1,8 @@
 2026-10-06 version 1.1
-PASS: Python syntax compilation and 10 local regression tests.
-Checks include phrase precedence, material distinctions, Unicode variants, unknown-text fallback, ambiguous terms, all three languages, protected values/codes and PDF output.
-PENDING: Windows build and compiled-app/model checks for version 1.1.
+PASS: Python syntax compilation and 10 local/Windows regression tests.
+PASS: Real French, Dutch and German model inference on Windows.
+PASS: Compiled EXE: actual GUI startup, engineering terminology in all three languages, PDF replacement/notes, context-review report, protected dimensions/codes/grades and source-file preservation.
+Verified commit: e72b00e6b3ce0ec5071f6db75e33e0b0cb68b67d
+Build: https://github.com/eizatabdullah12-stack/eizat96/actions/runs/37428590026
+Artifact SHA256: e5de2d34eef6c7d331637061790ba8954b1ac2f24befcacbd7f4c75a30549cb8
 NOT PERFORMED: physical clean-PC test or representative user-document tests.
