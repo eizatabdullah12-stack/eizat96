@@ -7,7 +7,7 @@ API key or translation internet connection is required. Models are embedded.
 Choose a PDF, select the source language and output mode, then save a new PDF.
 The original is retained. A translation text list is saved alongside the PDF.
 
-[Download version 1.3 for Windows](https://github.com/eizatabdullah12-stack/eizat96/actions/runs/37454037623/artifacts/11409370021).
+[Download version 1.4 for Windows](https://github.com/eizatabdullah12-stack/eizat96/actions/runs/37460050904/artifacts/11411267098).
 Extract the ZIP and double-click EngineeringPDFTranslator.exe.
 Download size is about 334 MiB. Available until 2026-10-20.
 
@@ -20,9 +20,10 @@ short reference acronyms are protected before inference. Parts-list, title-block
 and pipe-support terms were added to the practical engineering vocabulary.
 
 There are 1,601 explicit source entries: French 611, Dutch 501 and German 489.
-All 21 local regression tests pass, including complete synthetic product codes,
+All 21 regression tests passed locally and on Windows, including complete synthetic product codes,
 German table terminology, language reporting, rotated labels and source retention.
-The Windows workflow verifies the compiled executable before uploading its ZIP.
+The compiled Windows executable passed GUI, bundled vocabulary, all three real
+language models, product-code protection and PDF-output checks.
 
 ## Building
 
