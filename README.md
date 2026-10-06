@@ -13,13 +13,15 @@ Download size is about 334 MiB. Available until 2026-10-20.
 
 ## Version 1.5 update
 
-Saved output is reopened and checked before success is reported. Every expected
+Input PDFs are normalized and reopened before edits, avoiding lost edits in
+compressed object/xref-stream documents. Saved output is reopened and checked
+before success is reported. Every expected
 replacement label and translation note must be readable in the saved PDF.
 The report records the matching output filename and SHA256. Output filenames
 include a timestamp by default, and Open verified PDF checks the file identity
 before opening that exact copy in the default reader.
 
-All 23 local regression tests pass, including a writer that reports success
+All 24 local regression tests pass, including a writer that reports success
 without inserting text: the app rejects that output and preserves the previous
 file. Missing notes, report identity, German terms, rotated labels and protected
 values are also tested. These checks verify saved PDF content, not translation

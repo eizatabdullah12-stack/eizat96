@@ -126,9 +126,14 @@ def translate_pdf(source, destination, translate, mode="replace", progress=lambd
     scanned_pages = []
     expected = []
     destination.parent.mkdir(parents=True, exist_ok=True)
-    with fitz.open(source) as doc:
-        if doc.needs_pass:
+    # Some compressed object/xref-stream PDFs accept edits in memory but
+    # serialize their original objects. Reopen an unedited, normalized copy
+    # before applying changes, then verify the final saved bytes below.
+    with fitz.open(source) as original_doc:
+        if original_doc.needs_pass:
             raise ValueError("This PDF is password-protected. Save an unlocked copy first.")
+        normalized_source = original_doc.tobytes(garbage=0)
+    with fitz.open(stream=normalized_source, filetype='pdf') as doc:
         for number, page in enumerate(doc):
             if cancel():
                 raise InterruptedError("Translation cancelled; no output PDF was saved.")

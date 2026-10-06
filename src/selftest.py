@@ -70,7 +70,7 @@ def run(report_path, app_factory):
                     page.insert_text((40,130), label+' 300 mm - HEA200 - B500B', fontsize=12)
                     ambiguous = {'fr':'Semelle','nl':'Plaat','de':'Platte'}[language]
                     page.insert_text((40,160), ambiguous, fontsize=12)
-                    pdf.save(source)
+                    pdf.save(source,use_objstms=1,garbage=3)
                 before = source.read_bytes()
                 result = translate_pdf(source,destination,translate,mode='notes')
                 if result['verified_notes'] != result['notes'] or result['verified_replaced'] != result['replaced']:

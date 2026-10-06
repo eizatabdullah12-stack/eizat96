@@ -51,3 +51,7 @@ before reporting success. The report identifies its matching PDF by filename
 and SHA256. Default output names include a timestamp to avoid reusing a cached
 filename. Click Open verified PDF after translation to open the exact output;
 the button checks that the PDF has not changed since it was verified.
+
+Input PDFs are normalized in memory before translation to prevent edits being
+lost when saving certain compressed object/xref-stream PDFs. The original file
+is retained. This applies to French, Dutch and German equally.

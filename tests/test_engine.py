@@ -10,6 +10,22 @@ from version import VERSION
 from unittest.mock import patch
 
 class PDFChecks(unittest.TestCase):
+    def test_compressed_object_stream_input(self):
+        with tempfile.TemporaryDirectory() as folder:
+            src,dst=Path(folder)/'compressed.pdf',Path(folder)/'English.pdf'
+            with fitz.open() as doc:
+                page=doc.new_page()
+                page.insert_text((40,80),'Ansicht 1',fontsize=12)
+                doc.save(src,use_objstms=1,garbage=3)
+            before=src.read_bytes()
+            with fitz.open(src) as doc:self.assertIn('/Type /XRef',doc.pdf_trailer())
+            result=translate_pdf(src,dst,EngineeringTranslator('de',lambda s:s))
+            self.assertEqual(result['verified_replaced'],1)
+            self.assertEqual(src.read_bytes(),before)
+            with fitz.open(dst) as doc:
+                self.assertIn('View 1',doc[0].get_text())
+                self.assertNotIn('Ansicht',doc[0].get_text())
+
     def test_silent_insertion_failure_does_not_report_success(self):
         with tempfile.TemporaryDirectory() as folder:
             src,dst=Path(folder)/'source.pdf',Path(folder)/'English.pdf'
