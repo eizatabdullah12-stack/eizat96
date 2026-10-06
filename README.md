@@ -7,24 +7,21 @@ API key or translation internet connection is required. Models are embedded.
 Choose a PDF, select the source language and output mode, then save a new PDF.
 The original is retained. A translation text list is saved alongside the PDF.
 
-[Download version 1.1 for Windows](https://github.com/eizatabdullah12-stack/eizat96/actions/runs/37428590026/artifacts/11395588344).
+[Download version 1.2 for Windows](https://github.com/eizatabdullah12-stack/eizat96/actions/runs/37438067148/artifacts/11399219632).
 Extract the ZIP and double-click EngineeringPDFTranslator.exe.
 Download size is about 334 MiB. Available until 2026-10-20.
-Version 1.1 adds German and 365 engineering glossary entries.
 
-## Version 1.2 update
+## Version 1.2
 
-Fixes rotated CAD labels and tiny legend text. The report now distinguishes
-replacements, notes and unchanged labels. French structural terminology has
-been expanded, and ALL CAPS input is normalized for the offline model.
-Version 1.2 Windows verification is pending the current build.
+Fixes rotated CAD labels and tiny legend text. The report distinguishes
+replacements, notes and unchanged labels. The glossary contains 455 French,
+Dutch and German entries. ALL CAPS input is normalized for the offline model.
+An embedded font preserves engineering symbols, including Greek unit symbols.
 
-## Previous verified build
-
-Version 1.1 passed all 10 regression tests and the Windows compiled-app tests
-on 2026-10-06. Checks exercised the actual GUI, all three offline models,
-engineering terminology, PDF replacement/notes, ambiguous-label reports and
-protected dimensions/codes/grades. The complete test report is in the download.
+All 15 regression tests and the Windows compiled-app checks passed on
+2026-10-06. Compiled checks exercised the GUI, all three offline models,
+engineering terminology, replacement/notes, right-angle small CAD labels,
+context reports and protected values. The download includes the test report.
 
 ## Building
 

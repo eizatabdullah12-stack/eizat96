@@ -1,8 +1,9 @@
-2026-10-06 version 1.1
-PASS: Python syntax compilation and 10 local/Windows regression tests.
-PASS: Real French, Dutch and German model inference on Windows.
-PASS: Compiled EXE: actual GUI startup, engineering terminology in all three languages, PDF replacement/notes, context-review report, protected dimensions/codes/grades and source-file preservation.
-Verified commit: e72b00e6b3ce0ec5071f6db75e33e0b0cb68b67d
-Build: https://github.com/eizatabdullah12-stack/eizat96/actions/runs/37428590026
-Artifact SHA256: e5de2d34eef6c7d331637061790ba8954b1ac2f24befcacbd7f4c75a30549cb8
-NOT PERFORMED: physical clean-PC test or representative user-document tests.
+2026-10-06 version 1.2
+PASS: 15 local/Windows regression tests including rotated CAD labels, small text bounds, Greek/squared units, protected references and unchanged/fallback reporting.
+PASS: Real French, Dutch and German inference on Windows.
+PASS: Compiled EXE GUI startup, all three languages, engineering terminology, notes and replacement modes, rotated small CAD labels and original-file preservation.
+LIMITATION: Text redaction can change PDF optional-content layer metadata; vector geometry is retained. General prose remains machine translated and needs review. Untranslated/context-dependent words are included in the companion report.
+Verified code commit: fe5f3db3ae9fd20d25359a08abd1ee429e76b143
+Build: https://github.com/eizatabdullah12-stack/eizat96/actions/runs/37438067148
+Artifact SHA256: 02fcf1d94124909707f472f57a2465575f6090024229eb451b3ea25c64d2fd75
+NOT PERFORMED: physical clean-PC test or OCR.
