@@ -40,7 +40,7 @@ def run(report_path, app_factory):
                     page.insert_text((40,80),sample+' 200 mm - P1.42',fontsize=12)
                     # Use Latin-1-safe labels with the built-in PDF font.
                     label = {'fr':'Poutre en beton arme','nl':'Gewapende betonbalk','de':'Stahlbetonbalken'}[language]
-                    page.insert_text((40,130), label+' 300 mm - HEA200', fontsize=12)
+                    page.insert_text((40,130), label+' 300 mm - HEA200 - B500B', fontsize=12)
                     ambiguous = {'fr':'Semelle','nl':'Plaat','de':'Platte'}[language]
                     page.insert_text((40,160), ambiguous, fontsize=12)
                     pdf.save(source)
@@ -60,7 +60,7 @@ def run(report_path, app_factory):
                 with fitz.open(replace_destination) as pdf:
                     text = pdf[0].get_text()
                     notes = '\n'.join(a.info.get('content','') for a in (pdf[0].annots() or []))
-                    if expected not in (text + notes).lower() or engineering_expected not in (text + notes).lower() or '200 mm' not in text or 'P1.42' not in text or 'HEA200' not in text:
+                    if expected not in (text + notes).lower() or engineering_expected not in (text + notes).lower() or '200 mm' not in text or 'P1.42' not in text or 'HEA200' not in text or 'B500B' not in text:
                         raise RuntimeError('Translated PDF labels or protected values are missing')
                 report['checks'].append(f'{language} default PDF replacement mode passed')
         report['passed'] = True

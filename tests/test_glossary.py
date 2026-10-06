@@ -66,8 +66,8 @@ class EngineeringChecks(unittest.TestCase):
     def test_values_codes_and_symbols(self):
         for language, label in [('fr','Poutre'),('nl','Balk'),('de','Träger')]:
             translator = EngineeringTranslator(language, no_model)
-            source = label + ' 200 mm - P1.42 - C25/30 - HEA200 - Ø16'
-            self.assertEqual(protected_translate(source, translator), 'Beam 200 mm - P1.42 - C25/30 - HEA200 - Ø16')
+            codes = ' 200 mm - P1.42 - C25/30 - HEA200 - Ø16 - B500B - S235JR - HEA 200 - RHS 100x50x4 - REZ+1'
+            self.assertEqual(protected_translate(label + codes, translator), 'Beam' + codes)
 
     def test_glossary_pdf_and_review_report(self):
         for language, label, ambiguous in [('fr','Poutre en beton arme','Semelle'),('nl','Gewapende betonbalk','Plaat'),('de','Stahlbetonbalken','Platte')]:

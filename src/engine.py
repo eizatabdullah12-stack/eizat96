@@ -5,7 +5,12 @@ import re
 import tempfile
 import fitz
 
-PROTECTED = re.compile(r"\b\d+(?:[.,]\d+)?(?:\s*(?:mm|cm|m|MPa|kN|kg|N|kPa|%))?\b|\b[A-Z]+[-.]?\d+(?:[./-]\d+)*\b|[Øø⌀]\s*\d+(?:[.,]\d+)?", re.I)
+PROTECTED = re.compile(
+    r"\b(?:HEA|HEB|HEM|IPE|IPN|UPN|UPE|RHS|SHS|CHS)\s*\d+(?:[.,]\d+)?(?:\s*[x×]\s*\d+(?:[.,]\d+)?)*\b"
+    r"|\b(?:RDC|REZ|R)\s*\+\s*\d+\b"
+    r"|\b[A-Z]+[-.]?\d+[A-Z0-9]*(?:[./-]\d+[A-Z0-9]*)*\b"
+    r"|[Øø⌀]\s*\d+(?:[.,]\d+)?"
+    r"|\b\d+(?:[.,]\d+)?(?:\s*(?:mm|cm|m|MPa|kN|kg|N|kPa|%))?\b", re.I)
 
 
 def protected_translate(text, translate):
