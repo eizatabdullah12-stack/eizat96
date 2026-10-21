@@ -504,12 +504,19 @@ AMBIGUOUS = {
     },
 }
 
-BRANDS = ('Korbo', 'Sumo', 'Halfen', 'Ancon', 'Leviat', 'Ankrochim', 'KorboFlex', 'Thermoshim', 'Stepoc', 'ISOTEC')
+BRANDS = ('Plaka', 'Plakabeton', 'Scaldex', 'Korbo', 'KorboFlex', 'Korbo Dry',
+          'Korbo-Dry', 'Thermoshim', 'Sumo', 'Halfen', 'Ancon', 'Leviat',
+          'Stabox', 'Couplerbox', 'Titan', 'Stonefix', 'Solea-Fix', 'Solea Fix',
+          'Lintral', 'Ankrochim', 'Ankrorail', 'Ankrobox', 'Murfor', 'Murfor Compact',
+          'Plakafeu', 'Colmarub', 'Cemflex', 'Swelstop', 'Nervex', 'Robusta',
+          'Tetraform', 'Plakasafe', 'Plakatube', 'Profilarc', 'Stepoc', 'ISOTEC', 'DEMU')
 
 
 def fold(text):
     return ''.join(c for c in unicodedata.normalize('NFKD', text.casefold())
-                   if not unicodedata.combining(c)).replace('’', "'").replace('–', '-').replace('‑', '-')
+                   if not unicodedata.combining(c) and c != '\u00ad').translate(
+                       str.maketrans({'’': "'", 'ʼ': "'", '‘': "'", '–': '-',
+                                      '—': '-', '‐': '-', '‑': '-', '−': '-'}))
 
 
 TERM_CATEGORIES = {language: {} for language in TERMS}
@@ -590,8 +597,25 @@ class EngineeringTranslator:
         return [{'source':text[a:b], 'english':self.terms[k]} for a,b,k in self._matches(text)
                 if fold(text[a:b]) != fold(self.terms[k])]
 
+    def glossary_spans(self, text):
+        return [(a,b) for a,b,k in self._matches(text)
+                if fold(text[a:b]) != fold(self.terms[k])]
+
     def review_notes(self, text):
         return [f'{text[a:b]}: {self.ambiguous[k]}' for a,b,k in self._matches(text) if k in self.ambiguous]
+
+    def unchanged_reason(self, text):
+        reviews = self.review_notes(text)
+        if reviews:
+            return 'Source retained for context review: ' + ' | '.join(reviews)
+        matches = list(self._matches(text))
+        if matches and all(fold(text[a:b]) == fold(self.terms[k]) for a,b,k in matches):
+            remainder = text
+            for a,b,_ in reversed(matches):
+                remainder = remainder[:a] + remainder[b:]
+            if not re.search(r'[^\W\d_]', remainder):
+                return 'Known term, already-English label or product name retained.'
+        return 'No change from the offline model; check source language, spelling and context. The label may already be English or a proper name.'
 
     def _general(self, fragment):
         return self.general_translate(fragment) if re.search(r'[^\W\d_]', fragment) else fragment

@@ -385,3 +385,755 @@ Drainage and services|coude de tuyauterie|leidingbocht|Rohrbogen|pipe elbow|
 Drainage and services|compensateur de dilatation|expansiecompensator|Dehnungskompensator|expansion compensator|
 Steel and connections|platine de base|voetplaat|Fußplatte;Fussplatte|base plate|
 Steel and connections|tige filetée|draadstang|Gewindestange|threaded rod|
+KORBO masonry support|support de maçonnerie;supports de maçonnerie|metselwerkondersteuning;metselwerkondersteuningen|Mauerwerksunterstützung;Mauerwerksabfangungen|masonry support|
+KORBO masonry support|cornière de support;cornière porteuse|draaghoek;draaghoeklijn|Tragwinkel;Auflagerwinkel|support angle|
+KORBO masonry support|cornières de support;cornières porteuses|draaghoeken;draaghoeklijnen|Tragwinkelprofile;Auflagerwinkelprofile|support angles|
+KORBO masonry support|cornière continue|doorlopende hoeklijn;continue hoeklijn|durchlaufender Winkel;durchgehender Winkel|continuous support angle|
+KORBO masonry support|cornière discontinue|onderbroken hoeklijn|unterbrochener Winkel|discontinuous support angle|
+KORBO masonry support|cornière sans console|hoeklijn zonder console|Winkel ohne Konsole|angle without bracket|
+KORBO masonry support|cornière avec consoles|hoeklijn met consoles|Winkel mit Konsolen|angle with brackets|
+KORBO masonry support|cornière galvanisée|verzinkte hoeklijn|verzinkter Winkel|galvanized angle|
+KORBO masonry support|cornière en acier inoxydable;cornière inox|roestvaststalen hoeklijn;RVS hoeklijn|Edelstahlwinkel|stainless steel angle|
+KORBO masonry support|console réglable;consoles réglables|verstelbare console;verstelbare consoles|verstellbare Konsole;verstellbare Konsolen|adjustable bracket|
+KORBO masonry support|console soudée|aangelaste console;gelaste console|angeschweißte Konsole;geschweißte Konsole|welded bracket|
+KORBO masonry support|consoles soudées|aangelaste consoles;gelaste consoles|angeschweißte Konsolen;geschweißte Konsolen|welded brackets|
+KORBO masonry support|console individuelle;console isolée|losse console;afzonderlijke console|Einzelkonsole;einzelne Konsole|individual bracket|
+KORBO masonry support|console d'angle|hoekconsole|Eckkonsole|corner bracket|
+KORBO masonry support|console de rive|randconsole|Randkonsole|edge bracket|
+KORBO masonry support|console inversée|omgekeerde console|umgekehrte Konsole|inverted bracket|
+KORBO masonry support|console spéciale|speciale console|Sonderkonsole|special bracket|
+KORBO masonry support|console sur mesure|console op maat|maßgefertigte Konsole|custom-made bracket|
+KORBO masonry support|profil de support;profil porteur|draagprofiel;ondersteuningsprofiel|Tragprofil;Auflagerprofil|support profile|
+KORBO masonry support|profil de façade|gevelprofiel|Fassadenprofil|facade profile|
+KORBO masonry support|aile horizontale|horizontale flens;horizontaal been|horizontaler Schenkel|horizontal leg|
+KORBO masonry support|aile verticale|verticale flens;verticaal been|vertikaler Schenkel|vertical leg|
+KORBO masonry support|talon de la console|consolevoet|Konsolenfuß|bracket foot|
+KORBO masonry support|dos de la console|rug van de console;consolerug|Konsolenrücken|bracket back|
+KORBO masonry support|plaque de réglage;plaques de réglage|regelplaat;regelplaten|Justierplatte;Justierplatten|adjustment plate|
+KORBO masonry support|plaque d'épaisseur;cale d'épaisseur|vulplaat;vulplaatje|Distanzplatte;Distanzblech|packing plate|
+KORBO masonry support|plaques d'épaisseur;cales d'épaisseur|vulplaten;vulplaatjes|Distanzplatten;Distanzbleche|packing plates|
+KORBO masonry support|plaque de calage|uitvulplaat;stelplaat|Unterlegplatte;Ausgleichsplatte|shim plate|
+KORBO masonry support|plaques de calage|uitvulplaten;stelplaten|Unterlegplatten;Ausgleichsplatten|shim plates|
+KORBO masonry support|cale thermique;plaque de rupture thermique|thermisch onderbrekingsplaatje;thermische onderbrekingsplaat|thermische Trennplatte;thermisches Trennelement|thermal break pad|
+KORBO masonry support|cale en matière synthétique|kunststof vulplaat|Kunststoffunterlage|plastic packing plate|
+KORBO masonry support|boulon de réglage;vis de réglage|regelbout;stelschroef|Justierschraube;Stellschraube|adjustment screw|
+KORBO masonry support|boulon de fixation|bevestigingsbout|Befestigungsbolzen|fixing bolt|
+KORBO masonry support|vis de fixation|bevestigingsschroef|Befestigungsschraube|fixing screw|
+KORBO masonry support|boulons de fixation|bevestigingsbouten|Befestigungsschrauben|fixing bolts|
+KORBO masonry support|trou oblong;lumière oblongue|sleufgat;langgat|Langloch|slotted hole|
+KORBO masonry support|trous oblongs|sleufgaten;langgaten|Langlöcher|slotted holes|
+KORBO masonry support|trou rond|rond gat|Rundloch|round hole|
+KORBO masonry support|plage de réglage;course de réglage|stelbereik;regelbereik|Verstellbereich;Justierbereich|adjustment range|
+KORBO masonry support|réglage en hauteur|hoogteregeling;hoogteverstelling|Höhenverstellung;Höhenjustierung|height adjustment|
+KORBO masonry support|réglage en profondeur|diepteregeling;diepteverstelling|Tiefenverstellung;Tiefenjustierung|depth adjustment|
+KORBO masonry support|réglage latéral|zijdelingse verstelling;zijdelingse regeling|Seitenverstellung;seitliche Justierung|lateral adjustment|
+KORBO masonry support|réglage continu;réglage en continu|traploze verstelling;continue regeling|stufenlose Verstellung|continuous adjustment|
+KORBO masonry support|réglage horizontal|horizontale verstelling|horizontale Justierung|horizontal adjustment|
+KORBO masonry support|réglage vertical|verticale verstelling|vertikale Justierung|vertical adjustment|
+KORBO masonry support|blocage en position|vergrendeling in positie|Positionssicherung|locking in position|
+KORBO masonry support|serrage du boulon|aandraaien van de bout|Anziehen der Schraube|bolt tightening|
+KORBO masonry support|couple de serrage prescrit|voorgeschreven aandraaimoment|vorgeschriebenes Anziehdrehmoment|specified tightening torque|
+KORBO masonry support|surface de contact|contactvlak;contactoppervlak|Kontaktfläche|contact surface|
+KORBO masonry support|points de contact|contactpunten|Kontaktpunkte|contact points|
+KORBO masonry support|point de contact inférieur|onderste contactpunt|unterer Kontaktpunkt|lower contact point|
+KORBO masonry support|point de contact supérieur|bovenste contactpunt|oberer Kontaktpunkt|upper contact point|
+KORBO masonry support|surface d'appui|oplegvlak;draagvlak|Auflagerfläche|bearing surface|
+KORBO masonry support|appui complet|volledige oplegging|vollflächige Auflagerung|full bearing|
+KORBO masonry support|largeur de batée|dagkantbreedte;sponningbreedte|Falzbreite|reveal width|Confirm the dimension against the facade detail; batée can denote a reveal or rebate.
+KORBO masonry support|batée|dagkant;sponning|Laibungsfalz|reveal/rebate|Confirm whether the detail denotes a reveal or rebate; do not infer the required geometry.
+KORBO masonry support|retour de maçonnerie|metselwerkretour|Mauerwerksrücksprung|masonry return|
+KORBO masonry support|retour d'angle|hoekretour|Eckrückführung|corner return|
+KORBO masonry support|angle rentrant|binnenhoek;inspringende hoek|Innenecke|internal corner|
+KORBO masonry support|angle sortant|buitenhoek;uitspringende hoek|Außenecke|external corner|
+KORBO masonry support|façade arrondie|gebogen gevel;ronde gevel|gerundete Fassade|curved facade|
+KORBO masonry support|cornière cintrée|gebogen hoeklijn|gebogener Winkel|curved support angle|
+KORBO masonry support|rayon de courbure|kromtestraal;buigstraal|Krümmungsradius|radius of curvature|
+KORBO masonry support|exécution visible|zichtbare uitvoering|sichtbare Ausführung|visible installation|
+KORBO masonry support|exécution invisible|onzichtbare uitvoering|unsichtbare Ausführung|concealed installation|
+KORBO masonry support|maçonnerie suspendue|hangend metselwerk|abgehängtes Mauerwerk|suspended masonry|
+KORBO masonry support|brique suspendue|hangende baksteen|abgehängter Ziegel|suspended brick|
+KORBO masonry support|briques suspendues|hangende bakstenen|abgehängte Ziegel|suspended bricks|
+KORBO masonry support|étrier de suspension|ophangbeugel|Aufhängebügel|suspension hanger|
+KORBO masonry support|étriers de suspension|ophangbeugels|Aufhängebügel für Mauerwerk|suspension hangers|
+KORBO masonry support|étrier pour brique suspendue|beugel voor hangende baksteen|Ziegelaufhängebügel|brick suspension hanger|
+KORBO masonry support|rang de briques sur chant|rollaag;staande rollaag|Rollschicht|soldier course|Confirm brick orientation and bond in the detail; a rowlock course may be intended.
+KORBO masonry support|rangée de briques|baksteenrij;steenlaag|Ziegelreihe|brick course|
+KORBO masonry support|premier rang|eerste laag|erste Schicht|first course|
+KORBO masonry support|assise de départ|aanzetlaag;startlaag|Anfangsschicht|starting course|
+KORBO masonry support|hauteur de maçonnerie supportée|ondersteunde metselwerkhoogte|abgefangene Mauerwerkshöhe|supported masonry height|
+KORBO masonry support|poids de la maçonnerie|gewicht van het metselwerk|Mauerwerksgewicht|masonry weight|
+KORBO masonry support|charge par console|belasting per console|Last je Konsole|load per bracket|
+KORBO masonry support|espacement des consoles;entraxe des consoles|consoleafstand;hartafstand van de consoles|Konsolenabstand;Achsabstand der Konsolen|bracket spacing|
+KORBO masonry support|longueur libre de la cornière|vrije hoeklijnlengte|freie Winkellänge|free angle length|
+KORBO masonry support|porte-à-faux de la cornière|uitkraging van de hoeklijn|Winkelauskragung|angle cantilever|
+KORBO masonry support|largeur totale du vide|totale spouwbreedte|gesamte Hohlschichtbreite|total cavity width|
+KORBO masonry support|largeur du vide|breedte van de spouw|Hohlschichtbreite|cavity width|
+KORBO masonry support|espace libre sous la cornière|vrije ruimte onder de hoeklijn|Freiraum unter dem Winkel|clearance below the angle|
+KORBO masonry support|jeu de dilatation|dilatatiespeling|Dehnungsspiel|movement clearance|
+KORBO masonry support|joint horizontal de dilatation|horizontale dilatatievoeg|horizontale Dehnungsfuge|horizontal movement joint|
+KORBO masonry support|joint vertical de dilatation|verticale dilatatievoeg|vertikale Dehnungsfuge|vertical movement joint|
+KORBO masonry support|fractionnement de façade|gevelonderbreking|Fassadenunterteilung|facade subdivision|
+KORBO masonry support|cache-vide;cache vide|spouwafdekking|Hohlraumabdeckung|cavity closure|
+KORBO masonry support|grille anti-rongeur;grille anti-rongeurs|ongediertewering;muizenrooster|Nagetierschutzgitter|rodent barrier grille|
+KORBO masonry support|profil perforé|geperforeerd profiel|Lochprofil|perforated profile|
+KORBO masonry support|membrane d'étanchéité du vide|spouwafdichtingsfolie|Hohlschichtabdichtungsbahn|cavity waterproofing membrane|
+KORBO masonry support|bavette d'étanchéité autocollante|zelfklevende waterkeringsfolie|selbstklebende Abdichtungsbahn|self-adhesive flashing|
+KORBO masonry support|relevé d'étanchéité|opstand van de waterkering|Abdichtungsaufkantung|waterproofing upstand|
+KORBO masonry support|recouvrement de membrane|folieoverlap|Bahnenüberlappung|membrane overlap|
+KORBO masonry support|évacuation de l'eau|waterafvoer|Wasserableitung|water drainage|
+KORBO masonry support|joint ouvert|open stootvoeg|offene Stoßfuge|open perpend joint|
+KORBO masonry support|reprise intermédiaire de maçonnerie|tussentijdse metselwerkopvang|Mauerwerkszwischenabfangung|intermediate masonry support|
+KORBO masonry support|nœud constructif|bouwknoop|Konstruktionsdetail|construction junction|
+KORBO masonry support|conductivité thermique|warmtegeleidingscoëfficiënt|Wärmeleitfähigkeit|thermal conductivity|
+KORBO masonry support|pont thermique ponctuel|puntvormige koudebrug|punktförmige Wärmebrücke|point thermal bridge|
+KORBO masonry support|coefficient de transmission thermique ponctuel|puntwarmtedoorgangscoëfficiënt|punktbezogener Wärmedurchgangskoeffizient|point thermal transmittance|
+KORBO masonry support|réduction du pont thermique|vermindering van de koudebrug|Wärmebrückenreduzierung|thermal bridge reduction|
+PLAKA products and connections|boîte d'attente;boîte d'armatures en attente|wachtdoos;stekkenbak|Rückbiegeanschluss;Bewehrungsanschlusskasten|reinforcement continuity box|
+PLAKA products and connections|boîtes d'attente|wachtdozen;stekkenbakken|Rückbiegeanschlüsse;Bewehrungsanschlusskästen|reinforcement continuity boxes|
+PLAKA products and connections|armatures en attente|wachtwapening;stekwapening|Anschlussbewehrung|starter reinforcement|
+PLAKA products and connections|armature à déplier|terug te buigen wapening|rückzubiegende Bewehrung|reinforcement to be rebent|
+PLAKA products and connections|dépliage des armatures|terugbuigen van de wapening|Rückbiegen der Bewehrung|rebending of reinforcement|
+PLAKA products and connections|redressage des barres|rechtbuigen van de staven|Richten der Bewehrungsstäbe|straightening of reinforcing bars|
+PLAKA products and connections|rayon de cintrage;rayon de pliage|buigstraal van de wapening|Biegerollradius|reinforcement bend radius|
+PLAKA products and connections|mandrin de cintrage|buigdoorn|Biegerolle|bending mandrel|
+PLAKA products and connections|reprise de bétonnage|stortnaad;betonstortvoeg|Arbeitsfuge|construction joint|
+PLAKA products and connections|surface de reprise|stortnaadvlak|Arbeitsfugenfläche|construction joint surface|
+PLAKA products and connections|rugosité de surface|oppervlakteruwheid|Oberflächenrauheit|surface roughness|
+PLAKA products and connections|surface crantée|vertand oppervlak|verzahnte Oberfläche|indented surface|
+PLAKA products and connections|surface rugueuse|ruw oppervlak|raue Oberfläche|rough surface|
+PLAKA products and connections|surface lisse|glad oppervlak|glatte Oberfläche|smooth surface|
+PLAKA products and connections|cisaillement à l'interface|afschuiving in het aansluitvlak|Schub in der Fuge|interface shear|
+PLAKA products and connections|goujon pour efforts tranchants|dwarskrachtdeuvel|Querkraftdorn|shear load connector|
+PLAKA products and connections|goujons pour efforts tranchants|dwarskrachtdeuvels|Querkraftdorne|shear load connectors|
+PLAKA products and connections|goujon de transfert de charge|lastoverdrachtsdeuvel|Lastübertragungsdorn|load transfer dowel|
+PLAKA products and connections|fourreau de glissement|glijhuls|Gleithülse|sliding sleeve|
+PLAKA products and connections|mouvement longitudinal|langsbeweging|Längsbewegung|longitudinal movement|
+PLAKA products and connections|mouvement transversal|dwarsbeweging|Querbewegung|transverse movement|
+PLAKA products and connections|manchon d'armature;coupleur d'armature|wapeningsmof;wapeningskoppeling|Bewehrungskupplung;Bewehrungsmuffe|reinforcement coupler|
+PLAKA products and connections|manchons d'armature|wapeningsmoffen;wapeningskoppelingen|Bewehrungskupplungen;Bewehrungsmuffen|reinforcement couplers|
+PLAKA products and connections|filetage parallèle|parallelle schroefdraad|zylindrisches Gewinde|parallel thread|
+PLAKA products and connections|filetage conique|conische schroefdraad|konisches Gewinde|tapered thread|
+PLAKA products and connections|manchon à boulons de cisaillement|koppelmof met afschuifbouten|Schraubmuffe mit Abscherschrauben|shear-bolt coupler|
+PLAKA products and connections|about de barre|staafeinde|Stabende|bar end|
+PLAKA products and connections|liaison mécanique d'armatures|mechanische wapeningsverbinding|mechanische Bewehrungsverbindung|mechanical reinforcement connection|
+PLAKA products and connections|rupture thermique structurelle|constructieve thermische onderbreking|tragende thermische Trennung|structural thermal break|
+PLAKA products and connections|rupteur thermique pour balcon|thermische balkononderbreking|Balkonwärmedämmelement|balcony thermal break|
+PLAKA products and connections|liaison acier-béton|staal-betonverbinding|Stahl-Beton-Verbindung|steel-to-concrete connection|
+PLAKA products and connections|liaison béton-béton|beton-betonverbinding|Beton-Beton-Verbindung|concrete-to-concrete connection|
+PLAKA products and connections|liaison acier-acier|staal-staalverbinding|Stahl-Stahl-Verbindung|steel-to-steel connection|
+PLAKA products and connections|attache porteuse;attaches porteuses|draaganker;draagankers|Traganker;Tragbefestigungen|load-bearing fixing|
+PLAKA products and connections|attache de retenue;attaches de retenue|windanker;windankers|Halteanker;Rückhalteanker|restraint fixing|
+PLAKA products and connections|agrafe pour pierre naturelle|natuursteenanker|Natursteinanker|natural stone fixing|
+PLAKA products and connections|ancrage de panneau préfabriqué|prefab paneelanker|Fertigteilplattenanker|precast panel anchor|
+PLAKA products and connections|ancrage de façade|gevelverankering|Fassadenverankerung|facade anchorage|
+PLAKA products and connections|rail d'ancrage noyé|ingestorte ankerrail|einbetonierte Ankerschiene|cast-in anchor channel|
+PLAKA products and connections|rails d'ancrage noyés|ingestorte ankerrails|einbetonierte Ankerschienen|cast-in anchor channels|
+PLAKA products and connections|boulon à tête marteau|hamerkopbout;hamerbout|Hammerkopfschraube|hammer-head bolt|
+PLAKA products and connections|lèvre du rail|raillip|Schienenlippe|channel lip|
+PLAKA products and connections|âme du rail|raillijf|Schienensteg|channel web|
+PLAKA products and connections|ancre de rail|railanker|Schienenanker|channel anchor|
+PLAKA products and connections|extrémité du rail|raileinde|Schienenende|channel end|
+PLAKA products and connections|charge au droit de l'ancre|belasting ter plaatse van het anker|Last am Anker|load at the anchor|
+PLAKA products and connections|flexion du rail|railbuiging|Schienenbiegung|channel bending|
+PLAKA products and connections|arrachement de la lèvre|uittrekken van de raillip|Herausziehen der Schienenlippe|channel lip pull-out|
+PLAKA products and connections|entretoise;écarteur|afstandhouder;afstandstuk|Abstandhalter;Distanzstück|spacer|
+PLAKA products and connections|écarteurs d'armatures|wapeningsafstandhouders|Bewehrungsabstandhalter|reinforcement spacers|
+PLAKA products and connections|cale d'enrobage|dekkingsblokje|Betondeckungsabstandhalter|concrete cover spacer|
+PLAKA products and connections|chaise d'armature|wapeningsstoel|Bewehrungsstuhl|reinforcement chair|
+PLAKA products and connections|joint hydrogonflant|zwelband|Quellband|hydrophilic waterstop|
+PLAKA products and connections|tôle d'étanchéité|waterkeringsplaat|Fugenblech|waterstop plate|
+PLAKA products and connections|cordon coupe-feu|brandwerend koord|Brandschutzschnur|firestop cord|
+PLAKA products and connections|bande coupe-feu|brandwerende strip|Brandschutzstreifen|firestop strip|
+PLAKA products and connections|coffrage perdu|verloren bekisting|verlorene Schalung|permanent formwork|
+PLAKA products and connections|boîte de réservation|sparingsdoos|Aussparungskasten|recess former|
+PLAKA products and connections|coffrage de rive|randbekisting|Randschalung|edge formwork|
+PLAKA products and connections|douille de levage|hijshuls|Transportankerhülse|lifting socket|
+PLAKA products and connections|douille de fixation|bevestigingshuls|Befestigungshülse|fixing socket|
+PLAKA products and connections|ancre de levage|hijsanker|Transportanker|lifting anchor|
+PLAKA products and connections|boucle de levage|hijslus|Hebeschlaufe|lifting loop|
+Anchor design and installation|ancrage mécanique;cheville mécanique|mechanisch anker|mechanischer Dübel|mechanical anchor|
+Anchor design and installation|ancrage chimique;cheville chimique|chemisch anker|Verbundanker;chemischer Dübel|chemical anchor|
+Anchor design and installation|ancrage à expansion|expansieanker;spreidanker|Spreizanker|expansion anchor|
+Anchor design and installation|boulon expansible;cheville à expansion|keilbout;spreidbout|Spreizbolzen|expansion bolt|
+Anchor design and installation|ancrage par scellement|lijmanker|Klebeanker|bonded anchor|
+Anchor design and installation|ancrage à contre-dépouille|ondersnijdingsanker|Hinterschnittanker|undercut anchor|
+Anchor design and installation|ancrage traversant|doorsteekanker|Durchsteckanker|through-fixing anchor|
+Anchor design and installation|groupe d'ancrages|ankergroep|Ankergruppe|anchor group|
+Anchor design and installation|fixation unique|enkelvoudige bevestiging|Einzelbefestigung|single fixing|
+Anchor design and installation|béton fissuré|gescheurd beton|gerissener Beton|cracked concrete|
+Anchor design and installation|béton non fissuré|ongescheurd beton|ungerissener Beton|uncracked concrete|
+Anchor design and installation|substrat;matériau support|ondergrond;basismateriaal|Untergrund;Verankerungsgrund|base material|
+Anchor design and installation|bloc plein|volle blok;massief blok|Vollstein|solid block|
+Anchor design and installation|bloc creux|holle blok|Hohlblockstein|hollow block|
+Anchor design and installation|bloc perforé|geperforeerde steen|Lochstein|perforated block|
+Anchor design and installation|bloc rempli de béton|met beton gevulde blok|betonverfüllter Hohlblock|concrete-filled block|
+Anchor design and installation|bloc silico-calcaire|kalkzandsteenblok|Kalksandsteinblock|calcium silicate block|
+Anchor design and installation|tamis d'injection|zeefhuls;injectiehuls|Siebhülse;Injektionshülse|injection sleeve|
+Anchor design and installation|résine d'injection|injectiehars|Injektionsharz|injection resin|
+Anchor design and installation|mortier d'injection|injectiemortel|Injektionsmörtel|injection mortar|
+Anchor design and installation|cartouche de résine|harskoker|Harzkartusche|resin cartridge|
+Anchor design and installation|buse mélangeuse|mengmondstuk|Mischdüse|mixing nozzle|
+Anchor design and installation|temps de prise|uithardingstijd|Aushärtezeit|curing time|
+Anchor design and installation|temps de manipulation|verwerkingstijd|Verarbeitungszeit|working time|
+Anchor design and installation|température du support|ondergrondtemperatuur|Untergrundtemperatur|base material temperature|
+Anchor design and installation|profondeur d'ancrage effective|effectieve verankeringsdiepte|wirksame Verankerungstiefe|effective embedment depth|
+Anchor design and installation|profondeur de perçage|boordiepte|Bohrlochtiefe|drill hole depth|
+Anchor design and installation|diamètre de perçage|boordiameter|Bohrlochdurchmesser|drill hole diameter|
+Anchor design and installation|diamètre de l'ancrage|ankerdiameter|Ankerdurchmesser|anchor diameter|
+Anchor design and installation|épaisseur de la pièce à fixer|dikte van het te bevestigen onderdeel|Anbauteildicke|fixture thickness|
+Anchor design and installation|épaisseur du support|ondergronddikte|Bauteildicke des Untergrundes|base material thickness|
+Anchor design and installation|distance au bord;distance au bord libre|randafstand;vrije randafstand|Randabstand;Abstand zum freien Rand|edge distance|
+Anchor design and installation|distance entre ancrages;entraxe des ancrages|ankerafstand;hartafstand van de ankers|Ankerabstand;Achsabstand der Anker|anchor spacing|
+Anchor design and installation|distance critique au bord|kritieke randafstand|kritischer Randabstand|critical edge distance|
+Anchor design and installation|distance minimale au bord|minimale randafstand|minimaler Randabstand|minimum edge distance|
+Anchor design and installation|nettoyage du trou|reiniging van het boorgat|Bohrlochreinigung|hole cleaning|
+Anchor design and installation|brossage;écouvillonnage|borstelen|Ausbürsten|brushing|
+Anchor design and installation|soufflage du trou|uitblazen van het boorgat|Ausblasen des Bohrlochs|blowing out the hole|
+Anchor design and installation|perçage à percussion|hamerboren|Hammerbohren|hammer drilling|
+Anchor design and installation|carottage diamant|diamantboren|Diamantbohren|diamond drilling|
+Anchor design and installation|rondelle plate|vlakke sluitring|Unterlegscheibe|flat washer|
+Anchor design and installation|rondelle crantée|getande sluitring|Zahnscheibe|serrated washer|
+Anchor design and installation|écrou hexagonal|zeskantmoer|Sechskantmutter|hexagonal nut|
+Anchor design and installation|contre-écrou|contramoer|Kontermutter|locknut|
+Anchor design and installation|clé dynamométrique|momentsleutel|Drehmomentschlüssel|torque wrench|
+Anchor design and installation|rupture de l'acier|staalbreuk|Stahlversagen|steel failure|
+Anchor design and installation|rupture par cône de béton|betonkegelbreuk|Betonausbruch|concrete cone failure|
+Anchor design and installation|rupture par fendage|splijtbreuk|Spaltversagen|splitting failure|
+Anchor design and installation|rupture par arrachement|uittrekbreuk|Herausziehversagen|pull-out failure|
+Anchor design and installation|rupture par effet de levier|betonuitbreken door hefboomwerking|Betonausbruch auf der lastabgewandten Seite|concrete pry-out failure|
+Anchor design and installation|rupture de bord de béton|betonrandbreuk|Betonkantenbruch|concrete edge failure|
+Anchor design and installation|interaction traction-cisaillement|interactie trek-afschuiving|Interaktion Zug-Querlast|tension-shear interaction|
+Anchor design and installation|bras de levier du cisaillement|hefboomsarm van de dwarskracht|Hebelarm der Querlast|shear lever arm|
+Anchor design and installation|effet de levier|hefboomwerking|Hebelwirkung|prying action|
+Anchor design and installation|taux d'utilisation|benuttingsgraad|Ausnutzungsgrad|utilisation ratio|
+Anchor design and installation|ancrage conforme;fixation conforme|voldoend anker;bevestiging voldoet|Anker ausreichend;Befestigung ausreichend|anchor check passed|
+Anchor design and installation|ancrage non conforme;fixation non conforme|anker voldoet niet;bevestiging voldoet niet|Anker nicht ausreichend;Befestigung nicht ausreichend|anchor check failed|
+General project vocabulary|projet;projets|project;projecten|Projekt;Projekte|project|
+General project vocabulary|chantier;site de construction|bouwplaats;werf|Baustelle|construction site|
+General project vocabulary|client;clients|klant;klanten|Kunde;Kunden|client|
+General project vocabulary|architecte;architectes|architect;architecten|Architekt;Architekten|architect|
+General project vocabulary|ingénieur;ingénieurs|ingenieur;ingenieurs|Ingenieur;Ingenieure|engineer|
+General project vocabulary|bureau de contrôle|controlebureau|Prüfstelle|checking body|
+General project vocabulary|maître d'œuvre;maître d'oeuvre|ontwerpcoördinator|Planungskoordinator|design coordinator|Contract role varies; check the appointment and project responsibilities.
+General project vocabulary|sous-traitant;sous-traitants|onderaannemer;onderaannemers|Nachunternehmer;Subunternehmer|subcontractor|
+General project vocabulary|fournisseur;fournisseurs|leverancier;leveranciers|Lieferant;Lieferanten|supplier|
+General project vocabulary|fabricant;fabricants|fabrikant;fabrikanten|Hersteller|manufacturer|
+General project vocabulary|contact;personne de contact|contactpersoon;aanspreekpunt|Ansprechpartner;Kontaktperson|contact person|
+General project vocabulary|responsable du projet|projectverantwoordelijke;projectleider|Projektleiter;Projektverantwortlicher|project lead|
+General project vocabulary|coordonnées|contactgegevens|Kontaktdaten|contact details|
+General project vocabulary|adresse;adresse du projet|adres;projectadres|Adresse;Projektadresse|address|
+General project vocabulary|code postal|postcode|Postleitzahl|postal code|
+General project vocabulary|ville;commune|stad;gemeente|Stadt;Gemeinde|town|
+General project vocabulary|pays|land|Land|country|
+General project vocabulary|téléphone;tél.|telefoon;tel.|Telefon;Tel.|telephone|
+General project vocabulary|courriel;adresse électronique|e-mail;emailadres|E-Mail;E-Mail-Adresse|email|
+General project vocabulary|objet|onderwerp|Betreff|subject|
+General project vocabulary|référence du projet|projectreferentie|Projektreferenz|project reference|
+General project vocabulary|numéro de projet|projectnummer|Projektnummer|project number|
+General project vocabulary|numéro de dossier|dossiernummer|Vorgangsnummer|file reference number|
+General project vocabulary|nom du projet|projectnaam|Projektname|project name|
+General project vocabulary|description du projet|projectomschrijving|Projektbeschreibung|project description|
+General project vocabulary|demande;demandes|aanvraag;aanvragen|Anfrage;Anfragen|request|
+General project vocabulary|demande de prix;demande de devis|prijsaanvraag;offerteaanvraag|Preisanfrage;Angebotsanfrage|request for quotation|
+General project vocabulary|devis;offre de prix|offerte;prijsopgave|Angebot;Preisangebot|quotation|
+General project vocabulary|commande;bon de commande|bestelling;bestelbon|Bestellung;Bestellschein|order|
+General project vocabulary|confirmation de commande|orderbevestiging|Auftragsbestätigung|order confirmation|
+General project vocabulary|numéro de commande|bestelnummer;ordernummer|Bestellnummer;Auftragsnummer|order number|
+General project vocabulary|prix unitaire|eenheidsprijs;stukprijs|Einheitspreis;Stückpreis|unit price|
+General project vocabulary|prix total|totaalprijs|Gesamtpreis|total price|
+General project vocabulary|montant;montant total|bedrag;totaalbedrag|Betrag;Gesamtbetrag|amount|
+General project vocabulary|remise commerciale|handelskorting|Handelsrabatt|trade discount|
+General project vocabulary|hors taxes|exclusief belasting;exclusief btw|ohne Steuer;ohne MwSt.|excluding tax|
+General project vocabulary|toutes taxes comprises|inclusief belasting;inclusief btw|einschließlich Steuer;inklusive MwSt.|including tax|
+General project vocabulary|facture;factures|factuur;facturen|Rechnung;Rechnungen|invoice|
+General project vocabulary|livraison;livraisons|levering;leveringen|Lieferung;Lieferungen|delivery|
+General project vocabulary|bon de livraison|leveringsbon;vrachtbrief|Lieferschein|delivery note|
+General project vocabulary|délai de livraison|levertermijn;levertijd|Lieferzeit;Lieferfrist|delivery lead time|
+General project vocabulary|date de livraison|leverdatum;leveringsdatum|Lieferdatum;Liefertermin|delivery date|
+General project vocabulary|adresse de livraison|leveringsadres;afleveradres|Lieferadresse|delivery address|
+General project vocabulary|livraison sur chantier|werflevering;levering op de bouwplaats|Baustellenlieferung|site delivery|
+General project vocabulary|date souhaitée|gewenste datum|gewünschter Termin|requested date|
+General project vocabulary|en stock;disponible en stock|op voorraad;uit voorraad leverbaar|auf Lager;ab Lager lieferbar|in stock|
+General project vocabulary|sur commande|op bestelling|auf Bestellung|to order|
+General project vocabulary|sur demande|op aanvraag|auf Anfrage|on request|
+General project vocabulary|sur mesure|op maat|nach Maß;maßgefertigt|custom-made|
+General project vocabulary|standard;version standard|standaard;standaarduitvoering|Standardausführung;Standardversion|standard version|
+General project vocabulary|variante;variante proposée|variant;voorgestelde variant|Variante;Alternativvorschlag|variant|
+General project vocabulary|alternative;solution alternative|alternatief;alternatieve oplossing|Alternative;Alternativlösung|alternative solution|
+General project vocabulary|accessoire;accessoires|toebehoren;accessoire|Zubehör;Zubehörteil|accessory|
+General project vocabulary|conditionnement;emballage|verpakking;verpakkingswijze|Verpackung;Verpackungsart|packaging|
+General project vocabulary|nombre de pièces|aantal stuks|Stückanzahl|number of pieces|
+General project vocabulary|par pièce;à la pièce|per stuk|je Stück;pro Stück|per piece|
+General project vocabulary|par mètre;au mètre|per meter|je Meter;pro Meter|per metre|
+General project vocabulary|par mètre carré|per vierkante meter|je Quadratmeter|per square metre|
+General project vocabulary|poids total|totaalgewicht|Gesamtgewicht|total weight|
+General project vocabulary|poids unitaire|stukgewicht|Stückgewicht|unit weight|
+General project vocabulary|réunion;réunions|vergadering;vergaderingen|Besprechung;Besprechungen|meeting|
+General project vocabulary|compte rendu de réunion|vergaderverslag|Besprechungsprotokoll|meeting minutes|
+General project vocabulary|liste des actions|actielijst|Maßnahmenliste|action list|
+General project vocabulary|planning;calendrier du projet|planning;projectplanning|Terminplan;Projektzeitplan|project schedule|
+General project vocabulary|échéance;date limite|deadline;uiterste datum|Frist;Abgabetermin|deadline|
+General project vocabulary|étape;phase du projet|projectfase;fase|Projektphase;Phase|project stage|
+General project vocabulary|jalon du projet;jalon|projectmijlpaal;mijlpaal|Projektmeilenstein;Meilenstein|milestone|
+General project vocabulary|priorité;priorité élevée|prioriteit;hoge prioriteit|Priorität;hohe Priorität|priority|
+General project vocabulary|urgent;urgente|dringend;spoed|dringend;eilig|urgent|
+General project vocabulary|en cours;en cours de traitement|in behandeling;in uitvoering|in Bearbeitung;in Arbeit|in progress|
+General project vocabulary|terminé;terminée|afgerond;voltooid|abgeschlossen;fertiggestellt|completed|
+General project vocabulary|à faire;à réaliser|te doen;uit te voeren|zu erledigen;auszuführen|to be done|
+General project vocabulary|en attente;en attente de réponse|in afwachting;wacht op antwoord|ausstehend;Antwort ausstehend|pending|
+General project vocabulary|approuvé;approuvée|goedgekeurd|freigegeben;genehmigt|approved|
+General project vocabulary|refusé;refusée|afgekeurd;geweigerd|abgelehnt;zurückgewiesen|rejected|
+General project vocabulary|à réviser;à modifier|te herzien;te wijzigen|zu überarbeiten;zu ändern|to be revised|
+General project vocabulary|pour information|ter informatie|zur Information|for information|
+General project vocabulary|pour approbation|ter goedkeuring|zur Freigabe|for approval|
+General project vocabulary|pour exécution|voor uitvoering|zur Ausführung|for construction|
+General project vocabulary|pour fabrication|voor productie|zur Fertigung|for manufacture|
+General project vocabulary|ne pas utiliser pour exécution|niet voor uitvoering gebruiken|nicht zur Ausführung verwenden|not for construction|
+General project vocabulary|annulé;annulée|geannuleerd|storniert;aufgehoben|cancelled|
+General project vocabulary|remplacé par;remplacée par|vervangen door|ersetzt durch|superseded by|
+General project vocabulary|dernière version;version actuelle|laatste versie;actuele versie|aktuelle Version;neueste Version|latest version|
+General project vocabulary|document joint;pièce jointe|bijlage;bijgevoegd document|Anlage;beigefügtes Dokument|attachment|
+General project vocabulary|documents joints;pièces jointes|bijlagen;bijgevoegde documenten|Anlagen;beigefügte Dokumente|attachments|
+General project vocabulary|voir pièce jointe|zie bijlage|siehe Anlage|see attachment|
+General project vocabulary|voir ci-dessous|zie hieronder|siehe unten|see below|
+General project vocabulary|voir ci-dessus|zie hierboven|siehe oben|see above|
+General project vocabulary|remarque;remarques|opmerking;opmerkingen|Bemerkung;Bemerkungen|note|
+General project vocabulary|commentaire;commentaires|commentaar;commentaren|Kommentar;Kommentare|comment|
+General project vocabulary|information complémentaire|aanvullende informatie|zusätzliche Information|additional information|
+General project vocabulary|informations manquantes|ontbrekende informatie|fehlende Angaben|missing information|
+General project vocabulary|à compléter|aan te vullen|zu ergänzen|to be completed|
+General project vocabulary|à vérifier|te controleren|zu prüfen|to be checked|
+General project vocabulary|sous réserve de confirmation|onder voorbehoud van bevestiging|vorbehaltlich Bestätigung|subject to confirmation|
+General project vocabulary|aucune modification|geen wijziging|keine Änderung|no change|
+General project vocabulary|sans objet;non applicable|niet van toepassing|nicht zutreffend;nicht anwendbar|not applicable|
+General project vocabulary|oui|ja|ja|yes|
+General project vocabulary|non|nee|nein|no|
+General project vocabulary|nom|naam|Name|name|
+General project vocabulary|date|datum|Datum|date|
+General project vocabulary|signature|handtekening|Unterschrift|signature|
+General project vocabulary|page;pages|pagina;pagina's|Seite;Seiten|page|
+General project vocabulary|titre;sous-titre|titel;ondertitel|Titel;Untertitel|title|
+General project vocabulary|sommaire;table des matières|inhoudsopgave|Inhaltsverzeichnis|table of contents|
+General project vocabulary|introduction|inleiding|Einleitung|introduction|
+General project vocabulary|objectif;objectifs|doel;doelstelling|Ziel;Zielsetzung|objective|
+General project vocabulary|résultat;résultats|resultaat;resultaten|Ergebnis;Ergebnisse|result|
+General project vocabulary|conclusion;conclusions|conclusie;conclusies|Schlussfolgerung;Schlussfolgerungen|conclusion|
+General project vocabulary|avantage;avantages|voordeel;voordelen|Vorteil;Vorteile|benefit|
+General project vocabulary|inconvénient;inconvénients|nadeel;nadelen|Nachteil;Nachteile|disadvantage|
+General project vocabulary|exemple;exemples|voorbeeld;voorbeelden|Beispiel;Beispiele|example|
+General project vocabulary|application;applications|toepassing;toepassingen|Anwendung;Anwendungen|application|
+General project vocabulary|documentation technique|technische documentatie|technische Dokumentation|technical documentation|
+General project vocabulary|fiche technique|technische fiche;technisch gegevensblad|technisches Datenblatt|technical datasheet|
+General project vocabulary|instructions de montage;notice de montage|montagehandleiding;montagevoorschriften|Montageanleitung;Montagehinweise|installation instructions|
+General project vocabulary|prescriptions de pose|plaatsingsvoorschriften|Einbauvorschriften|installation requirements|
+General project vocabulary|manuel d'utilisation|gebruikershandleiding|Bedienungsanleitung|user manual|
+General project vocabulary|mise à jour|bijwerking;update|Aktualisierung|update|
+General project vocabulary|télécharger|downloaden|herunterladen|download|
+General project vocabulary|enregistrer;sauvegarder|opslaan;bewaren|speichern;sichern|save|
+General project vocabulary|ouvrir;ouverture du fichier|openen;bestand openen|öffnen;Datei öffnen|open|
+General project vocabulary|fermer;fermeture du fichier|sluiten;bestand sluiten|schließen;Datei schließen|close|
+General project vocabulary|suivant;suivante|volgende|nächste;nächster|next|
+General project vocabulary|précédent;précédente|vorige|vorherige;vorheriger|previous|
+General project vocabulary|obligatoire|verplicht|erforderlich;verpflichtend|required|
+General project vocabulary|facultatif;optionnel|optioneel;niet verplicht|optional;wahlweise|optional|
+General project vocabulary|inclus;incluse|inbegrepen|enthalten;inbegriffen|included|
+General project vocabulary|exclu;excluse|uitgesloten;niet inbegrepen|ausgeschlossen;nicht enthalten|excluded|
+General project vocabulary|disponible|beschikbaar|verfügbar|available|
+General project vocabulary|indisponible|niet beschikbaar|nicht verfügbar|unavailable|
+Drawing labels and instructions|vue;vues|aanzicht;aanzichten|Ansicht;Ansichten|view|
+Drawing labels and instructions|plan;plans|tekening;tekeningen|Zeichnung;Zeichnungen|drawing|Plan can also mean a plan view; check the drawing title and context.
+Drawing labels and instructions|coupe;coupes|doorsnede;doorsneden|Schnitt;Schnitte|section|
+Drawing labels and instructions|détail;détails|detail;details|Detail;Details|detail|
+Drawing labels and instructions|façade avant|voorgevel|Vorderfassade|front elevation|
+Drawing labels and instructions|façade arrière|achtergevel|Rückfassade|rear elevation|
+Drawing labels and instructions|façade latérale|zijgevel|Seitenfassade|side elevation|
+Drawing labels and instructions|façade gauche|linkergevel|linke Fassade|left elevation|
+Drawing labels and instructions|façade droite|rechtergevel|rechte Fassade|right elevation|
+Drawing labels and instructions|vue en plan|bovenaanzicht in plan|Grundrissdarstellung|plan view|
+Drawing labels and instructions|vue isométrique|isometrisch aanzicht|isometrische Ansicht|isometric view|
+Drawing labels and instructions|vue éclatée|explosietekening|Explosionsdarstellung|exploded view|
+Drawing labels and instructions|détail agrandi|vergroot detail|vergrößertes Detail|enlarged detail|
+Drawing labels and instructions|détail type;détails types|standaarddetail;standaarddetails|Regeldetail;Regeldetails|typical detail|
+Drawing labels and instructions|échelle;échelles|schaal;schalen|Maßstab;Maßstäbe|scale|
+Drawing labels and instructions|sans échelle|niet op schaal|ohne Maßstab|not to scale|
+Drawing labels and instructions|cote;cotes|maat;maten|Maß;Maße|dimension|
+Drawing labels and instructions|cote à vérifier|te controleren maat|zu prüfendes Maß|dimension to be checked|
+Drawing labels and instructions|cotes sur chantier|werfmaten;bouwplaatsmaten|Baustellenmaße|site dimensions|
+Drawing labels and instructions|cotes indicatives|indicatieve maten|Richtmaße|indicative dimensions|
+Drawing labels and instructions|dimensions réelles|werkelijke afmetingen|tatsächliche Abmessungen|actual dimensions|
+Drawing labels and instructions|tolérance;tolérances|tolerantie;toleranties|Toleranz;Toleranzen|tolerance|
+Drawing labels and instructions|hors tolérance|buiten tolerantie|außerhalb der Toleranz|outside tolerance|
+Drawing labels and instructions|axe;axes|as;assen|Achse;Achsen|axis|
+Drawing labels and instructions|repérage;plan de repérage|nummering;nummeringsplan|Positionszuordnung;Positionsplan|item marking plan|
+Drawing labels and instructions|numéro de repère|positienummer|Positionsnummer|item number|
+Drawing labels and instructions|sens de pose|plaatsingsrichting|Einbaurichtung|installation direction|
+Drawing labels and instructions|sens de portée|overspanningsrichting|Spannrichtung|span direction|
+Drawing labels and instructions|sens de déplacement|bewegingsrichting|Bewegungsrichtung|direction of movement|
+Drawing labels and instructions|sens de la charge|belastingsrichting|Lastrichtung|load direction|
+Drawing labels and instructions|gauche|links|links|left|
+Drawing labels and instructions|droite|rechts|rechts|right|
+Drawing labels and instructions|supérieur;supérieure|bovenste|obere;oberer|upper|
+Drawing labels and instructions|inférieur;inférieure|onderste|untere;unterer|lower|
+Drawing labels and instructions|intérieur;intérieure|binnenzijde;inwendig|innen;Innenseite|inside|
+Drawing labels and instructions|extérieur;extérieure|buitenzijde;uitwendig|außen;Außenseite|outside|
+Drawing labels and instructions|horizontal;horizontale|horizontaal;horizontale|horizontal;waagerecht|horizontal|
+Drawing labels and instructions|vertical;verticale|verticaal;verticale|vertikal;senkrecht|vertical|
+Drawing labels and instructions|longitudinal;longitudinale|langsrichting;langslopend|längs;Längsrichtung|longitudinal|
+Drawing labels and instructions|transversal;transversale|dwarsrichting;dwarslopend|quer;Querrichtung|transverse|
+Drawing labels and instructions|parallèle|evenwijdig;parallel|parallel|parallel|
+Drawing labels and instructions|perpendiculaire|loodrecht|rechtwinklig;senkrecht dazu|perpendicular|
+Drawing labels and instructions|symétrique|symmetrisch|symmetrisch|symmetrical|
+Drawing labels and instructions|asymétrique|asymmetrisch|asymmetrisch|asymmetrical|
+Drawing labels and instructions|en partie haute|aan de bovenzijde|im oberen Bereich|at the top|
+Drawing labels and instructions|en partie basse|aan de onderzijde|im unteren Bereich|at the bottom|
+Drawing labels and instructions|au droit de|ter plaatse van|im Bereich von|at the location of|
+Drawing labels and instructions|entre axes|tussen de assen|zwischen den Achsen|between centrelines|
+Drawing labels and instructions|à chaque extrémité|aan elk uiteinde|an jedem Ende|at each end|
+Drawing labels and instructions|de chaque côté|aan beide zijden|auf beiden Seiten|on both sides|
+Drawing labels and instructions|tous les niveaux|alle niveaus|alle Ebenen|all levels|
+Drawing labels and instructions|niveau;étage|niveau;verdieping|Ebene;Geschoss|level|
+Drawing labels and instructions|rez-de-chaussée;rez de chaussée|gelijkvloerse verdieping|Erdgeschoß|ground floor|
+Drawing labels and instructions|premier étage|eerste verdieping|erstes Obergeschoss|first floor|
+Drawing labels and instructions|sous-sol|souterrain|Untergeschoss|basement|
+Drawing labels and instructions|toiture;toitures|dak;daken|Dach;Dächer|roof|
+Drawing labels and instructions|terrasse;terrasses|terras;terrassen|Terrasse;Terrassen|terrace|
+Drawing labels and instructions|ouverture;ouvertures|opening;openingen|Öffnung;Öffnungen|opening|
+Drawing labels and instructions|baie;baies|gevelopening;gevelopeningen|Wandöffnung;Wandöffnungen|wall opening|
+Drawing labels and instructions|largeur libre|vrije breedte|lichte Breite|clear width|
+Drawing labels and instructions|hauteur libre|vrije hoogte|lichte Höhe|clear height|
+Drawing labels and instructions|distance libre|vrije afstand|lichter Abstand|clear distance|
+Drawing labels and instructions|encombrement|inbouwruimte|Einbauraum|installation envelope|
+Drawing labels and instructions|ne pas percer|niet boren|nicht bohren|do not drill|
+Drawing labels and instructions|ne pas couper|niet snijden;niet zagen|nicht schneiden|do not cut|
+Drawing labels and instructions|ne pas souder|niet lassen|nicht schweißen|do not weld|
+Drawing labels and instructions|à souder sur chantier|op de werf te lassen|auf der Baustelle zu schweißen|to be welded on site|
+Drawing labels and instructions|à monter sur chantier|op de werf te monteren|auf der Baustelle zu montieren|to be installed on site|
+Drawing labels and instructions|à mesurer sur chantier|op de werf op te meten|auf der Baustelle aufzumessen|to be measured on site|
+Drawing labels and instructions|à définir par l'ingénieur|door de ingenieur te bepalen|durch den Ingenieur festzulegen|to be determined by the engineer|
+Drawing labels and instructions|à fournir par le client|door de klant te leveren|bauseits durch den Kunden zu liefern|to be supplied by the client|
+Drawing labels and instructions|à charge de l'entrepreneur|ten laste van de aannemer|Leistung des Auftragnehmers|contractor's responsibility|
+Drawing labels and instructions|à confirmer par l'architecte|door de architect te bevestigen|durch den Architekten zu bestätigen|to be confirmed by the architect|
+Structural calculations|hypothèses de calcul|berekeningsaannamen|Berechnungsannahmen|design assumptions|
+Structural calculations|données d'entrée|invoergegevens|Eingabedaten|input data|
+Structural calculations|résultats de calcul|berekeningsresultaten|Berechnungsergebnisse|calculation results|
+Structural calculations|modèle de calcul|rekenmodel|Berechnungsmodell|calculation model|
+Structural calculations|schéma statique|statisch schema|statisches System|structural model|
+Structural calculations|note de calcul détaillée|gedetailleerde berekeningsnota|detaillierter Berechnungsbericht|detailed calculation report|
+Structural calculations|vérification de résistance|sterktecontrole|Tragfähigkeitsnachweis|resistance check|
+Structural calculations|vérification de flèche|doorbuigingscontrole|Durchbiegungsnachweis|deflection check|
+Structural calculations|vérification de stabilité|stabiliteitscontrole|Stabilitätsnachweis|stability check|
+Structural calculations|vérification de l'ancrage|ankercontrole|Verankerungsnachweis|anchorage check|
+Structural calculations|vérification des soudures|lascontrole|Schweißnahtnachweis|weld check|
+Structural calculations|cas de charge;cas de chargement|belastinggeval;lastgeval|Lastfall|load case|
+Structural calculations|combinaison déterminante|maatgevende combinatie|maßgebende Kombination|governing combination|
+Structural calculations|charge déterminante|maatgevende belasting|maßgebende Last|governing load|
+Structural calculations|section déterminante|maatgevende doorsnede|maßgebender Querschnitt|governing section|
+Structural calculations|charge linéaire|lijnlast|Linienlast|line load|
+Structural calculations|charge surfacique|vlaklast|Flächenlast|area load|
+Structural calculations|charge ponctuelle|puntlast|Punktlast|point load|
+Structural calculations|charge uniformément répartie|gelijkmatig verdeelde belasting|gleichmäßig verteilte Last|uniformly distributed load|
+Structural calculations|charge triangulaire|driehoekslast|Dreieckslast|triangular load|
+Structural calculations|charge verticale|verticale belasting|Vertikallast|vertical load|
+Structural calculations|charge horizontale|horizontale belasting|Horizontallast|horizontal load|
+Structural calculations|charge excentrée|excentrische belasting|exzentrische Last|eccentric load|
+Structural calculations|charge permanente totale|totale permanente belasting|gesamte ständige Last|total permanent load|
+Structural calculations|poids volumique|volumiek gewicht|Wichte|unit weight|
+Structural calculations|masse volumique|massadichtheid|Rohdichte|density|
+Structural calculations|largeur tributaire|belastingbreedte|Lasteinzugsbreite|tributary width|
+Structural calculations|surface tributaire|belastingoppervlak|Lasteinzugsfläche|tributary area|
+Structural calculations|moment de torsion|torsiemoment;wringmoment|Torsionsmoment|torsional moment|
+Structural calculations|effort normal|normaalkracht|Normalkraft|axial force|
+Structural calculations|effort tranchant vertical|verticale dwarskracht|vertikale Querkraft|vertical shear force|
+Structural calculations|effort tranchant horizontal|horizontale dwarskracht|horizontale Querkraft|horizontal shear force|
+Structural calculations|contrainte normale|normaalspanning|Normalspannung|normal stress|
+Structural calculations|contrainte de cisaillement|schuifspanning|Schubspannung|shear stress|
+Structural calculations|contrainte de contact|contactspanning|Kontaktspannung|contact stress|
+Structural calculations|contrainte de flexion|buigspanning|Biegespannung|bending stress|
+Structural calculations|déformation;déformations|vervorming;vervormingen|Verformung;Verformungen|deformation|
+Structural calculations|déplacement;déplacements|verplaatsing;verplaatsingen|Verschiebung;Verschiebungen|displacement|
+Structural calculations|rotation;angle de rotation|rotatie;rotatiehoek|Verdrehung;Drehwinkel|rotation|
+Structural calculations|rigidité axiale|axiale stijfheid|Dehnsteifigkeit|axial stiffness|
+Structural calculations|rigidité en flexion|buigstijfheid|Biegesteifigkeit|bending stiffness|
+Structural calculations|rigidité en torsion|torsiestijfheid|Torsionssteifigkeit|torsional stiffness|
+Structural calculations|module d'élasticité|elasticiteitsmodulus|Elastizitätsmodul|modulus of elasticity|
+Structural calculations|module de cisaillement|glijdingsmodulus|Schubmodul|shear modulus|
+Structural calculations|coefficient de Poisson|dwarscontractiecoëfficiënt|Querdehnzahl|Poisson's ratio|
+Structural calculations|moment d'inertie|traagheidsmoment|Flächenträgheitsmoment|second moment of area|
+Structural calculations|module de résistance élastique|elastisch weerstandsmoment|elastisches Widerstandsmoment|elastic section modulus|
+Structural calculations|module de résistance plastique|plastisch weerstandsmoment|plastisches Widerstandsmoment|plastic section modulus|
+Structural calculations|centre de gravité|zwaartepunt|Schwerpunkt|centroid|
+Structural calculations|axe neutre|neutrale lijn|neutrale Achse|neutral axis|
+Structural calculations|flambement|knik|Knicken|buckling|
+Structural calculations|déversement|kip;zijdelings uitknikken|Biegedrillknicken|lateral-torsional buckling|
+Structural calculations|voilement local|lokaal plooien|lokales Beulen|local buckling|
+Structural calculations|longueur de flambement|kniklengte|Knicklänge|effective buckling length|
+Structural calculations|élancement|slankheid|Schlankheit|slenderness|
+Structural calculations|imperfection initiale|initiële imperfectie|Anfangsimperfektion|initial imperfection|
+Structural calculations|effet du second ordre|tweede-orde-effect|Theorie zweiter Ordnung|second-order effect|
+Structural calculations|coefficient de sécurité|veiligheidsfactor|Sicherheitsbeiwert|safety factor|
+Structural calculations|coefficient partiel|partiële factor|Teilsicherheitsbeiwert|partial factor|
+Structural calculations|coefficient de combinaison|combinatiefactor|Kombinationsbeiwert|combination factor|
+Structural calculations|coefficient de réduction|reductiefactor|Abminderungsbeiwert|reduction factor|
+Structural calculations|valeur nominale|nominale waarde|Nennwert|nominal value|
+Structural calculations|valeur caractéristique|karakteristieke waarde|charakteristischer Wert|characteristic value|
+Structural calculations|valeur de calcul|rekenwaarde|Bemessungswert|design value|
+Structural calculations|valeur admissible|toelaatbare waarde|zulässiger Wert|allowable value|
+Structural calculations|résistance requise|vereiste weerstand|erforderlicher Widerstand|required resistance|
+Structural calculations|capacité portante|draagvermogen|Tragfähigkeit|load-bearing capacity|
+Structural calculations|coefficient d'utilisation|utilisatiefactor|Ausnutzungsfaktor|utilisation factor|
+Structural calculations|critère satisfait|criterium voldaan|Kriterium erfüllt|criterion satisfied|
+Structural calculations|critère non satisfait|criterium niet voldaan|Kriterium nicht erfüllt|criterion not satisfied|
+Structural calculations|conforme|voldoet|erfüllt|satisfied|Confirm whether this denotes a calculation result or a compliance status.
+Structural calculations|vérifié|gecontroleerd|geprüft|checked|
+Structural calculations|non conforme|voldoet niet|nicht erfüllt|not satisfied|
+Structural calculations|non vérifié|niet gecontroleerd|nicht geprüft|not checked|
+Structural calculations|non justifié|niet aangetoond|nicht nachgewiesen|not demonstrated|
+Structural calculations|limite de flèche|doorbuigingsgrens|Durchbiegungsgrenze|deflection limit|
+Structural calculations|flèche maximale|maximale doorbuiging|maximale Durchbiegung|maximum deflection|
+Structural calculations|ouverture de fissure|scheurwijdte|Rissbreite|crack width|
+Structural calculations|durée de vie de calcul|ontwerplevensduur|Bemessungsnutzungsdauer|design working life|
+Masonry design and materials|brique de parement|gevelsteen;gevelbaksteen|Verblendziegel|facing brick|
+Masonry design and materials|briques de parement|gevelstenen;gevelbakstenen|Verblendziegelsteine|facing bricks|
+Masonry design and materials|brique pleine|volle baksteen|Vollziegel|solid brick|
+Masonry design and materials|brique perforée|geperforeerde baksteen|Lochziegel|perforated brick|
+Masonry design and materials|brique creuse|holle baksteen|Hohlziegel|hollow brick|
+Masonry design and materials|brique sur chant|baksteen op kant|hochkant gestellter Ziegel|brick on edge|
+Masonry design and materials|brique en boutisse|kopsteen|Binderziegel|header brick|
+Masonry design and materials|brique en panneresse|streksteen|Läuferziegel|stretcher brick|
+Masonry design and materials|appareil de maçonnerie|metselverband|Mauerwerksverband|masonry bond|
+Masonry design and materials|appareil en demi-brique|halfsteensverband|Läuferverband|stretcher bond|
+Masonry design and materials|joint horizontal;joint d'assise|lintvoeg;horizontale mortelvoeg|horizontale Lagerfuge|bed joint|
+Masonry design and materials|joint vertical;joint montant|stootvoeg;verticale mortelvoeg|vertikale Stoßfuge|perpend joint|
+Masonry design and materials|joint mince|dunne voeg;lijmvoeg|Dünnbettfuge|thin joint|
+Masonry design and materials|épaisseur du joint|voegdikte|Fugendicke|joint thickness|
+Masonry design and materials|mortier de maçonnerie|metselmortel|Mauermörtel|masonry mortar|
+Masonry design and materials|classe de mortier|mortelklasse|Mörtelklasse|mortar class|
+Masonry design and materials|résistance à la compression normalisée|genormaliseerde druksterkte|normierte Druckfestigkeit|normalized compressive strength|
+Masonry design and materials|résistance caractéristique de la maçonnerie|karakteristieke metselwerksterkte|charakteristische Mauerwerksfestigkeit|characteristic masonry strength|
+Masonry design and materials|résistance à la flexion de la maçonnerie|buigtreksterkte van metselwerk|Mauerwerksbiegezugfestigkeit|masonry flexural strength|
+Masonry design and materials|résistance initiale au cisaillement|initiële schuifsterkte|Anfangsscherfestigkeit|initial shear strength|
+Masonry design and materials|adhérence du mortier|mortelhechting|Mörtelhaftung|mortar bond|
+Masonry design and materials|armature de joint|lintvoegwapening|Lagerfugenbewehrung|bed joint reinforcement|
+Masonry design and materials|mur extérieur|buitenmuur|Außenwand|external wall|
+Masonry design and materials|mur intérieur|binnenmuur|Innenwand|internal wall|
+Masonry design and materials|mur de refend|dragende binnenwand|tragende Innenwand|internal load-bearing wall|
+Masonry design and materials|mur de contreventement|stabiliteitswand|Aussteifungswand|shear wall|
+Masonry design and materials|mur de remplissage|invulwand|Ausfachungswand|infill wall|
+Masonry design and materials|mur creux|spouwmuur|zweischalige Wand|cavity wall|
+Masonry design and materials|paroi extérieure|buitenblad|Außenschale|outer leaf|
+Masonry design and materials|paroi intérieure|binnenblad|Innenschale|inner leaf|
+Masonry design and materials|lame d'air ventilée|geventileerde luchtspouw|belüftete Luftschicht|ventilated air cavity|
+Masonry design and materials|ancrage de liaison|verbindingsanker|Verbindungsanker|connection tie|
+Masonry design and materials|attache de maçonnerie|metselwerkanker|Mauerwerksanker|masonry tie|
+Masonry design and materials|attaches de maçonnerie|metselwerkankers|Mauerwerksanker für Verblendung|masonry ties|
+Masonry design and materials|ancre coulissante|glijanker|Gleitanker|sliding tie|
+Masonry design and materials|liaison flexible|flexibele verbinding|bewegliche Verbindung|flexible connection|
+Masonry design and materials|longueur d'encastrement|inmetsellengte|Einbindelänge|embedment length|
+Masonry design and materials|entraxe horizontal|horizontale hartafstand|horizontaler Achsabstand|horizontal spacing|
+Masonry design and materials|entraxe vertical|verticale hartafstand|vertikaler Achsabstand|vertical spacing|
+Masonry design and materials|densité d'attaches|ankerdichtheid|Ankerdichte|tie density|
+Masonry design and materials|soubassement|plintmetselwerk|Sockelmauerwerk|plinth masonry|
+Masonry design and materials|couronnement de mur|muurafdekking|Mauerabdeckung|wall coping|
+Masonry design and materials|linteau indépendant|zelfdragende latei|selbsttragender Sturz|independent lintel|
+Masonry design and materials|linteau précontraint|voorgespannen latei|vorgespannter Sturz|prestressed lintel|
+Masonry design and materials|linteau en acier|stalen latei|Stahlsturz|steel lintel|
+Masonry design and materials|linteau en béton|betonnen latei|Betonsturz|concrete lintel|
+Masonry design and materials|trumeau|penant|Wandpfeiler|masonry pier|
+Masonry design and materials|retour de baie|dagkant van de opening|Öffnungslaibung|opening reveal|
+Masonry design and materials|fissuration;fissures|scheurvorming;scheuren|Rissbildung;Risse|cracking|
+Masonry design and materials|dilatation thermique|thermische uitzetting|Wärmeausdehnung|thermal expansion|
+Masonry design and materials|retrait de séchage|droogkrimp|Trocknungsschwinden|drying shrinkage|
+Masonry design and materials|fluage|kruip|Kriechen|creep|
+Masonry design and materials|gonflement à l'humidité|vochtuitzetting|Feuchtedehnung|moisture expansion|
+Steel fabrication and coatings|acier inoxydable;inox|roestvast staal;roestvrij staal|Edelstahl;rostfreier Stahl|stainless steel|
+Steel fabrication and coatings|acier galvanisé à chaud|thermisch verzinkt staal|feuerverzinkter Stahl|hot-dip galvanized steel|
+Steel fabrication and coatings|galvanisation à chaud|thermisch verzinken|Feuerverzinkung|hot-dip galvanizing|
+Steel fabrication and coatings|thermolaquage;revêtement poudré|poedercoating;poederlakken|Pulverbeschichtung|powder coating|
+Steel fabrication and coatings|métallisation|metalliseren|Metallisierung|metal spraying|
+Steel fabrication and coatings|protection contre la corrosion|corrosiebescherming|Korrosionsschutz|corrosion protection|
+Steel fabrication and coatings|classe de corrosivité|corrosiviteitsklasse|Korrosivitätskategorie|corrosivity category|
+Steel fabrication and coatings|épaisseur de revêtement|laagdikte van de coating|Beschichtungsdicke|coating thickness|
+Steel fabrication and coatings|couleur RAL|RAL-kleur|RAL-Farbton|RAL colour|
+Steel fabrication and coatings|finition de surface|oppervlakteafwerking|Oberflächenbehandlung|surface finish|
+Steel fabrication and coatings|nuance d'acier|staalkwaliteit|Stahlsorte|steel grade|
+Steel fabrication and coatings|limite d'élasticité|vloeigrens|Streckgrenze|yield strength|
+Steel fabrication and coatings|résistance ultime à la traction|treksterkte|Zugfestigkeit|ultimate tensile strength|
+Steel fabrication and coatings|ductilité|ductiliteit|Duktilität|ductility|
+Steel fabrication and coatings|tôle d'acier|staalplaat|Stahlblech|steel sheet|
+Steel fabrication and coatings|plat en acier|platstaal|Flachstahl|steel flat|
+Steel fabrication and coatings|plat à souder|lasstrip;lasplaat|Anschweißlasche|weld-on plate|
+Steel fabrication and coatings|raidisseur;raidisseurs|verstijver;verstijvers|Steife;Steifen|stiffener|
+Steel fabrication and coatings|gousset;goussets|knoopplaat;knoopplaten|Knotenblech;Knotenbleche|gusset plate|
+Steel fabrication and coatings|cordon de soudure|lasnaad|Schweißnaht|weld bead|
+Steel fabrication and coatings|soudure continue|doorlopende las|durchgehende Schweißnaht|continuous weld|
+Steel fabrication and coatings|soudure discontinue|onderbroken las|unterbrochene Schweißnaht|intermittent weld|
+Steel fabrication and coatings|soudure bout à bout|stompe las|Stumpfnaht|butt weld|
+Steel fabrication and coatings|gorge de soudure|laskeeldikte|Kehlnahtdicke|weld throat thickness|
+Steel fabrication and coatings|longueur efficace de soudure|effectieve laslengte|wirksame Schweißnahtlänge|effective weld length|
+Steel fabrication and coatings|pied de soudure|lasteen|Nahtübergang|weld toe|
+Steel fabrication and coatings|racine de soudure|laswortel|Nahtwurzel|weld root|
+Steel fabrication and coatings|zone affectée thermiquement|warmte-beïnvloede zone|Wärmeeinflusszone|heat-affected zone|
+Steel fabrication and coatings|découpe laser|lasersnijden|Laserschneiden|laser cutting|
+Steel fabrication and coatings|pliage;cintrage|plooien;buigen|Abkanten;Biegen|bending|
+Steel fabrication and coatings|perçage;forage|boren|Bohren|drilling|
+Steel fabrication and coatings|ébavurage|ontbramen|Entgraten|deburring|
+Steel fabrication and coatings|arête vive|scherpe rand|scharfe Kante|sharp edge|
+Steel fabrication and coatings|rayon intérieur de pliage|binnenbuigradius|Innenbiegeradius|inside bend radius|
+Steel fabrication and coatings|angle de pliage|buighoek|Biegewinkel|bend angle|
+Steel fabrication and coatings|tolérance de fabrication|fabricagetolerantie|Fertigungstoleranz|manufacturing tolerance|
+Steel fabrication and coatings|plan de fabrication|productietekening;fabricagetekening|Fertigungszeichnung|fabrication drawing|
+Steel fabrication and coatings|liste de débit|zaaglijst;snijlijst|Zuschnittliste|cutting list|
+Steel fabrication and coatings|traçabilité matière|materiaaltraceerbaarheid|Werkstoffrückverfolgbarkeit|material traceability|
+Steel fabrication and coatings|certificat matière|materiaalcertificaat|Werkstoffzeugnis|material certificate|
+Steel fabrication and coatings|contrôle visuel|visuele controle|Sichtprüfung|visual inspection|
+Steel fabrication and coatings|contrôle dimensionnel|maatcontrole|Maßprüfung|dimensional inspection|
+Site work and tolerances|mise en œuvre;mise en oeuvre|uitvoering;verwerking|Ausführung;Verarbeitung|execution|
+Site work and tolerances|montage;installation|montage;installatie|Montage;Installation|installation|
+Site work and tolerances|démontage|demontage|Demontage|dismantling|
+Site work and tolerances|ordre de montage|montagevolgorde|Montagereihenfolge|installation sequence|
+Site work and tolerances|phase de construction|bouwfase|Bauzustand|construction stage|
+Site work and tolerances|phase définitive|definitieve toestand|Endzustand|final condition|
+Site work and tolerances|phase provisoire|tijdelijke toestand|temporärer Zustand|temporary condition|
+Site work and tolerances|étaiement provisoire|tijdelijke ondersteuning|temporäre Abstützung|temporary propping|
+Site work and tolerances|dépose des étais|verwijderen van de stempels|Entfernen der Baustützen|removal of props|
+Site work and tolerances|mise à niveau|waterpas stellen|Nivellieren|levelling|
+Site work and tolerances|alignement|uitlijning|Ausrichtung|alignment|
+Site work and tolerances|aplomb;verticalité|loodrechtheid|Lotrechtigkeit|plumbness|
+Site work and tolerances|planéité|vlakheid|Ebenheit|flatness|
+Site work and tolerances|écart de niveau|hoogteafwijking|Höhenabweichung|level deviation|
+Site work and tolerances|défaut d'alignement|uitlijnfout|Ausrichtungsfehler|misalignment|
+Site work and tolerances|tolérance de pose|montagetolerantie;plaatsingstolerantie|Montagetoleranz;Einbautoleranz|installation tolerance|
+Site work and tolerances|tolérance cumulée|gecumuleerde tolerantie|kumulierte Toleranz|accumulated tolerance|
+Site work and tolerances|jeu de montage|montagespeling|Montagespiel|installation clearance|
+Site work and tolerances|calage;mise en place des cales|uitvullen;plaatsen van vulplaten|Unterlegen;Einlegen der Unterlagen|shimming|
+Site work and tolerances|réglage final|eindafstelling|Endjustierung|final adjustment|
+Site work and tolerances|contrôle avant montage|controle vóór montage|Kontrolle vor der Montage|pre-installation check|
+Site work and tolerances|contrôle après montage|controle na montage|Kontrolle nach der Montage|post-installation check|
+Site work and tolerances|serrage final|definitief aandraaien|abschließendes Anziehen|final tightening|
+Site work and tolerances|reprise des charges|opnemen van de belastingen|Lastaufnahme|load take-up|
+Site work and tolerances|mise en charge|belasten|Lastaufbringung|loading|
+Site work and tolerances|zone de stockage|opslagzone|Lagerbereich|storage area|
+Site work and tolerances|stockage à sec|droge opslag|trockene Lagerung|dry storage|
+Site work and tolerances|protection pendant le transport|bescherming tijdens transport|Transportschutz|protection during transport|
+Site work and tolerances|protection pendant le montage|bescherming tijdens montage|Schutz während der Montage|protection during installation|
+Site work and tolerances|manutention|handling;verplaatsen van materialen|Handhabung;Materialhandhabung|handling|
+Site work and tolerances|moyen de levage|hijsmiddel|Hebemittel|lifting equipment|
+Site work and tolerances|charge maximale d'utilisation|maximale gebruiksbelasting|maximale Gebrauchslast|maximum working load|
+Site work and tolerances|centre de gravité de la charge|zwaartepunt van de last|Lastschwerpunkt|load centre of gravity|
+Site work and tolerances|angle d'élingage|hijshoek|Anschlagwinkel|sling angle|
+Site work and tolerances|élingue;élingues|hijsband;hijsbanden|Anschlagmittel;Hebeband|lifting sling|
+Site work and tolerances|équipement de protection individuelle|persoonlijke beschermingsmiddelen|persönliche Schutzausrüstung|personal protective equipment|
+Site work and tolerances|consignes de sécurité|veiligheidsinstructies|Sicherheitshinweise|safety instructions|
+Site work and tolerances|risque de chute|valgevaar|Absturzgefahr|fall hazard|
+Site work and tolerances|arêtes tranchantes|scherpe randen|scharfe Kanten|sharp edges|
+Site work and tolerances|zone interdite|verboden zone|Sperrbereich|restricted area|
+Concrete design details|classe de béton|betonklasse|Betonfestigkeitsklasse|concrete strength class|
+Concrete design details|classe d'exposition|milieuklasse|Expositionsklasse|exposure class|
+Concrete design details|enrobage nominal|nominale dekking|Nennbetondeckung|nominal concrete cover|
+Concrete design details|enrobage minimal|minimale dekking|Mindestbetondeckung|minimum concrete cover|
+Concrete design details|armature supérieure|bovenwapening|obere Bewehrung|top reinforcement|
+Concrete design details|armature inférieure|onderwapening|untere Bewehrung|bottom reinforcement|
+Concrete design details|nappe supérieure|bovenste wapeningsnet|obere Bewehrungslage|top reinforcement layer|
+Concrete design details|nappe inférieure|onderste wapeningsnet|untere Bewehrungslage|bottom reinforcement layer|
+Concrete design details|armature de rive|randwapening|Randbewehrung|edge reinforcement|
+Concrete design details|armature de suspension|ophangwapening|Aufhängebewehrung|suspension reinforcement|
+Concrete design details|armature de fendage|splijtwapening|Spaltzugbewehrung|splitting reinforcement|
+Concrete design details|armature d'éclatement|splijttrekwapening|Sprengzugbewehrung|bursting reinforcement|
+Concrete design details|armature anti-poinçonnement|ponswapening|Durchstanzbewehrung|punching shear reinforcement|
+Concrete design details|armature minimale|minimumwapening|Mindestbewehrung|minimum reinforcement|
+Concrete design details|ancrage des barres|staafverankering|Stabverankerung|bar anchorage|
+Concrete design details|longueur de recouvrement|overlappingslengte|Übergreifungslänge|lap length|
+Concrete design details|recouvrement décalé|verspringende overlap|versetzter Übergreifungsstoß|staggered lap splice|
+Concrete design details|distance libre entre barres|vrije staafafstand|lichter Stababstand|clear bar spacing|
+Concrete design details|barre droite|rechte staaf|gerader Stab|straight bar|
+Concrete design details|barre coudée|gebogen staaf|gebogener Stab|bent bar|
+Concrete design details|barre en U|U-staaf|U-Stab|U-bar|
+Concrete design details|barre en L|L-staaf|L-Stab|L-bar|
+Concrete design details|crochet d'ancrage|verankeringshaak|Verankerungshaken|anchorage hook|
+Concrete design details|épingle;épingles d'armature|haarspeld;haarspeldwapening|Bewehrungsbügel in U-Form|hairpin reinforcement|
+Concrete design details|treillis d'armature|wapeningsnet|Bewehrungsmatte|reinforcement mesh|
+Concrete design details|poinçonnement|pons;ponsafschuiving|Durchstanzen|punching shear|
+Concrete design details|périmètre de contrôle|controleomtrek|Kontrollumfang|control perimeter|
+Concrete design details|hauteur utile|nuttige hoogte|statische Nutzhöhe|effective depth|
+Concrete design details|zone comprimée|drukzone|Druckzone|compression zone|
+Concrete design details|zone tendue|trekzone|Zugzone|tension zone|
+Concrete design details|béton frais|vers beton|Frischbeton|fresh concrete|
+Concrete design details|béton durci|verhard beton|Festbeton|hardened concrete|
+Concrete design details|béton de remplissage|vulbeton|Füllbeton|infill concrete|
+Concrete design details|bétonnage;coulage du béton|betonstorten;storten van beton|Betonieren|concreting|
+Concrete design details|compactage du béton|verdichten van beton|Verdichten des Betons|concrete compaction|
+Concrete design details|cure du béton|nabehandeling van beton|Betonnachbehandlung|concrete curing|
+Concrete design details|retrait du béton|betonkrimp|Betonschwinden|concrete shrinkage|
+Concrete design details|joint de retrait|krimpvoeg|Schwindfuge|contraction joint|
+Concrete design details|armatures rapportées|achteraf aangebrachte wapening|nachträgliche Bewehrungsanschlüsse|post-installed reinforcement|
+Concrete design details|barre scellée|ingelijmde wapeningsstaaf|eingemörtelter Bewehrungsstab|bonded reinforcing bar|
+Reports and design outputs|vérification globale|globale controle|Gesamtnachweis|overall check|
+Reports and design outputs|résumé des résultats|samenvatting van de resultaten|Ergebnisübersicht|results summary|
+Reports and design outputs|résultat déterminant|maatgevend resultaat|maßgebendes Ergebnis|governing result|
+Reports and design outputs|marge de sécurité|veiligheidsmarge|Sicherheitsreserve|safety margin|
+Reports and design outputs|utilisation maximale|maximale benutting|maximale Ausnutzung|maximum utilisation|
+Reports and design outputs|conditions aux limites|randvoorwaarden|Randbedingungen|boundary conditions|
+Reports and design outputs|conditions d'appui|oplegvoorwaarden|Auflagerbedingungen|support conditions|
+Reports and design outputs|conditions de montage|montagevoorwaarden|Montagebedingungen|installation conditions|
+Reports and design outputs|conditions de validité|geldigheidsvoorwaarden|Gültigkeitsbedingungen|conditions of validity|
+Reports and design outputs|domaine d'application|toepassingsgebied|Anwendungsbereich|scope of application|
+Reports and design outputs|limites d'application|toepassingsgrenzen|Anwendungsgrenzen|application limits|
+Reports and design outputs|référence normative|normverwijzing|Normverweis|reference standard|
+Reports and design outputs|norme applicable|toepasselijke norm|anzuwendende Norm|applicable standard|
+Reports and design outputs|hypothèse à confirmer|te bevestigen aanname|zu bestätigende Annahme|assumption to be confirmed|
+Reports and design outputs|dimension manquante|ontbrekende maat|fehlendes Maß|missing dimension|
+Reports and design outputs|charge à confirmer|te bevestigen belasting|zu bestätigende Last|load to be confirmed|
+Reports and design outputs|à vérifier par le bureau d'études|door het studiebureau te controleren|durch das Ingenieurbüro zu prüfen|to be checked by the engineering office|
+Reports and design outputs|sous réserve de validation|onder voorbehoud van validatie|vorbehaltlich Bestätigung der Gültigkeit|subject to validation|
+Reports and design outputs|vérification satisfaisante|controle voldoet|Nachweis erfüllt|check passed|
+Reports and design outputs|vérification non satisfaisante|controle voldoet niet|Nachweis nicht erfüllt|check failed|
+General project vocabulary|bonjour|goedendag|guten Tag|hello|
+General project vocabulary|bon matin|goedemorgen|guten Morgen|good morning|
+General project vocabulary|merci;merci beaucoup|bedankt;hartelijk dank|danke;vielen Dank|thank you|
+General project vocabulary|cordialement|met vriendelijke groet|mit freundlichen Grüßen|kind regards|
+General project vocabulary|s'il vous plaît|alstublieft|bitte|please|
+General project vocabulary|semaine;semaines|week;weken|Woche;Wochen|week|
+General project vocabulary|mois|maand|Monat|month|
+General project vocabulary|année|jaar|Jahr|year|
+General project vocabulary|aujourd'hui|vandaag|heute|today|
+General project vocabulary|demain|morgen|morgen|tomorrow|
+General project vocabulary|hier|gisteren|gestern|yesterday|
+General project vocabulary|matin|ochtend|Vormittag|morning|
+General project vocabulary|après-midi|namiddag;middag|Nachmittag|afternoon|
+General project vocabulary|lundi|maandag|Montag|Monday|
+General project vocabulary|mardi|dinsdag|Dienstag|Tuesday|
+General project vocabulary|mercredi|woensdag|Mittwoch|Wednesday|
+General project vocabulary|jeudi|donderdag|Donnerstag|Thursday|
+General project vocabulary|vendredi|vrijdag|Freitag|Friday|
+General project vocabulary|samedi|zaterdag|Samstag|Saturday|
+General project vocabulary|dimanche|zondag|Sonntag|Sunday|
+General project vocabulary|début;date de début|start;startdatum|Beginn;Startdatum|start|
+General project vocabulary|fin;date de fin|einde;einddatum|Ende;Enddatum|finish|
+General project vocabulary|durée;durée totale|duur;totale duur|Dauer;Gesamtdauer|duration|
+General project vocabulary|retard|vertraging|Verzögerung|delay|
+General project vocabulary|à temps;dans les délais|op tijd;binnen de termijn|rechtzeitig;fristgerecht|on time|
+General project vocabulary|validation technique|technische validatie|technische Validierung|technical validation|
+General project vocabulary|assistance technique|technische ondersteuning|technische Unterstützung|technical support|
+General project vocabulary|formation;session de formation|opleiding;trainingssessie|Schulung;Schulungseinheit|training|
+General project vocabulary|présentation|presentatie|Präsentation|presentation|
+General project vocabulary|retour d'expérience|praktijkervaring|Erfahrungsrückmeldung|lessons learned|
+General project vocabulary|point à clarifier|te verduidelijken punt|zu klärender Punkt|point to clarify|
+General project vocabulary|question ouverte|openstaande vraag|offene Frage|open question|
+General project vocabulary|point bloquant|blokkerend punt|Hindernis|blocking issue|
+General project vocabulary|prochaine étape|volgende stap|nächster Schritt|next step|
+General project vocabulary|travaux préparatoires|voorbereidende werkzaamheden|Vorbereitungsarbeiten|preparatory work|
+General project vocabulary|travaux supplémentaires|meerwerk|Zusatzleistungen|additional work|
+General project vocabulary|étendue des prestations|omvang van de werkzaamheden|Leistungsumfang|scope of work|
+General project vocabulary|hors périmètre|buiten de opdracht|außerhalb des Leistungsumfangs|outside scope|
+General project vocabulary|temps passé|bestede tijd|Zeitaufwand|time spent|
+General project vocabulary|heures de travail|werkuren|Arbeitsstunden|working hours|
+General project vocabulary|charge de travail|werklast|Arbeitsbelastung|workload|
+General project vocabulary|répartition des tâches|taakverdeling|Aufgabenverteilung|task allocation|
+General project vocabulary|vérification interne|interne controle|interne Prüfung|internal check|
+General project vocabulary|révision du document|documentrevisie|Dokumentrevision|document revision|
+General project vocabulary|historique des modifications|wijzigingshistoriek|Änderungshistorie|revision history|
+General project vocabulary|fichier source|bronbestand|Quelldatei|source file|
+General project vocabulary|copie de travail|werkkopie|Arbeitskopie|working copy|
+General project vocabulary|version finale|definitieve versie|Endfassung|final version|
+General project vocabulary|document de référence|referentiedocument|Referenzdokument|reference document|
+General project vocabulary|document obsolète|verouderd document|veraltetes Dokument|superseded document|

@@ -7,6 +7,7 @@ import hashlib
 from collections import Counter
 import fitz
 from version import VERSION
+from glossary import fold
 
 PROTECTED = re.compile(
     r"\b[\w.+-]+@[\w.-]+\.[A-Z]{2,}\b|\b(?:https?://|www\.)[^\s]+"
@@ -28,12 +29,14 @@ SOURCE_FUNCTION_WORDS = set('LE LA LES DES DE DU AU AUX UN UNE ET EN SUR PAR POU
 def protected_spans(text, translate):
     spans = [(m.start(),m.end()) for m in PROTECTED.finditer(text)]
     known = getattr(translate,'terms',{})
+    glossary_spans = getattr(translate, 'glossary_spans', lambda text: [])(text)
     # Preserve acronym/identifier tokens in mixed-case labels. All-caps prose
     # still goes to the model, while short stand-alone reference labels stay.
     if not text.isupper() or len(text) <= 4:
         for match in re.finditer(r'\b[A-Z]{2,8}\b',text):
-            key=match.group().lower()
-            if key not in known and key not in SOURCE_FUNCTION_WORDS:
+            key=fold(match.group())
+            if (key not in known and key not in SOURCE_FUNCTION_WORDS and
+                    not any(a <= match.start() and match.end() <= b for a,b in glossary_spans)):
                 spans.append((match.start(),match.end()))
     for match in re.finditer(r'\b[AN]{4,}\b',text):
         spans.append((match.start(),match.end()))
@@ -67,6 +70,7 @@ def text_rotation(direction):
 
 
 def protected_translate(text, translate):
+    getattr(translate, 'prepare_text', lambda text: None)(text)
     # Translate only words between dimensions/codes: no fragile placeholder tokens.
     parts, cursor = [], 0
     for start,end in protected_spans(text,translate):
@@ -169,7 +173,8 @@ def translate_pdf(source, destination, translate, mode="replace", progress=lambd
                         entry += 'REVIEW CONTEXT: ' + ' | '.join(reviews) + '\n'
                     if translated == original:
                         unchanged += 1
-                        report.append(entry + 'Status: UNCHANGED - check whether translation is needed.\n')
+                        reason = getattr(translate, 'unchanged_reason', lambda text: 'No change from the translator; check source language, spelling and context.')(original)
+                        report.append(entry + 'Status: UNCHANGED - ' + reason + '\n')
                         continue
                     rect = fitz.Rect(line["bbox"])
                     size = max(s["size"] for s in spans)
@@ -216,7 +221,7 @@ def translate_pdf(source, destination, translate, mode="replace", progress=lambd
         fd, temp = tempfile.mkstemp(suffix=".pdf", dir=destination.parent)
         os.close(fd)
         try:
-            language={'fr':'French','nl':'Dutch','de':'German'}.get(getattr(translate,'language',None),'Unspecified')
+            language={'fr':'French','nl':'Dutch','de':'German','auto':'Auto / mixed languages'}.get(getattr(translate,'language',None),'Unspecified')
             metadata=doc.metadata.copy()
             metadata['creator']=f'Engineering PDF Translator {VERSION}; {language} to English'
             doc.set_metadata(metadata)

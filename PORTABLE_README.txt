@@ -1,22 +1,31 @@
-Engineering PDF Translator 1.5 - portable Windows x64 application
+Engineering Document Translator 1.8 - portable Windows x64 application
+
+Auto / mixed languages is now the default. French, Dutch and German text in the
+same document is detected per label or sentence and translated to English.
+Existing English is retained. Detection and translation work offline.
+Uncertain short labels and unsupported languages are retained for review.
+Use a manual source language when necessary; switches within one sentence may
+not be recognized reliably. The translation list includes a language summary.
 
 Double-click EngineeringPDFTranslator.exe. No Python installation, browser,
 API key or internet connection is required. The first launch can take a while
 because the bundled translation models unpack into Windows temporary storage.
 
-1. Choose a PDF with selectable text.
-2. Select French, Dutch or German as the source language. The output is English.
-3. Select text replacement or translation notes.
+1. Choose a PDF with selectable text, a Word .docx or a PowerPoint .pptx file.
+2. Select Auto / mixed languages, or choose French, Dutch or German manually.
+   The output is English.
+3. For PDF, select text replacement or translation notes. Office files save
+   editable translated text in the same format as the source.
 4. Click Translate and save, and choose a new filename.
 
-Engineering and architectural terminology is enabled automatically. The 1,601
-entries cover 13 subject areas: French 611, Dutch 501 and German 489.
+Engineering, product and general project terminology is enabled automatically.
+The 4,137 source entries include French 1,446, Dutch 1,372 and German 1,319.
 Click Browse terminology to search source terms, English meanings and categories.
 The bundled glossary takes priority over the offline translation models. Ambiguous
 labels are marked REVIEW CONTEXT in the .translations.txt list. Review these
 against the detail and project legend. See TERMINOLOGY.txt and EngineeringGlossary.tsv.
 
-Your original PDF is retained. The app saves the translated PDF and a companion
+Your original document is retained. The app saves a translated copy and a companion
 .translations.txt list. Open the PDF in a reader that supports annotations to
 view translation notes. Notes-only mode keeps original labels visible.
 
@@ -25,8 +34,8 @@ legend text. The list distinguishes replacements, notes and unchanged labels.
 Drawing references, dimensions and units remain unchanged. A note explains when
 a translated label cannot fit its original space or uses unsupported characters.
 
-This version does not recognize scanned image-only PDFs (OCR), translate
-Office files, or support other target languages. Review machine translations
+This version does not recognize scanned image-only PDFs or text in pictures (OCR),
+read older .doc/.ppt formats, or support other target languages. Review machine translations
 of engineering terminology and compare the translated drawing with its source.
 
 Source and reproducible Windows build:
@@ -55,3 +64,27 @@ the button checks that the PDF has not changed since it was verified.
 Input PDFs are normalized in memory before translation to prevent edits being
 lost when saving certain compressed object/xref-stream PDFs. The original file
 is retained. This applies to French, Dutch and German equally.
+
+Version 1.6 adds native Word (.docx) and PowerPoint (.pptx) translation using the
+same offline models and engineering glossary. Word paragraphs, tables, headers,
+footers, text boxes, footnotes, endnotes and comments are supported. PowerPoint
+slides, tables, grouped text boxes, speaker notes and native diagram text are
+supported. Images, relationships, shapes, styles and other package parts remain.
+Saved Office files are reopened and their package contents checked. Open verified
+file checks the saved file's SHA256 before opening that exact translated copy.
+
+Review text fit in Office: longer English text can reflow Word pages or overflow
+PowerPoint boxes. Styling inside translated mixed-format phrases is approximate.
+Fields, equations, chart caches, master/layout text and embedded objects are
+retained without translation. Text in images requires OCR and is not supported.
+Save legacy .doc/.ppt files as .docx/.pptx first. Macro-enabled and digitally signed
+Office files are unsupported. Microsoft Office is not required for translation;
+use an appropriate installed reader/editor to open the resulting Office copy.
+
+Version 1.7 expands the glossary from 1,601 to 4,137 source entries, including
+KORBO brackets, angles, adjustment parts, brick hangers and cavity details;
+PLAKA reinforcement/anchor/connection terminology; site execution, calculations,
+steelwork and general project language. Typographic lookup and known phrases
+containing acronyms are improved. Product names, dimensions and codes are retained.
+The translation list now explains ambiguous retained terms and unchanged model
+results. Text inside pictures still needs OCR. Review the translation for context.

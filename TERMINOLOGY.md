@@ -1,4 +1,4 @@
-# Engineering terminology in version 1.4
+# Engineering and project terminology in version 1.7
 
 French, Dutch and German terminology overrides general machine translation.
 The bundled EngineeringGlossary.tsv lists the source labels, English terms
@@ -28,6 +28,63 @@ by the PDF engine. Product names such as Korbo, Sumo and Halfen are retained.
 The translator interprets labels, not drawing geometry. Other words use the
 offline models. A glossary cannot guarantee the meaning of an entire note,
 an unfamiliar abbreviation, or a product-specific/project-specific convention.
+
+## Version 1.7 expansion
+
+There are 4,137 explicit source entries: French 1,446, Dutch 1,372 and German
+1,319, compared with 1,601 previously. Counts exclude additional automatic German
+transliterations and retained product names. The catalogue includes 25 subjects
+plus the original core vocabulary. Entries include both terms and explicit aliases.
+
+The additional vocabulary covers general office/project language and quotation,
+delivery, document status, schedules, site instructions, dimensions and tolerances,
+structural calculations, masonry design, anchor installation/failure modes,
+concrete/reinforcement details, steel fabrication and coatings.
+
+KORBO terminology includes support angles, individual/corner/welded brackets,
+adjustment plates and screws, packing/shim plates, thermal break pads, slotted
+holes, bracket spacing, cavity widths, supported masonry, brick hangers, movement
+joints, flashing and cavity closures. The vocabulary also covers components
+associated with PLAKA continuity boxes, reinforcement couplers, shear connectors,
+facade restraints, cast-in channels, chemical anchors, lifting and waterproofing.
+
+Product names such as PLAKA, KORBO, KorboFlex, Korbo Dry, Thermoshim, Stabox,
+Titan, Couplerbox, Stonefix, Solea-Fix, Ankrorail, Ankrochim and Murfor are retained.
+The terminology does not establish which product is suitable for an application,
+and does not encode capacities, dimensions or installation requirements.
+
+Example mappings:
+
+| French | Dutch | German | English |
+| --- | --- | --- | --- |
+| plaque de réglage | regelplaat | Justierplatte | adjustment plate |
+| boulon de fixation | bevestigingsbout | Befestigungsbolzen | fixing bolt |
+| vis de fixation | bevestigingsschroef | Befestigungsschraube | fixing screw |
+| réglage en hauteur | hoogteverstelling | Höhenverstellung | height adjustment |
+| boîte d'attente | wachtdoos | Rückbiegeanschluss | reinforcement continuity box |
+| goujon pour efforts tranchants | dwarskrachtdeuvel | Querkraftdorn | shear load connector |
+| livraison | levering | Lieferung | delivery |
+| devis | offerte | Angebot | quotation |
+
+The review list now explains whether unchanged text was retained for context,
+is a known term/product name, or was returned unchanged by the offline model.
+Ambiguous labels are not automatically assigned a structural meaning. More
+qualified phrases translate when the text supplies the required distinction.
+Additional apostrophes, hyphen forms and soft hyphens are normalized for lookup;
+source offsets are retained for correct replacement. Known phrase acronyms can
+participate in a glossary match while numeric dimensions and product codes stay
+protected. These changes apply to PDF, Word and PowerPoint alike.
+
+Representative product terminology was checked against current first-party pages:
+
+- KORBO, French: https://www.plaka-solutions.com/catalogue-produit/02-01-01-korbo
+- KORBO, Dutch: https://www.plaka-solutions.com/nl/product-catalogus/02-01-01-korbo
+- KORBO, English: https://www.plaka-solutions.com/en/02-01-01-korbo
+- PLAKA product index: https://www.plaka-solutions.com/en/sitemap
+- Fixing-angle terminology: https://www.plaka-solutions.com/02-03-01-equerres-de-fixation
+
+This is an independently authored practical glossary with representative source
+checks, not an official Leviat dictionary or a certified translation database.
 
 ## Labels requiring context
 

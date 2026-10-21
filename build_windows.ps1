@@ -10,7 +10,7 @@ if ($LASTEXITCODE -ne 0) { throw 'Dependency download failed.' }
 & $buildPython fetch_models.py
 if ($LASTEXITCODE -ne 0) { throw 'Language-model download failed.' }
 & $buildPython -m unittest discover -s tests -v
-if ($LASTEXITCODE -ne 0) { throw 'PDF checks failed.' }
+if ($LASTEXITCODE -ne 0) { throw 'Document checks failed.' }
 & $buildPython collect_notices.py
 if ($LASTEXITCODE -ne 0) { throw 'Dependency notices could not be retained.' }
 & $buildPython -m PyInstaller --noconfirm --clean --onefile --windowed --name EngineeringPDFTranslator --add-data 'src/models;models' --add-data 'src/engineering_terms.psv;.' --add-data 'licenses;licenses' --collect-all ctranslate2 --collect-all sentencepiece src/app.py

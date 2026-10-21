@@ -1,7 +1,6 @@
-2026-10-06 version 1.5
-PASS: 24 local and Windows regression tests, including compressed object/xref-stream input, false insertion success, saved-PDF replacement/note verification and output-report identity.
-PASS: Compiled Windows GUI, embedded vocabulary, real French/Dutch/German inference, compressed-input PDF notes/replacement and saved-file readback checks.
-Verified code commit: e377097be871cbb45d8f025d7ead5a4386b48aea
-Build: https://github.com/eizatabdullah12-stack/eizat96/actions/runs/37481545001
-Artifact SHA256: 9dffae89ac8c44532bae1a94d1675b60936aee5e856b6d5c245cc8224a0eddb9
-LIMITATIONS: Saved-text checks do not establish translation semantics or guarantee rendering in every reader. OCR and physical clean-PC verification not performed.
+2026-10-21 version 1.8 — current update
+PASS: 49 local regression tests, including automatic detection, mixed-language paragraphs/files, English preservation, conservative unsupported-language handling, glossary/code protection, PDF verification and native Word/PowerPoint packages.
+PASS: Actual French/Dutch/German offline inference under automatic routing; existing English retained.
+Glossary: 4,137 explicit source entries (fr 1,446 / nl 1,372 / de 1,319).
+PENDING: Compiled Windows GUI/model/detection/document self-test until the Windows workflow completes.
+LIMITATIONS: Language detection is probabilistic. Short labels, language switches within a sentence, engineering semantics and Office text fit require review. OCR is not included.

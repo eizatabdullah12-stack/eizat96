@@ -13,7 +13,7 @@ ROOT = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parent))
 os.environ["ARGOS_PACKAGES_DIR"] = str(ROOT / "models")
 os.environ["ARGOS_TRANSLATE_PACKAGE_DIR"] = str(ROOT / "models")
 os.environ["ARGOS_DEVICE_TYPE"] = "cpu"
-from engine import translate_pdf
+from documents import translate_document, SUPPORTED
 from glossary import TERMS, AMBIGUOUS, TERM_CATEGORIES, fold
 from version import VERSION
 
@@ -26,7 +26,7 @@ class App:
         self.busy = False
         self.saved_output = None
         self.saved_sha = None
-        root.title(f"Engineering PDF Translator {VERSION}")
+        root.title(f"Engineering Document Translator {VERSION}")
         root.geometry("780x640")
         root.minsize(720, 620)
         root.configure(bg="#f0f4f7")
@@ -37,26 +37,28 @@ class App:
         style.configure("TButton", font=("Segoe UI", 11), padding=8)
         frame = ttk.Frame(root, padding=28)
         frame.pack(fill="both", expand=True)
-        ttk.Label(frame, text="Engineering PDF Translator", font=("Segoe UI", 22, "bold")).pack(anchor="w")
+        ttk.Label(frame, text="Engineering Document Translator", font=("Segoe UI", 22, "bold")).pack(anchor="w")
         ttk.Label(frame, text="French / Dutch / German → English · Offline", foreground="#356576").pack(anchor="w", pady=(4,24))
         self.file = tk.StringVar()
-        ttk.Label(frame, text="PDF document").pack(anchor="w")
+        ttk.Label(frame, text="PDF, Word or PowerPoint document").pack(anchor="w")
         row = ttk.Frame(frame)
         row.pack(fill="x", pady=(5,18))
         ttk.Entry(row, textvariable=self.file).pack(side="left", fill="x", expand=True, ipady=6)
-        self.browse = ttk.Button(row, text="Choose PDF…", command=self.choose)
+        self.browse = ttk.Button(row, text="Choose file…", command=self.choose)
         self.browse.pack(side="right", padx=(10,0))
         ttk.Label(frame, text="Source language").pack(anchor="w")
-        self.language = tk.StringVar(value="Choose language…")
-        self.lang_box = ttk.Combobox(frame, values=["French", "Dutch", "German"], textvariable=self.language, state="readonly")
+        self.language = tk.StringVar(value="Auto / mixed languages")
+        self.lang_box = ttk.Combobox(frame, values=["Auto / mixed languages", "French", "Dutch", "German"], textvariable=self.language, state="readonly", width=28)
         self.lang_box.pack(anchor="w", pady=(5,18), ipady=5)
         self.mode = tk.StringVar(value="replace")
-        ttk.Radiobutton(frame, text="Replace text where it fits; add notes for other labels", variable=self.mode, value="replace").pack(anchor="w", pady=4)
-        ttk.Radiobutton(frame, text="Keep the original drawing and add translation notes", variable=self.mode, value="notes").pack(anchor="w", pady=4)
-        ttk.Label(frame, text="Engineering glossary enabled. Ambiguous terms are marked in the translation list.\nOriginal PDF is retained. Scanned PDFs require OCR and are not supported.", foreground="#536675", wraplength=700).pack(anchor="w", pady=16)
+        self.replace_mode = ttk.Radiobutton(frame, text="PDF: replace text where it fits; add notes for other labels", variable=self.mode, value="replace")
+        self.replace_mode.pack(anchor="w", pady=4)
+        self.notes_mode = ttk.Radiobutton(frame, text="PDF: keep the original drawing and add translation notes", variable=self.mode, value="notes")
+        self.notes_mode.pack(anchor="w", pady=4)
+        ttk.Label(frame, text="Word/PowerPoint: save an editable translated copy. Originals are retained.\nEngineering glossary enabled. Text in scanned pages or pictures needs OCR.", foreground="#536675", wraplength=700).pack(anchor="w", pady=16)
         self.bar = ttk.Progressbar(frame, mode="determinate")
         self.bar.pack(fill="x")
-        self.status = tk.StringVar(value="Choose a PDF to begin.")
+        self.status = tk.StringVar(value="Choose a PDF, .docx or .pptx file to begin.")
         ttk.Label(frame, textvariable=self.status, wraplength=680).pack(anchor="w", pady=10)
         controls = ttk.Frame(frame)
         controls.pack(fill="x")
@@ -65,8 +67,9 @@ class App:
         self.cancel = ttk.Button(controls, text="Cancel", command=self.stop.set, state="disabled")
         self.cancel.pack(side="left", padx=10)
         ttk.Button(controls,text="Browse terminology…",command=self.show_glossary).pack(side="right")
-        self.open_output = ttk.Button(frame, text="Open verified PDF", command=self.open_saved, state="disabled")
+        self.open_output = ttk.Button(frame, text="Open verified file", command=self.open_saved, state="disabled")
         self.open_output.pack(anchor="w", pady=(10,0))
+        self.file.trace_add('write', self.update_file_type)
         root.protocol("WM_DELETE_WINDOW", self.close)
         root.after(100, self.poll)
 
@@ -117,41 +120,64 @@ class App:
         return window,table
 
     def choose(self):
-        name = filedialog.askopenfilename(filetypes=[("PDF documents", "*.pdf")])
+        name = filedialog.askopenfilename(filetypes=[("Supported documents", "*.pdf *.docx *.pptx"), ("PDF", "*.pdf"), ("Word", "*.docx"), ("PowerPoint", "*.pptx")])
         if name:
             self.file.set(name)
 
+    def update_file_type(self, *args):
+        extension = Path(self.file.get()).suffix.lower()
+        state = 'normal' if extension == '.pdf' and not self.busy else 'disabled'
+        self.replace_mode.configure(state=state)
+        self.notes_mode.configure(state=state)
+        if not self.busy:
+            self.bar['value'] = 0
+            self.saved_output = None
+            self.open_output.configure(state='disabled')
+            if extension in ('.docx', '.pptx'):
+                self.status.set('Office file: translate editable text and save a new copy in the same format.')
+
     def run(self):
-        if self.language.get() not in ('French','Dutch','German'):
-            messagebox.showerror('Choose source language','Select French, Dutch or German before translating.')
+        if self.language.get() not in ('Auto / mixed languages','French','Dutch','German'):
+            messagebox.showerror('Choose source language','Select Auto / mixed languages, French, Dutch or German before translating.')
             return
         source = Path(self.file.get())
-        if not source.is_file() or source.suffix.lower() != ".pdf":
-            messagebox.showerror("Choose a PDF", "Please select an existing PDF document.")
+        extension = source.suffix.lower()
+        if not source.is_file() or extension not in SUPPORTED:
+            messagebox.showerror("Choose a document", "Select an existing PDF, Word (.docx) or PowerPoint (.pptx) file. For older .doc/.ppt files, use Save As in Microsoft Office first.")
             return
         stamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        target = filedialog.asksaveasfilename(initialdir=source.parent, initialfile=source.stem + f"_English_{stamp}.pdf", defaultextension=".pdf", filetypes=[("PDF", "*.pdf")])
+        target = filedialog.asksaveasfilename(initialdir=source.parent, initialfile=source.stem + f"_English_{stamp}{extension}", defaultextension=extension, filetypes=[(SUPPORTED[extension], '*' + extension)])
         if not target:
             return
         if Path(target).resolve() == source.resolve():
-            messagebox.showerror("Keep the original", "Choose a different filename for the translated PDF.")
+            messagebox.showerror("Keep the original", "Choose a different filename for the translated copy.")
             return
-        code = {"French": "fr", "Dutch": "nl", "German": "de"}[self.language.get()]
+        if Path(target).suffix.lower() != extension:
+            messagebox.showerror('Keep the file format', f'Save the translated copy with the {extension} file extension.')
+            return
+        code = {"Auto / mixed languages": "auto", "French": "fr", "Dutch": "nl", "German": "de"}[self.language.get()]
         mode = self.mode.get()
         self.busy = True
+        self.active_extension = extension
         self.saved_output = None
         self.open_output.configure(state="disabled")
         self.stop.clear()
         self.start.configure(state="disabled")
         self.browse.configure(state="disabled")
         self.lang_box.configure(state="disabled")
+        self.replace_mode.configure(state='disabled')
+        self.notes_mode.configure(state='disabled')
         self.cancel.configure(state="normal")
         self.status.set(f"Loading {self.language.get()} → English translation model…")
         def worker():
             try:
                 from offline import OfflineTranslator
-                translate = OfflineTranslator(code)
-                result = translate_pdf(source, target, translate, mode, lambda a,b:self.events.put(("progress", (a,b))), self.stop.is_set)
+                if code == 'auto':
+                    from automatic import AutoTranslator
+                    translate = AutoTranslator()
+                else:
+                    translate = OfflineTranslator(code)
+                result = translate_document(source, target, translate, mode, lambda a,b:self.events.put(("progress", (a,b))), self.stop.is_set)
                 self.events.put(("done", (target,result)))
             except Exception as exc:
                 self.events.put(("error", str(exc)))
@@ -164,24 +190,35 @@ class App:
                 if kind == "progress":
                     a,b = data
                     self.bar["value"] = a/b*100
-                    self.status.set(f"Translated page {a} of {b}…")
+                    unit = 'page' if self.active_extension == '.pdf' else 'document part'
+                    self.status.set(f"Translated {unit} {a} of {b}…")
                 else:
                     self.busy = False
                     self.start.configure(state="normal")
                     self.browse.configure(state="normal")
                     self.lang_box.configure(state="readonly")
                     self.cancel.configure(state="disabled")
+                    mode_state = 'normal' if Path(self.file.get()).suffix.lower() == '.pdf' else 'disabled'
+                    self.replace_mode.configure(state=mode_state)
+                    self.notes_mode.configure(state=mode_state)
                     if kind == "error":
                         self.status.set("Translation stopped.")
                         messagebox.showerror("Translation stopped", data)
                     else:
                         target, result = data
                         self.saved_output = str(Path(target).resolve())
-                        self.saved_sha = result['pdf_sha256']
+                        self.saved_sha = result['file_sha256']
                         self.open_output.configure(state="normal")
-                        self.status.set(f"Verified saved PDF: {Path(target).name}")
-                        warning = f"\nPages {result['scanned_pages']} contain no selectable text and were not translated." if result['scanned_pages'] else ""
-                        message = f"Saved PDF reopened and checked:\n{result['verified_replaced']} replacement labels; {result['verified_notes']} translation notes.\nUnchanged labels to check: {result['unchanged']}.\nRetained drawing references/units: {result['retained']}.\nEngineering glossary matches: {result['glossary_terms']}.\nLabels needing context review: {result['review_labels']}.\n\n{target}\n\nUse Open verified PDF to open this exact file. A .translations.txt list records each label's result." + warning
+                        self.status.set(f"Verified saved file: {Path(target).name}")
+                        if result['format'] == '.pdf':
+                            warning = f"\nPages {result['scanned_pages']} contain no selectable text and were not translated." if result['scanned_pages'] else ""
+                            message = f"Saved PDF reopened and checked:\n{result['verified_replaced']} replacement labels; {result['verified_notes']} translation notes.\nUnchanged labels to check: {result['unchanged']}.\nRetained drawing references/units: {result['retained']}." + warning
+                        else:
+                            message = f"Saved Office file reopened and checked:\n{result['verified_groups']} translated text groups in {result['verified_parts']} document parts.\nUnchanged groups to check: {result['unchanged']}.\n\n{result['warnings']}"
+                        message += f"\nEngineering glossary matches: {result['glossary_terms']}.\nGroups needing context review: {result['review_labels']}.\n\n{target}\n\nUse Open verified file to open this exact copy. A .translations.txt list records the results."
+                        if 'detection' in result:
+                            summary = result['detection']
+                            message += '\n\nAuto detection: ' + ', '.join(summary['segments']) + f".\nLanguage segments to review: {summary['review_segments']}."
                         if not result["translated"]:
                             messagebox.showwarning("No labels translated", "No labels changed. Check the selected source language and the .translations.txt report.\n\n" + message)
                         else:
@@ -194,11 +231,11 @@ class App:
         if self.saved_output:
             try:
                 if hashlib.sha256(Path(self.saved_output).read_bytes()).hexdigest() != self.saved_sha:
-                    messagebox.showerror('PDF changed', 'This PDF has changed since translation. Translate again to verify a new copy.')
+                    messagebox.showerror('File changed', 'This file has changed since translation. Translate again to verify a new copy.')
                     return
                 os.startfile(self.saved_output)
             except OSError as exc:
-                messagebox.showerror('Cannot open PDF', str(exc))
+                messagebox.showerror('Cannot open file', str(exc))
 
     def close(self):
         if self.busy and not messagebox.askyesno("Translation in progress", "Cancel translation and close?"):

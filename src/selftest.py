@@ -7,6 +7,10 @@ import fitz
 from offline import OfflineTranslator
 from engine import translate_pdf, protected_translate
 from glossary import TERMS
+from documents import translate_document
+from office_samples import make_sample
+from office import parse_xml, TEXT
+from zipfile import ZipFile
 
 def run(report_path, app_factory):
     report = {'passed':False,'checks':[]}
@@ -24,10 +28,12 @@ def run(report_path, app_factory):
         window.destroy()
         report['checks'].append('Bundled desktop GUI loads')
         report['glossary_counts'] = {lang:len(data.strip().splitlines()) for lang,data in TERMS.items()}
-        for language, sample in (('fr','Bonjour le monde'),('nl','Goedemorgen'),('de','Guten Morgen')):
+        for language, sample in (('fr','Le chat dort sur le canapé'),
+                                 ('nl','De kat slaapt op de bank'),
+                                 ('de','Die Katze schläft auf dem Sofa')):
             translate = OfflineTranslator(language)
             output = translate(sample)
-            expected = 'hello' if language == 'fr' else 'morning'
+            expected = 'cat'
             if expected not in output.lower() or '\u2581' in output:
                 raise RuntimeError(f'{language} translation did not change the source')
             report['checks'].append({'language':language,'sample':sample,'translation':output})
@@ -50,7 +56,26 @@ def run(report_path, app_factory):
             for term, expected_term in expanded:
                 if translate(term).casefold() != expected_term:
                     raise RuntimeError(f'{language} expanded terminology missing: {term}')
+            hardware = {'fr': 'plaque de réglage', 'nl': 'regelplaat', 'de': 'Justierplatte'}[language]
+            if translate(hardware).casefold() != 'adjustment plate':
+                raise RuntimeError(f'{language} KORBO hardware glossary missing')
             report['checks'].append(f'{language} bundled architecture/design/fixing vocabulary passed')
+            # Real models, XML parser and dispatch inside the packaged EXE.
+            for extension, member in (('.docx', 'word/document.xml'), ('.pptx', 'ppt/slides/slide1.xml')):
+                with tempfile.TemporaryDirectory() as office_folder:
+                    office_source = Path(office_folder) / ('source' + extension)
+                    office_target = Path(office_folder) / ('English' + extension)
+                    make_sample(office_source, engineering_sample)
+                    original_bytes = office_source.read_bytes()
+                    office_result = translate_document(office_source, office_target, translate)
+                    with ZipFile(office_target) as package:
+                        xml = parse_xml(package.read(member))
+                        translated_text = ''.join(n.text or '' for n in xml.iter() if n.tag in TEXT)
+                    if (engineering_expected not in translated_text.lower() or
+                            '200 mm - HEA200 - B500B' not in translated_text or
+                            office_result['verified_groups'] < 2 or office_source.read_bytes() != original_bytes):
+                        raise RuntimeError(f'{language} native {extension} translation check failed')
+                    report['checks'].append(f'{language} native {extension} translation and package verification passed')
             label = {'fr':'Poutre','nl':'Balk','de':'Träger'}[language]
             protected = protected_translate(label+' ABC-VX42-3D_FV',translate)
             if 'ABC-VX42-3D_FV' not in protected or 'beam' not in protected.lower():
@@ -108,6 +133,23 @@ def run(report_path, app_factory):
                     if result['replaced'] != 1 or pdf[0].rotation != 270 or engineering_expected not in pdf[0].get_text().lower():
                         raise RuntimeError('Rotated small CAD label was not replaced on drawing')
                 report['checks'].append(f'{language} rotated small CAD label replacement passed')
+        # Verify language detection, lazy model routing and native Office output
+        # from a mixed French/Dutch/German/English paragraph inside the EXE.
+        from automatic import AutoTranslator
+        mixed = 'Plaque de réglage. Regelplaat. Justierplatte. This drawing is for information only.'
+        auto = AutoTranslator()
+        rendered = protected_translate(mixed, auto)
+        if rendered != 'Adjustment plate. Adjustment plate. Adjustment plate. This drawing is for information only.':
+            raise RuntimeError('Automatic mixed-language paragraph routing failed')
+        for extension in ('.docx', '.pptx'):
+            with tempfile.TemporaryDirectory() as folder:
+                source, target = Path(folder)/('mixed'+extension), Path(folder)/('English'+extension)
+                make_sample(source, mixed)
+                result = translate_document(source,target,AutoTranslator())
+                if not {'French','Dutch','German','English'}.issubset(result['detection']['segments']):
+                    raise RuntimeError('Mixed-language file report is incomplete')
+                report['checks'].append(f'Automatic mixed-language {extension} translation and English preservation passed')
+        report['checks'].append('Bundled language detector and mixed-language routing passed')
         report['passed'] = True
     except Exception as exc:
         report['error'] = str(exc)

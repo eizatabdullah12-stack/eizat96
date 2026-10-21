@@ -20,3 +20,13 @@ https://github.com/google/sentencepiece
 The build retains installed dependency license files in the licenses folder,
 alongside license/README files shipped inside the bundled model archives.
 Application source is available at https://github.com/eizatabdullah12-stack/eizat96
+
+# Office XML processing
+
+lxml is used to preserve Office XML namespaces and change editable text while
+retaining the original package parts. Its dependency notices are collected by
+the Windows build alongside the existing PDF/model dependency notices.
+
+Automatic source-language detection uses langid.py and its bundled trained model.
+Project: https://github.com/saffsd/langid.py
+The exact installed distribution's licenses/notices are collected during build.

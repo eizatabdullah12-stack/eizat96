@@ -1,15 +1,78 @@
-# Engineering PDF Translator
+# Engineering Document Translator
 
-Native Windows desktop PDF translator: French/Dutch/German to English. After a
+Native Windows desktop PDF, Word and PowerPoint translator: French/Dutch/German to English. After a
 successful build, open EngineeringPDFTranslator.exe; no installation, browser,
 API key or translation internet connection is required. Models are embedded.
 
-Choose a PDF, select the source language and output mode, then save a new PDF.
-The original is retained. A translation text list is saved alongside the PDF.
+Choose a PDF, Word `.docx` or PowerPoint `.pptx` file, select the source language,
+then save a translated copy in the same format. PDF supports replacement or
+translation-notes modes. Office files keep editable text. The original is retained.
+A translation text list is saved alongside the translated file.
 
-[Download version 1.5 for Windows](https://github.com/eizatabdullah12-stack/eizat96/actions/runs/37481545001/artifacts/11421227359)..
-Extract the ZIP and double-click EngineeringPDFTranslator.exe.
-Download size is about 334 MiB. Available until 2026-10-20.
+Download the successful **EngineeringDocumentTranslator-1.8-Windows** artifact
+from the repository's [Windows builds](https://github.com/eizatabdullah12-stack/eizat96/actions/workflows/build-windows.yml).
+Extract the ZIP and double-click EngineeringPDFTranslator.exe. The existing
+executable name is retained for compatibility; the window shows Document Translator 1.8.
+
+## Version 1.8 automatic / mixed-language mode
+
+Select **Auto / mixed languages** (the default) to translate French, Dutch and
+German passages within one PDF, Word or PowerPoint file to English. Detection
+works offline using bundled langid data and the engineering glossary. Each label
+or sentence is routed to its corresponding model; existing English is retained.
+Models load only when a language is encountered. Manual language selection is
+still available.
+
+Short or ambiguous labels and unsupported languages are retained and flagged in
+the translation list. Detection is probabilistic; language switches within one
+sentence, abbreviations and very short text may need a manual source-language
+choice. Auto mode does not add OCR or additional translation languages. The
+report lists detected language segments and language-review counts.
+
+The catalogue now has 4,137 source entries after separating greeting terms.
+
+## Version 1.7 vocabulary update
+
+The built-in glossary has 4,137 explicit source entries: French 1,446, Dutch
+1,372 and German 1,319, excluding automatic German transliterations and retained
+product names. This expands the previous 1,601 entries and covers 25 catalogue
+subjects plus the original core vocabulary. Every explicit catalogue alias is
+checked against its glossary mapping without model fallback.
+
+New subjects include KORBO masonry support hardware, adjustment/shim/thermal-break
+plates, angle profiles, brick hangers, cavity closures, substrate and anchor design,
+PLAKA reinforcement continuity boxes, shear connectors, couplers, anchor channels,
+lifting and waterproofing components, site tolerances, calculation reports and
+general project/office vocabulary. Product names and alphanumeric references stay
+unchanged. These are translation terms, not product selection or installation rules.
+
+Matching now handles additional typographic apostrophes/hyphens and discretionary
+soft hyphens. Known multiword phrases such as Dutch `RVS hoeklijn` translate as
+a phrase rather than having their acronym split off as an unknown reference.
+The companion report distinguishes deliberately retained ambiguous terms,
+already-English/product labels and unchanged model results. Adding vocabulary
+does not add OCR: text embedded only in pictures remains untranslated.
+
+## Version 1.6 update
+
+Word: paragraphs, tables, headers, footers, text boxes, footnotes, endnotes and
+comments. PowerPoint: slide text, tables, grouped text boxes, speaker notes and
+native SmartArt text in diagram data/drawing parts. The same offline models,
+engineering glossary and dimension/product-code protection apply to all formats.
+
+The Office path edits text XML inside the original package, retaining media,
+relationships, slide geometry and styles. Paragraphs are translated across styled
+runs; matching text keeps its run styling and changed phrases use approximate
+style allocation. No Office installation or internet is needed to translate.
+Every saved package part is reopened and checked before publishing the output.
+The report records the output filename and SHA256; Open verified file checks
+that identity before opening it in the computer's default application.
+
+Longer translations may reflow Word pages or overflow PowerPoint text boxes.
+Review layout and mixed formatting in Office. Images, embedded objects, equations,
+fields, chart caches, slide masters and layouts remain unchanged. No OCR is
+included. Older `.doc`/`.ppt` files must first be saved as `.docx`/`.pptx` in Office.
+Macro-enabled and digitally signed Office files are unsupported.
 
 ## Version 1.5 update
 
@@ -36,8 +99,9 @@ started manually. The build requires internet access to PyPI, the official
 Argos model index, and the published language-model download URLs.
 
 The build fetches the French, Dutch and German models, runs real inference checks,
-runs PDF tests, bundles a single executable with PyInstaller, then runs a
-compiled-app self-test for GUI startup, all three language models and PDF output.
+runs PDF and Office tests, bundles a single executable with PyInstaller, then runs a
+compiled-app self-test for GUI startup, all three language models, PDF output and
+native Word/PowerPoint translation in each language.
 Failed checks prevent the finished artifact from being uploaded. Account
 Actions quotas and repository permissions govern availability.
 
@@ -62,7 +126,7 @@ not interpret drawing geometry or guarantee project-specific terminology.
 
 ## Limitations
 
-No scanned-PDF OCR, Office files, automatic language detection or target
+No scanned-PDF/image OCR, legacy `.doc`/`.ppt` files or target
 languages other than English. Machine translation quality on engineering
 terminology still needs human review. Dense CAD text bounds, unusual fonts,
 complex equations and overlapping labels need representative-file testing.

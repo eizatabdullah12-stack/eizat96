@@ -89,11 +89,11 @@ class EngineeringChecks(unittest.TestCase):
         calls = []
         def general(text):
             calls.append(text)
-            return text.replace('Bonjour', 'Hello')
+            return text.replace('Salutations', 'Greetings')
         translator = EngineeringTranslator('fr', general)
-        self.assertEqual(translator('Bonjour, poutre!'), 'Hello, beam!')
-        self.assertEqual(calls, ['Bonjour, '])
-        self.assertEqual(translator('Bonjour, poutre!'), 'Hello, beam!')
+        self.assertEqual(translator('Salutations, poutre!'), 'Greetings, beam!')
+        self.assertEqual(calls, ['Salutations, '])
+        self.assertEqual(translator('Salutations, poutre!'), 'Greetings, beam!')
         self.assertEqual(len(calls), 1)
         # Partial words and product identifiers must not be substituted.
         self.assertEqual(translator('betonXYZ'), 'betonXYZ')
