@@ -1,0 +1,25 @@
+name: Build version 1.10 installer
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/build-installer.yml'
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - shell: pwsh
+        run: ./build_windows.ps1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: EngineeringTranslator-1.10-Setup
+          path: installer_output/
+          if-no-files-found: error
+          retention-days: 14
