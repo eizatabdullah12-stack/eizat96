@@ -2,5 +2,9 @@
 PASS: 49 local regression tests, including automatic detection, mixed-language paragraphs/files, English preservation, conservative unsupported-language handling, glossary/code protection, PDF verification and native Word/PowerPoint packages.
 PASS: Actual French/Dutch/German offline inference under automatic routing; existing English retained.
 Glossary: 4,137 explicit source entries (fr 1,446 / nl 1,372 / de 1,319).
-PENDING: Compiled Windows GUI/model/detection/document self-test until the Windows workflow completes.
+PASS: Windows build and compiled-app self-test, including GUI startup, all three real models, PDF/Office output, bundled detector, mixed-language routing and English preservation.
+PASS: All 49 regression tests on Windows.
+Verified source commit: c883f414b152e789d578be3d8cafc616842844f6
+Build: https://github.com/eizatabdullah12-stack/eizat96/actions/runs/39555316945
+Artifact SHA256: 213542791b282d1257aaa1dac4face99f57f5a1437f3e64997cc97b813f723ca
 LIMITATIONS: Language detection is probabilistic. Short labels, language switches within a sentence, engineering semantics and Office text fit require review. OCR is not included.

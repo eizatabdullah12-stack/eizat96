@@ -14,6 +14,17 @@ from the repository's [Windows builds](https://github.com/eizatabdullah12-stack/
 Extract the ZIP and double-click EngineeringPDFTranslator.exe. The existing
 executable name is retained for compatibility; the window shows Document Translator 1.8.
 
+[Download Windows v1.8 — portable EXE and offline models](https://github.com/eizatabdullah12-stack/eizat96/actions/runs/39555316945/artifacts/12325706829)
+
+The ZIP is about 356 MB. Extract it and run EngineeringPDFTranslator.exe, then
+select Auto / mixed languages. No Python, API key or translation internet
+connection is needed. This artifact is available until 4 November 2026.
+
+Windows build and compiled-app checks passed on 21 October 2026, including
+GUI startup, all three actual models, PDF save verification, native Office
+output, mixed-language routing and English preservation. All 49 regression
+tests also passed on Windows.
+
 ## Version 1.8 automatic / mixed-language mode
 
 Select **Auto / mixed languages** (the default) to translate French, Dutch and
