@@ -1,0 +1,41 @@
+name: Publish verified installer
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/publish-verified-installer.yml'
+permissions:
+  actions: read
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: eizatabdullah12-stack/eizat96
+    steps:
+      - name: Download existing successful build
+        run: gh run download 39625054045 --name EngineeringTranslator-1.10-Setup --dir artifact
+      - name: Verify exact tested installer
+        shell: python
+        run: |
+          import hashlib
+          from pathlib import Path
+          p = Path("artifact/EngineeringTranslator-1.10-Setup.exe")
+          assert p.stat().st_size == 615336590, "Unexpected installer size"
+          with p.open("rb") as f:
+              actual = hashlib.file_digest(f, "sha256").hexdigest()
+          assert actual == "b8ab6a038a81fa1335ac1d4debc8562dbf26ab614cd267c8f5b48282f5422df0", "Installer checksum mismatch"
+          print("Verified exact installer that passed Windows installation checks:", actual)
+          Path("release-notes.md").write_text("""Download EngineeringTranslator-1.10-Setup.exe below and run it on Windows.
+
+          Fully offline translation for typed/pasted text, selectable-text PDF, Word (.docx), and PowerPoint (.pptx). Supports English, French, Dutch, and German; English is the default display language. Includes mixed-language detection and a 5,100-entry general and engineering glossary with KORBO and PLAKA installation terminology.
+
+          Verified build: 60 Windows tests passed, compiled application checks passed, and a silent installation completed with every installed application file matching the verified bundle. Reuses successful build 39625054045; no rebuild.
+
+          Installer SHA-256: b8ab6a038a81fa1335ac1d4debc8562dbf26ab614cd267c8f5b48282f5422df0
+          """, encoding="utf-8")
+      - name: Publish direct installer download
+        run: |
+          gh release create v1.10 artifact/EngineeringTranslator-1.10-Setup.exe --target e46c2fb3924dce399c1e5e8fa0bd0400af85595e --title "Engineering Document Translator 1.10" --notes-file release-notes.md
