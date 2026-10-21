@@ -1,5 +1,10 @@
 # Engineering Document Translator 1.10
 
+[Download the Windows installer (615 MB)](https://github.com/eizatabdullah12-stack/eizat96/releases/download/v1.10/EngineeringTranslator-1.10-Setup.exe)
+
+The published v1.10 installer passed all 60 Windows tests, compiled-app checks,
+and installation/file verification. No GitHub Actions build is needed to install it.
+
 Native Windows app for direct text, PDF, Word and PowerPoint translation,
 fully offline in English, French, Dutch and German. Both display and output
 default to English. Automatic source-language detection supports mixed text.
