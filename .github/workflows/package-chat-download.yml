@@ -1,0 +1,61 @@
+name: Package Windows download for chat
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/package-chat-download.yml'
+permissions:
+  actions: read
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: EngineeringDocumentTranslator-1.9-Windows
+          path: portable
+          repository: eizatabdullah12-stack/eizat96
+          run-id: 39563815512
+          github-token: ${{ github.token }}
+      - name: Repackage verified application into transfer parts
+        shell: python
+        run: |
+          from pathlib import Path
+          import hashlib, json, zipfile
+          source = Path('portable')
+          report = json.loads((source / 'windows-selftest.json').read_text(encoding='utf-8-sig'))
+          assert report['passed'], 'Only a verified build may be packaged'
+          assert (source / 'EngineeringPDFTranslator.exe').is_file()
+          archive = Path('EngineeringDocumentTranslator-1.9-Windows.zip')
+          with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as out:
+              for item in sorted(source.rglob('*')):
+                  if item.is_file():
+                      out.write(item, str(item.relative_to(source)))
+          checksum = hashlib.sha256(archive.read_bytes()).hexdigest()
+          print(json.dumps({'file': archive.name, 'size': archive.stat().st_size, 'sha256': checksum}))
+          part_size = 400 * 1024 * 1024
+          with archive.open('rb') as stream:
+              for number in range(1, 10):
+                  data = stream.read(part_size)
+                  if not data:
+                      break
+                  target = Path(f'transfer-{number}')
+                  target.mkdir()
+                  part = target / (archive.name + f'.part{number}')
+                  part.write_bytes(data)
+                  print(json.dumps({'part': number, 'size': len(data), 'sha256': hashlib.sha256(data).hexdigest()}))
+          assert number == 3, 'Expected exactly two transfer parts'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Translator-1.9-transfer-1
+          path: transfer-1/
+          compression-level: 0
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Translator-1.9-transfer-2
+          path: transfer-2/
+          compression-level: 0
+          retention-days: 7
