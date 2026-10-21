@@ -1,29 +1,27 @@
-# Engineering Document Translator
+# Engineering Document Translator 1.10
 
-Native Windows desktop PDF, Word and PowerPoint translator: English/French/Dutch/German in both directions. After a
-successful build, open EngineeringPDFTranslator.exe; no installation, browser,
-API key or translation internet connection is required. Models are embedded.
+Native Windows app for direct text, PDF, Word and PowerPoint translation,
+fully offline in English, French, Dutch and German. Both display and output
+default to English. Automatic source-language detection supports mixed text.
 
-Choose a PDF, Word `.docx` or PowerPoint `.pptx` file, select the source and output languages,
-then save a translated copy in the same format. PDF supports replacement or
-translation-notes modes. Office files keep editable text. The original is retained.
-A translation text list is saved alongside the translated file.
+Run EngineeringTranslator-1.10-Setup.exe to install for the current user, then
+open the Start menu shortcut. All six language models are included. No Python,
+API key or network connection is needed during installation or use.
 
-Download the successful **EngineeringDocumentTranslator-1.9-Windows** artifact
-from the repository's [Windows builds](https://github.com/eizatabdullah12-stack/eizat96/actions/workflows/build-windows.yml).
-Extract the ZIP and double-click EngineeringPDFTranslator.exe. The existing
-executable name is retained for compatibility; the window shows Document Translator 1.9.
+The **Text translator** tab opens first. Type or paste and pause for automatic
+translation, or click Translate / Ctrl+Enter. Paste, Copy and Clear are available.
+The latest text and language selection always take priority over obsolete work.
+Long text over 4,000 characters requires the button; the limit is 50,000.
+The **Documents** tab retains the PDF/.docx/.pptx translation workflow.
 
-[Download Windows v1.9 — portable EXE and all offline models](https://github.com/eizatabdullah12-stack/eizat96/actions/runs/39563815512/artifacts/12328784014)
+The glossary now has 5,100 source entries (French 1,771 / Dutch 1,696 / German
+1,633), adding 963 general, office, engineering and KORBO/PLAKA entries.
+See TERMINOLOGY.md for scope, source checks and context limitations.
 
-The ZIP is about 643 MB. Extract it and run EngineeringPDFTranslator.exe.
-App language and Output language both default to English; choose Français,
-Nederlands or Deutsch in either selector. No Python, API key or translation
-internet connection is needed. The artifact is available until 4 November 2026.
-
-Windows build, all 54 regression tests and compiled-app checks passed on
-21 October 2026. Checks cover all four interfaces, English defaults, independent
-output selection, six actual models and target-language document output.
+The Windows workflow runs the regression tests and the compiled GUI/model/file
+checks, creates a four-language Inno Setup installer, installs it in an isolated
+folder and checks every installed file against the verified application bundle.
+Build and install evidence is recorded only after those checks finish.
 
 ## Version 1.9 interface and output languages
 
@@ -134,15 +132,15 @@ started manually. The build requires internet access to PyPI, the official
 Argos model index, and the published language-model download URLs.
 
 The build fetches the French, Dutch and German models, runs real inference checks,
-runs PDF and Office tests, bundles a single executable with PyInstaller, then runs a
+runs PDF and Office tests, bundles the app with PyInstaller, then runs a
 compiled-app self-test for GUI startup, all three language models, PDF output and
 native Word/PowerPoint translation in each language.
 Failed checks prevent the finished artifact from being uploaded. Account
 Actions quotas and repository permissions govern availability.
 
 A manual Windows x64 build requires Python 3.11 and build_windows.ps1. End
-users do not need Python. The one-file app extracts its own runtime to a
-Windows temporary folder on launch; the executable will be fairly large.
+users do not need Python. Inno Setup compresses the app and models into a Windows installer. The installed
+app reads models directly from its installation folder.
 
 ## Supported
 

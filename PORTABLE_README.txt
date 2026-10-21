@@ -1,4 +1,4 @@
-Engineering Document Translator 1.9 - portable Windows x64 application
+Engineering Document Translator 1.10 - Windows x64 application
 
 Auto / mixed languages is now the default. French, Dutch and German text in the
 same document is detected per label or sentence and translated to the selected
@@ -7,9 +7,23 @@ Uncertain short labels and unsupported languages are retained for review.
 Use a manual source language when necessary; switches within one sentence may
 not be recognized reliably. The translation list includes a language summary.
 
-Double-click EngineeringPDFTranslator.exe. No Python installation, browser,
-API key or internet connection is required. The first launch can take a while
-because the bundled translation models unpack into Windows temporary storage.
+Download and run EngineeringTranslator-1.10-Setup.exe. The installer works offline,
+installs into your user profile and provides a Start menu shortcut. Administrator
+access is not needed. Optional desktop shortcut and Windows uninstaller included.
+No Python installation, browser, API key or internet connection is required.
+
+DIRECT TEXT TRANSLATION
+The Text translator tab opens by default. Type or paste text and pause briefly:
+the app detects English/French/Dutch/German and translates automatically into the
+selected output language. Paste, Copy translation and Clear buttons are provided.
+Ctrl+Enter or Translate runs manually. Automatic translation applies up to 4,000
+characters; longer text uses the button, up to 50,000 characters. Paragraphs,
+dimensions and product codes are retained. Changing text or language immediately
+clears the old result; obsolete background results are discarded. Context notes
+identify uncertain or ambiguous text. Choose a manual source language if needed.
+
+DOCUMENT TRANSLATION
+Select the Documents tab to use the existing file translation features.
 
 1. Choose a PDF with selectable text, a Word .docx or a PowerPoint .pptx file.
 2. App language: English by default; choose Français, Nederlands or Deutsch
@@ -21,7 +35,7 @@ because the bundled translation models unpack into Windows temporary storage.
 6. Click Translate and save, and choose a new filename.
 
 Engineering, product and general project terminology is enabled automatically.
-The 4,137 source entries include French 1,446, Dutch 1,372 and German 1,319.
+The 5,100 source entries include French 1,771, Dutch 1,696 and German 1,633.
 Click Browse terminology to search source terms, English meanings and categories.
 The bundled glossary takes priority over the offline translation models. Ambiguous
 labels are marked REVIEW CONTEXT in the .translations.txt list. Review these
@@ -97,3 +111,7 @@ The source/English reference glossary keeps its original terminology content.
 Output supports all four languages using six bundled offline models. French,
 Dutch and German pairs use English as an intermediate when needed. Review
 engineering context and terminology; automatic detection is probabilistic.
+
+Version 1.10 adds direct text translation and 963 source entries covering everyday
+conversation, office messages, drawing instructions, masonry details, KORBO
+installation vocabulary, PLAKA reinforcement joints, fixings and fabrication.

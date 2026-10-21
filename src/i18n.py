@@ -64,6 +64,29 @@ error_generic|Translation could not be completed. Details: {details}|La traducti
 scanned_warning|Pages without selectable text: {pages}. These pages were not translated.|Pages sans texte sélectionnable : {pages}. Ces pages n’ont pas été traduites.|Pagina’s zonder selecteerbare tekst: {pages}. Deze pagina’s zijn niet vertaald.|Seiten ohne auswählbaren Text: {pages}. Diese Seiten wurden nicht übersetzt.
 context_english|Context note in the reference glossary: {note}|Note de contexte du glossaire de référence : {note}|Contextnotitie uit de referentiewoordenlijst: {note}|Kontexthinweis aus dem Referenzglossar: {note}'''
 
+_ROWS += r'''
+text_tab|Text translator|Traduction de texte|Tekstvertaler|Textübersetzer
+documents_tab|Documents|Documents|Documenten|Dokumente
+text_hint|Type or paste text. Translation starts when you pause. Choose an output language above. Everything stays offline.|Saisissez ou collez du texte. La traduction démarre après une pause. Choisissez la langue de traduction ci-dessus. Tout reste hors ligne.|Typ of plak tekst. Het vertalen begint zodra u even stopt. Kies hierboven de doeltaal. Alles werkt offline.|Text eingeben oder einfügen. Die Übersetzung beginnt nach einer kurzen Pause. Wählen Sie oben die Zielsprache. Alles funktioniert offline.
+text_input|Type or paste here|Saisissez ou collez ici|Typ of plak hier|Hier eingeben oder einfügen
+text_output|Translation|Traduction|Vertaling|Übersetzung
+text_auto|Translate automatically|Traduire automatiquement|Automatisch vertalen|Automatisch übersetzen
+text_translate|Translate · Ctrl+Enter|Traduire · Ctrl+Entrée|Vertalen · Ctrl+Enter|Übersetzen · Strg+Eingabe
+text_paste|Paste|Coller|Plakken|Einfügen
+text_clear|Clear|Effacer|Wissen|Leeren
+text_copy|Copy translation|Copier la traduction|Vertaling kopiëren|Übersetzung kopieren
+text_ready|Ready. Enter text to translate.|Prêt. Saisissez le texte à traduire.|Gereed. Voer tekst in om te vertalen.|Bereit. Geben Sie den zu übersetzenden Text ein.
+text_waiting|Waiting for you to finish typing…|En attente de la fin de la saisie…|Wachten tot u klaar bent met typen…|Warten auf das Ende der Eingabe…
+text_working|Translating offline… First use may take a moment.|Traduction hors ligne… La première utilisation peut prendre un instant.|Offline vertalen… De eerste keer kan even duren.|Offline-Übersetzung… Die erste Verwendung kann einen Moment dauern.
+text_complete|Source: {languages}. Context notes: {count}.|Source : {languages}. Notes de contexte : {count}.|Bron: {languages}. Contextnotities: {count}.|Ausgangssprache: {languages}. Kontexthinweise: {count}.
+text_review|Review context. Reference notes below are in English:|Vérifiez le contexte. Les notes de référence ci-dessous sont en anglais :|Controleer de context. De onderstaande referentienotities zijn in het Engels:|Kontext prüfen. Die folgenden Referenzhinweise sind auf Englisch:
+text_uncertain|Uncertain / unsupported|Incertaine / non prise en charge|Onzeker / niet ondersteund|Unklar / nicht unterstützt
+text_long|Long text: click Translate or press Ctrl+Enter (up to 50,000 characters).|Texte long : cliquez sur Traduire ou sur Ctrl+Entrée (50 000 caractères maximum).|Lange tekst: klik op Vertalen of druk op Ctrl+Enter (maximaal 50.000 tekens).|Langer Text: Übersetzen anklicken oder Strg+Eingabe drücken (bis zu 50.000 Zeichen).
+text_limit|Please shorten the text to 50,000 characters or fewer.|Veuillez limiter le texte à 50 000 caractères.|Beperk de tekst tot maximaal 50.000 tekens.|Bitte kürzen Sie den Text auf höchstens 50.000 Zeichen.
+text_paused|Text translation is paused while a document is being translated.|La traduction de texte est en pause pendant la traduction d’un document.|Tekstvertaling is gepauzeerd terwijl een document wordt vertaald.|Die Textübersetzung pausiert während der Dokumentübersetzung.
+text_clipboard|The clipboard contains no text.|Le presse-papiers ne contient pas de texte.|Het klembord bevat geen tekst.|Die Zwischenablage enthält keinen Text.
+text_copied|Translation copied.|Traduction copiée.|Vertaling gekopieerd.|Übersetzung kopiert.'''
+
 MESSAGES = {}
 for row in _ROWS.splitlines():
     key,*values = row.split('|')

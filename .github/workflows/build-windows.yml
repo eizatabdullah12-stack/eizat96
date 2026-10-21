@@ -13,6 +13,7 @@ on:
       - 'LICENSE'
       - 'requirements.txt'
       - 'build_windows.ps1'
+      - 'installer.iss'
       - '.github/workflows/build-windows.yml'
   pull_request:
     paths:
@@ -26,6 +27,7 @@ on:
       - 'LICENSE'
       - 'requirements.txt'
       - 'build_windows.ps1'
+      - 'installer.iss'
       - '.github/workflows/build-windows.yml'
 permissions:
   contents: read
@@ -42,7 +44,7 @@ jobs:
         run: ./build_windows.ps1
       - uses: actions/upload-artifact@v4
         with:
-          name: EngineeringDocumentTranslator-1.9-Windows
-          path: dist/
+          name: EngineeringTranslator-1.10-Setup
+          path: installer_output/
           if-no-files-found: error
           retention-days: 14

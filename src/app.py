@@ -8,11 +8,13 @@ import hashlib
 from datetime import datetime
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
+from tkinter.scrolledtext import ScrolledText
 from documents import translate_document, SUPPORTED
 from glossary import TERMS, AMBIGUOUS, TERM_CATEGORIES, fold
 from directional import DirectionalTranslator, LANGUAGES
 from i18n import LANGUAGE_NAMES, text, error_text
 from version import VERSION
+from text_translation import TextWorker, LIVE_TEXT_CHARS, MAX_TEXT_CHARS
 
 
 class App:
@@ -20,7 +22,10 @@ class App:
         self.root=root; self.events=queue.Queue(); self.stop=threading.Event()
         self.busy=False; self.saved_output=self.saved_sha=None
         self.ui_code='en'; self.bindings=[]; self.source_code='auto'; self.active_extension='.pdf'
-        root.geometry('980x750'); root.minsize(900,720); root.configure(bg='#f0f4f7')
+        self.processing_lock=threading.Lock()
+        self.text_worker=TextWorker(self.events.put,self.processing_lock)
+        self.text_generation=0; self.text_after=None; self.text_result=None
+        root.geometry('1040x820'); root.minsize(940,760); root.configure(bg='#f0f4f7')
         style=ttk.Style(); style.theme_use('clam')
         style.configure('TFrame',background='#f0f4f7')
         style.configure('TLabel',background='#f0f4f7',font=('Segoe UI',11))
@@ -45,6 +50,15 @@ class App:
         self.output_box.grid(row=1,column=2,sticky='ew',pady=5)
         self.ui_box.bind('<<ComboboxSelected>>',self.change_interface)
         self.lang_box.bind('<<ComboboxSelected>>',self.change_source)
+        self.output_box.bind('<<ComboboxSelected>>',self.invalidate_text)
+        self.tabs=ttk.Notebook(frame); self.tabs.pack(fill='both',expand=True)
+        self.text_tab=ttk.Frame(self.tabs,padding=14)
+        self.document_tab=ttk.Frame(self.tabs,padding=14)
+        self.tabs.add(self.text_tab,text=self.T('text_tab'))
+        self.tabs.add(self.document_tab,text=self.T('documents_tab'))
+        self.build_text_tab()
+        self.button(frame,'glossary',self.show_glossary).pack(anchor='e',pady=(10,0))
+        frame=self.document_tab
         self.label(frame,'document').pack(anchor='w')
         self.file=tk.StringVar(); row=ttk.Frame(frame); row.pack(fill='x',pady=(5,18))
         ttk.Entry(row,textvariable=self.file).pack(side='left',fill='x',expand=True,ipady=6)
@@ -61,7 +75,6 @@ class App:
         controls=ttk.Frame(frame); controls.pack(fill='x')
         self.start=self.button(controls,'translate_save',self.run); self.start.pack(side='left')
         self.cancel=self.button(controls,'cancel',self.stop.set,state='disabled'); self.cancel.pack(side='left',padx=10)
-        self.button(controls,'glossary',self.show_glossary).pack(side='right')
         self.open_output=self.button(frame,'open_verified',self.open_saved,state='disabled')
         self.open_output.pack(anchor='w',pady=(12,0))
         self.file.trace_add('write',self.update_file_type)
@@ -88,6 +101,9 @@ class App:
         self.source_values={'auto':self.T('auto'),**LANGUAGE_NAMES}
         self.lang_box.configure(values=list(self.source_values.values()))
         self.language.set(self.source_values[self.source_code])
+        self.tabs.tab(self.text_tab,text=self.T('text_tab'))
+        self.tabs.tab(self.document_tab,text=self.T('documents_tab'))
+        self.refresh_text_status()
         if not self.busy:
             if self.saved_output: self.status.set(self.T('verified',name=Path(self.saved_output).name))
             else: self.status.set(self.T('office_status') if Path(self.file.get()).suffix.lower() in ('.docx','.pptx') else self.T('begin'))
@@ -97,9 +113,112 @@ class App:
 
     def change_source(self,*args):
         self.source_code=next(code for code,name in self.source_values.items() if name==self.language.get())
+        self.invalidate_text()
 
     def target_code(self):
         return next(code for code,name in LANGUAGE_NAMES.items() if name==self.output_language.get())
+
+    def build_text_tab(self):
+        panel=self.text_tab
+        self.label(panel,'text_hint',foreground='#536675',wraplength=940).pack(anchor='w',pady=(0,10))
+        columns=ttk.Frame(panel); columns.pack(fill='both',expand=True)
+        for column in range(2): columns.columnconfigure(column,weight=1,uniform='text')
+        columns.rowconfigure(1,weight=1)
+        self.label(columns,'text_input').grid(row=0,column=0,sticky='w',pady=(0,5))
+        self.label(columns,'text_output').grid(row=0,column=1,sticky='w',pady=(0,5),padx=(12,0))
+        self.text_input=ScrolledText(columns,wrap='word',undo=True,font=('Segoe UI',12),width=32,height=12,padx=10,pady=10)
+        self.text_input.grid(row=1,column=0,sticky='nsew')
+        self.text_output=ScrolledText(columns,wrap='word',state='disabled',font=('Segoe UI',12),width=32,height=12,padx=10,pady=10)
+        self.text_output.grid(row=1,column=1,sticky='nsew',padx=(12,0))
+        self.text_input.bind('<<Modified>>',self.on_text_edit)
+        self.text_input.bind('<Control-Return>',lambda event:(self.translate_text_now(),'break')[1])
+        self.text_input.edit_modified(False)
+        controls=ttk.Frame(panel); controls.pack(fill='x',pady=(10,0))
+        self.auto_text=tk.BooleanVar(value=True)
+        self.auto_text_button=self.localize(ttk.Checkbutton(controls,variable=self.auto_text,command=self.invalidate_text),'text_auto')
+        self.auto_text_button.pack(side='left')
+        self.text_translate=self.button(controls,'text_translate',self.translate_text_now)
+        self.text_translate.pack(side='right')
+        actions=ttk.Frame(panel); actions.pack(fill='x',pady=6)
+        self.button(actions,'text_paste',self.paste_text).pack(side='left')
+        self.button(actions,'text_clear',self.clear_text).pack(side='left',padx=8)
+        self.text_copy=self.button(actions,'text_copy',self.copy_text,state='disabled')
+        self.text_copy.pack(side='right')
+        self.text_status=tk.StringVar(value=self.T('text_ready'))
+        ttk.Label(panel,textvariable=self.text_status,wraplength=940).pack(anchor='w',pady=(4,0))
+        self.text_review=ScrolledText(panel,wrap='word',state='disabled',height=3,font=('Segoe UI',10),foreground='#865c0a')
+        self.text_review.pack(fill='x',pady=(6,0))
+
+    def set_text_output(self,value):
+        self.text_output.configure(state='normal'); self.text_output.delete('1.0','end')
+        self.text_output.insert('1.0',value); self.text_output.configure(state='disabled')
+
+    def on_text_edit(self,*args):
+        if self.text_input.edit_modified():
+            self.text_input.edit_modified(False)
+            self.invalidate_text()
+
+    def invalidate_text(self,*args):
+        self.text_generation+=1; self.text_worker.cancel()
+        if self.text_after is not None:
+            self.root.after_cancel(self.text_after); self.text_after=None
+        self.text_result=None; self.set_text_output('')
+        self.text_copy.configure(state='disabled'); self.set_text_reviews('')
+        value=self.text_input.get('1.0','end-1c')
+        if len(value)>MAX_TEXT_CHARS:
+            self.text_status.set(self.T('text_limit')); return
+        if self.busy:
+            self.text_status.set(self.T('text_paused')); return
+        if value.strip() and self.auto_text.get() and len(value)<=LIVE_TEXT_CHARS:
+            self.text_status.set(self.T('text_waiting'))
+            self.text_after=self.root.after(750,self.translate_text_now)
+        else:
+            self.text_status.set(self.T('text_long') if len(value)>LIVE_TEXT_CHARS else self.T('text_ready'))
+
+    def translate_text_now(self):
+        if self.text_after is not None:
+            self.root.after_cancel(self.text_after); self.text_after=None
+        if self.busy:
+            self.text_status.set(self.T('text_paused')); return
+        value=self.text_input.get('1.0','end-1c')
+        if not value.strip():
+            self.invalidate_text(); return
+        if len(value)>MAX_TEXT_CHARS:
+            self.text_status.set(self.T('text_limit')); return
+        self.text_generation+=1; self.text_result=None
+        self.set_text_output(''); self.text_copy.configure(state='disabled'); self.set_text_reviews('')
+        self.text_status.set(self.T('text_working'))
+        self.text_worker.submit(self.text_generation,value,self.source_code,self.target_code())
+
+    def refresh_text_status(self):
+        if self.text_result is None:
+            if not self.text_input.get('1.0','end-1c').strip(): self.text_status.set(self.T('text_ready'))
+            return
+        names=', '.join(LANGUAGE_NAMES.get(code,self.T('text_uncertain')) for code in self.text_result['languages'])
+        self.text_status.set(self.T('text_complete',languages=names or '—',count=len(self.text_result['reviews'])))
+        if self.text_result['reviews']:
+            self.set_text_reviews(self.T('text_review')+'\n'+'\n'.join(self.text_result['reviews']))
+
+    def set_text_reviews(self,value):
+        self.text_review.configure(state='normal'); self.text_review.delete('1.0','end')
+        self.text_review.insert('1.0',value); self.text_review.configure(state='disabled')
+
+    def paste_text(self):
+        try: value=self.root.clipboard_get()
+        except tk.TclError:
+            self.text_status.set(self.T('text_clipboard')); return
+        try: self.text_input.delete('sel.first','sel.last')
+        except tk.TclError: pass
+        self.text_input.insert('insert',value); self.text_input.focus_set()
+
+    def clear_text(self):
+        self.text_input.delete('1.0','end'); self.text_input.edit_reset()
+        self.text_input.edit_modified(False); self.invalidate_text(); self.text_input.focus_set()
+
+    def copy_text(self):
+        if self.text_result is not None:
+            self.root.clipboard_clear(); self.root.clipboard_append(self.text_result['text'])
+            self.text_status.set(self.T('text_copied'))
 
     def show_glossary(self):
         window=tk.Toplevel(self.root); window.title(self.T('glossary_title'))
@@ -168,14 +287,19 @@ class App:
             messagebox.showerror(self.T('keep_format'),self.T('same_extension',extension=extension)); return
         code=self.source_code; mode=self.mode.get()
         self.busy=True; self.active_extension=extension; self.saved_output=None
+        self.text_worker.cancel()
+        if self.text_after is not None:
+            self.root.after_cancel(self.text_after); self.text_after=None
+        self.text_translate.configure(state='disabled'); self.text_status.set(self.T('text_paused'))
         self.open_output.configure(state='disabled'); self.stop.clear()
         for widget in (self.start,self.browse,self.lang_box,self.ui_box,self.output_box,self.replace_mode,self.notes_mode):
             widget.configure(state='disabled')
         self.cancel.configure(state='normal'); self.status.set(self.T('loading'))
         def worker():
             try:
-                translate=DirectionalTranslator(code,target_code)
-                result=translate_document(source,target,translate,mode,lambda a,b:self.events.put(('progress',(a,b))),self.stop.is_set)
+                with self.processing_lock:
+                    translate=DirectionalTranslator(code,target_code)
+                    result=translate_document(source,target,translate,mode,lambda a,b:self.events.put(('progress',(a,b))),self.stop.is_set)
                 result['target_code']=target_code; self.events.put(('done',(target,result)))
             except Exception as exc: self.events.put(('error',str(exc)))
         threading.Thread(target=worker,daemon=True).start()
@@ -184,11 +308,21 @@ class App:
         try:
             while True:
                 kind,data=self.events.get_nowait()
+                if kind=='text_done':
+                    generation,result,error=data
+                    if generation==self.text_generation and not self.busy:
+                        if error: self.text_status.set(error_text(self.ui_code,error))
+                        else:
+                            self.text_result=result; self.set_text_output(result['text'])
+                            self.text_copy.configure(state='normal' if result['text'] else 'disabled')
+                            self.refresh_text_status()
+                    continue
                 if kind=='progress':
                     current,total=data; self.bar['value']=current/total*100
                     self.status.set(self.T('page_progress' if self.active_extension=='.pdf' else 'part_progress',current=current,total=total))
                     continue
                 self.busy=False
+                self.text_translate.configure(state='normal'); self.invalidate_text()
                 for widget in (self.start,self.browse): widget.configure(state='normal')
                 for widget in (self.lang_box,self.ui_box,self.output_box): widget.configure(state='readonly')
                 self.cancel.configure(state='disabled')
@@ -222,7 +356,7 @@ class App:
 
     def close(self):
         if self.busy and not messagebox.askyesno(self.T('close_title'),self.T('close_question')): return
-        self.stop.set(); self.root.destroy()
+        self.stop.set(); self.text_worker.close(); self.root.destroy()
 
 
 if __name__=='__main__':

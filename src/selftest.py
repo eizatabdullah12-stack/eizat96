@@ -25,7 +25,9 @@ def run(report_path, app_factory):
         for interface in ('fr','nl','de','en'):
             app.apply_interface(interface)
             window.update()
-            if app.start.cget('text') != text(interface,'translate_save') or app.target_code() != 'fr':
+            if (app.start.cget('text') != text(interface,'translate_save') or app.target_code() != 'fr' or
+                    app.text_translate.cget('text') != text(interface,'text_translate') or
+                    app.tabs.tab(app.text_tab,'text') != text(interface,'text_tab')):
                 raise RuntimeError('Interface localization or independent output setting failed')
         app.output_language.set(LANGUAGE_NAMES['en'])
         report['checks'].append('Four interface languages load; English defaults and independent output choice passed')
@@ -35,6 +37,39 @@ def run(report_path, app_factory):
             raise RuntimeError('Expanded terminology browser is incomplete')
         glossary_window.destroy()
         report['checks'].append('Searchable built-in terminology browser loads')
+        # Exercise the actual text widgets, background queue and automatic delay.
+        import time
+        if app.tabs.select()!=str(app.text_tab) or not app.auto_text.get():
+            raise RuntimeError('Automatic direct text translation is not the startup tab')
+        app.text_input.insert('1.0','Merci pour votre aide.\nRegelplaat 200 mm - KORBO M12.\nJustierplatte.')
+        def wait_for_text():
+            deadline=time.monotonic()+60
+            while app.text_result is None and time.monotonic()<deadline:
+                window.update(); time.sleep(.02)
+            if app.text_result is None:
+                raise RuntimeError('Direct text translation did not complete: '+app.text_status.get())
+        wait_for_text()
+        rendered=app.text_output.get('1.0','end-1c')
+        if rendered!='Thank you for your help.\nAdjustment plate 200 mm - KORBO M12.\nAdjustment plate.':
+            raise RuntimeError('Direct text mixed languages, line breaks or codes failed: '+rendered)
+        app.copy_text(); window.update()
+        if window.clipboard_get()!=rendered:
+            raise RuntimeError('Copy translation failed')
+        app.clear_text(); window.update()
+        if app.text_output.get('1.0','end-1c') or str(app.text_copy.cget('state'))!='disabled':
+            raise RuntimeError('Clear must remove obsolete translation and disable Copy')
+        # Manual mode, clipboard paste and changing the output language.
+        app.auto_text.set(False); window.clipboard_clear(); window.clipboard_append('Adjustment plate')
+        app.paste_text(); window.update()
+        app.source_code='en'; app.output_language.set(LANGUAGE_NAMES['fr'])
+        app.invalidate_text(); app.translate_text_now(); wait_for_text()
+        if app.text_output.get('1.0','end-1c')!='Plaque de réglage':
+            raise RuntimeError('Pasted text to French failed')
+        app.text_input.insert('end','!'); window.update()
+        if app.text_result is not None or app.text_output.get('1.0','end-1c'):
+            raise RuntimeError('Editing input must immediately invalidate obsolete output')
+        app.text_worker.close()
+        report['checks'].append('Direct text: automatic mixed languages, manual mode, Paste/Copy/Clear, new glossary, stale output and protected codes passed')
         window.update()
         window.destroy()
         report['checks'].append('Bundled desktop GUI loads')

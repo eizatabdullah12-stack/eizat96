@@ -1,4 +1,4 @@
-# Engineering and project terminology in version 1.7
+# Engineering, project and everyday terminology in version 1.10
 
 French, Dutch and German terminology overrides general machine translation.
 The bundled EngineeringGlossary.tsv lists the source labels, English terms
@@ -28,6 +28,27 @@ by the PDF engine. Product names such as Korbo, Sumo and Halfen are retained.
 The translator interprets labels, not drawing geometry. Other words use the
 offline models. A glossary cannot guarantee the meaning of an entire note,
 an unfamiliar abbreviation, or a product-specific/project-specific convention.
+
+## Version 1.10 expansion
+
+5,100 explicit source entries: French 1,771, Dutch 1,696, German 1,633.
+The 963 added source entries represent 353 submitted concepts and phrases;
+existing meanings take priority when an alias already exists. The expansion
+includes everyday conversation, correspondence, meetings, drawing instructions,
+masonry/facade details, KORBO installation wording, PLAKA reinforcement joints,
+anchorage, steel fabrication and design coordination. Both typed text and files
+use the same glossary. New translations are practical equivalents; project and
+regional usage may vary. Source/English reference notes remain in English.
+
+Representative KORBO hardware and installation wording was checked against:
+https://www.plaka-solutions.com/fileadmin/user_upload/02.01.01_p_multi_nl-fr-en_KORBO_plaatsingsvoorschriften-PrescriptionsDePose_V03_2026-05-01.pdf
+
+Representative Stabox joint/component wording was checked against:
+https://www.plaka-solutions.com/nl/product-catalogus/01-01-10-seismische-wachtdoos-stabox
+
+These source checks cover selected product vocabulary. The overall glossary is
+independently authored; it is not an official manufacturer translation catalogue.
+No capacities, installation limits or design acceptance rules are encoded.
 
 ## Version 1.7 expansion
 

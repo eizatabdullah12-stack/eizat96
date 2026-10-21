@@ -4,6 +4,7 @@ __pycache__/
 *.pyc
 build/
 dist/
+installer_output/
 licenses/
 *.spec
 EngineeringPDFTranslator_Portable_Windows.zip
