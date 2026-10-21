@@ -14,6 +14,17 @@ from the repository's [Windows builds](https://github.com/eizatabdullah12-stack/
 Extract the ZIP and double-click EngineeringPDFTranslator.exe. The existing
 executable name is retained for compatibility; the window shows Document Translator 1.9.
 
+[Download Windows v1.9 — portable EXE and all offline models](https://github.com/eizatabdullah12-stack/eizat96/actions/runs/39563815512/artifacts/12328784014)
+
+The ZIP is about 643 MB. Extract it and run EngineeringPDFTranslator.exe.
+App language and Output language both default to English; choose Français,
+Nederlands or Deutsch in either selector. No Python, API key or translation
+internet connection is needed. The artifact is available until 4 November 2026.
+
+Windows build, all 54 regression tests and compiled-app checks passed on
+21 October 2026. Checks cover all four interfaces, English defaults, independent
+output selection, six actual models and target-language document output.
+
 ## Version 1.9 interface and output languages
 
 The app starts in English and outputs English by default. The **App language**

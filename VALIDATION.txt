@@ -4,8 +4,12 @@ PASS: 54 local regression tests, including all 16 source/output combinations
 numeric/product reference protection, target-language PDF metadata/reports,
 Word/PowerPoint output and interface translation completeness/placeholders.
 PASS: Real English-to-French/Dutch/German model inference and technical labels.
-PENDING: Windows compiled-app checks for all four interfaces, independent display/
+PASS: Windows compiled-app checks for all four interfaces, independent display/
 output choices, English startup defaults, six models and document output.
+PASS: All 54 regression tests on Windows.
+Verified source commit: 5f75805eb331d08a601bf5fcadeff0b820e9a5bc
+Build: https://github.com/eizatabdullah12-stack/eizat96/actions/runs/39563815512
+Artifact SHA256: b4193274809a2dd88a5b6276273e34b5deb9706c4c51421cd5176603d72f3daa
 LIMITATIONS: Translation and language detection require context review. Reference
 glossary content and technical error details can remain in their original language.
 OCR is not included; Office text fit and mixed formatting require review.
