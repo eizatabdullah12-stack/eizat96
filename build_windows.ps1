@@ -17,7 +17,7 @@ if ($LASTEXITCODE -ne 0) { throw 'Dependency notices could not be retained.' }
 if ($LASTEXITCODE -ne 0) { throw 'Windows executable build failed.' }
 $resultPath = Join-Path $PSScriptRoot 'dist\windows-selftest.json'
 $checkProcess = Start-Process -FilePath (Join-Path $PSScriptRoot 'dist\EngineeringPDFTranslator.exe') -ArgumentList @('--self-test', ('"' + $resultPath + '"')) -PassThru
-if (-not $checkProcess.WaitForExit(180000)) { $checkProcess.Kill(); throw 'Compiled executable self-test timed out.' }
+if (-not $checkProcess.WaitForExit(300000)) { $checkProcess.Kill(); throw 'Compiled executable self-test timed out.' }
 if ($checkProcess.ExitCode -ne 0 -or -not (Test-Path $resultPath)) { throw 'Compiled executable self-test failed.' }
 $testResult = Get-Content -Raw $resultPath | ConvertFrom-Json
 if (-not $testResult.passed) { throw 'Compiled executable checks did not pass.' }

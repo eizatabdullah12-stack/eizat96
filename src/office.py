@@ -152,6 +152,7 @@ def verify_office_output(path, originals, replacements):
 def translate_office(source, destination, translate, progress=lambda *args: None,
                      cancel=lambda: False):
     source, destination = Path(source), Path(destination)
+    target_name = {'en':'English','fr':'French','nl':'Dutch','de':'German'}.get(getattr(translate,'target_language','en'),'English')
     extension = source.suffix.lower()
     if extension not in ('.docx', '.pptx'):
         raise ValueError('Use a .docx or .pptx file. Save older .doc/.ppt files in the newer format first.')
@@ -198,7 +199,7 @@ def translate_office(source, destination, translate, progress=lambda *args: None
             reviews = getattr(translate, 'review_notes', lambda s: [])(original)
             glossary_hits += len(terms)
             review_labels += bool(reviews)
-            entry = f'PART {name}\nOriginal: {original}\nEnglish: {translated}\n'
+            entry = f'PART {name}\nOriginal: {original}\n{target_name}: {translated}\n'
             if terms:
                 entry += 'Glossary: ' + '; '.join(t['source'] + ' -> ' + t['english'] for t in terms) + '\n'
             if reviews:
@@ -237,15 +238,15 @@ def translate_office(source, destination, translate, progress=lambda *args: None
         if os.path.exists(temporary):
             os.unlink(temporary)
     digest = hashlib.sha256(destination.read_bytes()).hexdigest()
-    language = {'fr': 'French', 'nl': 'Dutch', 'de': 'German', 'auto': 'Auto / mixed languages'}.get(getattr(translate, 'language', None), 'Unspecified')
+    language = {'en':'English', 'fr': 'French', 'nl': 'Dutch', 'de': 'German', 'auto': 'Auto / mixed languages'}.get(getattr(translate, 'language', None), 'Unspecified')
     report_path = destination.with_suffix('.translations.txt')
     warnings = ('Images and embedded objects are retained without OCR or translation. Fields, '
                 'equations, chart caches and template/master text remain unchanged. '
                 'Review text fit and styling in Microsoft Office; longer translations can reflow '
                 'Word pages or overflow PowerPoint shapes. Mixed run styling is approximate.')
     report_path.write_text(
-        f'Engineering Document Translator {VERSION} - English translation list\n'
-        f'Source language: {language}; target: English; format: {extension}\n'
+        f'Engineering Document Translator {VERSION} - {target_name} translation list\n'
+        f'Source language: {language}; target: {target_name}; format: {extension}\n'
         f'Output file: {destination.name}\nFile SHA256: {digest}\n'
         f'Saved package reopened and checked: {changed} translated text groups; '
         f'{len(replacements)} changed parts. Other package parts match the original bytes.\n'

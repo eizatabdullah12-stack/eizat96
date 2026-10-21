@@ -559,24 +559,24 @@ load_extended_terms()
 
 class EngineeringTranslator:
     """Protect terminology from the general translator without placeholders."""
-    def __init__(self, language, general_translate):
+    def __init__(self, language, general_translate, terms_override=None):
         if language not in TERMS:
             raise ValueError('Unsupported source language')
         self.language = language
         self.general_translate = general_translate
         self.cache = {}
         self.terms = {}
-        for line in TERMS[language].strip().splitlines():
-            source, english = line.split('|', 1)
+        rows = (line.split('|',1) for line in TERMS[language].strip().splitlines()) if terms_override is None else terms_override.items()
+        for source, english in rows:
             key = fold(source)
             if key in self.terms:
                 raise ValueError('Duplicate glossary term: ' + source)
             self.terms[key] = english
-            if language == 'de':
+            if language == 'de' and terms_override is None:
                 ascii_spelling = source.casefold().replace('ä', 'ae').replace('ö', 'oe').replace('ü', 'ue')
                 self.terms.setdefault(fold(ascii_spelling), english)
         self.terms.update({fold(name): name for name in BRANDS})
-        self.ambiguous = {fold(k): v for k, v in AMBIGUOUS[language].items()}
+        self.ambiguous = {fold(k): v for k, v in AMBIGUOUS[language].items()} if terms_override is None else {}
         patterns = [re.escape(k).replace(r'\ ', r'\s+') for k in sorted(self.terms, key=len, reverse=True)]
         self.pattern = re.compile(r'(?<!\w)(?:' + '|'.join(patterns) + r')(?!\w)')
 

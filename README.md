@@ -1,29 +1,42 @@
 # Engineering Document Translator
 
-Native Windows desktop PDF, Word and PowerPoint translator: French/Dutch/German to English. After a
+Native Windows desktop PDF, Word and PowerPoint translator: English/French/Dutch/German in both directions. After a
 successful build, open EngineeringPDFTranslator.exe; no installation, browser,
 API key or translation internet connection is required. Models are embedded.
 
-Choose a PDF, Word `.docx` or PowerPoint `.pptx` file, select the source language,
+Choose a PDF, Word `.docx` or PowerPoint `.pptx` file, select the source and output languages,
 then save a translated copy in the same format. PDF supports replacement or
 translation-notes modes. Office files keep editable text. The original is retained.
 A translation text list is saved alongside the translated file.
 
-Download the successful **EngineeringDocumentTranslator-1.8-Windows** artifact
+Download the successful **EngineeringDocumentTranslator-1.9-Windows** artifact
 from the repository's [Windows builds](https://github.com/eizatabdullah12-stack/eizat96/actions/workflows/build-windows.yml).
 Extract the ZIP and double-click EngineeringPDFTranslator.exe. The existing
-executable name is retained for compatibility; the window shows Document Translator 1.8.
+executable name is retained for compatibility; the window shows Document Translator 1.9.
 
-[Download Windows v1.8 — portable EXE and offline models](https://github.com/eizatabdullah12-stack/eizat96/actions/runs/39555316945/artifacts/12325706829)
+## Version 1.9 interface and output languages
 
-The ZIP is about 356 MB. Extract it and run EngineeringPDFTranslator.exe, then
-select Auto / mixed languages. No Python, API key or translation internet
-connection is needed. This artifact is available until 4 November 2026.
+The app starts in English and outputs English by default. The **App language**
+selector switches labels, buttons, progress, common dialogs and glossary headings
+between English, Français, Nederlands and Deutsch. This is independent of the
+**Output language** selector, which chooses the translated document's language.
 
-Windows build and compiled-app checks passed on 21 October 2026, including
-GUI startup, all three actual models, PDF save verification, native Office
-output, mixed-language routing and English preservation. All 49 regression
-tests also passed on Windows.
+Input can be automatic/mixed or manually set to any of the four languages.
+All 12 translation directions are supported. Six bundled models cover translation
+to and from English; other language pairs use English as an intermediate.
+Text already in the selected output language is retained when detected.
+Engineering vocabulary is used in both directions, and numeric dimensions,
+product names and references remain protected. Review translation semantics,
+especially when using an intermediate language or ambiguous source terminology.
+
+Interface changes apply immediately and do not change the output language.
+The reference glossary remains a source/English terminology reference; its
+entries and context content are not interface translations. Native Windows
+file-picker controls follow Windows' own language settings. Unexpected technical
+error details can appear in their original language.
+
+The package is larger because it includes all six offline translation models.
+No API key, Python installation or internet connection is needed to translate.
 
 ## Version 1.8 automatic / mixed-language mode
 
@@ -137,8 +150,8 @@ not interpret drawing geometry or guarantee project-specific terminology.
 
 ## Limitations
 
-No scanned-PDF/image OCR, legacy `.doc`/`.ppt` files or target
-languages other than English. Machine translation quality on engineering
+No scanned-PDF/image OCR, legacy `.doc`/`.ppt` files or languages outside
+English, French, Dutch and German. Machine translation quality on engineering
 terminology still needs human review. Dense CAD text bounds, unusual fonts,
 complex equations and overlapping labels need representative-file testing.
 Notes-only mode preserves every original label. Original digital signatures

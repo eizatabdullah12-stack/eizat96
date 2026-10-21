@@ -1,8 +1,8 @@
-Engineering Document Translator 1.8 - portable Windows x64 application
+Engineering Document Translator 1.9 - portable Windows x64 application
 
 Auto / mixed languages is now the default. French, Dutch and German text in the
-same document is detected per label or sentence and translated to English.
-Existing English is retained. Detection and translation work offline.
+same document is detected per label or sentence and translated to the selected
+output language. Text already in that output language is retained. Detection and translation work offline.
 Uncertain short labels and unsupported languages are retained for review.
 Use a manual source language when necessary; switches within one sentence may
 not be recognized reliably. The translation list includes a language summary.
@@ -12,11 +12,13 @@ API key or internet connection is required. The first launch can take a while
 because the bundled translation models unpack into Windows temporary storage.
 
 1. Choose a PDF with selectable text, a Word .docx or a PowerPoint .pptx file.
-2. Select Auto / mixed languages, or choose French, Dutch or German manually.
-   The output is English.
-3. For PDF, select text replacement or translation notes. Office files save
+2. App language: English by default; choose Français, Nederlands or Deutsch
+   to change the software display. This does not change the output language.
+3. Source language: Auto / mixed languages, or manually choose a language.
+4. Output language: English by default; choose French, Dutch or German if wanted.
+5. For PDF, select text replacement or translation notes. Office files save
    editable translated text in the same format as the source.
-4. Click Translate and save, and choose a new filename.
+6. Click Translate and save, and choose a new filename.
 
 Engineering, product and general project terminology is enabled automatically.
 The 4,137 source entries include French 1,446, Dutch 1,372 and German 1,319.
@@ -35,7 +37,7 @@ Drawing references, dimensions and units remain unchanged. A note explains when
 a translated label cannot fit its original space or uses unsupported characters.
 
 This version does not recognize scanned image-only PDFs or text in pictures (OCR),
-read older .doc/.ppt formats, or support other target languages. Review machine translations
+read older .doc/.ppt formats, or support languages beyond English, French, Dutch and German. Review machine translations
 of engineering terminology and compare the translated drawing with its source.
 
 Source and reproducible Windows build:
@@ -88,3 +90,10 @@ steelwork and general project language. Typographic lookup and known phrases
 containing acronyms are improved. Product names, dimensions and codes are retained.
 The translation list now explains ambiguous retained terms and unchanged model
 results. Text inside pictures still needs OCR. Review the translation for context.
+
+Version 1.9: separate App language and Output language controls. Both default to
+English on launch. App labels, buttons, progress and common dialogs are localized.
+The source/English reference glossary keeps its original terminology content.
+Output supports all four languages using six bundled offline models. French,
+Dutch and German pairs use English as an intermediate when needed. Review
+engineering context and terminology; automatic detection is probabilistic.

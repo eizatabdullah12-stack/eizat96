@@ -18,6 +18,17 @@ def run(report_path, app_factory):
         window = tk.Tk()
         window.withdraw()
         app=app_factory(window)
+        from i18n import text, LANGUAGE_NAMES
+        if app.ui_code != 'en' or app.target_code() != 'en':
+            raise RuntimeError('English is not the default interface/output language')
+        app.output_language.set(LANGUAGE_NAMES['fr'])
+        for interface in ('fr','nl','de','en'):
+            app.apply_interface(interface)
+            window.update()
+            if app.start.cget('text') != text(interface,'translate_save') or app.target_code() != 'fr':
+                raise RuntimeError('Interface localization or independent output setting failed')
+        app.output_language.set(LANGUAGE_NAMES['en'])
+        report['checks'].append('Four interface languages load; English defaults and independent output choice passed')
         glossary_window,glossary_table=app.show_glossary()
         window.update()
         if len(glossary_table.get_children()) < 500:
@@ -150,6 +161,21 @@ def run(report_path, app_factory):
                     raise RuntimeError('Mixed-language file report is incomplete')
                 report['checks'].append(f'Automatic mixed-language {extension} translation and English preservation passed')
         report['checks'].append('Bundled language detector and mixed-language routing passed')
+        from directional import DirectionalTranslator
+        for target,label in [('fr','Plaque de réglage'),('nl','Regelplaat'),('de','Justierplatte')]:
+            translator=DirectionalTranslator('en',target)
+            if protected_translate('Adjustment plate 200 mm - KORBO M12',translator) != label+' 200 mm - KORBO M12':
+                raise RuntimeError('Target-language glossary or code protection failed')
+            unknown=protected_translate('The cat sleeps on the sofa.',translator)
+            if {'fr':'chat','nl':'kat','de':'katze'}[target] not in unknown.casefold():
+                raise RuntimeError('Bundled outbound inference failed: '+target)
+            with tempfile.TemporaryDirectory() as folder:
+                source,destination=Path(folder)/'source.docx',Path(folder)/'translated.docx'
+                make_sample(source,'Adjustment plate')
+                result=translate_document(source,destination,translator)
+                if result['translated'] < 1:
+                    raise RuntimeError('Native target-language output failed')
+            report['checks'].append(f'English to {target} real model, glossary, codes and native output passed')
         report['passed'] = True
     except Exception as exc:
         report['error'] = str(exc)

@@ -120,6 +120,7 @@ def verify_pdf_output(path, expected, creator):
 
 def translate_pdf(source, destination, translate, mode="replace", progress=lambda *args: None, cancel=lambda: False):
     source, destination = Path(source), Path(destination)
+    target_name = {'en':'English','fr':'French','nl':'Dutch','de':'German'}.get(getattr(translate,'target_language','en'),'English')
     if source.resolve() == destination.resolve():
         raise ValueError("Choose a new output filename; the original PDF must be retained.")
     if mode not in ("replace", "notes"):
@@ -166,7 +167,7 @@ def translate_pdf(source, destination, translate, mode="replace", progress=lambd
                     reviews = getattr(translate, 'review_notes', lambda text: [])(original)
                     glossary_hits += len(terms)
                     review_labels += bool(reviews)
-                    entry = f"PAGE {number + 1}\nOriginal: {original}\nEnglish: {translated}\n"
+                    entry = f"PAGE {number + 1}\nOriginal: {original}\n{target_name}: {translated}\n"
                     if terms:
                         entry += 'Glossary: ' + '; '.join(t['source'] + ' -> ' + t['english'] for t in terms) + '\n'
                     if reviews:
@@ -189,8 +190,8 @@ def translate_pdf(source, destination, translate, mode="replace", progress=lambd
                     if fs is None:
                         note_position = fitz.Point(max(1, rect.x0 - 23), max(1, rect.y0))
                         note = page.add_text_annot(note_position, translated)
-                        note.set_info(title="English translation", content=f"Original: {original}\nEnglish: {translated}")
-                        page_notes.append(f"Original: {original}\nEnglish: {translated}")
+                        note.set_info(title=f"{target_name} translation", content=f"Original: {original}\n{target_name}: {translated}")
+                        page_notes.append(f"Original: {original}\n{target_name}: {translated}")
                         fallback += 1
                         reason = 'notes-only mode' if mode == 'notes' else 'oblique text' if rotation is None else 'font character support' if not encodable else 'translation exceeds label space'
                         report.append(entry + f'Status: NOTE - {reason}.\n')
@@ -221,9 +222,9 @@ def translate_pdf(source, destination, translate, mode="replace", progress=lambd
         fd, temp = tempfile.mkstemp(suffix=".pdf", dir=destination.parent)
         os.close(fd)
         try:
-            language={'fr':'French','nl':'Dutch','de':'German','auto':'Auto / mixed languages'}.get(getattr(translate,'language',None),'Unspecified')
+            language={'en':'English','fr':'French','nl':'Dutch','de':'German','auto':'Auto / mixed languages'}.get(getattr(translate,'language',None),'Unspecified')
             metadata=doc.metadata.copy()
-            metadata['creator']=f'Engineering PDF Translator {VERSION}; {language} to English'
+            metadata['creator']=f'Engineering PDF Translator {VERSION}; {language} to {target_name}'
             doc.set_metadata(metadata)
             doc.save(temp, garbage=4, deflate=True)
             verify_pdf_output(temp, expected, metadata['creator'])
@@ -235,5 +236,5 @@ def translate_pdf(source, destination, translate, mode="replace", progress=lambd
     output_sha = hashlib.sha256(destination.read_bytes()).hexdigest()
     warnings = f"\nPages without extractable text (not translated): {scanned_pages}\n" if scanned_pages else ""
     report_path = destination.with_suffix(".translations.txt")
-    report_path.write_text(f"Engineering PDF Translator {VERSION} - English translation list\nSource language: {language}; target: English; mode: {mode}\nOutput PDF: {destination.name}\nPDF SHA256: {output_sha}\nSaved PDF reopened and checked: {verified['verified_replaced']} replacement labels; {verified['verified_notes']} translation notes.\nTechnical glossary takes priority; other text uses machine translation.\nREVIEW CONTEXT marks ambiguous labels. Check the drawing detail/legend.\nUNCHANGED may include proper names, already-English text or untranslated words.\n" + f"Replaced on drawing: {count-fallback}; notes: {fallback}; unchanged labels to check: {unchanged}; retained references/units: {retained}\nGlossary matches: {glossary_hits}; labels needing context review: {review_labels}\n" + warnings + "\n".join(report), encoding="utf-8")
+    report_path.write_text(f"Engineering PDF Translator {VERSION} - {target_name} translation list\nSource language: {language}; target: {target_name}; mode: {mode}\nOutput PDF: {destination.name}\nPDF SHA256: {output_sha}\nSaved PDF reopened and checked: {verified['verified_replaced']} replacement labels; {verified['verified_notes']} translation notes.\nTechnical glossary takes priority; other text uses machine translation.\nREVIEW CONTEXT marks ambiguous labels. Check the drawing detail/legend.\nUNCHANGED may include proper names, text already in the output language or untranslated words.\n" + f"Replaced on drawing: {count-fallback}; notes: {fallback}; unchanged labels to check: {unchanged}; retained references/units: {retained}\nGlossary matches: {glossary_hits}; labels needing context review: {review_labels}\n" + warnings + "\n".join(report), encoding="utf-8")
     return {"translated": count, "replaced": count-fallback, "notes": fallback, "unchanged": unchanged, "retained": retained, "scanned_pages": scanned_pages, "report": str(report_path), "glossary_terms": glossary_hits, "review_labels": review_labels, "pdf_sha256": output_sha, **verified}

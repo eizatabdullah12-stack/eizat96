@@ -103,14 +103,16 @@ class AutoTranslator:
             language, reason = self.detect(segment, self.context)
             self.counts[language] += 1
             self.review_count += bool(reason)
-            if language not in self.glossaries:
-                parts.append(segment)
-                continue
-            if language not in self.models:
-                self.models[language] = self.factory(language)
-            parts.append(self.models[language](segment))
+            parts.append(self.translate_segment(language, segment))
         self.cache[key] = ''.join(parts)
         return self.cache[key]
+
+    def translate_segment(self, language, segment):
+        if language not in self.glossaries:
+            return segment
+        if language not in self.models:
+            self.models[language] = self.factory(language)
+        return self.models[language](segment)
 
     def _selected(self, text):
         for segment, separator in self.segments(text):
