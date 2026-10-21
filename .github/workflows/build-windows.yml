@@ -1,4 +1,4 @@
-name: Build portable Windows translator
+name: Build offline Windows installer
 on:
   workflow_dispatch:
   push:
