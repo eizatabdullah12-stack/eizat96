@@ -20,8 +20,15 @@ if ($LASTEXITCODE -ne 0) { throw 'Windows executable build failed.' }
 $bundlePath = Join-Path $PSScriptRoot 'dist\EngineeringPDFTranslator'
 $resultPath = Join-Path $bundlePath 'windows-selftest.json'
 $checkProcess = Start-Process -FilePath (Join-Path $bundlePath 'EngineeringPDFTranslator.exe') -ArgumentList @('--self-test', ('"' + $resultPath + '"')) -PassThru
-if (-not $checkProcess.WaitForExit(300000)) { $checkProcess.Kill(); throw 'Compiled executable self-test timed out.' }
-if ($checkProcess.ExitCode -ne 0 -or -not (Test-Path $resultPath)) { throw 'Compiled executable self-test failed.' }
+if (-not $checkProcess.WaitForExit(300000)) {
+    $checkProcess.Kill()
+    if (Test-Path $resultPath) { Get-Content -Raw $resultPath | Write-Host }
+    throw 'Compiled executable self-test timed out.'
+}
+if ($checkProcess.ExitCode -ne 0 -or -not (Test-Path $resultPath)) {
+    if (Test-Path $resultPath) { Get-Content -Raw $resultPath | Write-Host }
+    throw 'Compiled executable self-test failed.'
+}
 $testResult = Get-Content -Raw $resultPath | ConvertFrom-Json
 if (-not $testResult.passed) { throw 'Compiled executable checks did not pass.' }
 Copy-Item PORTABLE_README.txt (Join-Path $bundlePath 'README.txt')

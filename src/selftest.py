@@ -71,6 +71,7 @@ def run(report_path, app_factory):
             raise RuntimeError('Editing input must immediately invalidate obsolete output')
         app.clear_text(); app.source_code='fr'; app.output_language.set(LANGUAGE_NAMES['en'])
         app.text_style.set('conversation'); app.text_input.insert('1.0',"Je ne comprends pas.\nVa te faire foutre!")
+        window.update()  # Flush the edit event before submitting the manual job.
         app.invalidate_text(); app.translate_text_now(); wait_for_text()
         if app.text_output.get('1.0','end-1c')!="I don't understand.\nFuck off!":
             raise RuntimeError('Conversation context or uncensored profanity failed')

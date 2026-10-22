@@ -378,5 +378,10 @@ class App:
 if __name__=='__main__':
     if '--self-test' in sys.argv:
         from selftest import run
-        run(Path(sys.argv[sys.argv.index('--self-test')+1]),App)
+        try:
+            run(Path(sys.argv[sys.argv.index('--self-test')+1]),App)
+        except Exception:
+            # The JSON report records the exception. A windowed error dialog
+            # would otherwise keep CI running until its five-minute timeout.
+            sys.exit(1)
     else: App(tk.Tk()).root.mainloop()
