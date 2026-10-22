@@ -1,6 +1,15 @@
-Version 1.11 — local verification; Windows checks pending
-PASS: All 60 existing regression tests.
-PASS: Eight conversation tests, covering over 15,000 unambiguous phrase-direction mappings, all twelve swear-word directions, accent distinctions, whole-sentence model routing, mixed languages, common grammar/chat fixes, protected values, and logo/creator data.
-Windows regression, compiled GUI/model and installation checks run before publishing v1.11.
-Creator: Eizat.
-Previous v1.10 remains available until v1.11 passes release checks.
+2026-10-22 version 1.11 — Windows app and installation verified
+Creator and publisher: Eizat.
+PASS: All 68 Windows regression tests (72.793 seconds).
+PASS: Compiled GUI, all four interface/output languages, text/PDF/Word/PowerPoint, protected values and searchable terminology.
+PASS: Conversation mode, uncensored profanity, Eizat creator credit and custom logo.
+PASS: Whole-sentence conversation inference using all six bundled offline models.
+PASS: Windows Setup installation; every installed application file matched the tested bundle.
+Successful source: 23d0fe15055760b097e260da8ff507a439fca0e0
+Successful run: https://github.com/eizatabdullah12-stack/eizat96/actions/runs/39741077952
+Installer: EngineeringTranslator-1.11-Setup.exe
+Installer bytes: 615262370
+Installer SHA256: 648e54fb6b1e24ff6490034cf4a97becc30cc215f567a649d52e42d76ea88036
+The first v1.11 GUI test cancelled its own manual request via a pending edit event. Flushing the event before submission fixes the test. Self-test exceptions now exit promptly and print their JSON error report instead of waiting behind a windowed error dialog.
+Vocabulary: 5,100 engineering entries plus 1,031 conversation concepts / 4,748 distinct language forms across English, French, Dutch and German.
+LIMITATIONS: Grammar normalization covers common mistakes, not general grammar checking. Short/ambiguous words may need context or a manual source language. Review translation meaning, register, and Office text fit. No OCR.
