@@ -4,6 +4,11 @@ from string import Formatter
 LANGUAGE_NAMES = {'en':'English', 'fr':'Français', 'nl':'Nederlands', 'de':'Deutsch'}
 
 _ROWS = r'''title|Engineering Document Translator|Traducteur de documents techniques|Vertaler voor technische documenten|Übersetzer für technische Dokumente
+creator|Created by Eizat|Créé par Eizat|Gemaakt door Eizat|Erstellt von Eizat
+text_style|Text style|Style du texte|Tekststijl|Textstil
+conversation_mode|Conversation / natural sentences|Conversation / phrases naturelles|Gesprek / natuurlijke zinnen|Gespräch / natürliche Sätze
+engineering_mode|Engineering terminology|Terminologie technique|Technische terminologie|Technische Fachbegriffe
+conversation_hint|Conversation keeps sentence context and includes slang and swear words. Engineering prioritizes drawing terms. Grammar suggestions are limited.|Le mode conversation conserve le contexte et inclut l'argot et les gros mots. Le mode technique privilégie les termes des plans. Corrections grammaticales limitées.|Gespreksmodus behoudt zinscontext en bevat straattaal en scheldwoorden. Technische modus geeft voorrang aan tekentermen. Beperkte grammaticacorrectie.|Der Gesprächsmodus erhält den Satzkontext und enthält Umgangssprache und Schimpfwörter. Der Technikmodus bevorzugt Zeichnungsbegriffe. Begrenzte Grammatikkorrektur.
 subtitle|English / French / Dutch / German · Offline|Anglais / Français / Néerlandais / Allemand · Hors ligne|Engels / Frans / Nederlands / Duits · Offline|Englisch / Französisch / Niederländisch / Deutsch · Offline
 display_language|App language|Langue de l’application|Taal van de app|Sprache der Anwendung
 source_language|Source language|Langue du document source|Brontaal|Ausgangssprache

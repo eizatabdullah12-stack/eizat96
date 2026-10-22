@@ -63,7 +63,7 @@ class TextTranslationTests(unittest.TestCase):
     def test_latest_edit_replaces_pending_work_and_discards_stale_result(self):
         started=threading.Event(); release=threading.Event(); messages=queue.Queue(); seen=[]
         class Session:
-            def translate(self,value,source,target,cancel):
+            def translate(self,value,source,target,cancel,mode='engineering'):
                 seen.append(value)
                 if value=='old':
                     started.set()

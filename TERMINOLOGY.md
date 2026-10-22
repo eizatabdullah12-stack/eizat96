@@ -1,3 +1,20 @@
+# Version 1.11 conversation phrasebook
+
+Created by Eizat. The separate conversation.psv contains over 1,000 concepts and
+thousands of source forms in English, French, Dutch and German. Entries include
+everyday objects/verbs, greetings, full sentences, chat abbreviations, idioms and
+uncensored profanity. The first semicolon-separated form is the recorded output;
+remaining forms are input aliases. Ambiguous equivalents fall back to the sentence
+model. Multiple-language homographs are retained for source-language review.
+Accent distinctions such as French mais/maïs are preserved in this phrasebook.
+These additions do not override engineering interpretations in the document engine.
+
+Conversation mode passes whole sentences to the offline neural models when there
+is no exact phrase match. Source normalization covers only explicitly defined,
+common mistakes and chat spellings. It does not train a model or provide general
+same-language grammar checking. Idiom, profanity strength and regional register
+are contextual; verify tone before reusing a translation.
+
 # Engineering, project and everyday terminology in version 1.10
 
 French, Dutch and German terminology overrides general machine translation.

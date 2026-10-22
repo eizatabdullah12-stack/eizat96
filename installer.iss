@@ -1,10 +1,10 @@
-#define AppVersion "1.10"
+#define AppVersion "1.11"
 
 [Setup]
 AppId={{41B77C55-166D-46E1-B933-E208EC834421}
 AppName=Engineering Document Translator
 AppVersion={#AppVersion}
-AppPublisher=Engineering Document Translator contributors
+AppPublisher=Eizat
 AppPublisherURL=https://github.com/eizatabdullah12-stack/eizat96
 DefaultDirName={localappdata}\Programs\EngineeringDocumentTranslator
 DefaultGroupName=Engineering Document Translator
@@ -20,6 +20,7 @@ SolidCompression=yes
 LZMANumBlockThreads=1
 LZMAUseSeparateProcess=yes
 WizardStyle=modern
+SetupIconFile=assets\app.ico
 LicenseFile=LICENSE
 UninstallDisplayIcon={app}\EngineeringPDFTranslator.exe
 SetupLogging=yes

@@ -1,13 +1,6 @@
-2026-10-21 version 1.10 — Windows build and installation verified
-PASS: All 60 regression tests on Windows.
-PASS: Real inference with all six bundled models.
-PASS: Compiled GUI checks for direct text, automatic translation, mixed languages, four interface/output languages, PDF, Word and PowerPoint.
-PASS: Windows Setup installed successfully into an isolated directory. Every installed application file matched the verified bundle.
-Source commit: e46c2fb3924dce399c1e5e8fa0bd0400af85595e
-Successful build: https://github.com/eizatabdullah12-stack/eizat96/actions/runs/39625054045
-Installer: EngineeringTranslator-1.10-Setup.exe
-Installer bytes: 615336590
-Installer SHA256: b8ab6a038a81fa1335ac1d4debc8562dbf26ab614cd267c8f5b48282f5422df0
-The previous Inno Setup out-of-memory failure was corrected using one LZMA block thread and a separate compression process.
-Glossary: 5,100 explicit source entries (fr 1,771 / nl 1,696 / de 1,633).
-LIMITATIONS: Probabilistic language detection; short/ambiguous labels and mixed-language sentences may need manual source selection. Review engineering context and Office text fit. No OCR.
+Version 1.11 — local verification; Windows checks pending
+PASS: All 60 existing regression tests.
+PASS: Eight conversation tests, covering over 15,000 unambiguous phrase-direction mappings, all twelve swear-word directions, accent distinctions, whole-sentence model routing, mixed languages, common grammar/chat fixes, protected values, and logo/creator data.
+Windows regression, compiled GUI/model and installation checks run before publishing v1.11.
+Creator: Eizat.
+Previous v1.10 remains available until v1.11 passes release checks.

@@ -3,6 +3,7 @@ from collections import Counter
 import threading
 
 from directional import DirectionalTranslator
+from conversation import ConversationTranslator
 from engine import protected_translate
 
 MAX_TEXT_CHARS = 50000
@@ -10,22 +11,26 @@ LIVE_TEXT_CHARS = 4000
 
 
 class TextSession:
-    def __init__(self, factory=DirectionalTranslator):
+    def __init__(self, factory=DirectionalTranslator, conversation_factory=ConversationTranslator):
         self.factory = factory
+        self.conversation_factory = conversation_factory
         self.pair = self.translator = None
 
-    def translate(self, value, source='auto', target='en', cancel=lambda: False):
+    def translate(self, value, source='auto', target='en', cancel=lambda: False, mode='engineering'):
         if len(value) > MAX_TEXT_CHARS:
             raise ValueError('Text exceeds the 50,000 character limit.')
         if cancel():
             raise InterruptedError('Text translation cancelled.')
         if not value.strip():
             return {'text': value, 'languages': {}, 'reviews': []}
-        pair = (source, target)
+        if mode not in ('engineering', 'conversation'):
+            raise ValueError('Unknown text translation mode')
+        pair = (source, target, mode)
         if self.pair != pair:
             # Drop the previous pair before loading another set of models.
             self.translator = None
-            self.translator = self.factory(source, target)
+            factory = self.conversation_factory if mode == 'conversation' else self.factory
+            self.translator = factory(source, target)
             self.pair = pair
         translator = self.translator
         pieces, languages, reviews = [], Counter(), []
@@ -63,14 +68,14 @@ class TextWorker:
                 self.token.set()
             self.pending = None
 
-    def submit(self, generation, value, source, target):
+    def submit(self, generation, value, source, target, mode='engineering'):
         with self.condition:
             if self.closed:
                 return
             if self.token:
                 self.token.set()
             self.token = threading.Event()
-            self.pending = (generation, value, source, target, self.token)
+            self.pending = (generation, value, source, target, self.token, mode)
             if self.thread is None:
                 self.thread = threading.Thread(target=self._run, daemon=True)
                 self.thread.start()
@@ -91,12 +96,12 @@ class TextWorker:
                 self.condition.wait_for(lambda: self.closed or self.pending is not None)
                 if self.closed:
                     return
-                generation, value, source, target, token = self.pending
+                generation, value, source, target, token, mode = self.pending
                 self.pending = None
             result = error = None
             try:
                 with self.lock:
-                    result = session.translate(value, source, target, token.is_set)
+                    result = session.translate(value, source, target, token.is_set, mode=mode)
             except InterruptedError:
                 continue
             except Exception as exc:

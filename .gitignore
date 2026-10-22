@@ -8,3 +8,5 @@ installer_output/
 licenses/
 *.spec
 EngineeringPDFTranslator_Portable_Windows.zip
+
+assets/

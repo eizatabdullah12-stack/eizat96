@@ -14,6 +14,8 @@ from glossary import TERMS, AMBIGUOUS, TERM_CATEGORIES, fold
 from directional import DirectionalTranslator, LANGUAGES
 from i18n import LANGUAGE_NAMES, text, error_text
 from version import VERSION
+from branding import CREATOR, tk_logo
+from conversation import PHRASES
 from text_translation import TextWorker, LIVE_TEXT_CHARS, MAX_TEXT_CHARS
 
 
@@ -31,8 +33,14 @@ class App:
         style.configure('TLabel',background='#f0f4f7',font=('Segoe UI',11))
         style.configure('TButton',font=('Segoe UI',11),padding=8)
         frame=ttk.Frame(root,padding=26); frame.pack(fill='both',expand=True)
-        self.label(frame,'title',font=('Segoe UI',22,'bold'),wraplength=900).pack(anchor='w')
-        self.label(frame,'subtitle',foreground='#356576').pack(anchor='w',pady=(4,16))
+        self.logo=tk_logo(root,64); self.window_logo=tk_logo(root,128)
+        root.iconphoto(True,self.window_logo)
+        header=ttk.Frame(frame); header.pack(fill='x',pady=(0,16))
+        ttk.Label(header,image=self.logo).pack(side='left',padx=(0,16))
+        heading=ttk.Frame(header); heading.pack(side='left',fill='x',expand=True)
+        self.label(heading,'title',font=('Segoe UI',22,'bold'),wraplength=830).pack(anchor='w')
+        self.label(heading,'subtitle',foreground='#356576').pack(anchor='w',pady=(4,0))
+        self.label(heading,'creator',foreground='#536675',font=('Segoe UI',10)).pack(anchor='w',pady=(3,0))
         selectors=ttk.Frame(frame); selectors.pack(fill='x',pady=(0,20))
         for column,key in enumerate(('display_language','source_language','output_language')):
             selectors.columnconfigure(column,weight=1)
@@ -120,7 +128,13 @@ class App:
 
     def build_text_tab(self):
         panel=self.text_tab
-        self.label(panel,'text_hint',foreground='#536675',wraplength=940).pack(anchor='w',pady=(0,10))
+        self.text_style=tk.StringVar(value='conversation')
+        choices=ttk.Frame(panel); choices.pack(fill='x',pady=(0,6))
+        self.label(choices,'text_style').pack(side='left',padx=(0,12))
+        for code,key in [('conversation','conversation_mode'),('engineering','engineering_mode')]:
+            option=ttk.Radiobutton(choices,variable=self.text_style,value=code,command=self.invalidate_text)
+            self.localize(option,key).pack(side='left',padx=(0,16))
+        self.label(panel,'conversation_hint',foreground='#536675',wraplength=940,font=('Segoe UI',10)).pack(anchor='w',pady=(0,8))
         columns=ttk.Frame(panel); columns.pack(fill='both',expand=True)
         for column in range(2): columns.columnconfigure(column,weight=1,uniform='text')
         columns.rowconfigure(1,weight=1)
@@ -188,7 +202,7 @@ class App:
         self.text_generation+=1; self.text_result=None
         self.set_text_output(''); self.text_copy.configure(state='disabled'); self.set_text_reviews('')
         self.text_status.set(self.T('text_working'))
-        self.text_worker.submit(self.text_generation,value,self.source_code,self.target_code())
+        self.text_worker.submit(self.text_generation,value,self.source_code,self.target_code(),self.text_style.get())
 
     def refresh_text_status(self):
         if self.text_result is None:
@@ -224,10 +238,10 @@ class App:
         window=tk.Toplevel(self.root); window.title(self.T('glossary_title'))
         window.geometry('980x600'); window.transient(self.root)
         panel=ttk.Frame(window,padding=16); panel.pack(fill='both',expand=True)
-        initial=self.source_code if self.source_code in TERMS else self.ui_code if self.ui_code in TERMS else 'fr'
+        initial=self.source_code if self.source_code in LANGUAGE_NAMES else self.ui_code
         language=tk.StringVar(value=LANGUAGE_NAMES[initial]); search=tk.StringVar(); count=tk.StringVar()
         row=ttk.Frame(panel); row.pack(fill='x',pady=(0,12))
-        ttk.Combobox(row,values=[LANGUAGE_NAMES[k] for k in TERMS],textvariable=language,state='readonly',width=14).pack(side='left')
+        ttk.Combobox(row,values=list(LANGUAGE_NAMES.values()),textvariable=language,state='readonly',width=14).pack(side='left')
         ttk.Label(row,text=self.T('search')).pack(side='left',padx=10)
         ttk.Entry(row,textvariable=search).pack(side='left',fill='x',expand=True)
         ttk.Label(panel,textvariable=count).pack(anchor='w',pady=(0,8))
@@ -243,10 +257,12 @@ class App:
         def refresh(*args):
             code=next(k for k,v in LANGUAGE_NAMES.items() if v==language.get())
             query=fold(search.get().strip()); table.delete(*table.get_children()); notes.clear()
-            reviews={fold(k):v for k,v in AMBIGUOUS[code].items()}
-            entries=sorted(line.split('|',1) for line in TERMS[code].strip().splitlines())
-            for source,english in entries:
-                category=TERM_CATEGORIES[code].get(fold(source),'Core engineering')
+            reviews={fold(k):v for k,v in AMBIGUOUS.get(code,{}).items()}
+            entries=[(source,english,TERM_CATEGORIES[code].get(fold(source),'Core engineering'))
+                     for line in TERMS.get(code,'').strip().splitlines() for source,english in [line.split('|',1)]]
+            entries.extend((row[code].replace(';',' / '),row['en'].split(';')[0],row['category']) for row in PHRASES)
+            entries.sort()
+            for source,english,category in entries:
                 if query and query not in fold(' '.join((source,english,category))): continue
                 item=table.insert('','end',values=(source,english,category))
                 notes[item]=self.T('context_english',note=reviews[fold(source)]) if fold(source) in reviews else self.T('term_default')

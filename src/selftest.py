@@ -41,6 +41,7 @@ def run(report_path, app_factory):
         import time
         if app.tabs.select()!=str(app.text_tab) or not app.auto_text.get():
             raise RuntimeError('Automatic direct text translation is not the startup tab')
+        app.text_style.set('engineering')
         app.text_input.insert('1.0','Merci pour votre aide.\nRegelplaat 200 mm - KORBO M12.\nJustierplatte.')
         def wait_for_text():
             deadline=time.monotonic()+60
@@ -68,6 +69,14 @@ def run(report_path, app_factory):
         app.text_input.insert('end','!'); window.update()
         if app.text_result is not None or app.text_output.get('1.0','end-1c'):
             raise RuntimeError('Editing input must immediately invalidate obsolete output')
+        app.clear_text(); app.source_code='fr'; app.output_language.set(LANGUAGE_NAMES['en'])
+        app.text_style.set('conversation'); app.text_input.insert('1.0',"Je ne comprends pas.\nVa te faire foutre!")
+        app.invalidate_text(); app.translate_text_now(); wait_for_text()
+        if app.text_output.get('1.0','end-1c')!="I don't understand.\nFuck off!":
+            raise RuntimeError('Conversation context or uncensored profanity failed')
+        if app.logo.width()!=64 or app.window_logo.width()!=128:
+            raise RuntimeError('Eizat logo failed to load')
+        report['checks'].append('Conversation mode, uncensored profanity, Eizat creator and custom logo passed')
         app.text_worker.close()
         report['checks'].append('Direct text: automatic mixed languages, manual mode, Paste/Copy/Clear, new glossary, stale output and protected codes passed')
         window.update()
@@ -211,6 +220,17 @@ def run(report_path, app_factory):
                 if result['translated'] < 1:
                     raise RuntimeError('Native target-language output failed')
             report['checks'].append(f'English to {target} real model, glossary, codes and native output passed')
+        from conversation import ConversationTranslator, PHRASES
+        for source,sample in [('fr','Le chat dort sur le canapé.'),('nl','De kat slaapt op de bank.'),('de','Die Katze schläft auf dem Sofa.')]:
+            rendered=ConversationTranslator(source,'en')(sample)
+            if 'cat' not in rendered.casefold():
+                raise RuntimeError('Conversation whole-sentence inference failed: '+source+' '+rendered)
+        for target,word in [('fr','chat'),('nl','kat'),('de','katze')]:
+            rendered=ConversationTranslator('en',target)('The cat sleeps on the sofa.')
+            if word not in rendered.casefold():
+                raise RuntimeError('Conversation target model failed: '+target+' '+rendered)
+        report['conversation_concepts']=len(PHRASES)
+        report['checks'].append('Whole-sentence conversation inference with all six offline models passed')
         report['passed'] = True
     except Exception as exc:
         report['error'] = str(exc)

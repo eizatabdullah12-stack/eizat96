@@ -1,9 +1,24 @@
-# Engineering Document Translator 1.10
+# Engineering Document Translator 1.11
 
-[Download the Windows installer (615 MB)](https://github.com/eizatabdullah12-stack/eizat96/releases/download/v1.10/EngineeringTranslator-1.10-Setup.exe)
+Created by **Eizat**. Version 1.11 adds a new custom E speech-bubble logo and a
+**Conversation / natural sentences** text mode. It keeps a whole sentence's context
+instead of translating fragments around individual engineering glossary terms.
+The bundled models translate unlisted sentences; the phrasebook is not a word limit.
 
-The published v1.10 installer passed all 60 Windows tests, compiled-app checks,
-and installation/file verification. No GitHub Actions build is needed to install it.
+The conversation phrasebook covers over 1,000 concepts, with thousands of forms in
+English, French, Dutch and German: daily conversation, travel, food, work, family,
+feelings, informal speech, idioms and uncensored mild/strong profanity. Exact phrases
+use recorded equivalents in all twelve directions. Common chat spellings and a few
+clear agreement errors are normalized. This is not a complete grammar checker.
+Ambiguous isolated words may need a source-language choice or sentence context.
+Profanity equivalents vary by region and tone.
+
+Choose **Engineering terminology** for the existing technical text workflow.
+Document translation continues to prioritize engineering terms. Both phrasebook
+and technical entries are searchable in the glossary window. A new Windows release
+is published automatically only after the compiled app and installation checks pass.
+
+[Existing verified v1.10 installer](https://github.com/eizatabdullah12-stack/eizat96/releases/tag/v1.10)
 
 Native Windows app for direct text, PDF, Word and PowerPoint translation,
 fully offline in English, French, Dutch and German. Both display and output

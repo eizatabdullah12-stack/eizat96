@@ -28,6 +28,7 @@ SOURCE_FUNCTION_WORDS = set('LE LA LES DES DE DU AU AUX UN UNE ET EN SUR PAR POU
 
 def protected_spans(text, translate):
     spans = [(m.start(),m.end()) for m in PROTECTED.finditer(text)]
+    spans.extend(getattr(translate, 'extra_protected_spans', lambda value: [])(text))
     known = getattr(translate,'terms',{})
     glossary_spans = getattr(translate, 'glossary_spans', lambda text: [])(text)
     # Preserve acronym/identifier tokens in mixed-case labels. All-caps prose

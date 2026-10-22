@@ -13,7 +13,9 @@ if ($LASTEXITCODE -ne 0) { throw 'Language-model download failed.' }
 if ($LASTEXITCODE -ne 0) { throw 'Document checks failed.' }
 & $buildPython collect_notices.py
 if ($LASTEXITCODE -ne 0) { throw 'Dependency notices could not be retained.' }
-& $buildPython -m PyInstaller --noconfirm --clean --onedir --windowed --name EngineeringPDFTranslator --add-data 'src/models;models' --add-data 'src/engineering_terms.psv;.' --add-data 'licenses;licenses' --collect-all ctranslate2 --collect-all sentencepiece src/app.py
+& $buildPython create_assets.py
+if ($LASTEXITCODE -ne 0) { throw 'Logo generation failed.' }
+& $buildPython -m PyInstaller --noconfirm --clean --onedir --windowed --name EngineeringPDFTranslator --icon 'assets/app.ico' --version-file 'assets/version_info.txt' --add-data 'src/models;models' --add-data 'src/engineering_terms.psv;.' --add-data 'src/conversation.psv;.' --add-data 'licenses;licenses' --collect-all ctranslate2 --collect-all sentencepiece src/app.py
 if ($LASTEXITCODE -ne 0) { throw 'Windows executable build failed.' }
 $bundlePath = Join-Path $PSScriptRoot 'dist\EngineeringPDFTranslator'
 $resultPath = Join-Path $bundlePath 'windows-selftest.json'
@@ -46,7 +48,7 @@ if (-not $compiler) {
 }
 & $compiler installer.iss
 if ($LASTEXITCODE -ne 0) { throw 'Windows installer build failed.' }
-$setup = Join-Path $PSScriptRoot 'installer_output\EngineeringTranslator-1.10-Setup.exe'
+$setup = Join-Path $PSScriptRoot 'installer_output\EngineeringTranslator-1.11-Setup.exe'
 $installPath = Join-Path $env:TEMP 'Translator setup verification'
 $installation = Start-Process -FilePath $setup -ArgumentList @('/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART','/SP-',('/DIR="' + $installPath + '"')) -Wait -PassThru
 if ($installation.ExitCode -ne 0) { throw 'Windows installer smoke test failed.' }
