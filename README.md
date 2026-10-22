@@ -18,13 +18,17 @@ Document translation continues to prioritize engineering terms. Both phrasebook
 and technical entries are searchable in the glossary window. A new Windows release
 is published automatically only after the compiled app and installation checks pass.
 
-[Existing verified v1.10 installer](https://github.com/eizatabdullah12-stack/eizat96/releases/tag/v1.10)
+[Download verified Windows Setup v1.11 (615 MB)](https://github.com/eizatabdullah12-stack/eizat96/releases/download/v1.11/EngineeringTranslator-1.11-Setup.exe)
+
+All 68 Windows tests, compiled GUI/model checks, and installation/file verification
+passed. The published installer checksum matches the tested binary. Download and
+run the installer; no GitHub Actions build is needed.
 
 Native Windows app for direct text, PDF, Word and PowerPoint translation,
 fully offline in English, French, Dutch and German. Both display and output
 default to English. Automatic source-language detection supports mixed text.
 
-Run EngineeringTranslator-1.10-Setup.exe to install for the current user, then
+Run EngineeringTranslator-1.11-Setup.exe to install for the current user, then
 open the Start menu shortcut. All six language models are included. No Python,
 API key or network connection is needed during installation or use.
 
