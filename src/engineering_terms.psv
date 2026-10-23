@@ -1473,3 +1473,91 @@ Design checks and coordination|conflit avec la menuiserie|conflict met het schri
 Design checks and coordination|conflit avec l'isolation|conflict met de isolatie|Kollision mit der Dämmung|clash with the insulation|
 Design checks and coordination|accès pour le serrage|toegang voor het aandraaien|Zugang zum Anziehen|access for tightening|
 Design checks and coordination|accès pour le perçage|toegang voor het boren|Zugang zum Bohren|access for drilling|
+Belgian architectural drawings|niveau de plancher|vloerpas;vloerpeil|Fußbodenniveau|floor level|Floor level is the default; confirm whether the drawing datum is finished or structural.
+Belgian architectural drawings|niveau du terrain|maaiveld|Geländeniveau|ground level|
+Belgian architectural drawings|niveau du terrain existant|oorspronkelijk maaiveld|ursprüngliches Geländeniveau|existing ground level|
+Belgian architectural drawings|sous-face des fondations|onderz fund;onderz. fund.;onderzijde fundering;onderzijde funderingen|Fundamentunterkante|underside of foundation|
+Belgian architectural drawings|chape de pente|hellingschape;hellingschapedekvloer|Gefälleestrich|screed to falls|
+Belgian architectural drawings|épaisseur moyenne|gemiddelde dikte|mittlere Dicke|average thickness|
+Belgian architectural drawings|en moyenne|gemiddeld|durchschnittlich|on average|
+Belgian architectural drawings|plancher à poutrelles et entrevous|potten en balken;potten & balken;potten-en-balken|Balken-Hohlkörperdecke|beam-and-block floor|
+Belgian architectural drawings|béton lissé mécaniquement|polierbeton;gepolierde beton|flügelgeglätteter Beton|power-floated concrete|Belgian floor-finish usage; confirm the specified finish rather than assuming mechanically ground and polished concrete.
+Belgian architectural drawings|bloc de maçonnerie en terre cuite|snelbouwsteen;snelbouwstenen;snelbouwblok;snelbouwblokken|Hochlochziegel|clay masonry block|Belgian ceramic masonry term; confirm the specified product and unit type.
+Belgian architectural drawings|brique de parement|parementsteen;parementstenen|Vormauerziegel|facing brick|
+Belgian architectural drawings|poutre retroussée en béton|opstaande betonbalk|Betonüberzug|concrete upstand beam|
+Belgian architectural drawings|tableau des fenêtres|raamborderel;ramenborderel|Fensterliste|window schedule|
+Belgian architectural drawings|matériaux des façades|gevelmaterialen|Fassadenmaterialien|facade materials|
+Belgian architectural drawings|schéma des façades|gevelschema|Fassadenschema|elevation diagram|
+Belgian architectural drawings|élévations|gevels|Ansichten|elevations|
+Belgian architectural drawings|coupe|snede|Schnitt|section|
+Belgian architectural drawings|coupes|snedes;sneden|Schnitte|sections|
+Belgian architectural drawings|construction neuve d'une maison individuelle|nieuwbouw eengezinswoning|Neubau eines Einfamilienhauses|new-build single-family house|
+Belgian architectural drawings|abri de jardin|tuinberging|Gartengeräteraum|garden store|
+Belgian architectural drawings|salle de bains|badkamer|Badezimmer|bathroom|
+Belgian architectural drawings|chambre d'enfant|kinderkamer|Kinderzimmer|child's bedroom|
+Belgian architectural drawings|local technique|technische berging|Technikraum|utility room|
+Belgian architectural drawings|local à vélos|fietsenberging|Fahrradabstellraum|bicycle store|
+Belgian architectural drawings|espace salon|zithoek|Wohnbereich|sitting area|
+Belgian architectural drawings|salle à manger|eetplaats|Essbereich|dining area|
+Belgian architectural drawings|pièce de vie|leefruimte|Wohnraum|living space|
+Belgian architectural drawings|hall d'entrée|inkom|Eingangsbereich|entrance hall|
+Belgian architectural drawings|position du robinet extérieur|positie buitenkraantje|Position des Außenwasserhahns|outdoor tap position|
+Belgian architectural drawings|menuiseries de façade|gevelschrijnwerk|Fassadenfenster und -türen|facade joinery|
+Belgian architectural drawings|panneaux en béton à empreinte de planches|betonpanelen planken bekist|Bretterschalungs-Betonplatten|board-formed concrete panels|
+Belgian architectural drawings|coffré avec des planches|planken bekist;plankbekist|brettgeschalt|board-formed|
+Belgian architectural drawings|protection solaire|zonwering|Sonnenschutz|solar shading|
+Belgian architectural drawings|ensemble de fenêtre coulissante|schuifraamgeheel|Schiebefensterelement|sliding window assembly|
+Belgian architectural drawings|profilés de serre|serreprofielen|Gewächshausprofile|greenhouse profiles|
+Belgian architectural drawings|ensemble de fenêtre|raamgeheel|Fensterelement|window assembly|
+Belgian architectural drawings|fenêtre oscillo-battante|draai-kip raam;draai-kipraam;draaikipraam;draaikiepraam;draai kip raam;draai-kiepraam|Drehkippfenster|tilt-and-turn window|
+Belgian architectural drawings|oscillo-battant|draai-kip;draaikip;draaikiep;draai-kiep|Drehkipp|tilt-and-turn|
+Belgian architectural drawings|imposte fixe|vast bovenraam|festverglastes Oberlicht|fixed overlight|
+Belgian architectural drawings|impostes fixes|vaste bovenramen|festverglaste Oberlichter|fixed overlights|
+Belgian architectural drawings|imposte|bovenraam|Oberlicht|overlight|
+Belgian architectural drawings|fenêtre d'angle|hoekraam|Eckfenster|corner window|
+Belgian architectural drawings|verre contre verre|glas op glas|Glas an Glas|glass-to-glass|
+Belgian architectural drawings|porte extérieure toute hauteur|kamerhoge buitendeur|raumhohe Außentür|full-height external door|
+Belgian architectural drawings|porte d'entrée vitrée|voordeur beglaasd|verglaste Haustür|glazed entrance door|
+Belgian architectural drawings|porte arrière vitrée|achterdeur beglaasd|verglaste Hintertür|glazed rear door|
+Belgian architectural drawings|porte d'entrée|voordeur|Haustür|entrance door|
+Belgian architectural drawings|porte arrière|achterdeur|Hintertür|rear door|
+Belgian architectural drawings|porte latérale|zijdeur|Seitentür|side door|
+Belgian architectural drawings|ensemble de fenêtre et de porte|raam- en deurgeheel|Fenster-Tür-Element|window and door assembly|
+Belgian architectural drawings|porte double opaque|dubbele deur opaak|blickdichte Doppeltür|opaque double door|
+Belgian architectural drawings|panneau opaque|opaak paneel|blickdichtes Paneel|opaque panel|
+Belgian architectural drawings|panneaux à recouvrement|panelen in opdek|überschlagende Paneele|rebated panels|Confirm the rebated/overlapping construction in the joinery detail.
+Belgian architectural drawings|à recouvrement|in opdek|mit Überschlag|rebated|Joinery context; confirm the rebate/overlap detail.
+Belgian architectural drawings|émaillé au four|gemoffeld|einbrennlackiert|stove-enamelled|Oven-cured coating; confirm the coating specification. Do not infer a particular powder or liquid paint system from this word alone.
+Belgian architectural drawings|couleur naturelle|natuurkleur|Naturfarbe|natural colour|
+Belgian architectural drawings|vitré|beglaasd|verglast|glazed|
+Belgian architectural drawings|drainage caché|onzichtbare ontwatering|verdeckte Entwässerung|concealed drainage|
+Belgian architectural drawings|paumelles cachées|onzichtbare scharnieren|verdeckte Bänder|concealed hinges|
+Belgian architectural drawings|paumelles cachées|onzicbtbare scharnieren|verdeckte Bänder|concealed hinges|Recognized source typo: onzicbtbare is interpreted as onzichtbare; verify the original note.
+Belgian architectural drawings|drainage de menuiserie|ontwatering|Fensterentwässerung|drainage|
+Belgian architectural drawings|paumelles|scharnieren|Scharniere|hinges|
+Belgian architectural drawings|seuil en aluminium|alu dorpel;aluminium dorpel|Aluminiumfensterbank|aluminium sill|
+Belgian architectural drawings|seuil inférieur en aluminium|alu onderdorpel|untere Aluminiumschwelle|aluminium bottom sill|
+Belgian architectural drawings|seuil inférieur|onderdorpel|untere Schwelle|bottom sill|
+Belgian architectural drawings|seuil en pierre bleue|dorpel blauwe hardsteen|Blausteinschwelle|blue limestone sill|
+Belgian architectural drawings|profilés de fenêtres|raamprofielen|Fensterprofile|window profiles|
+Belgian architectural drawings|teinte selon profilés de fenêtres|kleur cfr. raamprofielen|Farbe gemäß Fensterprofilen|colour to match window profiles|
+Belgian architectural drawings|poignée de porte|deurklink;deurklinken|Türdrücker|door handle|
+Belgian architectural drawings|poignée intérieure|kruk (binnen)|Innengriff|internal handle|
+Belgian architectural drawings|poignée intérieure et extérieure|kruk (binnen en buiten)|Innen- und Außengriff|internal and external handle|
+Belgian architectural drawings|poignées intérieures et extérieures|handgrepen (binnen en buiten)|Innen- und Außengriffe|internal and external handles|
+Belgian architectural drawings|serrure à cylindre|cilinderslot|Zylinderschloss|cylinder lock|
+Belgian architectural drawings|clé à l'extérieur bouton à l'intérieur|sleutel langs buiten, draaiknop langs binnen|außen Schlüssel innen Drehknauf|key outside, thumbturn inside|
+Belgian architectural drawings|bouton tournant|draaiknop|Drehknauf|thumbturn|
+Belgian architectural drawings|poignée de tirage|trekker|Zuggriff|pull handle|Door hardware context; the Dutch word has other meanings outside joinery.
+Belgian architectural drawings|vitrage de sécurité|veiligheidsbeglazing|Sicherheitsverglasung|safety glazing|
+Belgian architectural drawings|double vitrage de sécurité|veiligheidsbeglazing, dubbel|Sicherheits-Doppelverglasung|double safety glazing|
+Belgian architectural drawings|vitrage|beglazing|Verglasung|glazing|
+Belgian architectural drawings|guides|geleiders|Führungsschienen|guides|
+Belgian architectural drawings|finition de sol|vloerafwerking|Bodenbelag|floor finish|
+Belgian architectural drawings|profilés en aluminium brut|profielen aluminium brut|Profile aus rohem Aluminium|mill-finish aluminium profiles|
+Belgian architectural drawings|panneau coulissant|schuivend paneel|Schiebepaneel|sliding panel|
+Belgian architectural drawings|panneaux de fenêtres coulissantes|schuivende raampanelen|Schiebefensterpaneele|sliding window panels|
+Belgian architectural drawings|protection solaire verticale par store|screen verticale zonwering|vertikaler Sonnenschutzscreen|vertical screen shading|
+Belgian architectural drawings|derrière un claustra|achter claustra|hinter einer durchbrochenen Sichtschutzwand|behind an openwork screen|
+Belgian architectural drawings|chape de pente épaisseur moyenne|hellingschape gemiddeld|Gefälleestrich mittlere Dicke|screed to falls, average thickness|
+Belgian architectural drawings|fenêtre coulissante de serre|serre-schuifraam;serre- schuifraam|Gewächshaus-Schiebefenster|greenhouse sliding window|

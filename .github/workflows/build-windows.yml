@@ -46,7 +46,7 @@ jobs:
         run: ./build_windows.ps1
       - uses: actions/upload-artifact@v4
         with:
-          name: EngineeringTranslator-1.11-Setup
+          name: EngineeringTranslator-1.12-Setup
           path: installer_output/
           if-no-files-found: error
           retention-days: 14
@@ -64,17 +64,17 @@ jobs:
       GH_REPO: ${{ github.repository }}
     steps:
       - name: Reuse the verified Windows installer
-        run: gh run download "$GITHUB_RUN_ID" --name EngineeringTranslator-1.11-Setup --dir artifact
+        run: gh run download "$GITHUB_RUN_ID" --name EngineeringTranslator-1.12-Setup --dir artifact
       - name: Record installer identity
         shell: python
         run: |
           import hashlib
           from pathlib import Path
-          installer=Path('artifact/EngineeringTranslator-1.11-Setup.exe')
+          installer=Path('artifact/EngineeringTranslator-1.12-Setup.exe')
           with installer.open('rb') as f:
               digest=hashlib.file_digest(f,'sha256').hexdigest()
-          Path('release-notes.md').write_text('Download and run EngineeringTranslator-1.11-Setup.exe on Windows. No build or GitHub sign-in needed.\n\nCreated by Eizat. New speech-bubble E logo in the app, Windows executable, and installer.\n\nNew conversation mode translates whole sentences, with over 1,000 everyday concepts, thousands of variants in English/French/Dutch/German, slang and uncensored profanity. Includes common chat-spelling and agreement fixes. Existing 5,100-entry engineering glossary remains available in Engineering mode and documents. Models translate unlisted sentences offline. Grammar correction is limited; review meaning and tone.\n\nAll regression tests, compiled app checks with all six models, and Windows installation/file checks passed before publication.\n\nInstaller SHA-256: '+digest+'\n',encoding='utf-8')
+          Path('release-notes.md').write_text('Download and run EngineeringTranslator-1.12-Setup.exe on Windows. No build or GitHub sign-in needed.\n\nCreated by Eizat. New speech-bubble E logo in the app, Windows executable, and installer.\n\nCorrects Belgian Dutch architectural labels and abbreviations, including vloerpas, onderz fund, polierbeton, potten en balken, raamborderel and tilt-and-turn windows. Recorded phrases survive abbreviation dots such as cfr. Wrapped incomplete glossary labels are joined only across nearby aligned PDF lines. Existing conversation mode, four languages, offline models, protected values and engineering workflow are retained.\n\nAll regression tests, compiled app checks with all six models, and Windows installation/file checks passed before publication.\n\nInstaller SHA-256: '+digest+'\n',encoding='utf-8')
           print('Installer SHA-256:',digest)
           print('Installer bytes:',installer.stat().st_size)
       - name: Publish Windows download
-        run: gh release create v1.11 artifact/EngineeringTranslator-1.11-Setup.exe --target "$GITHUB_SHA" --title "Eizat Offline Translator 1.11" --notes-file release-notes.md
+        run: gh release create v1.12 artifact/EngineeringTranslator-1.12-Setup.exe --target "$GITHUB_SHA" --title "Eizat Offline Translator 1.12" --notes-file release-notes.md

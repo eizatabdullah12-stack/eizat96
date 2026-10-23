@@ -1,3 +1,17 @@
+# Version 1.12 Belgian architectural drawing vocabulary
+
+This update adds specific compound labels rather than changing the existing
+meaning of isolated structural terms. "draai-kip raam" is a tilt-and-turn window;
+"kip" alone retains its structural meaning in Engineering mode. The recorded
+source typo "onzicbtbare scharnieren" is accepted with a review note.
+Floor level, stove-enamelled coatings, ceramic masonry units and power-floated
+concrete retain context review notes where specifications need confirmation.
+
+Primary terminology references:
+- Wienerberger ceramic masonry blocks: https://www.wienerberger.be/Binnenmuur/nieuws-advies/wat-is-een-keramische-binnenmuursteen-.html
+- Rector beam-and-block floors: https://www.rector.be/plancher-poutrelle-entrevous--170--solutions-planchers?lg=nl
+- Reynaers window types: https://www.reynaers.co.uk/frequently-asked-questions/windows
+
 # Version 1.11 conversation phrasebook
 
 Created by Eizat. The separate conversation.psv contains over 1,000 concepts and

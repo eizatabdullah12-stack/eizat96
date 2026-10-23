@@ -55,7 +55,7 @@ if (-not $compiler) {
 }
 & $compiler installer.iss
 if ($LASTEXITCODE -ne 0) { throw 'Windows installer build failed.' }
-$setup = Join-Path $PSScriptRoot 'installer_output\EngineeringTranslator-1.11-Setup.exe'
+$setup = Join-Path $PSScriptRoot 'installer_output\EngineeringTranslator-1.12-Setup.exe'
 $installPath = Join-Path $env:TEMP 'Translator setup verification'
 $installation = Start-Process -FilePath $setup -ArgumentList @('/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART','/SP-',('/DIR="' + $installPath + '"')) -Wait -PassThru
 if ($installation.ExitCode -ne 0) { throw 'Windows installer smoke test failed.' }

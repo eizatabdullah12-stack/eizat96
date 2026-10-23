@@ -82,8 +82,15 @@ class AutoTranslator:
         # Only split sentence-ending punctuation followed by whitespace, or hard
         # breaks. Product-code dots and decimal points stay within a segment.
         boundaries = list(re.finditer(r'(?<=[.!?;])\s+|[\r\n]+', text))
+        # A recorded multiword term can contain an abbreviation, e.g.
+        # "kleur cfr. raamprofielen". Splitting at that dot discards the
+        # longer phrase and sends unrelated fragments to the general model.
+        phrases = self.glossary_spans(text) if boundaries else []
         cursor = 0
         for boundary in boundaries:
+            if ('\n' not in boundary.group() and '\r' not in boundary.group() and
+                    any(a < boundary.start() < b for a,b in phrases)):
+                continue
             if boundary.start() > cursor:
                 yield text[cursor:boundary.start()], False
             yield boundary.group(), True

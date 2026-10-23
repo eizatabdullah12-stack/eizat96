@@ -84,6 +84,23 @@ def run(report_path, app_factory):
         window.destroy()
         report['checks'].append('Bundled desktop GUI loads')
         report['glossary_counts'] = {lang:len(data.strip().splitlines()) for lang,data in TERMS.items()}
+        from directional import DirectionalTranslator
+        dutch=DirectionalTranslator('auto','en')
+        for original,expected in [('vloerpas -0.90','floor level -0.90'),('onderz fund -1.43','underside of foundation -1.43'),('polierbeton 120mm','power-floated concrete 120mm'),('potten en balken 200mm','beam-and-block floor 200mm'),('draai-kip raam','tilt-and-turn window'),('kleur cfr. raamprofielen','colour to match window profiles')]:
+            if protected_translate(original,dutch)!=expected:
+                raise RuntimeError('Bundled Belgian Dutch label failed: '+original)
+        with tempfile.TemporaryDirectory() as directory:
+            source,target=Path(directory)/'wrapped.pdf',Path(directory)/'translated.pdf'
+            with fitz.open() as document:
+                page=document.new_page()
+                page.insert_text((40,80),'vrije\nhoogte 246cm',fontsize=10)
+                document.save(source)
+            translate_pdf(source,target,dutch)
+            with fitz.open(target) as document:
+                rendered=document[0].get_text()+'\n'+'\n'.join(a.info.get('content','') for a in (document[0].annots() or []))
+            if 'clear height 246cm' not in ' '.join(rendered.split()):
+                raise RuntimeError('Wrapped Belgian Dutch phrase failed in saved PDF')
+        report['checks'].append('Belgian Dutch labels, abbreviation phrases, dimensions, compounds and wrapped saved-PDF text passed')
         for language, sample in (('fr','Le chat dort sur le canapé'),
                                  ('nl','De kat slaapt op de bank'),
                                  ('de','Die Katze schläft auf dem Sofa')):

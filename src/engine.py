@@ -70,6 +70,60 @@ def text_rotation(direction):
     return None
 
 
+def coalesce_glossary_lines(lines, translate):
+    """Join a wrapped recorded label only when its nearby lines align.
+
+    CAD exporters can put several distant labels in one block. Keep blocks,
+    columns, rotations, fonts and unrelated prose separate; join at most three
+    lines when a glossary phrase actually crosses the line break.
+    """
+    result, cursor = [], 0
+    while cursor < len(lines):
+        first = lines[cursor]
+        selected = None
+        if text_rotation(first.get('dir', (1, 0))) == 0:
+            for count in (2, 3):
+                group = lines[cursor:cursor+count]
+                if len(group) != count:
+                    break
+                aligned = True
+                for above, below in zip(group, group[1:]):
+                    size = max(s['size'] for s in above['spans'])
+                    gap = below['bbox'][1] - above['bbox'][3]
+                    if (text_rotation(below.get('dir', (1, 0))) != 0 or
+                            abs(above['bbox'][0]-below['bbox'][0]) > max(2, size*.5) or
+                            not -1 <= gap <= size*.8 or
+                            {s['font'] for s in above['spans']} != {s['font'] for s in below['spans']} or
+                            abs(size-max(s['size'] for s in below['spans'])) > size*.05):
+                        aligned = False
+                        break
+                if not aligned:
+                    break
+                values = [''.join(s['text'] for s in line['spans']).strip() for line in group]
+                joined = ' '.join(values)
+                last_start = len(' '.join(values[:-1]))+1
+                spans = getattr(translate, 'glossary_spans', lambda value: [])(joined)
+                if not any(a == 0 and b > last_start and reference_label(joined[b:], translate) for a,b in spans):
+                    continue
+                merged = dict(first)
+                merged['spans'] = [dict(span, text=(' ' if i and j == 0 else '')+span['text'])
+                                   for i,line in enumerate(group) for j,span in enumerate(line['spans'])]
+                bounds = fitz.Rect(first['bbox'])
+                for line in group[1:]:
+                    bounds |= fitz.Rect(line['bbox'])
+                merged['bbox'] = tuple(bounds)
+                selected = merged, count
+                break
+        if selected:
+            merged, count = selected
+            result.append(merged)
+            cursor += count
+        else:
+            result.append(first)
+            cursor += 1
+    return result
+
+
 def protected_translate(text, translate):
     getattr(translate, 'prepare_text', lambda text: None)(text)
     # Translate only words between dimensions/codes: no fragile placeholder tokens.
@@ -149,7 +203,7 @@ def translate_pdf(source, destination, translate, mode="replace", progress=lambd
             for block in page.get_text("dict")["blocks"]:
                 if "lines" not in block:
                     continue
-                for line in block["lines"]:
+                for line in coalesce_glossary_lines(block["lines"], translate):
                     spans = line["spans"]
                     original = "".join(s["text"] for s in spans).strip()
                     if not original:

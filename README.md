@@ -1,4 +1,17 @@
-# Engineering Document Translator 1.11
+# Version 1.12 Belgian Dutch drawing corrections
+
+Created by Eizat. Adds specific Belgian architectural vocabulary, including
+vloerpas, onderz fund, polierbeton, hellingschape, potten en balken,
+snelbouwsteen, raamborderel and joinery terminology. Longer window phrases such
+as draai-kip raam take priority over the structural kip (buckling) entry.
+Recorded phrases containing abbreviations such as cfr. are kept together.
+PDF labels wrapped over nearby aligned lines are combined only when a known
+phrase crosses the line break. Distant columns and unrelated prose stay separate.
+
+Version 1.12 Windows build and installation verification pending. The v1.11
+installer below remains the previous verified release until v1.12 passes.
+
+# Engineering Document Translator 1.12
 
 Created by **Eizat**. Version 1.11 adds a new custom E speech-bubble logo and a
 **Conversation / natural sentences** text mode. It keeps a whole sentence's context

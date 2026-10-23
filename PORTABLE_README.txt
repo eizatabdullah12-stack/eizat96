@@ -1,8 +1,10 @@
+Version 1.12 corrects Belgian Dutch architectural labels and wrapped glossary phrases in PDFs.
+
 Created by Eizat.
 Conversation mode translates natural sentences, slang and uncensored swear words.
 Use Engineering mode for technical drawing terms. Grammar normalization is limited.
 
-Engineering Document Translator 1.11 - Windows x64 application
+Engineering Document Translator 1.12 - Windows x64 application
 
 Auto / mixed languages is now the default. French, Dutch and German text in the
 same document is detected per label or sentence and translated to the selected
@@ -11,7 +13,7 @@ Uncertain short labels and unsupported languages are retained for review.
 Use a manual source language when necessary; switches within one sentence may
 not be recognized reliably. The translation list includes a language summary.
 
-Download and run EngineeringTranslator-1.11-Setup.exe. The installer works offline,
+Download and run EngineeringTranslator-1.12-Setup.exe. The installer works offline,
 installs into your user profile and provides a Start menu shortcut. Administrator
 access is not needed. Optional desktop shortcut and Windows uninstaller included.
 No Python installation, browser, API key or internet connection is required.
@@ -116,6 +118,6 @@ Output supports all four languages using six bundled offline models. French,
 Dutch and German pairs use English as an intermediate when needed. Review
 engineering context and terminology; automatic detection is probabilistic.
 
-Version 1.11 adds direct text translation and 963 source entries covering everyday
+Version 1.12 adds direct text translation and 963 source entries covering everyday
 conversation, office messages, drawing instructions, masonry details, KORBO
 installation vocabulary, PLAKA reinforcement joints, fixings and fabrication.

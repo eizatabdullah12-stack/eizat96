@@ -1,15 +1,7 @@
-2026-10-22 version 1.11 — Windows app and installation verified
-Creator and publisher: Eizat.
-PASS: All 68 Windows regression tests (72.793 seconds).
-PASS: Compiled GUI, all four interface/output languages, text/PDF/Word/PowerPoint, protected values and searchable terminology.
-PASS: Conversation mode, uncensored profanity, Eizat creator credit and custom logo.
-PASS: Whole-sentence conversation inference using all six bundled offline models.
-PASS: Windows Setup installation; every installed application file matched the tested bundle.
-Successful source: 23d0fe15055760b097e260da8ff507a439fca0e0
-Successful run: https://github.com/eizatabdullah12-stack/eizat96/actions/runs/39741077952
-Installer: EngineeringTranslator-1.11-Setup.exe
-Installer bytes: 615262370
-Installer SHA256: 648e54fb6b1e24ff6490034cf4a97becc30cc215f567a649d52e42d76ea88036
-The first v1.11 GUI test cancelled its own manual request via a pending edit event. Flushing the event before submission fixes the test. Self-test exceptions now exit promptly and print their JSON error report instead of waiting behind a windowed error dialog.
-Vocabulary: 5,100 engineering entries plus 1,031 conversation concepts / 4,748 distinct language forms across English, French, Dutch and German.
-LIMITATIONS: Grammar normalization covers common mistakes, not general grammar checking. Short/ambiguous words may need context or a manual source language. Review translation meaning, register, and Office text fit. No OCR.
+Version 1.12 local verification complete; Windows checks pending
+PASS: All 73 regression tests (60.375 seconds).
+PASS: 79 selected label occurrences in the supplied drawing checked locally across all three pages. Coverage includes levels, foundation abbreviations, floor layers, masonry, window schedules, tilt-and-turn windows and wrapped clear-height labels.
+Five new tests cover compound priority, automatic Dutch detection, dimensions, abbreviation periods, wrapped phrases, distant-column separation and saved PDF verification.
+The supplied project drawing remains local and is not included in the public repository.
+Engineering glossary: 5,380 explicit entries (French 1,855 / Dutch 1,809 / German 1,716).
+Creator: Eizat. Existing icon, conversation mode and four languages retained.
