@@ -8,8 +8,9 @@ Recorded phrases containing abbreviations such as cfr. are kept together.
 PDF labels wrapped over nearby aligned lines are combined only when a known
 phrase crosses the line break. Distant columns and unrelated prose stay separate.
 
-Version 1.12 Windows build and installation verification pending. The v1.11
-installer below remains the previous verified release until v1.12 passes.
+Version 1.12 passed all 73 Windows tests, compiled-app/model checks, and installation/file verification.
+
+[Download Windows Setup v1.12 (615 MB)](https://github.com/eizatabdullah12-stack/eizat96/releases/download/v1.12/EngineeringTranslator-1.12-Setup.exe)
 
 # Engineering Document Translator 1.12
 
@@ -31,7 +32,7 @@ Document translation continues to prioritize engineering terms. Both phrasebook
 and technical entries are searchable in the glossary window. A new Windows release
 is published automatically only after the compiled app and installation checks pass.
 
-[Download verified Windows Setup v1.11 (615 MB)](https://github.com/eizatabdullah12-stack/eizat96/releases/download/v1.11/EngineeringTranslator-1.11-Setup.exe)
+[Previous Windows Setup v1.11 (615 MB)](https://github.com/eizatabdullah12-stack/eizat96/releases/download/v1.11/EngineeringTranslator-1.11-Setup.exe)
 
 All 68 Windows tests, compiled GUI/model checks, and installation/file verification
 passed. The published installer checksum matches the tested binary. Download and
