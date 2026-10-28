@@ -1,3 +1,22 @@
+# Version 1.13 Dutch and French construction basics
+
+Belgian Dutch shares technical loanwords with French. Chape is explicitly listed
+under Dutch as well as French. Hourdis now uses the requested Belgian engineering
+default, hollow-core slab, with a review note because other regional usages can
+refer to infill blocks. Qualified topping phrases remain structural topping;
+chape de compression is not reduced to generic screed.
+
+Concrete-wall, floor-unit, screed and common construction variants were added
+for Dutch and French. Known glossary labels translate without loading an inference
+model. The model loads only when an unlisted fragment needs general translation.
+Qualified recorded phrases such as voile BA take priority over acronym protection;
+standalone BA, dimensional values and identifiers remain protected.
+
+Primary terminology checks:
+- https://www.prebel.be/hourdis/hourdis/
+- https://www.nerva.be/sites/default/files/downloads/Nerva-voorgespannen-welfsels.pdf
+- https://www.buildwise.be/nl/normen-en-regelgeving/buildwise-normalisatie-certificering-normen-antenne-afwerkingen/dekvloer/
+
 # Version 1.12 Belgian architectural drawing vocabulary
 
 This update adds specific compound labels rather than changing the existing

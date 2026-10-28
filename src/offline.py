@@ -44,9 +44,24 @@ class RawTranslator:
         return left + rendered + right
 
 
+class LazyRawTranslator:
+    """Load inference only when a fragment is absent from the glossary."""
+    def __init__(self, source, target='en'):
+        self.source, self.target, self.model = source, target, None
+
+    def __call__(self, text):
+        if self.model is None:
+            self.model = RawTranslator(self.source, self.target)
+        return self.model(text)
+
+
 class OfflineTranslator(EngineeringTranslator):
     target_language = 'en'
 
     def __init__(self, language):
-        self.raw = RawTranslator(language)
-        super().__init__(language, self.raw)
+        self.lazy_raw = LazyRawTranslator(language)
+        super().__init__(language, self.lazy_raw)
+
+    @property
+    def raw(self):
+        return self.lazy_raw.model

@@ -95,8 +95,8 @@ recouvrement des TS|reinforcement mesh overlap
 alvéoles ouvertes|open cores
 bois massif|solid timber
 lamellé-collé|glued laminated timber
-hourdis béton précontraint|prestressed concrete floor units
-hourdis béton armé|reinforced concrete floor units
+hourdis béton précontraint|prestressed hollow-core slabs
+hourdis béton armé|reinforced concrete hollow-core slabs
 balcon architectonique préfabriqué|precast architectural concrete balcony
 couvrant RDC|floor over ground floor (RDC)
 légende|legend
@@ -235,7 +235,7 @@ semelle isolée|pad footing
 semelle de poutre|beam flange
 semelle|semelle
 allège|wall below window
-hourdis|hourdis
+hourdis|hollow-core slab
 BA|BA
 ''',
     'nl': '''
@@ -360,7 +360,7 @@ afgewerkt vloerpeil|finished floor level
 onderzijde|underside
 bovenzijde|top surface
 plaat|plaat
-vloer|vloer
+vloer|floor
 ''',
     'de': '''
 Stahlbetonträger|reinforced concrete beam
@@ -484,14 +484,14 @@ AMBIGUOUS = {
         'semelles': 'Source retained: semelles may mean footings or beam flanges; check the legend/detail.',
         'grugeage': 'Notching is the default; confirm the steel connection detail.',
         'allège': 'Wall below window is the default; check the actual element and window detail.',
-        'hourdis': 'Source retained: Belgian hourdis may refer to floor units; other contexts use infill blocks.',
+        'hourdis': 'Belgian engineering default: hollow-core slab. Confirm the floor system; other regional usages can refer to infill blocks.',
         'BA': 'Abbreviation retained; expand only using the project legend (often reinforced concrete).',
     },
     'nl': {
         'console': 'Bracket is the default; confirm whether the detail instead shows a cantilever structural member.',
         'consoles': 'Brackets is the default; confirm the structural detail.',
         'plaat': 'Source retained: plaat can refer to a plate or a slab; check material and element.',
-        'vloer': 'Source retained: vloer can mean a floor, structural slab or floor finish; check the detail.',
+        'vloer': 'Floor is the general meaning; check whether a qualified detail specifies a structural floor slab or floor finish.',
         'oplegging': 'Bearing is the default; confirm the support condition in the detail.',
         'druk': 'Source retained: druk can mean compression or pressure; check the loading context.',
     },

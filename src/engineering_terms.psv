@@ -302,7 +302,7 @@ Envelope and insulation|fond de joint|rugvulling|Hinterfüllschnur|backer rod|
 Envelope and insulation|condensation|condensatie|Kondensation|condensation|
 Finishes and materials|chape d'égalisation|egalisatiedekvloer|Ausgleichsestrich|levelling screed|
 Finishes and materials|chape flottante|zwevende dekvloer|schwimmender Estrich|floating screed|
-Finishes and materials|chape|dekvloer|Estrich|screed|
+Finishes and materials|chape|dekvloer;chape|Estrich|screed|
 Finishes and materials|revêtement de sol|vloerafwerking|Bodenbelag|floor finish|
 Finishes and materials|carrelage|tegelwerk|Fliesenbelag|tiling|
 Finishes and materials|plinthe|plint|Sockelleiste|skirting board|
@@ -1561,3 +1561,75 @@ Belgian architectural drawings|protection solaire verticale par store|screen ver
 Belgian architectural drawings|derrière un claustra|achter claustra|hinter einer durchbrochenen Sichtschutzwand|behind an openwork screen|
 Belgian architectural drawings|chape de pente épaisseur moyenne|hellingschape gemiddeld|Gefälleestrich mittlere Dicke|screed to falls, average thickness|
 Belgian architectural drawings|fenêtre coulissante de serre|serre-schuifraam;serre- schuifraam|Gewächshaus-Schiebefenster|greenhouse sliding window|
+Belgian floor and wall terminology|dalle creuse préfabriquée|hourdis;hourdisvloer;betonnen hourdis;welfsel;kanaalplaatvloer|Hohlkörper-Fertigteilplatte|hollow-core slab|Belgian engineering default for hourdis/welfsel; confirm the actual floor system and do not use this for an infill block.
+Belgian floor and wall terminology|dalles alvéolées|welfsels;kanaalplaten|Hohlplatten|hollow-core slabs|
+Belgian floor and wall terminology|hourdis alvéolé;hourdis creux;dalle alvéolaire|holle welfsel;holle vloerplaat|Hohlkammerplatte|hollow-core slab|
+Belgian floor and wall terminology|hourdis précontraint;hourdis précontraints;hourdis en béton précontraint|voorgespannen welfsels;voorgespannen betonwelfsels;welfsels in voorgespannen beton|Spannbeton-Hohlplatten|prestressed hollow-core slabs|
+Belgian floor and wall terminology|hourdis en béton armé;hourdis creux en béton armé|gewapende betonwelfsels;welfsels in gewapend beton|Stahlbeton-Hohlplatten|reinforced concrete hollow-core slabs|
+Belgian floor and wall terminology|mur béton;mur beton;mur de béton;paroi en béton|betonnen muur;betonnen wand;betonmuur;muur in beton;wand in beton;wand beton|Betonmauer|concrete wall|
+Belgian floor and wall terminology|murs en béton;murs béton;parois en béton|betonmuren;betonnen muren;betonwanden;betonnen wanden|Betonwände|concrete walls|
+Belgian floor and wall terminology|mur béton armé;mur en béton armé;mur BA;voile BA;voile B.A.;voile en béton armé|gewapende betonwand;gewapende betonnen wand;gewapende betonmuur|Stahlbetonmauer|reinforced concrete wall|
+Belgian floor and wall terminology|murs en béton armé;voiles en béton armé|gewapende betonwanden;gewapende betonnen muren|Stahlbetonwände|reinforced concrete walls|
+Belgian floor and wall terminology|mur en béton préfabriqué;voile préfabriqué|prefab betonwand;geprefabriceerde betonwand;prefab betonmuur|Betonfertigteilwand|precast concrete wall|
+Belgian floor and wall terminology|mur en béton banché;voile coulé en place|ter plaatse gestorte betonwand;gestorte betonwand|Ortbetonwand|cast-in-place concrete wall|
+Belgian floor and wall terminology|mur non porteur|niet-dragende muur;niet dragende muur;niet-dragende wand|nichttragende Wand|non-load-bearing wall|
+Belgian floor and wall terminology|mur porteur en béton|dragende betonwand;dragende betonnen muur|tragende Betonwand|load-bearing concrete wall|
+Belgian floor and wall terminology|cloison légère|lichte scheidingswand|leichte Trennwand|lightweight partition|
+Belgian floor and wall terminology|mur mitoyen|gemene muur;gemeenschappelijke muur|gemeinsame Grenzwand|party wall|
+Belgian floor and wall terminology|chapes|chapes;dekvloeren|Estriche|screeds|
+Belgian floor and wall terminology|chape|chappe|Estrich|screed|Recognized Belgian spelling variant for chape; verify source spelling.
+Belgian floor and wall terminology|chape de ciment;chape ciment|cementchape;cementdekvloer|Zementestrich|cement screed|
+Belgian floor and wall terminology|chape anhydrite;chape à base d'anhydrite|anhydrietchape;anhydrietdekvloer|Anhydritestrich|anhydrite screed|
+Belgian floor and wall terminology|chape autonivelante;chape autolissante|zelfnivellerende chape;zelfnivellerende dekvloer|selbstnivellierender Estrich|self-levelling screed|
+Belgian floor and wall terminology|chape armée|gewapende chape;gewapende dekvloer|bewehrter Estrich|reinforced screed|
+Belgian floor and wall terminology|chape flottante acoustique|akoestisch zwevende chape|schwimmender Akustikestrich|acoustic floating screed|
+Belgian floor and wall terminology|chape isolante|isolerende chape;isolatiechape|Dämmestrich|insulating screed|
+Belgian floor and wall terminology|chape adhérente|hechtende chape;hechtende dekvloer|Verbundestrich|bonded screed|
+Belgian floor and wall terminology|chape désolidarisée|niet-hechtende chape;dekvloer op scheidingslaag|Estrich auf Trennlage|unbonded screed|
+Belgian floor and wall terminology|ravoirage|uitvullaag;uitvulchape|Ausgleichsschicht|levelling fill layer|
+Belgian floor and wall terminology|sous-chape|onderlaag voor de chape|Estrichunterlage|screed underlay|
+Belgian floor and wall terminology|épaisseur de chape|chapedikte;dikte chape|Estrichdicke|screed thickness|
+Belgian floor and wall terminology|niveau de chape|chapepeil|Estrichhöhe|screed level|
+Belgian floor and wall terminology|chape de compression en béton|betonnen druklaag;druklaag beton|Beton-Aufbetonschicht|concrete structural topping|
+Belgian floor and wall terminology|dalle de plancher en béton|betonnen vloerplaat;vloerplaat in beton|Betondeckenplatte|concrete floor slab|
+Belgian floor and wall terminology|dalle de toiture en béton|betonnen dakplaat;dakplaat in beton|Betondachplatte|concrete roof slab|
+Belgian floor and wall terminology|prédalles;pré-dalles|predallen;breedplaten|Elementdeckenplatten|precast floor plates|
+Belgian floor and wall terminology|plancher à prédalles|breedplaatvloer;predallenvloer|Elementdecke|precast plate floor|
+Belgian floor and wall terminology|plancher à poutrelles et entrevous;poutrains et entrevous;poutrains-entrevous|balken-en-vulstenenvloer|Balken-Füllkörperdecke|beam-and-block floor|
+Belgian floor and wall terminology|poutrain en béton;poutrelle de plancher en béton|betonnen vloerbalkje|Beton-Deckenbalken|concrete floor beam|
+Belgian floor and wall terminology|poutrelle en acier;poutrelle métallique|stalen poutrelle;stalen poutrel|Stahlträgerprofil|steel beam|
+Belgian floor and wall terminology|isolation projetée|gespoten isolatie;spuitisolatie|Spritzdämmung|sprayed insulation|
+Belgian floor and wall terminology|isolation en polyuréthane projeté|gespoten PUR;PUR-spuitisolatie|PUR-Spritzdämmung|sprayed polyurethane insulation|
+Belgian floor and wall terminology|membrane sous chape|folie onder chape;folie onder dekvloer|Folie unter Estrich|membrane below screed|
+Belgian floor and wall terminology|couche de désolidarisation|scheidingslaag;ontkoppelingslaag|Trennlage|separating layer|
+Belgian floor and wall terminology|bande périphérique de chape|randstrook chape;randisolatiestrook|Estrich-Randdämmstreifen|screed perimeter strip|
+Belgian floor and wall terminology|chape sur chauffage au sol|chape op vloerverwarming|Estrich auf Fußbodenheizung|screed over underfloor heating|
+Belgian floor and wall terminology|parement en briques|baksteenparement;gevelsteenmetselwerk|Ziegelverblendung|brick facing|
+Belgian floor and wall terminology|maçonnerie en blocs de terre cuite|snelbouwmetselwerk;binnenmuurmetselwerk|Hochlochziegelmauerwerk|clay block masonry|
+Belgian floor and wall terminology|linteau en acier;linteau métallique|stalen latei|Stahlsturz|steel lintel|
+Belgian floor and wall terminology|linteau en béton armé|gewapende betonnen latei|Stahlbetonsturz|reinforced concrete lintel|
+Belgian floor and wall terminology|poutre inversée;poutre retroussée|opstaande balk|Überzug|upstand beam|
+Belgian floor and wall terminology|poutre en retombée|neerhangende balk;onderslagbalk|Unterzug|downstand beam|
+Belgian floor and wall terminology|sous-face du plancher|onderzijde vloer;onderkant vloer|Deckenunterseite|underside of floor|
+Belgian floor and wall terminology|sous-face de la poutre|onderzijde balk;onderkant balk|Trägerunterkante|underside of beam|
+Belgian floor and wall terminology|niveau inférieur de la dalle|onderpeil plaat;onderkant plaat|Plattenunterkante|underside level of slab|
+Belgian floor and wall terminology|niveau supérieur de la dalle|bovenpeil plaat;bovenkant plaat|Plattenoberkante|top level of slab|
+Belgian floor and wall terminology|maçonnerie à démolir|af te breken metselwerk|abzubrechendes Mauerwerk|masonry to be demolished|
+Belgian floor and wall terminology|maçonnerie à conserver|te behouden metselwerk|zu erhaltendes Mauerwerk|masonry to be retained|
+Belgian floor and wall terminology|poutre BA;poutre B.A.;poutre en BA|gewapende betonnen balk|Stahlbetonbalken|reinforced concrete beam|BA is expanded only in this recorded qualified construction phrase.
+Core construction materials|mortier|mortel|Mörtel|mortar|
+Core construction materials|ciment|cement|Zement|cement|
+Core construction materials|sable|zand|Sand|sand|
+Core construction materials|bloc de terre cuite|snelbouw|Hochlochziegelblock|clay masonry block|Belgian ceramic masonry usage; confirm the specified unit type.
+Core construction materials|fondation|fundering|Gründung|foundation|
+Core construction materials|fondations|funderingen|Gründungen|foundations|
+Core construction materials|plancher|vloer|Fußboden|floor|General floor terminology; a floor slab or finish should be identified by its qualified term.
+Core construction materials|couche de compression|druklaag|Aufbeton|structural topping|Structural topping is distinct from a non-structural finishing screed.
+Core construction materials|barrière d'étanchéité|waterkering|Wassersperre|water barrier|Generic water barrier; confirm whether the detail specifies a damp-proof course, cavity tray or waterstop.
+Core construction materials|coupure de capillarité|capillaire onderbreking|Kapillarsperre|capillary break|
+Core construction materials|joint|voeg|Fuge|joint|Generic joint; qualified terms identify movement, mortar, construction or sealant joints.
+Core construction materials|jointoiement|voegwerk|Verfugung|pointing|
+Core construction materials|cavité du mur|muurspouw|Wandhohlraum|wall cavity|
+Core construction materials|épaisseur d'isolation|isolatiedikte|Dämmstoffdicke|insulation thickness|
+Core construction materials|épaisseur de mur|muurdikte;wanddikte|Wanddicke|wall thickness|
+Core construction materials|épaisseur de dalle|plaatdikte;vloerdikte|Plattendicke|slab thickness|

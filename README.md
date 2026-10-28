@@ -1,3 +1,15 @@
+# Version 1.13 Dutch and French Engineering-mode corrections
+
+Created by Eizat. Belgian Dutch chape now translates to screed; hourdis uses the
+Belgian hollow-core-slab default with a context note. Concrete-wall variants,
+screeds, floor units and related construction phrases are checked in Dutch and
+French. Known technical labels translate from the glossary before general models
+load. Source-language and output-language selections still apply; English text
+with English output is already in the requested language and stays English.
+
+Windows verification for v1.13 is pending. Existing v1.12 remains the previous
+verified release until the new build, compiled GUI and installation checks pass.
+
 # Version 1.12 Belgian Dutch drawing corrections
 
 Created by Eizat. Adds specific Belgian architectural vocabulary, including

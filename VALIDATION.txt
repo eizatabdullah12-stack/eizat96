@@ -1,15 +1,8 @@
-Version 1.12 — Windows app and installation verified
-PASS: All 73 Windows regression tests (74.127 seconds).
-PASS: Compiled GUI, all six offline models, Belgian Dutch labels, abbreviation phrases, wrapped saved-PDF text, dimensions, compound term priority and existing document/conversation checks.
-PASS: Windows Setup installed successfully; every installed application file matched the tested bundle.
-Source commit: 1809b810284b69166b090f3379793a003d7cb058
-Successful run: https://github.com/eizatabdullah12-stack/eizat96/actions/runs/39954342565
-Installer: EngineeringTranslator-1.12-Setup.exe
-Installer bytes: 615288333
-Installer SHA256: 2aea8a0fd8e84f3211b111e3b7d1ff62e03118ab3826e1c2e882392433d98c08
-Published release asset checksum matches the tested installer.
-Local drawing audit: 79 selected label occurrences across three pages. 77 translated labels fit in their drawing text boxes; two existing-ground-level labels require English PDF comments.
-The supplied project drawing remains local and is not included in the public repository.
-Engineering glossary: 5,380 explicit entries (French 1,855 / Dutch 1,809 / German 1,716).
+Version 1.13 — 80 local tests passed; Windows verification pending
+Reproduced v1.12: Dutch chape/hourdis not in Dutch glossary, hourdis deliberately retained in French, betonnen muur not recognized automatically, mur béton translated word by word.
+Corrected Dutch/French aliases and Belgian hourdis default. Qualified meanings and dimension/code protections retained. Known technical labels now translate without loading neural models.
+Seven focused tests cover actual Dutch/French text-mode paths, construction variants, qualified terms, lazy model loading, English-to-Dutch/French technical output and saved PDF content.
+Compiled Windows check now invokes the actual Engineering-mode radio button and verifies Dutch and French examples.
 Creator: Eizat.
-Limitations: Vocabulary and model coverage are not exhaustive. Short/ambiguous labels may need manual source selection. Translations that do not fit appear in PDF comments. No OCR.
+
+PASS: All 80 regression tests in 71.506 seconds. The final focused construction suite also passes after adding automatic-mode checks for common Dutch/French materials.

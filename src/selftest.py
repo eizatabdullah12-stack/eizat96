@@ -78,6 +78,21 @@ def run(report_path, app_factory):
         if app.logo.width()!=64 or app.window_logo.width()!=128:
             raise RuntimeError('Eizat logo failed to load')
         report['checks'].append('Conversation mode, uncensored profanity, Eizat creator and custom logo passed')
+        # Invoke the actual Engineering radio button, then test Dutch and French.
+        for container in app.text_tab.winfo_children():
+            for control in container.winfo_children():
+                if control.winfo_class()=='TRadiobutton' and str(control.cget('value'))=='engineering':
+                    control.invoke()
+        if app.text_style.get()!='engineering':
+            raise RuntimeError('Engineering mode selection failed')
+        for code,source in [('nl','chape\nhourdis\nbetonnen muur'),('fr','chape\nhourdis\nmur béton')]:
+            app.clear_text(); app.language.set(app.source_values[code]); app.change_source()
+            app.output_language.set(LANGUAGE_NAMES['en'])
+            app.text_input.insert('1.0',source); window.update()
+            app.invalidate_text(); app.translate_text_now(); wait_for_text()
+            if app.text_output.get('1.0','end-1c')!='screed\nhollow-core slab\nconcrete wall':
+                raise RuntimeError('Engineering core construction labels failed: '+code)
+        report['checks'].append('Actual Engineering selector and manual Dutch/French chape, hourdis and concrete-wall translations passed')
         app.text_worker.close()
         report['checks'].append('Direct text: automatic mixed languages, manual mode, Paste/Copy/Clear, new glossary, stale output and protected codes passed')
         window.update()

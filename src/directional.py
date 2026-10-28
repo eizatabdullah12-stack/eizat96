@@ -37,8 +37,8 @@ class DirectionalTranslator(AutoTranslator):
     def target_translator(self):
         if self.outbound is None:
             if self.outbound_factory is None:
-                from offline import RawTranslator
-                raw = RawTranslator('en', self.target_language)
+                from offline import LazyRawTranslator
+                raw = LazyRawTranslator('en', self.target_language)
             else:
                 raw = self.outbound_factory(self.target_language)
             self.outbound = EngineeringTranslator(self.target_language, raw, terms_override=self.reverse_terms)

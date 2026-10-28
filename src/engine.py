@@ -27,10 +27,16 @@ SOURCE_FUNCTION_WORDS = set('LE LA LES DES DE DU AU AUX UN UNE ET EN SUR PAR POU
 
 
 def protected_spans(text, translate):
-    spans = [(m.start(),m.end()) for m in PROTECTED.finditer(text)]
-    spans.extend(getattr(translate, 'extra_protected_spans', lambda value: [])(text))
     known = getattr(translate,'terms',{})
     glossary_spans = getattr(translate, 'glossary_spans', lambda text: [])(text)
+    # A code such as BA is retained alone, but in a recorded phrase such as
+    # "voile BA" its declared technical meaning takes priority. Numbers,
+    # dimensions, profile identifiers and unqualified codes stay protected.
+    spans = [(m.start(),m.end()) for m in PROTECTED.finditer(text)
+             if not (m.group().isalpha() and m.group().isupper() and
+                     any(a <= m.start() and m.end() <= b and
+                         (a < m.start() or m.end() < b) for a,b in glossary_spans))]
+    spans.extend(getattr(translate, 'extra_protected_spans', lambda value: [])(text))
     # Preserve acronym/identifier tokens in mixed-case labels. All-caps prose
     # still goes to the model, while short stand-alone reference labels stay.
     if not text.isupper() or len(text) <= 4:
