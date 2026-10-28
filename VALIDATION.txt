@@ -1,8 +1,15 @@
-Version 1.13 — 80 local tests passed; Windows verification pending
-Reproduced v1.12: Dutch chape/hourdis not in Dutch glossary, hourdis deliberately retained in French, betonnen muur not recognized automatically, mur béton translated word by word.
-Corrected Dutch/French aliases and Belgian hourdis default. Qualified meanings and dimension/code protections retained. Known technical labels now translate without loading neural models.
-Seven focused tests cover actual Dutch/French text-mode paths, construction variants, qualified terms, lazy model loading, English-to-Dutch/French technical output and saved PDF content.
-Compiled Windows check now invokes the actual Engineering-mode radio button and verifies Dutch and French examples.
+Version 1.13 — Windows build and installation verified
+PASS: All 80 Windows regression tests in 74.363 seconds.
+PASS: Actual Engineering radio-button selection in the compiled GUI, with Dutch chape/hourdis/betonnen muur and French chape/hourdis/mur béton producing screed/hollow-core slab/concrete wall.
+PASS: All six real offline models and existing text/PDF/Word/PowerPoint checks.
+PASS: Windows Setup installation; every installed application file matched the verified bundle.
+Source commit: fc29c90e60c66652f9800ab1ce365c7b6cf5bb30
+Successful run: https://github.com/eizatabdullah12-stack/eizat96/actions/runs/40651635807
+Installer: EngineeringTranslator-1.13-Setup.exe
+Installer bytes: 615334351
+Installer SHA256: b8f0e8c299d9c675f71aa12b9fb6377d75b450098d510a7f9b31fdba42e38fd6
+Published release asset checksum matches the tested installer.
+Engineering glossary: 5,668 entries (French 1,950 / Dutch 1,935 / German 1,783).
+Core correction: Dutch/French construction variants are explicitly recorded; Belgian hourdis defaults to hollow-core slab with a context note. Known terms translate before loading general models. Qualified BA phrases expand according to their recorded meaning while standalone codes/dimensions remain protected.
 Creator: Eizat.
-
-PASS: All 80 regression tests in 71.506 seconds. The final focused construction suite also passes after adding automatic-mode checks for common Dutch/French materials.
+Limitations: Other regional uses of hourdis can refer to infill blocks. Unlisted terms still use the general models. Select the matching source and desired output language; text already in the output language is retained.
