@@ -1,4 +1,27 @@
-# Version 1.13 Dutch and French Engineering-mode corrections
+# Eizat Offline Translator 1.14
+
+[Download the Windows installer](https://github.com/eizatabdullah12-stack/eizat96/releases/download/v1.14/EngineeringTranslator-1.14-Setup.exe)
+
+Created by **Eizat**. Supports English, French, Dutch and German; selectable PDF text and editable Word/PowerPoint documents. Normal translation uses bundled offline models.
+
+## Personal glossary and optional online lookup
+
+Open **My glossary / online lookup…** at the bottom of the app.
+
+1. Choose the source and output languages. Enter a word or, preferably, a qualified phrase such as `chape de compression`.
+2. Enter the correct translation and an optional context reminder/source link. Choose **Both text modes + documents**, **Engineering + documents**, or **Conversation only**. Both is the default. Context notes do not choose meanings automatically; create separate qualified phrases for different meanings.
+3. Click **Save approved translation**. Saved terms take priority over built-in meanings for that exact language direction and chosen mode. The next text translation uses the correction immediately; documents already in progress keep the glossary snapshot they started with.
+4. Select an existing saved term to edit it, or delete it to restore the built-in translation. Search filters saved terms by words, translation, context or language codes.
+
+**Use selected input text** copies a selected source phrase into the form. **Select text from PDF…** opens a local text preview; select a phrase and click **Use selection**. This preview extracts up to 100 pages/500,000 characters and does not perform OCR.
+
+**Find suggestion online** sends only the entered term and selected language pair to [MyMemory](https://mymemory.translated.net/). Results may be general, machine translated or unsuitable for engineering. Select a suggestion to edit it; nothing is saved until you click **Save approved translation**. **Search construction sources…** opens a browser search containing the term, languages and entered context; paste a verified translation and its source link into the form. Neither action uploads your document or glossary. Online actions require internet and may be limited or unavailable; manual saving and normal translation work offline. [Provider API](https://mymemory.translated.net/doc/spec.php), [usage limits](https://mymemory.translated.net/doc/usagelimits.php).
+
+Saved terms are kept in `%LOCALAPPDATA%\EngineeringDocumentTranslator\personal-glossary.json`, outside the installation folder, so software updates retain them. Use **Export backup…** before moving computers; **Import backup…** merges new terms while preserving existing local corrections on collisions. If a file is unreadable, importing a valid backup offers recovery and preserves a copy of the unreadable file. Copies made by another person should be reviewed before import.
+
+Entries are directional: saving Dutch → English does not create English → Dutch or French equivalents. Save those separately. With Auto source, choose a manual source language if a shared spelling has different meanings. Dimensions, drawing references and product codes stay protected.
+
+## Version 1.13 Dutch and French Engineering-mode corrections
 
 Created by Eizat. Belgian Dutch chape now translates to screed; hourdis uses the
 Belgian hollow-core-slab default with a context note. Concrete-wall variants,
@@ -13,7 +36,7 @@ All 80 Windows tests, the actual Engineering-mode GUI check in Dutch/French,
 all six offline models and installation/file verification passed. The published
 asset checksum matches the tested installer. No GitHub build is needed.
 
-# Version 1.12 Belgian Dutch drawing corrections
+## Version 1.12 Belgian Dutch drawing corrections
 
 Created by Eizat. Adds specific Belgian architectural vocabulary, including
 vloerpas, onderz fund, polierbeton, hellingschape, potten en balken,
@@ -27,7 +50,7 @@ Version 1.12 passed all 73 Windows tests, compiled-app/model checks, and install
 
 [Download Windows Setup v1.12 (615 MB)](https://github.com/eizatabdullah12-stack/eizat96/releases/download/v1.12/EngineeringTranslator-1.12-Setup.exe)
 
-# Engineering Document Translator 1.12
+## Conversation and document translation
 
 Created by **Eizat**. Version 1.11 adds a new custom E speech-bubble logo and a
 **Conversation / natural sentences** text mode. It keeps a whole sentence's context

@@ -92,6 +92,48 @@ text_paused|Text translation is paused while a document is being translated.|La 
 text_clipboard|The clipboard contains no text.|Le presse-papiers ne contient pas de texte.|Het klembord bevat geen tekst.|Die Zwischenablage enthält keinen Text.
 text_copied|Translation copied.|Traduction copiée.|Vertaling gekopieerd.|Übersetzung kopiert.'''
 
+_ROWS += r'''
+personal_glossary|My glossary / online lookup…|Mon glossaire / recherche en ligne…|Mijn woordenlijst / online zoeken…|Mein Glossar / Online-Suche…
+personal_title|My saved terminology|Ma terminologie enregistrée|Mijn opgeslagen terminologie|Meine gespeicherten Fachbegriffe
+personal_help|Saved terms override built-in translations for the chosen languages and mode. Context is a reminder; it does not select meanings automatically. Use separate qualified phrases for different meanings.|Les termes enregistrés remplacent les traductions intégrées pour les langues et le mode choisis. Le contexte est un rappel, sans sélection automatique du sens. Utilisez des expressions précises pour les différents sens.|Opgeslagen termen vervangen ingebouwde vertalingen voor de gekozen talen en modus. Context is een herinnering, geen automatische betekenisselectie. Gebruik specifieke woordgroepen voor verschillende betekenissen.|Gespeicherte Begriffe haben für die gewählten Sprachen und den Modus Vorrang. Der Kontext ist ein Hinweis, keine automatische Bedeutungsauswahl. Verwenden Sie eindeutige Wortgruppen für verschiedene Bedeutungen.
+personal_translation|Saved translation|Traduction enregistrée|Opgeslagen vertaling|Gespeicherte Übersetzung
+personal_context|Context / reminder|Contexte / rappel|Context / herinnering|Kontext / Hinweis
+personal_url|Source link (optional)|Lien source (facultatif)|Bronlink (optioneel)|Quellenlink (optional)
+personal_scope|Use in|Utiliser dans|Gebruiken in|Verwenden in
+scope_both|Both text modes + documents|Deux modes de texte + documents|Beide tekstmodi + documenten|Beide Textmodi + Dokumente
+scope_engineering|Engineering + documents|Technique + documents|Techniek + documenten|Technik + Dokumente
+scope_conversation|Conversation only|Conversation uniquement|Alleen gesprekken|Nur Gespräch
+personal_new|New / clear form|Nouveau / vider le formulaire|Nieuw / formulier wissen|Neu / Formular leeren
+personal_save|Save approved translation|Enregistrer la traduction approuvée|Goedgekeurde vertaling opslaan|Bestätigte Übersetzung speichern
+personal_delete|Delete selected|Supprimer la sélection|Selectie verwijderen|Auswahl löschen
+personal_import|Import backup…|Importer une sauvegarde…|Back-up importeren…|Sicherung importieren…
+personal_export|Export backup…|Exporter une sauvegarde…|Back-up exporteren…|Sicherung exportieren…
+personal_selected|Use selected input text|Utiliser le texte source sélectionné|Geselecteerde brontekst gebruiken|Markierten Ausgangstext verwenden
+personal_pdf|Select text from PDF…|Sélectionner du texte dans un PDF…|Tekst uit PDF selecteren…|Text aus PDF auswählen…
+personal_lookup|Find suggestion online|Chercher une suggestion en ligne|Online suggestie zoeken|Online-Vorschlag suchen
+personal_search_web|Search construction sources…|Rechercher des sources techniques…|Technische bronnen zoeken…|Technische Quellen suchen…
+personal_online_help|Optional: online buttons send only this term and chosen languages (web search also includes context). MyMemory suggestions may be general or machine translated. Review the construction meaning, then Save. Documents and saved glossary are never uploaded.|Facultatif : les boutons en ligne envoient uniquement ce terme et les langues choisies (la recherche web inclut le contexte). Les suggestions MyMemory peuvent être générales ou automatiques. Vérifiez le sens technique, puis enregistrez. Les documents et le glossaire ne sont jamais envoyés.|Optioneel: online knoppen verzenden alleen deze term en gekozen talen (webzoeken bevat ook context). MyMemory-suggesties kunnen algemeen of automatisch vertaald zijn. Controleer de technische betekenis en sla op. Documenten en woordenlijst worden nooit geüpload.|Optional: Online-Schaltflächen senden nur diesen Begriff und die gewählten Sprachen (Websuche auch den Kontext). MyMemory-Vorschläge können allgemein oder maschinell übersetzt sein. Technische Bedeutung prüfen, dann speichern. Dokumente und Glossar werden nie hochgeladen.
+personal_candidates|Suggestions from MyMemory — select one to edit; saving requires approval|Suggestions de MyMemory — sélectionnez pour modifier ; enregistrement après approbation|Suggesties van MyMemory — selecteer om te bewerken; opslaan vereist goedkeuring|Vorschläge von MyMemory — zum Bearbeiten auswählen; nur nach Bestätigung speichern
+personal_saved|Saved. Available offline for future translations.|Enregistré. Disponible hors ligne pour les prochaines traductions.|Opgeslagen. Offline beschikbaar voor volgende vertalingen.|Gespeichert. Für künftige Übersetzungen offline verfügbar.
+personal_deleted|Entry deleted. Built-in translation restored.|Entrée supprimée. Traduction intégrée rétablie.|Item verwijderd. Ingebouwde vertaling hersteld.|Eintrag gelöscht. Integrierte Übersetzung wiederhergestellt.
+personal_delete_question|Delete this personal translation?|Supprimer cette traduction personnelle ?|Deze persoonlijke vertaling verwijderen?|Diese persönliche Übersetzung löschen?
+personal_replace_question|A saved term already exists for this language pair and mode. Replace it?|Un terme existe pour ces langues et ce mode. Le remplacer ?|Er bestaat al een term voor deze talen en modus. Vervangen?|Ein Begriff ist für diese Sprachen und diesen Modus gespeichert. Ersetzen?
+personal_error|Could not complete this glossary action.|Impossible de terminer cette action du glossaire.|Deze woordenlijstactie kon niet worden voltooid.|Diese Glossaraktion konnte nicht abgeschlossen werden.
+personal_lookup_working|Looking up this term online…|Recherche du terme en ligne…|Term online opzoeken…|Begriff wird online gesucht…
+personal_lookup_ready|Select a suggestion, check or edit it, then click Save approved translation.|Sélectionnez une suggestion, vérifiez ou modifiez, puis cliquez sur Enregistrer la traduction approuvée.|Selecteer een suggestie, controleer of bewerk deze en klik op Goedgekeurde vertaling opslaan.|Vorschlag auswählen, prüfen oder bearbeiten, dann Bestätigte Übersetzung speichern anklicken.
+personal_imported|Imported {count} new terms. Existing saved terms kept.|{count} nouveaux termes importés. Termes existants conservés.|{count} nieuwe termen geïmporteerd. Bestaande termen behouden.|{count} neue Begriffe importiert. Bestehende Begriffe beibehalten.
+personal_exported|Backup saved.|Sauvegarde enregistrée.|Back-up opgeslagen.|Sicherung gespeichert.
+personal_count|{count} saved terms shown|{count} termes enregistrés affichés|{count} opgeslagen termen weergegeven|{count} gespeicherte Begriffe angezeigt
+personal_pick|Select a term to edit, or create a new one.|Sélectionnez un terme à modifier ou créez-en un.|Selecteer een term om te bewerken of maak een nieuwe.|Begriff zum Bearbeiten auswählen oder neu erstellen.
+personal_pdf_help|Select a short phrase below, then click Use selection. Scanned pictures require OCR.|Sélectionnez une courte expression, puis cliquez sur Utiliser la sélection. Les images numérisées nécessitent une reconnaissance OCR.|Selecteer hieronder een korte woordgroep en klik op Selectie gebruiken. Scans vereisen OCR.|Kurzen Ausdruck markieren, dann Auswahl verwenden anklicken. Gescannte Bilder benötigen OCR.
+personal_use_selection|Use selection|Utiliser la sélection|Selectie gebruiken|Auswahl verwenden
+personal_no_selection|Select a short source phrase first.|Sélectionnez d’abord une courte expression source.|Selecteer eerst een korte bronwoordgroep.|Zuerst einen kurzen Ausgangsausdruck markieren.
+personal_pdf_limit|PDF text preview is limited to 100 pages and 500,000 characters.|Aperçu limité à 100 pages et 500 000 caractères.|PDF-tekstvoorbeeld beperkt tot 100 pagina’s en 500.000 tekens.|PDF-Textvorschau auf 100 Seiten und 500.000 Zeichen begrenzt.'''
+
+_ROWS += '''\npersonal_restore_question|The saved glossary cannot be read. Restore this backup? A copy of the unreadable file will be retained.|Le glossaire est illisible. Restaurer cette sauvegarde ? Une copie du fichier illisible sera conservée.|De opgeslagen woordenlijst is onleesbaar. Deze back-up herstellen? Een kopie van het onleesbare bestand blijft behouden.|Das gespeicherte Glossar ist nicht lesbar. Diese Sicherung wiederherstellen? Eine Kopie der unlesbaren Datei bleibt erhalten.'''
+
+_ROWS += '''\npersonal_from|Source|Source|Bron|Quelle\npersonal_to|Output|Cible|Doel|Ziel'''
+
 MESSAGES = {}
 for row in _ROWS.splitlines():
     key,*values = row.split('|')

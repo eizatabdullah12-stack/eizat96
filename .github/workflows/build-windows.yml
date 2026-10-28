@@ -46,7 +46,7 @@ jobs:
         run: ./build_windows.ps1
       - uses: actions/upload-artifact@v4
         with:
-          name: EngineeringTranslator-1.13-Setup
+          name: EngineeringTranslator-1.14-Setup
           path: installer_output/
           if-no-files-found: error
           retention-days: 14
@@ -64,17 +64,17 @@ jobs:
       GH_REPO: ${{ github.repository }}
     steps:
       - name: Reuse the verified Windows installer
-        run: gh run download "$GITHUB_RUN_ID" --name EngineeringTranslator-1.13-Setup --dir artifact
+        run: gh run download "$GITHUB_RUN_ID" --name EngineeringTranslator-1.14-Setup --dir artifact
       - name: Record installer identity
         shell: python
         run: |
           import hashlib
           from pathlib import Path
-          installer=Path('artifact/EngineeringTranslator-1.13-Setup.exe')
+          installer=Path('artifact/EngineeringTranslator-1.14-Setup.exe')
           with installer.open('rb') as f:
               digest=hashlib.file_digest(f,'sha256').hexdigest()
-          Path('release-notes.md').write_text('Download and run EngineeringTranslator-1.13-Setup.exe on Windows. No build or GitHub sign-in needed.\n\nCreated by Eizat. New speech-bubble E logo in the app, Windows executable, and installer.\n\nCorrects Dutch and French core construction terms, including Belgian Dutch chape, hourdis, welfsels, concrete-wall variants and related floor terminology. Engineering mode uses the recorded technical equivalents before loading general models. Qualified abbreviations such as voile BA translate as a recorded phrase, while standalone codes and dimensions remain protected. Bare hourdis uses the Belgian hollow-core-slab default with a context review note.\n\nAll regression tests, compiled app checks with all six models, and Windows installation/file checks passed before publication.\n\nInstaller SHA-256: '+digest+'\n',encoding='utf-8')
+          Path('release-notes.md').write_text('Download and run EngineeringTranslator-1.14-Setup.exe on Windows. No build or GitHub sign-in needed.\n\nCreated by Eizat. New speech-bubble E logo in the app, Windows executable, and installer.\n\nAdds a personal glossary with approved overrides for all twelve language pairs, usage modes, context reminders, local persistence across updates, editing/deletion and JSON backup import/export. Select a phrase from PDF text or the text input, look up optional MyMemory suggestions or construction web sources, review the meaning, then explicitly save it. Normal translation remains offline. Documents and personal glossary files are never uploaded. Online services may have usage limits or be unavailable.\n\nAll regression tests, compiled app checks with all six models, and Windows installation/file checks passed before publication.\n\nInstaller SHA-256: '+digest+'\n',encoding='utf-8')
           print('Installer SHA-256:',digest)
           print('Installer bytes:',installer.stat().st_size)
       - name: Publish Windows download
-        run: gh release create v1.13 artifact/EngineeringTranslator-1.13-Setup.exe --target "$GITHUB_SHA" --title "Eizat Offline Translator 1.13" --notes-file release-notes.md
+        run: gh release create v1.14 artifact/EngineeringTranslator-1.14-Setup.exe --target "$GITHUB_SHA" --title "Eizat Offline Translator 1.14" --notes-file release-notes.md

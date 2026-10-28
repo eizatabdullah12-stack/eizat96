@@ -65,7 +65,9 @@ class App:
         self.tabs.add(self.text_tab,text=self.T('text_tab'))
         self.tabs.add(self.document_tab,text=self.T('documents_tab'))
         self.build_text_tab()
-        self.button(frame,'glossary',self.show_glossary).pack(anchor='e',pady=(10,0))
+        glossary_actions=ttk.Frame(frame); glossary_actions.pack(fill='x',pady=(10,0))
+        self.button(glossary_actions,'personal_glossary',self.show_personal_glossary).pack(side='left')
+        self.button(glossary_actions,'glossary',self.show_glossary).pack(side='right')
         frame=self.document_tab
         self.label(frame,'document').pack(anchor='w')
         self.file=tk.StringVar(); row=ttk.Frame(frame); row.pack(fill='x',pady=(5,18))
@@ -234,6 +236,10 @@ class App:
             self.root.clipboard_clear(); self.root.clipboard_append(self.text_result['text'])
             self.text_status.set(self.T('text_copied'))
 
+    def show_personal_glossary(self):
+        from personal_ui import PersonalGlossaryWindow
+        return PersonalGlossaryWindow(self)
+
     def show_glossary(self):
         window=tk.Toplevel(self.root); window.title(self.T('glossary_title'))
         window.geometry('980x600'); window.transient(self.root)
@@ -302,6 +308,11 @@ class App:
         if Path(target).suffix.lower()!=extension:
             messagebox.showerror(self.T('keep_format'),self.T('same_extension',extension=extension)); return
         code=self.source_code; mode=self.mode.get()
+        try:
+            from personal_glossary import PersonalStore, with_personal
+            personal_rows=PersonalStore().read()
+        except Exception as exc:
+            messagebox.showerror(self.T('personal_title'),self.T('personal_error')+'\n'+str(exc)); return
         self.busy=True; self.active_extension=extension; self.saved_output=None
         self.text_worker.cancel()
         if self.text_after is not None:
@@ -314,7 +325,7 @@ class App:
         def worker():
             try:
                 with self.processing_lock:
-                    translate=DirectionalTranslator(code,target_code)
+                    translate=with_personal(DirectionalTranslator(code,target_code),personal_rows)
                     result=translate_document(source,target,translate,mode,lambda a,b:self.events.put(('progress',(a,b))),self.stop.is_set)
                 result['target_code']=target_code; self.events.put(('done',(target,result)))
             except Exception as exc: self.events.put(('error',str(exc)))

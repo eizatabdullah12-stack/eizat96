@@ -25,12 +25,14 @@ class TextSession:
             return {'text': value, 'languages': {}, 'reviews': []}
         if mode not in ('engineering', 'conversation'):
             raise ValueError('Unknown text translation mode')
-        pair = (source, target, mode)
+        from personal_glossary import PersonalStore, with_personal
+        personal_rows = PersonalStore().read()
+        pair = (source, target, mode, repr(personal_rows))
         if self.pair != pair:
             # Drop the previous pair before loading another set of models.
             self.translator = None
             factory = self.conversation_factory if mode == 'conversation' else self.factory
-            self.translator = factory(source, target)
+            self.translator = with_personal(factory(source, target), personal_rows, mode)
             self.pair = pair
         translator = self.translator
         pieces, languages, reviews = [], Counter(), []

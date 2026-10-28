@@ -1,3 +1,12 @@
+Version 1.14 — local checks completed; Windows verification pending
+PASS: 90 source test cases (89 passed; GUI case skipped without display), plus the GUI test passed separately using a virtual display.
+PASS: Personal glossary save/restart/edit/delete, all twelve language pairs, both text modes, saved PDF/Word/PowerPoint content and source preservation, protected dimensions/codes, whole-phrase matching, backup merge/recovery and failed-write preservation.
+PASS: Personal glossary editor in all four UI languages; reopen/edit; suggestions require explicit Save; stale online results rejected.
+PASS: Optional live MyMemory lookup returned suggestions for French chape. No document or personal data was used.
+Online service responses are suggestions, not verified construction definitions. Provider availability/quotas apply. Offline translation performs no online lookup.
+Windows installer/model/compiled UI/install checks will be recorded after the build succeeds.
+
+Historical validation:
 Version 1.13 — Windows build and installation verified
 PASS: All 80 Windows regression tests in 74.363 seconds.
 PASS: Actual Engineering radio-button selection in the compiled GUI, with Dutch chape/hourdis/betonnen muur and French chape/hourdis/mur béton producing screed/hollow-core slab/concrete wall.

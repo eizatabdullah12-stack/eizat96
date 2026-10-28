@@ -37,6 +37,9 @@ def run(report_path, app_factory):
             raise RuntimeError('Expanded terminology browser is incomplete')
         glossary_window.destroy()
         report['checks'].append('Searchable built-in terminology browser loads')
+        from personal_selftest import exercise
+        exercise(app)
+        report['checks'].append('Personal glossary UI in four languages, save/reopen/edit, backup/delete/import, approval-only online suggestions and stale-result rejection passed')
         # Exercise the actual text widgets, background queue and automatic delay.
         import time
         if app.tabs.select()!=str(app.text_tab) or not app.auto_text.get():

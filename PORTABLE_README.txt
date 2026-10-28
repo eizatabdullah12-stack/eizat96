@@ -1,10 +1,10 @@
-Version 1.13 corrects Belgian Dutch architectural labels and wrapped glossary phrases in PDFs.
+Version 1.14 corrects Belgian Dutch architectural labels and wrapped glossary phrases in PDFs.
 
 Created by Eizat.
 Conversation mode translates natural sentences, slang and uncensored swear words.
 Use Engineering mode for technical drawing terms. Grammar normalization is limited.
 
-Engineering Document Translator 1.13 - Windows x64 application
+Engineering Document Translator 1.14 - Windows x64 application
 
 Auto / mixed languages is now the default. French, Dutch and German text in the
 same document is detected per label or sentence and translated to the selected
@@ -13,7 +13,7 @@ Uncertain short labels and unsupported languages are retained for review.
 Use a manual source language when necessary; switches within one sentence may
 not be recognized reliably. The translation list includes a language summary.
 
-Download and run EngineeringTranslator-1.13-Setup.exe. The installer works offline,
+Download and run EngineeringTranslator-1.14-Setup.exe. The installer works offline,
 installs into your user profile and provides a Start menu shortcut. Administrator
 access is not needed. Optional desktop shortcut and Windows uninstaller included.
 No Python installation, browser, API key or internet connection is required.
@@ -118,6 +118,16 @@ Output supports all four languages using six bundled offline models. French,
 Dutch and German pairs use English as an intermediate when needed. Review
 engineering context and terminology; automatic detection is probabilistic.
 
-Version 1.13 adds direct text translation and 963 source entries covering everyday
+Version 1.14 adds direct text translation and 963 source entries covering everyday
 conversation, office messages, drawing instructions, masonry details, KORBO
 installation vocabulary, PLAKA reinforcement joints, fixings and fabrication.
+
+VERSION 1.14 — PERSONAL GLOSSARY
+Open My glossary / online lookup to add, edit, delete and approve saved terms.
+Choose source/output languages and usage mode. Saved entries override built-in terms.
+Use Export backup / Import backup to retain corrections on another computer.
+Terms are stored outside the installation folder in LOCALAPPDATA/EngineeringDocumentTranslator.
+Optional MyMemory lookup sends only the entered term and chosen languages.
+Web construction search also sends the entered context. Documents/glossary are not uploaded.
+Review every online suggestion; it is saved only when you click Save approved translation.
+Online availability and provider usage limits apply. Normal translation stays offline.
