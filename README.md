@@ -2,6 +2,8 @@
 
 [Download the Windows installer](https://github.com/eizatabdullah12-stack/eizat96/releases/download/v1.14/EngineeringTranslator-1.14-Setup.exe)
 
+**Verified release:** all 90 Windows tests, compiled-app checks with all six offline models, personal-glossary GUI checks, and installation/file verification passed. The published installer checksum matches the tested binary. No GitHub build is needed. Download and run Setup.
+
 Created by **Eizat**. Supports English, French, Dutch and German; selectable PDF text and editable Word/PowerPoint documents. Normal translation uses bundled offline models.
 
 ## Personal glossary and optional online lookup
