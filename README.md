@@ -7,8 +7,11 @@ French. Known technical labels translate from the glossary before general models
 load. Source-language and output-language selections still apply; English text
 with English output is already in the requested language and stays English.
 
-Windows verification for v1.13 is pending. Existing v1.12 remains the previous
-verified release until the new build, compiled GUI and installation checks pass.
+[Download verified Windows Setup v1.13 (615 MB)](https://github.com/eizatabdullah12-stack/eizat96/releases/download/v1.13/EngineeringTranslator-1.13-Setup.exe)
+
+All 80 Windows tests, the actual Engineering-mode GUI check in Dutch/French,
+all six offline models and installation/file verification passed. The published
+asset checksum matches the tested installer. No GitHub build is needed.
 
 # Version 1.12 Belgian Dutch drawing corrections
 
