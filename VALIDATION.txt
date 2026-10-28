@@ -1,24 +1,17 @@
-Version 1.14 — local checks completed; Windows verification pending
-PASS: 90 source test cases (89 passed; GUI case skipped without display), plus the GUI test passed separately using a virtual display.
-PASS: Personal glossary save/restart/edit/delete, all twelve language pairs, both text modes, saved PDF/Word/PowerPoint content and source preservation, protected dimensions/codes, whole-phrase matching, backup merge/recovery and failed-write preservation.
-PASS: Personal glossary editor in all four UI languages; reopen/edit; suggestions require explicit Save; stale online results rejected.
-PASS: Optional live MyMemory lookup returned suggestions for French chape. No document or personal data was used.
-Online service responses are suggestions, not verified construction definitions. Provider availability/quotas apply. Offline translation performs no online lookup.
-Windows installer/model/compiled UI/install checks will be recorded after the build succeeds.
-
-Historical validation:
-Version 1.13 — Windows build and installation verified
-PASS: All 80 Windows regression tests in 74.363 seconds.
-PASS: Actual Engineering radio-button selection in the compiled GUI, with Dutch chape/hourdis/betonnen muur and French chape/hourdis/mur béton producing screed/hollow-core slab/concrete wall.
-PASS: All six real offline models and existing text/PDF/Word/PowerPoint checks.
-PASS: Windows Setup installation; every installed application file matched the verified bundle.
-Source commit: fc29c90e60c66652f9800ab1ce365c7b6cf5bb30
-Successful run: https://github.com/eizatabdullah12-stack/eizat96/actions/runs/40651635807
-Installer: EngineeringTranslator-1.13-Setup.exe
-Installer bytes: 615334351
-Installer SHA256: b8f0e8c299d9c675f71aa12b9fb6377d75b450098d510a7f9b31fdba42e38fd6
-Published release asset checksum matches the tested installer.
-Engineering glossary: 5,668 entries (French 1,950 / Dutch 1,935 / German 1,783).
-Core correction: Dutch/French construction variants are explicitly recorded; Belgian hourdis defaults to hollow-core slab with a context note. Known terms translate before loading general models. Qualified BA phrases expand according to their recorded meaning while standalone codes/dimensions remain protected.
+Version 1.14 — Windows build, installation and direct download verified
+PASS: All 90 Windows tests in 133.014 seconds, including the native personal-glossary GUI test.
+PASS: Compiled executable: all four UI languages, personal glossary save/reopen/edit, backup/delete/import, suggestions requiring explicit approval and stale lookup-result rejection.
+PASS: Existing compiled text/PDF/Word/PowerPoint workflows with all six offline models and code/dimension protection.
+PASS: Windows installer installed successfully; every installed application file matches the verified bundle.
+PASS: Published release asset SHA256 matches the Windows builder output.
+PASS: Unauthenticated direct download returned a Windows MZ executable with expected total byte count.
+Source commit: d60f4d9322d95512d3f2e99e73bbda625eb65cf9
+Successful run: https://github.com/eizatabdullah12-stack/eizat96/actions/runs/40656271235
+Installer: EngineeringTranslator-1.14-Setup.exe
+Installer bytes: 615340254
+Installer SHA256: cd03014a1773d087dc71dbb48ef3316d24936a7f9530b7945243dd8f63730e7e
+Download: https://github.com/eizatabdullah12-stack/eizat96/releases/download/v1.14/EngineeringTranslator-1.14-Setup.exe
 Creator: Eizat.
-Limitations: Other regional uses of hourdis can refer to infill blocks. Unlisted terms still use the general models. Select the matching source and desired output language; text already in the output language is retained.
+Saved glossary: LOCALAPPDATA/EngineeringDocumentTranslator/personal-glossary.json, outside the installation directory. Approved terms are directional and usage-scoped. Context is a reminder, not automatic disambiguation.
+Optional online lookup: MyMemory term/language-pair request only, plus a separate construction-source browser search. No document or glossary uploads. Live lookup for French chape returned suggestions; provider availability and quotas apply. Service suggestions require human review and an explicit Save. Normal document/text translation remains offline.
+Local source checks: 90 test cases (89 passed, one skipped without display); GUI test passed separately using a virtual display. All 90 subsequently passed on Windows.
